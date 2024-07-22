@@ -12,13 +12,10 @@ import { TbBinaryTree } from "react-icons/tb";
 
 import { GiChameleonGlyph } from "react-icons/gi";
 
-import { useNavigate } from 'react-router-dom'
  
 
-import { LuBrainCircuit } from "react-icons/lu"
 const Matilda =()=>{
 
-    const navigate = useNavigate()
 
     const Titulo = 'IA Personalizada para tu Negocio'
     const SubTitulo = 'Conoce a MATILDA, tu asistente de IA entrenada para atender las necesidades específicas de tus clientes y optimizar tus procesos operativos.'
@@ -48,7 +45,7 @@ const Matilda =()=>{
                     <Text mt='30px' mb='30px' fontSize={{base: '1em',sm:'1.1em', md: '1.2em', lg: '1.3em' }} color="brand.gray"  overflowWrap="break-word" whiteSpace="pre-wrap">
                     {SubTitulo}
                     </Text>
-                    <ArrowButton onClick={()=>{navigate('/contacto')}} text='Contactar'/>
+                    <ArrowButton onClick={()=>{console.log('/contacto')}} text='Contactar'/>
                 </Box>
 
                 <Box display={{ base: 'none', md: 'block' }} width='40%' height="auto" flexShrink="0" >

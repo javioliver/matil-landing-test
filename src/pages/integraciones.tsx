@@ -5,12 +5,10 @@ import Footer from '../Content/Components/footer'
 
 import { FaCheckCircle } from "react-icons/fa"
 
-import { useNavigate } from 'react-router-dom'
 
 import HighlightText from '../Content/Widgets/HighlightText'
 const Integraciones =()=>{
 
-    const navigate = useNavigate()
 
 
     const Titulo = 'Integraciones a Medida con tu Flujo de Trabajo'
@@ -35,7 +33,7 @@ const Integraciones =()=>{
                         <Text mt='30px' mb='30px' fontSize={{base: '1em',sm:'1.1em', md: '1.2em', lg: '1.3em' }} color="brand.gray"  overflowWrap="break-word" whiteSpace="pre-wrap">
                         {SubTitulo}
                         </Text>
-                        <ArrowButton onClick={()=>{navigate('/contacto')}} text='Contactar'/>
+                        <ArrowButton onClick={()=>{console.log('/contacto')}} text='Contactar'/>
                     </Box>
 
                     <Box display={{ base: 'none', md: 'block' }} width='40%' height="auto" flexShrink="0" >

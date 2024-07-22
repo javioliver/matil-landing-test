@@ -1,6 +1,6 @@
 import React from "react"
 
-const Triangle = ({ w = 20, h = 10, direction = "right", color = "#2C5282", backgroundColor = "#FFFFFF" }) => {
+const Triangle = ({ w = 20, h = 10, direction = "right", color = "#2C5282", backgroundColor = "#FFFFFF" }:{ w?:number, h?:number, direction?:"right" | "top" | "bottom" | "left", color?:string, backgroundColor?:string}) => {
   
   const points = {
     top: [`${w / 2},0`, `0,${h}`, `${w},${h}`],

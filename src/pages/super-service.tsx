@@ -13,12 +13,10 @@ import { IoMdSettings, IoMdPeople, IoIosLock, IoIosArrowForward, IoIosArrowBack 
 import { IoFunnel } from "react-icons/io5"
 import { ImTree } from "react-icons/im"
 
-import { useNavigate } from 'react-router-dom'
 import WaterDrop from '../Content/Widgets/WaterDrop.js'
 
 const Plataforma1 =()=>{
 
-    const navigate = useNavigate()
 
     const Titulo = 'Servicio Humano, Tiempo Superhumano'
     const SubTitulo = 'Simplifica tu trabajo gestionando todas las comunicaciones desde un único lugar. Nuestra plataforma integra todas las fuentes de información para que puedas acceder y controlar fácilmente tu flujo comunicativo.'
@@ -59,10 +57,15 @@ const Plataforma1 =()=>{
     const [lineLong, setLineLong] = useState({left:0,long:0})
     const [carouselWidth, setCarouselWidth] = useState(0)
 
+
+    const [windowWidth, setWindowWidth] = useState<number>(0)
+  const [windowHeight, setWindowHeight] = useState<number>(0)
   
     useEffect(() => {
       const updateLinePosition = () => {
-     
+        setWindowWidth(window.innerWidth)
+        setWindowHeight(window.innerHeight)
+
         const width = window.innerWidth
         if (width < 450) setCarouselWidth(40)
         else if (width < 700) setCarouselWidth(60)
@@ -77,14 +80,20 @@ const Plataforma1 =()=>{
           if (window.innerWidth > 960) setLineLong({left:firstRect.right - 10, long:lastRect.left - firstRect.right + 20})
          }
       }
-      updateLinePosition()
-      window.addEventListener('resize', updateLinePosition);
+ 
+      if (typeof window !== 'undefined') {
+        updateLinePosition()
+        window.addEventListener('resize', updateLinePosition);
+      }
       return () => {
         window.removeEventListener('resize', updateLinePosition);
       }
+      
     }, [])
+ 
 
     return(
+
         
         <Box  position="absolute"> 
          <Flex mt={{ base: "10vh", md: "15vh", lg: "15vh", xl: "20vh" }} width="100vw" color="black"  justifyContent="center" zIndex="98" >
@@ -99,7 +108,7 @@ const Plataforma1 =()=>{
                     <Text mt='30px' mb='30px' fontSize={{base: '1em',sm:'1.1em', md: '1.2em', lg: '1.3em' }} color="brand.gray"  overflowWrap="break-word" whiteSpace="pre-wrap">
                     {SubTitulo}
                     </Text>
-                    <ArrowButton onClick={()=>{navigate('/contacto')}} text='Contactar'/>
+                    <ArrowButton onClick={()=>{console.log('/contacto')}} text='Contactar'/>
                 </Box>
 
                 <Box display={{ base: 'none', md: 'block' }} width='30%' height="auto" flexShrink="0" >
@@ -113,10 +122,10 @@ const Plataforma1 =()=>{
       {/*IA-TIMIDA */}
       <Box  mt={{ base: "20vh", md: "28vh", lg: "36vh", xl: "40vh" }} overflow={'hidden'} ref={timidaRef}  bg='gray.100' py={{ base: "5vh", md: "5vh", lg: "7vh", xl: "10vh" }}> 
         
-            <Box position={'absolute'} bgGradient='linear(to-br, blue.900, blue.800, blue.700)'  left={0} height={timidaRef.current?timidaRef.current.getBoundingClientRect().height - window.innerHeight*0.02:0} width='2vw'  mt={{ base: "-5vh", md: "-5vh", lg: "-7vh", xl: "-10vh" }} zIndex={0}  />
-            <Box position={'absolute'} bg='brand.blue'  opacity={0.9}  left={'1vw'} height={timidaRef.current?timidaRef.current.getBoundingClientRect().height - window.innerHeight*0.02:0} width='2vw'  mt={{ base: "-3vh", md: "-3vh", lg: "-6vh", xl: "-8vh" }} zIndex={0} />         
-            <Box position={'absolute'} bgGradient='linear(to-br, blue.900, blue.800, blue.700)'  right={0} height={timidaRef.current?timidaRef.current.getBoundingClientRect().height - window.innerHeight*0.02:0} width='2vw'  mt={{ base: "-5vh", md: "-5vh", lg: "-7vh", xl: "-10vh" }} zIndex={0}  />
-            <Box position={'absolute'} bg='brand.blue'  opacity={0.9}  right={'1vw'} height={timidaRef.current?timidaRef.current.getBoundingClientRect().height - window.innerHeight*0.02:0} width='2vw'  mt={{ base: "-3vh", md: "-3vh", lg: "-6vh", xl: "-8vh" }} zIndex={0} />
+            <Box position={'absolute'} bgGradient='linear(to-br, blue.900, blue.800, blue.700)'  left={0} height={timidaRef.current?timidaRef.current.getBoundingClientRect().height - windowHeight*0.02:0} width='2vw'  mt={{ base: "-5vh", md: "-5vh", lg: "-7vh", xl: "-10vh" }} zIndex={0}  />
+            <Box position={'absolute'} bg='brand.blue'  opacity={0.9}  left={'1vw'} height={timidaRef.current?timidaRef.current.getBoundingClientRect().height - windowHeight*0.02:0} width='2vw'  mt={{ base: "-3vh", md: "-3vh", lg: "-6vh", xl: "-8vh" }} zIndex={0} />         
+            <Box position={'absolute'} bgGradient='linear(to-br, blue.900, blue.800, blue.700)'  right={0} height={timidaRef.current?timidaRef.current.getBoundingClientRect().height - windowHeight*0.02:0} width='2vw'  mt={{ base: "-5vh", md: "-5vh", lg: "-7vh", xl: "-10vh" }} zIndex={0}  />
+            <Box position={'absolute'} bg='brand.blue'  opacity={0.9}  right={'1vw'} height={timidaRef.current?timidaRef.current.getBoundingClientRect().height - windowHeight*0.02:0} width='2vw'  mt={{ base: "-3vh", md: "-3vh", lg: "-6vh", xl: "-8vh" }} zIndex={0} />
 
             <Flex justifyContent={'center'} width='100%'  px={{ base: '20px', sm: '30px', md: '5vw',lg: "10vw", xl: "15vw"  }} >
             <Box> 
@@ -128,11 +137,11 @@ const Plataforma1 =()=>{
                 </Text>
 
                 <Flex flexDir={{base:'column',sm: 'column', md: 'row',  }} alignItems="stretch" gap='40px' mt={{ base: "6vh", md: "5vh", lg: "6vh", xl: "8vh" }}>
-                    {window.innerWidth > 960 &&<Box position={'absolute'} bg='gray.300' borderRadius={'1rem'} left={lineLong.left} height={'10px'} mt='20px' zIndex={1} width={lineLong.long}/>}
+                    {windowHeight > 960 &&<Box position={'absolute'} bg='gray.300' borderRadius={'1rem'} left={lineLong.left} height={'10px'} mt='20px' zIndex={1} width={lineLong.long}/>}
                     {timidaList.map((element, index) => (
                     <Flex  flex={1} flexDirection={{ base: index%2===0? 'row':'row-reverse', sm: index%2===0? 'row':'row-reverse', md: index%2===0? 'row':'row-reverse', lg: 'column', xl: 'column' }}  key={`water-drop-element-${index}`} alignItems={'center'} >
                         <Box zIndex={2} ref={index === 0 ? firstDropRef : (index === timidaList.length - 1 ? lastDropRef : null)}> 
-                        <WaterDrop color='brand.blue' rotation={window.innerWidth > 960 ?270:index%2===0?0:180}  icon={index === 0 ? FaPlug:index === 1 ?IoFunnel:index === 2 ? ImTree: FaUserCheck}/>
+                        <WaterDrop color='brand.blue' rotation={windowHeight > 960 ?270:index%2===0?0:180}  icon={index === 0 ? FaPlug:index === 1 ?IoFunnel:index === 2 ? ImTree: FaUserCheck}/>
                         </Box>
                         <Box height={'100%'} bg='white' borderRadius={'.7rem'} p='20px'>
                             <Text fontSize={'1.2em'} mb='10px' fontWeight={'medium'} textAlign={'center'}>{element[0]}</Text>

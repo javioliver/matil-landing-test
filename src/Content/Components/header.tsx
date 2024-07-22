@@ -1,6 +1,6 @@
 //REACT
 import React, {useState, useEffect, useRef, RefObject} from 'react'
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/router'
 
 //FRONT
 import { Box, Flex, Text, Icon, Image } from '@chakra-ui/react'
@@ -17,7 +17,6 @@ import { BsChatDotsFill, BsPeopleFill } from "react-icons/bs"
 import { HiPresentationChartLine } from "react-icons/hi"
 import { RxCross2 } from "react-icons/rx"
 import { FaRobot } from "react-icons/fa6"
-import { RiComputerFill } from "react-icons/ri"
 
 import '../../app/globals.css'
 

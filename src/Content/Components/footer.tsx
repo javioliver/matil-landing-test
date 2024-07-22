@@ -3,7 +3,6 @@
 import React, {useState,useEffect,useRef,Suspense} from 'react'
 //FRONT
 import {Box,Flex,Text,Button,Divider,Icon} from '@chakra-ui/react'
-import {useNavigate} from 'react-router-dom'
 import '../../app/globals.css'
 
 const Footer=()=>{

@@ -3,11 +3,9 @@ import { Flex, Box, Text, Image, Grid, Icon} from '@chakra-ui/react'
 import ArrowButton from '../Content/Widgets/ArrowButton'
 import Footer from '../Content/Components/footer'
 
-import { useNavigate } from 'react-router-dom'
 
 const Canales =()=>{
 
-    const navigate = useNavigate()
 
     const Titulo = 'Conectividad Multicanal con MATILDA'
     const SubTitulo = 'Amplía tu alcance y mejora tu comunicación con integraciones en los principales canales digitales'
@@ -35,7 +33,7 @@ const Canales =()=>{
                         <Text mt='30px' mb='30px' fontSize={{base: '1em',sm:'1.1em', md: '1.2em', lg: '1.3em' }} color="brand.gray"  overflowWrap="break-word" whiteSpace="pre-wrap">
                         {SubTitulo}
                         </Text>
-                        <ArrowButton onClick={()=>{navigate('/contacto')}} text='Contactar'/>
+                        <ArrowButton onClick={()=>{console.log('/contacto')}} text='Contactar'/>
                     </Box>
 
                     <Box display={{ base: 'none', md: 'block' }} width='40%' height="auto" flexShrink="0" >

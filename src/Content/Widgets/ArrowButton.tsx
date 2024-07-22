@@ -4,7 +4,7 @@ import { Flex, Text, Box, Icon } from '@chakra-ui/react'
 import {IoIosArrowForward} from 'react-icons/io'
 
 
-const ArrowButton = ({onClick, text, isDisabled=false}) =>{
+const ArrowButton = ({onClick, text, isDisabled=false}:{onClick:any, text:string, isDisabled?:boolean}) =>{
 
     const [isHoveringButton, setIsHoveringButton] = useState(false)
     return(

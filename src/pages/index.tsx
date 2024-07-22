@@ -112,10 +112,10 @@ const Main = () => {
         setWindowWidth(window.innerWidth);
         setWindowHeight(window.innerHeight);
 
-      };
+      }
       
       window.addEventListener('scroll', handleScroll);
-      handleScroll(); // Establecer el ancho inicial
+      handleScroll()
   
       return () => window.removeEventListener('scroll', handleScroll);
     }

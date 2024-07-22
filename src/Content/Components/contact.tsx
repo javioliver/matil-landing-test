@@ -4,7 +4,7 @@
 //REACT
 import React from 'react'
 //FRONT
-import {Box,Flex,Text,Button,Divider,Icon} from '@chakra-ui/react'
+import { Box,Flex,Text } from '@chakra-ui/react'
 import ContactBox from '../Widgets/ContactBox'
 
 const Contact = ()=>{

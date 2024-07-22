@@ -122,12 +122,10 @@ const Chatbot = ({ currentChat }:ChatbotProps) =>{
     ]
     
     
-    
-
-    const [messages, setMessages] = useState([])
+    const [messages, setMessages] = useState<any>([])
     const indexRef = useRef(0)
-    const timeoutsRef = useRef([])
-    const [currentSeries, setCurrentSeries] = useState([])
+    const timeoutsRef = useRef<any>([])
+    const [currentSeries, setCurrentSeries] = useState<any>([])
  
     const clearAllTimeouts = () => {
         timeoutsRef.current.forEach(clearTimeout)
@@ -138,12 +136,12 @@ const Chatbot = ({ currentChat }:ChatbotProps) =>{
         const addMessage = () => {
             if (indexRef.current >= currentSeries.length) return
             const currentMessage = currentSeries[indexRef.current];
-            setMessages(prev => [...prev, currentMessage[1]]);
+            setMessages((prev:any) => [...prev, currentMessage[1]]);
             if (!currentMessage[1].botMessage) {
                 const timeout1 = setTimeout(() => {
-                    setMessages(prev => [...prev, { text: 'Cargando...', botMessage: true }])
+                    setMessages((prev:any) => [...prev, { text: 'Cargando...', botMessage: true }])
                     const timeout2 = setTimeout(() => {
-                        setMessages(prev => prev.filter((_, idx) => idx !== prev.length - 1))
+                        setMessages((prev:any) => prev.filter((_:any, idx:number) => idx !== prev.length - 1))
                         continueToNextMessage();
                     }, 2000);
                     timeoutsRef.current.push(timeout2)
@@ -215,7 +213,7 @@ const Chatbot = ({ currentChat }:ChatbotProps) =>{
                 <Text>MATIL</Text>
             </Flex>
             <Box ref={scrollRef} py='30px' px='10px' flex='1' overflow={'scroll'}> 
-                {messages.map((message, index)=>{
+                {messages.map((message:any, index:number)=>{
 
                     const isNextMessageBot = messages[index + 1] ? messages[index + 1].botMessage : false
                     const isLastMessageBot = messages[index - 1] ? messages[index - 1].botMessage : false

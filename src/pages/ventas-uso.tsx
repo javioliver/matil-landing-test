@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Box, Text, Image, Grid, Icon} from '@chakra-ui/react'
+import { Flex, Box, Text, Image } from '@chakra-ui/react'
 import ArrowButton from '../Content/Widgets/ArrowButton'
 import Footer from '../Content/Components/footer'
 import Contact from '../Content/Components/contact'
