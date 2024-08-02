@@ -4,8 +4,8 @@
 import { AppProps } from 'next/app'
 import dynamic from 'next/dynamic'
 import '../app/globals.css'
-import {NextIntlClientProvider} from 'next-intl';
-import {useRouter} from 'next/router';
+import {NextIntlClientProvider} from 'next-intl'
+import { useRouter } from 'next/router'
 //TRANSLATION
 import { appWithTranslation } from 'next-i18next'
 //REACT

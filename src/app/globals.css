@@ -239,3 +239,13 @@
     cursor: pointer;
     z-index: 99999;
 }
+
+
+.rotate-icon-up {
+  transition: transform 0.3s ease;
+  transform: rotate(180deg)
+}
+.rotate-icon-down {
+transition: transform 0.3s ease;
+transform: rotate(0deg)
+}

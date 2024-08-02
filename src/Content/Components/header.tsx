@@ -50,6 +50,7 @@ const Header=({isComputerWidth}:HeaderProps)=>{
   const [boxSize, setBoxSize] = useState<{width:number, height:number, x:number, y:number} | null>(null)
   const [lastTrianglePosition, setLastTrianglePosition] = useState(0)
   const { pathname } = useRouter()
+  
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0)
 
   useEffect(() => {
