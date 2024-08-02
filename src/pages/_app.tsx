@@ -4,6 +4,8 @@
 import { AppProps } from 'next/app'
 import dynamic from 'next/dynamic'
 import '../app/globals.css'
+import {NextIntlClientProvider} from 'next-intl';
+import {useRouter} from 'next/router';
 //TRANSLATION
 import { appWithTranslation } from 'next-i18next'
 //REACT
@@ -15,6 +17,8 @@ import "@fontsource/jost"
 import ReactGA from 'react-ga4'
 //COMPONENTS
 import Header from '../Content/Components/header'
+
+
 const CoockiesWarning = dynamic(() => import('../Content/Components/cookies'), {ssr: false})
 
 const theme = extendTheme({
@@ -43,6 +47,8 @@ const theme = extendTheme({
 
 function MyApp({ Component, pageProps }: AppProps) {
 
+  const router = useRouter()
+
   //DECIDE IF THE USER IS USING A COMPUTER, FOR ADJUSTING THE HEADER
   const [isComputerWidth, setIsComputerWidth] = useState(true)
   useEffect(() => {
@@ -57,11 +63,14 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [])
 
   return (
+    <NextIntlClientProvider locale={router.locale} timeZone="Europe/Paris" messages={pageProps.messages}>
     <ChakraProvider theme={theme}>
       <Header isComputerWidth={isComputerWidth} />
       <Component {...pageProps} />
       <CoockiesWarning />
     </ChakraProvider>
+    </NextIntlClientProvider>
+
   )
 }
 

@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import '../app/globals.css'
 //TRANSLATION
-import { useTranslation } from 'react-i18next'
+import {useTranslations} from 'next-intl';
 //REACT
 import React , {useState, useRef, useEffect} from 'react'
 //FRONT
@@ -20,11 +20,12 @@ import { HiMiniPresentationChartLine } from "react-icons/hi2"
 import { FaCheck, FaPencilAlt,FaLaptopCode ,FaHeadset } from "react-icons/fa"
 import { GrDocumentText } from "react-icons/gr"
 import { FaDumbbell } from "react-icons/fa6"
+import { GetStaticPropsContext } from 'next'
 
 //MAIN FUNCTION
 const Main = () => {
 
-  const { t } = useTranslation()
+  const t = useTranslations('Main')
 
   const SubTitulo = 'Ofrece una experiencia rápida y personalizada a tus clientes con una plataforma que centraliza las comunicaciones y una IA experta en tu negocio, capaz de consultar datos, tomar decisiones y reaccionar a eventos.'  
   
@@ -347,3 +348,11 @@ const Main = () => {
 }
 
 export default Main
+
+export async function getStaticProps({locale}:GetStaticPropsContext) {
+  return {
+    props: {
+      messages: require(`../lang/${locale}.json`)
+    }
+  };
+}
