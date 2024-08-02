@@ -1,12 +1,14 @@
+
 //REACT
 import React, {useState, useEffect, useRef, RefObject} from 'react'
 import { useRouter } from 'next/router'
-
 //FRONT
 import { Box, Flex, Text, Icon, Image } from '@chakra-ui/react'
 import { motion, AnimatePresence } from 'framer-motion'
+//COMPONENTS
 import Triangle from '../Widgets/Trianglebox'
-
+import LanguageSwitcher from '../Widgets/LanguageSwitcher'
+//ICONS
 import { RxHamburgerMenu } from "react-icons/rx"
 import { IoIosArrowForward } from "react-icons/io"
 import { IoMail, IoPerson } from "react-icons/io5"
@@ -207,6 +209,7 @@ const Header=({isComputerWidth}:HeaderProps)=>{
                   <Icon color={pathname == '/' ?'rgba(0, 123, 255)':'white'}  position="absolute" as={IoIosArrowForward} boxSize={'16px'} transition="margin-left 0.1s ease-in-out"  marginLeft={isHoveringButton ? "-11px" : "-15px"} />
               </Flex>
             </Flex>
+            <LanguageSwitcher/>
             </>
           : 
           <Icon aria-label='menu' as={RxHamburgerMenu} boxSize={8} cursor='pointer' color={pathname == '/' ?'white':'brand.clear_black'}  _hover={{bg:'transparent'}} onClick={()=>setShowMenu(true)}/>}

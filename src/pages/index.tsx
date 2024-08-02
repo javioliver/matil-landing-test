@@ -4,7 +4,6 @@ import { useRouter } from 'next/router'
 import '../app/globals.css'
 //TRANSLATION
 import { useTranslation } from 'react-i18next'
-import LanguageSwitcher from '../Content/Widgets/LanguageSwitcher'
 //REACT
 import React , {useState, useRef, useEffect} from 'react'
 //FRONT
@@ -150,13 +149,13 @@ const Main = () => {
           <Flex width="100%" maxW="1200px" gap={{ base: '20px', md: '30px',lg:'40px',xl:'70px' }} justifyContent={'space-between'} px={{ base: '20px', sm: '30px', md: '50px' }} flexDirection={{ base: 'column', md: 'column',lg:'column',xl:'row' }}>
             <Box   mt={{ base: "10vh", md: "13vh", lg: "12vh", xl: "9vh" }} >
               <Text lineHeight={1.1} fontSize={{ base: '3em',sm:'4em', md: '4em', lg: '4.5em' }} fontWeight="medium" whiteSpace={'nowrap'}  color={'brand.clear_black'} >
-                La Nueva Era de
+                {t('Hero_1')}
               </Text>
               <Text lineHeight={1.1} fontSize={{ base: '3em',sm:'4em', md: '4em', lg: '4.5em' }} fontWeight="medium"  whiteSpace={'nowrap'} color={'brand.clear_black'} >
-                la Comunicación
+                {t('Hero_2')}
               </Text>
               <Text lineHeight={1.1}  fontSize={{ base: '3em',sm:'4em', md: '4em', lg: '4.5em' }} fontWeight="medium"whiteSpace={'nowrap'}  color={'brand.clear_black'} >
-                es <b style={{background: 'linear-gradient(120deg, rgba(150, 175, 240), rgba(120, 200, 240))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'}}> IA-Primero</b>
+                <b style={{background: 'linear-gradient(120deg, rgba(150, 175, 240), rgba(120, 200, 240))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'}}>{t('Hero_3')}</b>
               </Text>
               <Text mt='50px' fontSize={{base: '1em',sm:'1.1em', md: '1.2em', lg: '1.3em' }} color="brand.gray"  overflowWrap="break-word" whiteSpace="pre-wrap">
                 {SubTitulo}
