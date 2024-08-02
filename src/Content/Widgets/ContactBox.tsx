@@ -60,8 +60,18 @@ const ContactBox = () => {
             
             <Flex justifyContent='end'  mt="30px" > 
                 <Flex alignItems={'flex-start'}  gap='10px'  width={{sm:'100%', md:'200px', xl:'300px'}} > 
-                    <Checkbox mt='4px' size='sm' colorScheme="blue" isChecked={isChecked} onChange={() => setIsChecked(!isChecked)} />  
-                    <Text fontSize={'.8em'} color='brand.clear_black'>Acepto el envío de comunicaciones comerciales, por correo electrónico, relativas a MATIL SL</Text>
+                <Checkbox 
+                  id='myCheckbox'
+                  mt='4px' 
+                  size='sm' 
+                  colorScheme="blue" 
+                  isChecked={isChecked} 
+                  onChange={() => setIsChecked(!isChecked)} 
+                >
+                  <Text fontSize={'.8em'} color='brand.clear_black'>
+                    Acepto el envío de comunicaciones comerciales, por correo electrónico, relativas a MATIL SL
+                  </Text>
+                </Checkbox>
                 </Flex>
             </Flex>
             

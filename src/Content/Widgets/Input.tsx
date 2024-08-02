@@ -28,9 +28,9 @@ const NormalInput = ({placeholder, value, setValue, field, validPattern=null, mt
     return (
         <FormControl isInvalid={!!error}>
             <Flex mt={mt as string} flexDir={{base:'column',sm:'column', md:'row'}} justifyContent={{base:'space-between',md:'space-between'}}  alignItems={{base:'normal',sm:'normal', md:'center'}}>
-                <Text color={'brand.clear_black'} fontWeight={'medium'} fontSize={'.9em'}>{field}</Text>
+                <Text as='label' htmlFor={`${placeholder}-input`}  color={'brand.clear_black'} fontWeight={'medium'} fontSize={'.9em'}>{field}</Text>
                 <Box mt={{base:'5px',sm:'5px', md:'0'}} width={{ base:'100%',sm:'100%', md:'200px', xl:'300px'}} position="relative">
-                    <Input onChange={handleChange} value={value} placeholder={placeholder} focusBorderColor={error ? 'red.500' :'transparent'} border={'none'} size='sm' borderRadius = '.3rem' bg='gray.50' borderColor={error ? 'red.500' : 'gray.200'}/>
+                    <Input id={`${placeholder}-input`} onChange={handleChange} value={value} placeholder={placeholder} focusBorderColor={error ? 'red.500' :'transparent'} border={'none'} size='sm' borderRadius = '.3rem' bg='gray.50' borderColor={error ? 'red.500' : 'gray.200'}/>
                 </Box> 
             </Flex>
         </FormControl>

@@ -1,15 +1,21 @@
-// src/pages/_app.tsx
-import { ChakraProvider, extendTheme } from '@chakra-ui/react';
-import "@fontsource/jost";
-import '../app/globals.css';
-import { AppProps } from 'next/app';
-import Header from '../Content/Components/header';
-import { useEffect, useState } from 'react';
-import ReactGA from 'react-ga4';
+//APP COMPONENT
+
+//NEXT
+import { AppProps } from 'next/app'
 import dynamic from 'next/dynamic'
-const CoockiesWarning = dynamic(() => import('../Content/Components/cookies'), {
-  ssr: false,
-});
+import '../app/globals.css'
+//TRANSLATION
+import { appWithTranslation } from 'next-i18next'
+//REACT
+import { useEffect, useState } from 'react'
+//FRONT
+import { ChakraProvider, extendTheme } from '@chakra-ui/react'
+import "@fontsource/jost"
+//GOOGLE ANALYTICS
+import ReactGA from 'react-ga4'
+//COMPONENTS
+import Header from '../Content/Components/header'
+const CoockiesWarning = dynamic(() => import('../Content/Components/cookies'), {ssr: false})
 
 const theme = extendTheme({
   breakpoints: {
@@ -33,25 +39,22 @@ const theme = extendTheme({
       },
     },
   },
-});
+})
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [isComputerWidth, setIsComputerWidth] = useState(true);
 
+  //DECIDE IF THE USER IS USING A COMPUTER, FOR ADJUSTING THE HEADER
+  const [isComputerWidth, setIsComputerWidth] = useState(true)
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      ReactGA.initialize('G-H00C9148KH');
-      ReactGA.send({ hitType: "pageview", page: window.location.pathname });
-
-      const handleResize = () => {
-        setIsComputerWidth(window.innerWidth > 900);
-      };
-
+      ReactGA.initialize('G-H00C9148KH')
+      ReactGA.send({ hitType: "pageview", page: window.location.pathname })
+      const handleResize = () => {setIsComputerWidth(window.innerWidth > 900)}
       handleResize();
-      window.addEventListener('resize', handleResize);
-      return () => window.removeEventListener('resize', handleResize);
+      window.addEventListener('resize', handleResize)
+      return () => window.removeEventListener('resize', handleResize)
     }
-  }, []);
+  }, [])
 
   return (
     <ChakraProvider theme={theme}>
@@ -59,7 +62,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Component {...pageProps} />
       <CoockiesWarning />
     </ChakraProvider>
-  );
+  )
 }
 
-export default MyApp;
+export default appWithTranslation(MyApp)

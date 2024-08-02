@@ -40,7 +40,7 @@ const Ventas = ()=>{
                         <ArrowButton onClick={()=>{console.log('HOLA')}} text='Contactar'/>
                     </Box>
                     <Box display={{ base: 'none', md: 'block' }} width='35%' height="auto" flexShrink="0" >
-                        <Image src={'/images/leads.png'}/>
+                        <Image src={'/images/leads.png'} alt='leads'/>
                     </Box>
                 </Flex>
             </Flex>
@@ -102,7 +102,7 @@ const Ventas = ()=>{
               </Box>
 
               <Box flex={{base:'auto',md:'3'}}  width={{ base: '100%', md: '40%', lg: '30%' }}  height="auto" flexShrink="0">
-                <Image src={'/images/dart-board.png'}/>
+                <Image src={'/images/dart-board.png'} alt='dart-board'/>
               </Box>
             </Flex> 
         </Flex>

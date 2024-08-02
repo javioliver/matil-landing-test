@@ -1,15 +1,20 @@
-import React , {useState, useRef, useEffect} from 'react'
-import { Flex, Text, Box, Image, IconButton, Grid, Icon } from '@chakra-ui/react'
-import '../app/globals.css'
+//NEXT
+import Head from 'next/head'
 import { useRouter } from 'next/router'
+import '../app/globals.css'
+//TRANSLATION
+import { useTranslation } from 'react-i18next'
+import LanguageSwitcher from '../Content/Widgets/LanguageSwitcher'
+//REACT
+import React , {useState, useRef, useEffect} from 'react'
+//FRONT
+import { Flex, Text, Box, Image, IconButton, Grid, Icon } from '@chakra-ui/react'
 //COMPONENTS
 import Footer from '../Content/Components/footer'
 import Contact from '../Content/Components/contact'
-
 import Chatbot from '../Content/Widgets/Chatbot'
- 
 import WaterDrop from '../Content/Widgets/WaterDrop.js'
-
+//ICONS
 import { IoIosArrowForward,IoIosArrowBack } from "react-icons/io"
 import { BsMegaphoneFill,BsFillPeopleFill } from "react-icons/bs"
 import { HiMiniPresentationChartLine } from "react-icons/hi2"
@@ -17,8 +22,10 @@ import { FaCheck, FaPencilAlt,FaLaptopCode ,FaHeadset } from "react-icons/fa"
 import { GrDocumentText } from "react-icons/gr"
 import { FaDumbbell } from "react-icons/fa6"
 
-
+//MAIN FUNCTION
 const Main = () => {
+
+  const { t } = useTranslation()
 
   const SubTitulo = 'Ofrece una experiencia rápida y personalizada a tus clientes con una plataforma que centraliza las comunicaciones y una IA experta en tu negocio, capaz de consultar datos, tomar decisiones y reaccionar a eventos.'  
   
@@ -122,8 +129,14 @@ const Main = () => {
   }, [])
 
   
-  return (
-    <>
+  return (<> 
+ 
+    
+    <Head>
+      <title>MATIL</title>
+      <meta name="description" content="Impulsa tu negocio con soluciones de IA. Mejora la atención al cliente, aumenta las ventas proactivas y envía correos masivos personalizados con nuestra tecnología innovadora. Descubre cómo la inteligencia artificial puede transformar tu empresa."/>
+    </Head>
+
       {/*AURORA BACKGROUND*/}
       <Box width="100%"  height={{ base: "20vh", md: "20vh", lg: "20vh", xl: "30vh" }} clipPath="polygon(0 0, 100% 0, 100% 45%, 0 100%)"  position="relative" overflow="hidden" bgGradient="linear(to-r, #89f7fe, #66a6ff)" backgroundSize="200% 200%">
         <div className="auroraBlob blob1"></div>
@@ -330,8 +343,8 @@ const Main = () => {
       <Contact/>
       <Footer/>
       </Box>
-    </>
-  );
-};
+    
+      </>)
+}
 
-export default Main;
+export default Main
