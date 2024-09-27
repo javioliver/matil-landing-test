@@ -6,7 +6,7 @@ import Footer from '../Content/Components/footer'
 import { FaCheckCircle } from "react-icons/fa"
 
 
-import HighlightText from '../Content/Widgets/HighlightText'
+import HighlightText from '../Content/Functions/HighlightText'
 const Integraciones =()=>{
 
 

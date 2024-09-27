@@ -1,31 +1,40 @@
 
+//REACT
 import React, { useState } from 'react'
-import { Box, Icon, Checkbox, Flex, Text } from '@chakra-ui/react'
-import { IoIosArrowForward } from "react-icons/io"
-
+//TRANSLATION
+import { useTranslations } from 'next-intl'
+//FETCH DATA
+import axios from 'axios'
+//FRONT
+import { Box, Checkbox, Flex, Text } from '@chakra-ui/react'
+//COMPONENTS
 import NormalInput from './Input'
 import NormalSelector from './Selector'
-import axios from 'axios'
 import ArrowButton from './ArrowButton'
 
 
- 
-
 const ContactBox = () => {
+
+    //TRANSLATION
+    const t = useTranslations('Sections')
+
+    //EDIT FIELDS
     const [name, setName] = useState('')
     const [mail, setMail] = useState('')
     const [tlf, setTlf] = useState('')
     const [companyName, setCompanyName] = useState('')
     const [numWorkers, setNumWorkers] = useState('1-5')
     const [numConsults, setNumConsults] = useState('1-5')
+
+    //SUBMIT BOOLEANS
     const [submited, setSubmited] = useState(false)
     const [isChecked, setIsChecked] = useState(false)
-
     const [sended, setSended] = useState(false)
 
     const isDisabled = name === '' || mail === '' || tlf === '' || companyName === '' || !isChecked || sended
+    
+    //SUBMITTING THE REQUEST
     const handleSubmit = async (event:any) => {
-
       if (!isDisabled) {
         setSended(true)
         event.preventDefault()
@@ -49,27 +58,21 @@ const ContactBox = () => {
 
     return(<>
        <Box boxShadow={'3px 5px 20px 3px rgba(0, 0, 0, 0.15)'} maxW='600px' flex='4' p='35px' bg ='white' borderRadius={'1rem'} width={{ base: '100%', md: 'auto' }}height="auto" flexShrink="0" >
-            <Text color='brand.clear_black' fontWeight={'medium'} fontSize={'1.5em'}>¿Cómo podemos contactarte?</Text>
-            <Text color='gray.500' fontSize={'1em'}>Rellena la información y te contactaremos en menos de 24h</Text>
-            <NormalInput placeholder={'Javier Sánchez'} field={'Nombre y Apellidos'} value={name} setValue={setName} mt='40px'/>
-            <NormalInput placeholder={'correo@ejemplo.com'} field={'Correo corporativo'} value={mail} setValue={setMail}  mt='10px'/>
-            <NormalInput placeholder={'666 66 66 66'} field={'Teléfono'} value={tlf} setValue={setTlf} mt='10px'/>
-            <NormalInput placeholder={'Empresa Ejemplo SL'} field={'Nombre de la empresa'} value={companyName} setValue={setCompanyName}  mt='10px'/>
-            <NormalSelector  field={'Núm. trabajadores ATC.'}  selectorList={['1-5', '5-20', '20-50', '+50']} value={numWorkers} setValue={setNumWorkers} mt='10px'/>
-            <NormalSelector  field={'Núm. consultas al mes'}  selectorList={['0-1000', '1000-5000', '5000-50000', '+50000']} value={numConsults} setValue={setNumConsults} mt='10px'/>
+            
+            <Text fontWeight={'medium'} fontSize={'1.5em'}>{t('ContactBox_Title')}</Text>
+            <Text color='gray.600' fontSize={'1em'} fontWeight={300}>{t('ContactBox_Subtitle')}</Text>
+            <NormalInput placeholder={'Javier Sánchez'} field={t('ContactBox_1')} value={name} setValue={setName} mt='40px'/>
+            <NormalInput placeholder={'correo@ejemplo.com'} field={t('ContactBox_2')} value={mail} setValue={setMail}  mt='10px'/>
+            <NormalInput placeholder={'666 66 66 66'} field={t('ContactBox_3')} value={tlf} setValue={setTlf} mt='10px'/>
+            <NormalInput placeholder={'Matil SL'} field={t('ContactBox_4')} value={companyName} setValue={setCompanyName}  mt='10px'/>
+            <NormalSelector  field={t('ContactBox_5')}  selectorList={['1-5', '5-20', '20-50', '+50']} value={numWorkers} setValue={setNumWorkers} mt='10px'/>
+            <NormalSelector  field={t('ContactBox_6')}  selectorList={['0-1000', '1000-5000', '5000-50000', '+50000']} value={numConsults} setValue={setNumConsults} mt='10px'/>
             
             <Flex justifyContent='end'  mt="30px" > 
                 <Flex alignItems={'flex-start'}  gap='10px'  width={{sm:'100%', md:'200px', xl:'300px'}} > 
-                <Checkbox 
-                  id='myCheckbox'
-                  mt='4px' 
-                  size='sm' 
-                  colorScheme="blue" 
-                  isChecked={isChecked} 
-                  onChange={() => setIsChecked(!isChecked)} 
-                >
-                  <Text fontSize={'.8em'} color='brand.clear_black'>
-                    Acepto el envío de comunicaciones comerciales, por correo electrónico, relativas a MATIL SL
+                <Checkbox id='myCheckbox' mt='4px' size='sm' colorScheme="blue"  isChecked={isChecked}  onChange={() => setIsChecked(!isChecked)} >
+                  <Text fontSize={'.8em'} color='gray.600' fontWeight={300}>
+                    {t('ContactBox_Agree')}
                   </Text>
                 </Checkbox>
                 </Flex>
@@ -77,7 +80,7 @@ const ContactBox = () => {
             
             <Flex flexDir={'row-reverse'} mt="30px" alignItems={'center'} justifyContent={'space-between'}> 
               <ArrowButton isDisabled={isDisabled} text={'Enviar'} onClick={handleSubmit}/>
-              {sended ? <Text fontSize={'.8em'} color='green.500'>* Tu mensaje ha sido enviado con éxito</Text>:submited && <Text fontSize={'.7em'} color='red'>* Rellene todos los campos para eniviar el formulario</Text>}
+              {sended ? <Text fontSize={'.8em'} color='green.500'>* {t('ContactBox_Sended')}</Text>:submited && <Text fontSize={'.7em'} color='red'>* {t('ContactBox_Failed')}</Text>}
             </Flex>
         </Box>  
           </>)

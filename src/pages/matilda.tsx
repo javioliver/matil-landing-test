@@ -1,184 +1,332 @@
-import React from 'react'
-import { Flex, Box, Text, Image, SimpleGrid, Icon} from '@chakra-ui/react'
-import ArrowButton from '../Content/Widgets/ArrowButton'
-import HighlightText from '../Content/Widgets/HighlightText'
-import Footer from '../Content/Components/footer'
-
-import Contact from '../Content/Components/contact'
-
-import { FaMagnifyingGlass,FaUsersGear } from "react-icons/fa6";
-import { FaShieldAlt, FaAnchor, FaMedal, FaHeadset } from "react-icons/fa";
-import { TbBinaryTree } from "react-icons/tb";
-
-import { GiChameleonGlyph } from "react-icons/gi";
-
- 
+//NEXT
+import Head from 'next/head'
+import { GetStaticPropsContext } from 'next'
+//REACT
+import { useState, useEffect, useMemo } from 'react'
+//TRANSLATION
+import { useTranslations } from 'next-intl'
+//FRONT
+import { Flex, Text, Box, Image, Icon } from '@chakra-ui/react'
+import ScrollAnimation from "react-animate-on-scroll"
+import "animate.css/animate.compat.css"
+//COMPONENTS
+import Footer from '@/Content/Components/footer'
+import FAQS from '@/Content/Components/faqs'
+import AnimatedText from '@/Content/Widgets/AnimatedText'
+import Chatbot from '@/Content/Widgets/Chatbot'
+//ICONS
+import { GiVelociraptor } from "react-icons/gi"
+import { FaChartPie, FaClipboardCheck, FaLanguage, FaFile, FaDatabase } from "react-icons/fa6"
+import { IoPeople, IoCall, IoSettingsSharp, IoShieldCheckmarkSharp } from "react-icons/io5"
+import { MdMarkChatUnread } from "react-icons/md"
 
 const Matilda =()=>{
 
+    //TRANSLATION
+    const t = useTranslations('Matilda')
+    const t_chats = useTranslations('Chats')
 
-    const Titulo = 'IA Personalizada para tu Negocio'
-    const SubTitulo = 'Conoce a MATILDA, tu asistente de IA entrenada para atender las necesidades específicas de tus clientes y optimizar tus procesos operativos.'
+    const MatildaChatsComponent =  () => {
 
-    const EstructuraAplicacion = 'Descubre cómo MATILDA se adapta y transforma tu entorno de trabajo con la Inteligencia Artificial más avanzada y automatizaciones inteligentes.'
-
-    const HistorialText = 'MATILDA no solo accede a tus datos, los transforma en soluciones. Utilizando el vasto conocimiento interno de tu empresa, esta IA ofrece respuestas precisas y decisiones informadas que potencian la eficiencia operativa y el rendimiento del equipo.'
-    const PorResponderText = 'Con la habilidad de detectar intenciones automáticamente, MATILDA inicia procesos y tareas relevantes sin intervención manual, liberando a tu equipo para que se concentre en actividades críticas.'
-    const ClientesText = 'Diseñada para adaptarse a las especificidades de tu empresa, MATILDA evoluciona con tus necesidades, asegurando una asistencia personalizada que mejora continuamente la gestión y operación empresarial.'
-
-
-    const caracteristicasTitle = 'Principios de MATILDA'
-    const caracteristicasText = 'Descubre los valores fundamentales que definen y guían a MATILDA en cada interacción y decisión.'
-    const caracteristicasList1 = [{icon:FaMagnifyingGlass, title:'Transparencia', text:'MATILDA promueve una total claridad en sus procesos y decisiones, fomentando la confianza y la apertura.'}, {icon:FaShieldAlt, title:'Integridad de Datos',text:'Compromiso con la precisión, privacidad y seguridad de la información procesada y almacenada.'}, {icon:FaHeadset,title:'Delegación Inteligente', text:'En situaciones donde MATILDA no puede proporcionar una respuesta adecuada, automáticamente redirige la tarea o consulta a un humano.'}, {icon:FaUsersGear,title:'Colaboración Humana', text:'Diseñada para trabajar junto a humanos, complementando y potenciando sus capacidades.'}]
-    const caracteristicasList2 = [{icon:FaAnchor,title:'Confiabilidad', text:'MATILDA es una herramienta confiable, diseñada para ofrecer coherencia y precisión en sus operaciones, reforzando la seguridad en su uso diario.'}, {icon:FaMedal, title:'Basada en los Valores',text:'Prioriza decisiones que reflejan los valores centrales de la empresa y de sus clientes.'}, {icon:GiChameleonGlyph, title:'Respuesta Adaptativa',text:'MATILDA se adapta dinámicamente a las necesidades de los usuarios, ajustando sus respuestas y funciones para ofrecer siempre la mejor experiencia posible.'}, {icon:TbBinaryTree, title:'Optimización de Procesos',text:'MATILDA está diseñada para simplificar y agilizar operaciones, reduciendo tiempos de respuesta y aumentando la productividad sin intervención manual.'} ]
-
-    return(
+        const [currentChat, setCurrentChat] = useState<number>(0)
+        const [progress, setProgress] = useState<number[]>([0, 0, 0])
         
-        <Box  position="absolute"> 
-         <Flex mt={{ base: "10vh", md: "15vh", lg: "15vh", xl: "20vh" }} width="100vw" color="black"  justifyContent="center" zIndex="98" >
-            <Flex width="100%" maxW="1200px" gap='50px' justifyContent={{ md: 'space-between' }} px={{ base: '20px', sm: '30px', md: '50px' }} flexDirection={{ base: 'column', md: 'row' }}>
-                <Box  width={{ base: '100%', md: 'auto' }}>
-                    <Text background='brand.blue' backgroundClip={'text'} fontWeight={'medium'} fontSize={{base: '1.2em',sm:'1.3em', md: '1.4em', lg: '1.5em' }} >MATILDA</Text>  
-                    <Text mt='10px' lineHeight={1.1} fontSize={{ base: '3em',sm:'4em', md: '4em', lg: '4.5em' }}  fontWeight="medium" overflowWrap="break-word" whiteSpace="pre-wrap" color={'brand.clear_black'} >
-                    {Titulo}
-                    </Text>
-                    <Text mt='30px' mb='30px' fontSize={{base: '1em',sm:'1.1em', md: '1.2em', lg: '1.3em' }} color="brand.gray"  overflowWrap="break-word" whiteSpace="pre-wrap">
-                    {SubTitulo}
-                    </Text>
-                    <ArrowButton onClick={()=>{console.log('/contacto')}} text='Contactar'/>
+        const chats:[number, {text:string, botMessage:boolean}][][] = [
+            [
+                [1000, { text: t_chats('Chat_21'), botMessage: false }],
+                [100, { text: t_chats('Chat_22'), botMessage: true }],
+                [2500, { text: t_chats('Chat_23'), botMessage: false }],
+                [100, { text: t_chats('Chat_24'), botMessage: true }],
+                [2500, { text: t_chats('Chat_25'), botMessage: false }],
+                [100, { text: t_chats('Chat_26'), botMessage: true }],
+                [2500, { text: t_chats('Chat_27'), botMessage: false }],
+                [100, { text: t_chats('Chat_28'), botMessage: true }],
+                [2000, { text: t_chats('Chat_29'), botMessage: true }]
+            ],
+            [
+                [1000, { text: t_chats('Chat_21'), botMessage: false }],
+                [100, { text: t_chats('Chat_32'), botMessage: true }],
+                [2500, { text: t_chats('Chat_33'), botMessage: false }],
+                [100, { text: t_chats('Chat_34'), botMessage: true }],
+                [2500, { text: t_chats('Chat_35'), botMessage: false }],
+            ],
+            [
+                [1000, { text: t_chats('Chat_41'), botMessage: false }],
+                [100, { text: t_chats('Chat_42'), botMessage: true }],
+                [2500, { text: t_chats('Chat_43'), botMessage: false }],
+                [100, { text: t_chats('Chat_44'), botMessage: true }],
+                [2500, { text: t_chats('Chat_45'), botMessage: false }],
+                [100, { text: t_chats('Chat_46'), botMessage: true }],
+            ],
+
+        ]
+
+        useEffect(() => {
+            const totalDuration = chats[currentChat].reduce((acc, [delay]) => acc + delay + 1200, 0) + 3000
+
+            let startTime = Date.now()
+            const interval = setInterval(() => {
+                const elapsedTime = Date.now() - startTime
+                let progressCopy = [...progress]
+                progressCopy[currentChat] = Math.min((elapsedTime / totalDuration) * 100, 100)
+                setProgress(progressCopy)
+                if (elapsedTime >= totalDuration) {
+                    clearInterval(interval)
+                    if (currentChat < chats.length - 1) setCurrentChat(currentChat + 1)
+                }
+            }, 100)
+            return () => clearInterval(interval)
+        }, [currentChat])
+
+        const imagesList = ['clothes_store.jpg', 'computer_store.jpg', 'bank.jpg']
+
+        const chatContent = useMemo(() => (
+            <Chatbot currentChat={chats[currentChat]} />
+        ), [currentChat]);
+
+        return(
+        <Box mt={{ base: "10vh", md: "12vh", lg: "15vh", xl: "18vh" }} textAlign={'start'}>
+            <Flex position={'relative'} justifyContent={'center'}> 
+                <Image zIndex={1} width="96vw"  height={'400px'} borderRadius="1rem" maxW="1200px" src={`/images/${imagesList[currentChat]}`} objectFit="cover" />
+                <Box position={'absolute'} zIndex={100}  height={{base: '330px',sm:'350px', md: '450px', lg: '480px'}} width={{base: '280px',sm:'280px', md: '330px', lg: '330px' }}  bottom={0} borderRadius={'1rem 1rem 0 0'}  overflow={'hidden'} bg='white' >
+                    {chatContent}
                 </Box>
-
-                <Box display={{ base: 'none', md: 'block' }} width='40%' height="auto" flexShrink="0" >
-                    <Image src={'/images/ai-first.png'}/>
-                </Box>
-            </Flex>
-        </Flex>
-
-        <Box width={'100%'} mt='-5vh'  position='absolute' zIndex={-1} height={{ base: "25vh", md: "30vh", lg: "40vh", xl: "50vh" }} bg='brand.blue' clipPath= 'polygon(0 65%, 100% 0, 100% 35%, 0 100%)'/>
-  
-
-   {/*VENTAJAS DE IA-PRIMERO*/} 
-   <Box  mt={{ base: "18vh", md: "23vh", lg: "33vh", xl: "35vh" }} py={{ base: "5vh", md: "5vh", lg: "7vh", xl: "10vh" }}> 
-        {/*TÍTULO*/} 
-        <Flex justifyContent={'center'} width='100%'  px={{ base: '20px', sm: '30px', md: '5vw',lg: "10vw", xl: "15vw"  }} >
-            <Box> 
-                <Text textAlign="center" overflowWrap="break-word" whiteSpace="pre-wrap" fontSize={{ base: '1.5em', sm: '2em', md: '2em', lg: '2.8em' }} fontWeight="medium" color='brand.clear_black'>
-                Características Avanzadas de MATILDA
-                </Text>
-                <Text  textAlign="center" mt='30px' mb='30px' fontSize={{base: '1em',sm:'1.1em', md: '1.2em', lg: '1.3em' }} color="brand.gray"  overflowWrap="break-word" whiteSpace="pre-wrap">
-                {EstructuraAplicacion}
-                </Text>
-            </Box>
-        </Flex>
-
-        {/*HISTORIAL*/} 
-        <Flex mt={{ base: "10vh", md: "10vh", lg: "12vh", xl: "15vh" }} width="100vw" color="black" justifyContent="center" >
-        <Flex  width="100%" maxW="1200px"gap={{ base: "30px", md: "20px",lg: "70px", xl: "100px" }} justifyContent={{ md: 'space-between' }} px={{ base: '20px', sm: '30px', md: '50px' }} flexDirection={{ base: 'column-reverse', md: 'row' }}>
-                <Box flex={{base:'auto',md:'4'}} width={{ base: '100%', md: 'auto' }}>
-                
-                <Text overflowWrap="break-word" whiteSpace="pre-wrap" color={'brand.clear_black'} fontSize={{base: '1.5em',sm:'2em', md: '2em', lg: '2.5em' }} mt='10px'  fontWeight={'medium'}  >
-                    Base de conocimiento
-                </Text>
-                <Text mt='10px' fontSize={'1.1em'}  color="brand.gray"  overflowWrap="break-word" whiteSpace="pre-wrap">
-                    {HistorialText}
-                </Text>
-                </Box>
-
-                <Box  borderRadius={'1rem'} overflow={'hidden'} flex={{base:'auto',md:'3'}} width={{ base: '100%', md: '40%', lg: '30%' }}  height="auto" flexShrink="0">
-                    <Image src={'/images/knowledge.png'}/>
-                </Box>
-            </Flex> 
-        </Flex>
-
-        {/*TICKETS PENDIENTES*/} 
-        <Flex mt={{ base: "10vh", md: "10vh", lg: "12vh", xl: "15vh" }} width="100vw" color="black" justifyContent="center" >
-            <Flex  width="100%" maxW="1200px"gap={{ base: "30px", md: "20px",lg: "70px", xl: "100px" }} justifyContent={{ md: 'space-between' }} px={{ base: '20px', sm: '30px', md: '50px' }} flexDirection={{ base: 'column-reverse', md: 'row' }}>
-                <Box   borderRadius={'1rem'} overflow={'hidden'} flex={{base:'auto',md:'3'}} width={{ base: '100%', md: '40%', lg: '30%' }}  height="auto" flexShrink="0">
-                    <Image src={'/images/automation.png'}/>
-                </Box>
-                <Box flex={{base:'auto',md:'4'}} width={{ base: '100%', md: 'auto' }}>
             
-                <Text  mt='10px' overflowWrap="break-word" whiteSpace="pre-wrap" color={'brand.clear_black'} fontSize={{base: '1.5em',sm:'2em', md: '2em', lg: '2.5em' }}  fontWeight={'medium'}  >
-                Automatizaciones inteligentes
-                </Text>
-                <Text mt='10px' fontSize={'1.1em'}  color="brand.gray"  overflowWrap="break-word" whiteSpace="pre-wrap">
-                    {PorResponderText}
-                </Text>
+            </Flex>  
+            
+            <Flex mt='50px' justifyContent="center" gap='20px'>
+                {progress.map((value, index) => (
+                    <Box cursor={'pointer'} onClick={() => setCurrentChat(index)} key={`progress_bar-${index}`} bg='gray.300' borderRadius={'1rem'}  height={'5px'}  width={'70px'} overflow="hidden" position="relative">
+                        <Box bg='brand.text_blue'  height='100%' width={`${value}%`} transition="width 0.3s ease"/>
+                    </Box>
+                ))}
+            </Flex>
+        </Box>)
+    }
+
+    //FAQS LIST
+    const faqsList = [[t('FAQ_1'), t('FAQ_ANSWER_1')], [t('FAQ_2'), t('FAQ_ANSWER_2')], [t('FAQ_3'), t('FAQ_ANSWER_3')], [t('FAQ_4'), t('FAQ_ANSWER_4')], [t('FAQ_5'), t('FAQ_ANSWER_5')], [t('FAQ_6'), t('FAQ_ANSWER_6')], [t('FAQ_7'), t('FAQ_ANSWER_7')]]
+
+    return(<>
+        <Head>
+            <title>MATIL</title>
+            <meta name="description" content="Impulsa tu negocio con soluciones de IA. Mejora la atención al cliente, aumenta las ventas proactivas y envía correos masivos personalizados con nuestra tecnología innovadora. Descubre cómo la inteligencia artificial puede transformar tu empresa."/>
+        </Head>
+
+        <Flex flexDir='column' width={'100vw'} alignItems={'center'}>
+           
+            {/*HERO AND EXAMPLES CHATS COMPONENT*/}
+            <Flex flexDir='column' width={'100vw'} alignItems={'center'} bgGradient={'linear-gradient(to bottom, #ffffff, #EDF2F7)'}> 
+                <Box   width="100%" position={'relative'} px='4vw' color='black' textAlign={'center'} py={{ base: "10vh", md: "12vh", lg: "15vh", xl: "17vh" }}  maxW="1200px" >
+                    <Flex alignItems={'center'}  flexDir={'column'} > 
+
+                        <ScrollAnimation animateIn="fadeIn" animateOnce >
+                            <Text color='brand.text_blue' fontWeight={'medium'} fontSize={{base: '1.2em',sm:'1.3em', md: '1.4em', lg: '1.5em' }} >Matilda</Text> 
+                        </ScrollAnimation>
+
+                        <Text fontSize={{ base: '3em',sm:'3.3em', md: '4em', lg: '4.5em' }} fontWeight="medium" overflowWrap="break-word" whiteSpace="pre-wrap" >
+                            <AnimatedText text={t('Hero')}/>
+                        </Text>
+                        
+                        <ScrollAnimation animateIn="fadeInUp" animateOnce delay={t('Hero').split(' ').length * 40}> 
+                            <Text mt='30px' maxW={'800px'} fontWeight={300} fontSize={{base: '.8em',sm:'.8em', md: '.9em', lg: '1em' }} color="brand.gray"  overflowWrap="break-word" whiteSpace="pre-wrap">
+                                {t('Subhero')}
+                            </Text>
+                        </ScrollAnimation>
+                    </Flex>
+                    <MatildaChatsComponent/>  
                 </Box>
             </Flex>
-        </Flex>
 
-        {/*CLIENTES*/} 
-        <Flex mt={{ base: "10vh", md: "10vh", lg: "12vh", xl: "15vh" }} width="100vw" color="black" justifyContent="center" >
-            <Flex  width="100%" maxW="1200px"gap={{ base: "30px", md: "20px",lg: "70px", xl: "100px" }} justifyContent={{ md: 'space-between' }} px={{ base: '20px', sm: '30px', md: '50px' }} flexDirection={{ base: 'column', md: 'row' }}>
-                <Box flex={{base:'auto',md:'4'}} width={{ base: '100%', md: 'auto' }}>
-                <Text  mt='10px' overflowWrap="break-word" whiteSpace="pre-wrap" color={'brand.clear_black'} fontSize={{base: '1.5em',sm:'2em', md: '2em', lg: '2.5em' }}  fontWeight={'medium'} >
-                    Personalización completa
-                </Text>
-                <Text mt='10px' fontSize={'1.1em'}  color="brand.gray"  overflowWrap="break-word" whiteSpace="pre-wrap">
-                    {ClientesText}
-                </Text>
-                </Box>
-                <Box   borderRadius={'1rem'} overflow={'hidden'} flex={{base:'auto',md:'3'}} width={{ base: '100%', md: '40%', lg: '30%' }}  height="auto" flexShrink="0">
-                    <Image src={'/images/custom.png'}/>
-                </Box>
-            </Flex>
-        </Flex>    
-        </Box>
-
-
-    {/*ESTADÍSTICAS*/} 
-    <Box width={'100%'}  bgGradient='linear(to-br, blue.900, blue.800, blue.700)' clipPath= 'polygon(0 10%, 100% 0, 100% 100%, 0 100%)' paddingBottom={{base:'10vh',sm:'10vh',md:'13vh',lg:'15vh'}} paddingTop={{base:'21vh',sm:'21vh',md:'18vh',lg:'15vh'}}>
-        <Flex justifyContent={'center'} width='100%'  px={{ base: '20px', sm: '30px', md: '5vw',lg: "10vw", xl: "15vw"  }} >
-            <Box> 
-                <Text textAlign="center" overflowWrap="break-word" whiteSpace="pre-wrap" fontSize={{ base: '1.5em', sm: '2em', md: '2em', lg: '2.8em' }} fontWeight="medium" color='white'>
-                {caracteristicasTitle}
-                </Text>
-                <Text  textAlign="center" mt='30px' mb='30px' fontSize={{base: '1em',sm:'1.1em', md: '1.2em', lg: '1.3em' }} color="gray.300"  overflowWrap="break-word" whiteSpace="pre-wrap">
-                {caracteristicasText}
-                </Text>
-            </Box>
-        </Flex>
+ 
+            {/*MATILDA ADVANTAGES*/}
+            <Flex bg='white' px='4vw' width="100vw"  flexDir={'column'}  alignItems={'center'}  py={{ base: "5vh", md: "7vh", lg: "10vh", xl: "12vh" }}> 
         
-        <Flex width="100vw" color="black" justifyContent="center" >
-          <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing="20px" mt="5vh" width="100%" maxW="1200px" px={{ base: '20px', sm: '30px', md: '50px' }}>
-            {caracteristicasList1.map((stat, index) => (<Box > 
-              <Box borderLeftColor = 'cyan.400' borderLeftWidth={'2px'} >
-                <Flex  fontSize={'1.1em'} px='10px' fontWeight={'medium'} alignItems={'center'} gap='10px' color='white'> 
-                    <Icon as={stat.icon} />
-                    <Text>{stat.title}</Text>
-                </Flex>
-              </Box>
-              <Box mt='15px' ml='10px'> 
-                <HighlightText text={stat.text}/>
-              </Box>
-              </Box>))}
-          </SimpleGrid>
-        </Flex>
-        <Flex width="100vw" color="black" justifyContent="center" >
-          <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing="20px" mt="5vh" width="100%" maxW="1200px" px={{ base: '20px', sm: '30px', md: '50px' }}>
-            {caracteristicasList2.map((stat, index) => (<Box > 
-              <Box borderLeftColor = 'cyan.400' borderLeftWidth={'2px'} >
-              <Flex fontSize={'1.1em'} px='10px' fontWeight={'medium'} alignItems={'center'} gap='10px' color='white'> 
-                    <Icon as={stat.icon} />
-                    <Text>{stat.title}</Text>
-                </Flex>
-              </Box>
-              <Box mt='15px' ml='10px'> 
-                <HighlightText text={stat.text}/>
-              </Box>
-              </Box>))}
-          </SimpleGrid>
-        </Flex>
-      </Box>
-   
-   
-     {/*CONTACTO*/} 
-     <Contact/>
+                {/*FIRST LINE*/}
+                <Flex maxW="1000px" width="100%"  gap={{ base: "30px", md: "30px", lg: "40px", xl: "50px" }} flexDir={{ base: "column", md: "column", lg: "row", xl: "row" }}>
+                    <ScrollAnimation style={{flex:'2'}} animateIn="fadeInUp" animateOnce >
+                        <Text textAlign={{ base: 'center',sm:'center', md: 'start', lg: 'start' }} flex='2' fontSize={{ base: '2em',sm:'2.1em', md: '2.3em', lg: '2.5em' }}><span style={{color:'rgb(5, 102, 255)'}}>Matilda</span> - {t('Matilda_Title')}</Text>
+                    </ScrollAnimation >
 
-      <Footer/>
-        </Box>
-    )
+                    <ScrollAnimation style={{flex:'1'}} animateIn="fadeIn" animateOnce >
+                        <Box   bg='gray.100' borderRadius={'1rem'} p='20px'>
+                            <Flex gap='15px' alignItems={'center'}> 
+                                <Icon as={GiVelociraptor} color='brand.text_blue' boxSize={'40px'}/>
+                                <Text fontSize={{base: '1em',sm:'1em', md: '1.1em', lg: '1.2em' }}>{t('Matilda_Time')}</Text>
+                            </Flex>
+                            <Box width={'100%'} height={'1px'} bg='gray.300' mb='20px' mt='20px'/>
+                            <Text fontWeight={300} color='gray.600'  fontSize={{base: '.8em',sm:'.8em', md: '.85em', lg: '.9em' }}>{t('Matilda_Time_Subtitle')}</Text>
+                        </Box>
+                    </ScrollAnimation>
+                </Flex> 
+              
+                {/*SECOND LINE*/}
+                <Flex maxW="1000px" width="100%" gap={{ base: "30px", md: "30px", lg: "40px", xl: "50px" }} mt={{ base: "30px", md: "30px", lg: "40px", xl: "50px" }}  flexDir={{ base: "column", md: "column", lg: "row", xl: "row" }}>
+                    <ScrollAnimation style={{flex:'1'}} animateIn="fadeIn" animateOnce >
+                        <Box bg='gray.100' borderRadius={'1rem'} p='20px' height={'100%'}>
+                            <Flex gap='15px' alignItems={'center'}> 
+                                <Icon as={FaChartPie} color='brand.text_blue' boxSize={'34px'}/>
+                                <Text fontSize={{base: '1em',sm:'1em', md: '1.1em', lg: '1.2em' }}>{t('Matilda_Stats')}</Text>
+                            </Flex>
+                            <Box width={'100%'} height={'1px'} bg='gray.300' mb='20px' mt='20px'/>
+                            <Text fontWeight={300} color='gray.600'  fontSize={{base: '.8em',sm:'.8em', md: '.85em', lg: '.9em' }}>{t('Matilda_Stats_Subtitle')}</Text>
+                        </Box>   
+                    </ScrollAnimation>
+
+                    <ScrollAnimation  style={{flex:'2'}}animateIn="fadeIn" animateOnce >
+                        <Box  bg='brand.text_blue' borderRadius={'1rem'} p='20px'  height={'100%'}>
+                            <Flex gap='15px' alignItems={'center'}> 
+                                <Icon as={IoPeople} color='white' boxSize={'35px'}/>
+                                <Text fontSize={{base: '1em',sm:'1em', md: '1.1em', lg: '1.2em' }} color='white'>{t('Matilda_Work')}</Text>
+                            </Flex>
+                            <Box width={'100%'} height={'1px'} bg='gray.300' mb='20px' mt='20px'/>
+                            <Text fontWeight={300} color='gray.200'  fontSize={{base: '.8em',sm:'.8em', md: '.85em', lg: '.9em' }}>{t('Matilda_Work_Subtitle')}</Text>
+                        </Box>
+                    </ScrollAnimation>
+                </Flex> 
+
+                {/*THIRD LINE*/}
+                <Flex maxW="1000px" width="100%"  gap={{base: "30px", md: "30px", lg: "40px", xl: "50px" }}  mt={{ base: "30px", md: "30px", lg: "40px", xl: "50px" }}  flexDir={{ base: "column", md: "column", lg: "row-reverse", xl: "row-reverse" }}>
+                    
+                    <Flex display={{ base: "none", lg: "flex" }} flex='1' alignItems='center' justifyContent='center' >  
+                        <ScrollAnimation animateIn="fadeIn" animateOnce >
+                                <Image height={'120px'} src='/images/matilda.svg'/>
+                        </ScrollAnimation >
+                    </Flex>
+
+                    <ScrollAnimation style={{flex:'3'}} animateIn="fadeIn" animateOnce >
+                        <Box   bg='gray.100' borderRadius={'1rem'} p='20px'>
+                            <Flex gap='15px' alignItems={'center'}> 
+                                <Icon as={FaClipboardCheck} color='brand.text_blue' boxSize={'35px'}/>
+                                <Text fontSize={{base: '1em',sm:'1em', md: '1.1em', lg: '1.2em' }}>{t('Matilda_Tasks')}</Text>
+                            </Flex>
+                            <Box width={'100%'} height={'1px'} bg='gray.300' mb='20px' mt='20px'/>
+                            <Text fontWeight={300} color='gray.600'  fontSize={{base: '.8em',sm:'.8em', md: '.85em', lg: '.9em' }}>{t('Matilda_Tasks_Subtitle')}</Text>
+                        </Box>
+                    </ScrollAnimation>
+                </Flex>
+
+                {/*FOURTH LINE*/}
+                <Flex maxW="1000px" width="100%"  gap={{ base: "30px", md: "30px", lg: "40px", xl: "50px" }}  mt={{ base: "30px", md: "30px", lg: "40px", xl: "50px" }}  flexDir={{ base: "column", md: "column", lg: "row", xl: "row" }}>  
+                    <ScrollAnimation style={{flex:'1'}} animateIn="fadeIn" animateOnce >
+                        <Box   bg='gray.100' borderRadius={'1rem'} p='20px'  height={'100%'}>
+                            <Flex gap='15px' alignItems={'center'}> 
+                                <Icon as={FaLanguage} color='brand.text_blue' boxSize={'35px'}/>
+                                <Text fontSize={{base: '1em',sm:'1em', md: '1.1em', lg: '1.2em' }}>{t('Matilda_Language')}</Text>
+                            </Flex>
+                            <Box width={'100%'} height={'1px'} bg='gray.300' mb='20px' mt='20px'/>
+                            <Text fontWeight={300} color='gray.600'  fontSize={{base: '.8em',sm:'.8em', md: '.85em', lg: '.9em' }}>{t('Matilda_Language_Subtitle')}</Text>
+                        </Box>
+                    </ScrollAnimation>
+
+                    <ScrollAnimation style={{flex:'2'}} animateIn="fadeInUp" animateOnce >
+                        <Text color='black' textAlign={{ base: 'center',sm:'center', md: 'start', lg: 'start' }} fontSize={{ base: '2em',sm:'2.1em', md: '2.3em', lg: '2.5em' }}><span style={{color:'rgb(5, 102, 255)'}}>Matilda</span> {t('Matilda_Doubt')}</Text>
+                    </ScrollAnimation >
+                </Flex>
+              
+            </Flex>
+
+            {/*MATILDA FEATURES*/}
+            <Flex  bg='rgb(0, 20, 51)' clipPath='polygon(0 100px, 100% 0, 100% 100%, 0 100%)' width={'100vw'} justifyContent={'center'} px='4vw' > 
+                <Flex px='4vw' width="100vw"  flexDir={'column'}  alignItems={'center'}   py={{ base:"calc(5vh + 100px)", md: "calc(7vh + 100px)", lg: "calc(10vh + 100px)", xl: "calc(12vh + 100px)" }} > 
+                        
+                        {/*FIRST LINE*/}
+                        <Flex maxW="1000px" width="100%"  gap={{ base: "30px", md: "30px", lg: "40px", xl: "50px" }} flexDir={{ base: "column", md: "column", lg: "row-reverse", xl: "row-reverse" }}>
+                            <ScrollAnimation style={{flex:'2'}} animateIn="fadeInUp" animateOnce >
+                                <Text textAlign={{ base: 'center',sm:'center', md: 'start', lg: 'start' }} color='white' flex='2' fontSize={{ base: '2em',sm:'2.1em', md: '2.3em', lg: '2.5em' }}><span style={{color:'rgb(5, 102, 255)'}}>Matilda</span> {t('Matilda_Feature')}</Text>
+                            </ScrollAnimation >
+
+                            <ScrollAnimation style={{flex:'1'}} animateIn="fadeIn" animateOnce >
+                                <Box bg='brand.text_blue'  borderRadius={'1rem'} p='20px'>
+                                    <Flex gap='15px' alignItems={'center'} color='white'> 
+                                        <Icon as={IoCall} color='' boxSize={'35px'}/>
+                                        <Text fontSize={{base: '1em',sm:'1em', md: '1.1em', lg: '1.2em' }}>{t('Features_Calls')}</Text>
+                                    </Flex>
+                                    <Box width={'100%'} height={'1px'} bg='gray.300' mb='20px' mt='20px'/>
+                                    <Text fontWeight={300} color='gray.200'  fontSize={{base: '.8em',sm:'.8em', md: '.85em', lg: '.9em' }}>{t('Features_Calls_Subtitle')}</Text>
+                                </Box>
+                            </ScrollAnimation>
+                        </Flex> 
+                    
+                        {/*SECOND LINE*/}
+                        <Flex maxW="1000px" width="100%" gap={{ base: "30px", md: "30px", lg: "40px", xl: "50px" }} mt={{ base: "30px", md: "30px", lg: "40px", xl: "50px" }}  flexDir={{ base: "column", md: "column", lg: "row-reverse", xl: "row-reverse" }}>
+                            <ScrollAnimation style={{flex:'1'}} animateIn="fadeIn" animateOnce >
+                                <Box bg='brand.text_blue' color='white' borderRadius={'1rem'} p='20px' height={'100%'}>
+                                    <Flex gap='15px' alignItems={'center'}> 
+                                        <Icon as={FaFile}  boxSize={'34px'}/>
+                                        <Text fontSize={{base: '1em',sm:'1em', md: '1.1em', lg: '1.2em' }}>{t('Features_Files')}</Text>
+                                    </Flex>
+                                    <Box width={'100%'} height={'1px'} bg='gray.300' mb='20px' mt='20px'/>
+                                    <Text fontWeight={300} color='gray.200'  fontSize={{base: '.8em',sm:'.8em', md: '.85em', lg: '.9em' }}>{t('Features_Files_Subtitle')}</Text>
+                                </Box>   
+                            </ScrollAnimation>
+
+                            <ScrollAnimation  style={{flex:'2'}}animateIn="fadeIn" animateOnce >
+                                <Box  bg='gray.100' borderRadius={'1rem'} p='20px'  height={'100%'}>
+                                    <Flex gap='15px' color='black'  alignItems={'center'}> 
+                                        <Icon as={MdMarkChatUnread}  boxSize={'35px'}/>
+                                        <Text fontSize={{base: '1em',sm:'1em', md: '1.1em', lg: '1.2em' }}>{t('Features_Conversation')}</Text>
+                                    </Flex>
+                                    <Box width={'100%'} height={'1px'} bg='gray.300' mb='20px' mt='20px'/>
+                                    <Text fontWeight={300} color='gray.600'  fontSize={{base: '.8em',sm:'.8em', md: '.85em', lg: '.9em' }}>{t('Features_Conversation_Subtitle')}</Text>
+                                </Box>
+                            </ScrollAnimation>
+                        </Flex> 
+
+                        {/*THIRD LINE*/}
+                        <Flex maxW="1000px" width="100%"  gap={{base: "30px", md: "30px", lg: "40px", xl: "50px" }}  mt={{ base: "30px", md: "30px", lg: "40px", xl: "50px" }}  flexDir={{ base: "column", md: "column", lg: "row", xl: "row" }}>
+                            
+                            <ScrollAnimation style={{flex:'1'}} animateIn="fadeIn" animateOnce >
+                                <Box bg='brand.text_blue' color='white' borderRadius={'1rem'} p='20px' height={'100%'}>
+                                    <Flex gap='15px' alignItems={'center'}> 
+                                        <Icon as={FaDatabase}  boxSize={'34px'}/>
+                                        <Text fontSize={{base: '1em',sm:'1em', md: '1.1em', lg: '1.2em' }}>{t('Features_Work')}</Text>
+                                    </Flex>
+                                    <Box width={'100%'} height={'1px'} bg='gray.300' mb='20px' mt='20px'/>
+                                    <Text fontWeight={300} color='gray.200'  fontSize={{base: '.8em',sm:'.8em', md: '.85em', lg: '.9em' }}>{t('Features_Work_Subtitle')}</Text>
+                                </Box>   
+                            </ScrollAnimation>
+
+                            <ScrollAnimation style={{flex:'1'}} animateIn="fadeIn" animateOnce >
+                                <Box bg='brand.text_blue'  borderRadius={'1rem'} p='20px'>
+                                    <Flex gap='15px' alignItems={'center'} color='white'> 
+                                        <Icon as={IoSettingsSharp}  boxSize={'35px'}/>
+                                        <Text fontSize={{base: '1em',sm:'1em', md: '1.1em', lg: '1.2em' }}>{t('Features_Edit')}</Text>
+                                    </Flex>
+                                    <Box width={'100%'} height={'1px'} bg='gray.300' mb='20px' mt='20px'/>
+                                    <Text fontWeight={300} color='gray.200'  fontSize={{base: '.8em',sm:'.8em', md: '.85em', lg: '.9em' }}>{t('Features_Edit_Subtitle')}</Text>
+                                </Box>
+                            </ScrollAnimation>
+                        </Flex>
+
+                        {/*FOURTH LINE*/}
+                        <Flex maxW="1000px" width="100%"  gap={{ base: "30px", md: "30px", lg: "40px", xl: "50px" }}  mt={{ base: "30px", md: "30px", lg: "40px", xl: "50px" }}  flexDir={{ base: "column", md: "column", lg: "row-reverse", xl: "row-reverse" }}>  
+                            <ScrollAnimation style={{flex:'1'}} animateIn="fadeIn" animateOnce >
+                                <Box bg='brand.text_blue'  borderRadius={'1rem'} p='20px' height={'100%'}> 
+                                    <Flex gap='15px' alignItems={'center'} color='white'> 
+                                        <Icon as={IoShieldCheckmarkSharp}  boxSize={'35px'}/>
+                                        <Text fontSize={{base: '1em',sm:'1em', md: '1.1em', lg: '1.2em' }}>{t('Features_Data')}</Text>
+                                    </Flex>
+                                    <Box width={'100%'} height={'1px'} bg='gray.300' mb='20px' mt='20px'/>
+                                    <Text fontWeight={300} color='gray.200'  fontSize={{base: '.8em',sm:'.8em', md: '.85em', lg: '.9em' }}>{t('Features_Data_Subtitle')}</Text>
+                                </Box>
+                            </ScrollAnimation>
+
+                            <ScrollAnimation style={{flex:'2'}} animateIn="fadeInUp" animateOnce >
+                                <Text textAlign={{ base: 'center',sm:'center', md: 'start', lg: 'start' }}  color='white' fontSize={{ base: '2em',sm:'2.1em', md: '2.3em', lg: '2.5em' }}>{t('Matilda_Agents')}</Text>
+                            </ScrollAnimation >
+                        </Flex>
+                    
+                    </Flex>
+            </Flex>
+
+            <FAQS faqsList={faqsList}/>
+        </Flex>
+
+    <Footer/>
+    </>)
 }
 
 export default Matilda
+
+export async function getStaticProps({locale}:GetStaticPropsContext) {return {props: {messages: require(`../lang/${locale}.json`)}}}

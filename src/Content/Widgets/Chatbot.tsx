@@ -4,12 +4,11 @@ import { Box, Flex, Image, Text, IconButton, Icon } from '@chakra-ui/react'
 import { LuPaperclip } from "react-icons/lu";
 import { FaFile, FaFolder } from "react-icons/fa"
 
-import '../../app/globals.css'
 
 
 interface Message {
-    text: string;
-    botMessage: boolean;
+    text: string
+    botMessage: boolean
   }
 
   
@@ -27,7 +26,7 @@ function obtenerSaludo() {
 }
 
 interface ChatbotProps{
-    currentChat:number
+    currentChat:[number, Message][]
 }
 const Chatbot = ({ currentChat }:ChatbotProps) =>{
 
@@ -170,26 +169,10 @@ const Chatbot = ({ currentChat }:ChatbotProps) =>{
 
     useEffect(() => {
         const changeConversation = () => {
-            clearAllTimeouts();
+            clearAllTimeouts()
             indexRef.current = 0
-            if (currentChat === 1 || currentChat === 2 || currentChat === 3) setMessages([{ text: `${obtenerSaludo()}, mi nombre es Matilda`, botMessage: true }, { text: '¿En qué puedo ayudarle?', botMessage: true }]);
-            else if (currentChat === 4 || currentChat === 5 || currentChat === 6) setMessages([])
-            else if (currentChat === 7 || currentChat === 8 || currentChat === 9) setMessages([])
-            const nextSeries = () => {
-                switch (currentChat) {
-                    case 1: return newMessages1
-                    case 2: return newMessages2
-                    case 3: return newMessages3
-                    case 4: return salesMessages1
-                    case 5: return salesMessages2
-                    case 6: return salesMessages3
-                    case 7: return internalCommExample1
-                    case 8: return internalCommExample2
-                    case 9: return internalCommExample3        
-                    default: return []
-                }
-            }
-            setCurrentSeries(nextSeries())
+            setMessages([{ text: `${obtenerSaludo()}, mi nombre es Matilda`, botMessage: true }, { text: '¿En qué puedo ayudarle?', botMessage: true }]);         
+            setCurrentSeries(currentChat)
         }
         changeConversation()
     }, [currentChat])
@@ -208,10 +191,29 @@ const Chatbot = ({ currentChat }:ChatbotProps) =>{
      
   return(<> 
         <Flex flexDir={'column'}  height={'100%'}> 
-            <Flex height='60px' bg='brand.clear_black' color='white' alignItems={'center'} fontSize={'1.2rem'} fontWeight={'medium'} px='20px' gap='15px'>
-                <Image src='/images/Isotipo.svg' width='25px'/>
-                <Text>MATIL</Text>
-            </Flex>
+            <div style={{height:'50px', background:`linear-gradient(to right, #a7daee,#255cd1)`, display:'flex', alignItems:'center', padding:'0 4%', justifyContent:'space-between', zIndex:10}} > 
+            
+                <div style={{display:'flex', gap:'3%', flex:'1', alignItems:'center'}}>
+                    <div style={{display:'flex', alignItems:'center', flexDirection:'row', gap:'15px', marginTop:'10px'}} >    
+                        <img src='/images/Isotipo.svg' height="25px" width="25px" />
+                        <span style={{color:'white', fontWeight:500,  whiteSpace: 'nowrap',textOverflow: 'ellipsis', fontSize:'1.4em' }} >MATIL</span>
+                    </div>
+                </div>
+                    
+            </div>
+
+
+            <div style={{width:'100%', height:'40px', overflow:'hidden', lineHeight:0, transform:'rotate(180deg)', marginTop:'-2vh'}}>
+                <svg viewBox="0 0 500 150" preserveAspectRatio="none" style={{ width: '100%', height: '100%' }}>
+                    <defs>
+                        <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style={{ stopColor: '#255cd1', stopOpacity: 1 }} />
+                        <stop offset="100%" style={{ stopColor: '#a7daee', stopOpacity: 1 }} />
+                        </linearGradient>
+                    </defs>
+                    <path d="M0,50 C150,125 350,25 500,50 L500,150 L0,150 Z" fill="url(#waveGradient)"></path>
+                </svg>
+            </div>
             <Box ref={scrollRef} py='30px' px='10px' flex='1' overflow={'scroll'}> 
                 {messages.map((message:any, index:number)=>{
 
@@ -220,11 +222,11 @@ const Chatbot = ({ currentChat }:ChatbotProps) =>{
                     const isLastMessage = index == messages.length - 1 
                     
                     return(<>
-                    <Flex gap='10px' key={index} width={'100%'}  mt = {index == 0 ? '0px' : (message.botMessage == messages[index - 1].botMessage? '3px':'15px')} alignItems={'end'} flexDir={message.botMessage ? 'row':'row-reverse'} animation = {message.botMessage ? 'expandFromLeft 0.5s ease-out' : 'expandFromRight 0.5s ease-out'}>
+                    <Flex fontWeight={300} fontSize={'.9em'}  gap='10px' key={index} width={'100%'}  mt = {index == 0 ? '0px' : (message.botMessage == messages[index - 1].botMessage? '3px':'15px')} alignItems={'end'} flexDir={message.botMessage ? 'row':'row-reverse'} animation = {message.botMessage ? 'expandFromLeft 0.5s ease-out' : 'expandFromRight 0.5s ease-out'}>
                         {(message.botMessage && !isNextMessageBot)&& 
                         
                         <Image src='/images/Isotipo.svg' width='20px'/>}
-                        <Box  maxW='80%' ml={(message.botMessage && !isNextMessageBot)?'0':'30px'} bg={message.botMessage?'gray.100':'cyan.100'} color={message.botMessage?'black':'black'} p = '8px' borderRadius = {message.botMessage ? (isNextMessageBot && isLastMessageBot)? '.2rem .7rem .7rem .2rem' : isNextMessageBot?'.7rem .7rem .7rem .2rem': isLastMessageBot ? '.2rem .7rem .7rem .7rem':'.7rem' : (!isNextMessageBot && !isLastMessageBot && !isLastMessage)? '.7rem .2rem .2rem .7rem' : (isNextMessageBot || isLastMessage)?'.7rem .2rem .7rem .7rem':'.7rem .7rem .2rem .7rem'}>
+                        <Box  maxW='80%' ml={(message.botMessage && !isNextMessageBot)?'0':'30px'} bg={message.botMessage?'gray.100':'linear-gradient(to right, #5B88F1, #76C8DF)'} color={message.botMessage?'black':'white'} p = '8px' borderRadius = {message.botMessage ? (isNextMessageBot && isLastMessageBot)? '.2rem .7rem .7rem .2rem' : isNextMessageBot?'.7rem .7rem .7rem .2rem': isLastMessageBot ? '.2rem .7rem .7rem .7rem':'.7rem' : (!isNextMessageBot && !isLastMessageBot && !isLastMessage)? '.7rem .2rem .2rem .7rem' : (isNextMessageBot || isLastMessage)?'.7rem .2rem .7rem .7rem':'.7rem .7rem .2rem .7rem'}>
                             {message.text === 'Cargando...' ?
                             <div className="writing-animation">
                                 <span className="bounce-dot"></span>
@@ -240,26 +242,15 @@ const Chatbot = ({ currentChat }:ChatbotProps) =>{
                                     <Icon as={ message.text.split('-')[0] === 'FOLDER'?FaFolder:FaFile}/>
                                     <Text>{message.text.split('-')[1]}</Text>
                                 </Flex>
-                                <Text fontWeight={'medium'} fontSize={'.9em'} color='gray.300'>2 KB</Text>
+                                <Text fontWeight={300}  color='gray.300'>2 KB</Text>
                              </Box>:
-                             <Text >{message.text}</Text>}</>}</>}
+                             <Text fontWeight={300} >{message.text}</Text>}</>}</>}
                         </Box>
                     </Flex>
                     </>)
                 })}
             </Box>
 
-            <Flex  height={'70px'} py='10px'gap='10px' px='20px' alignItems={'center'} >
-                <IconButton bg='transparent' aria-label='file' color='gray.500' icon={<LuPaperclip size='20px'/>} isRound p='5px'/>
-                <div  className="textarea-container"> 
-                    <textarea className="text-area" value="" id="autoresizingTextarea" placeholder="Escribe un mensaje..." rows={1}></textarea>
-                    <button id="sendButton" className="send-btn" style={{display:'none'}}   >
-                            <svg viewBox="0 0 24 24" width="24" height="24" style={{fill: '#9a9ba0'}}>
-                                <path d="M1.94631 9.31555C1.42377 9.14137 1.41965 8.86034 1.95706 8.6812L21.0433 2.31913C21.5717 2.14297 21.8748 2.43878 21.7268 2.95706L16.2736 22.0433C16.1226 22.5718 15.8179 22.5901 15.5946 22.0877L12.0002 14.0002L18.0002 6.00017L10.0002 12.0002L1.94631 9.31555Z"/>
-                            </svg>
-                    </button>
-                </div>
-            </Flex>
         </Flex>
  
     </>)
