@@ -47,12 +47,20 @@ const Main = () => {
         <meta name="description" content="Impulsa tu negocio con soluciones de IA. Mejora la atención al cliente, aumenta las ventas proactivas y envía correos masivos personalizados con nuestra tecnología innovadora. Descubre cómo la inteligencia artificial puede transformar tu empresa."/>
       </Head>
 
-      <Flex flexDir='column' width={'100vw'} alignItems={'center'} bg='white'>
+      <Flex flexDir='column' width={'100vw'} alignItems={'center'} bg='transparent'>
 
-        <Flex px='4vw' width={'100vw'} overflow={'hidden'} justifyContent={'center'} bgGradient="linear(to-r, #89f7fe, #66a6ff)" >
+        <Flex px='4vw' width={'100vw'} overflow={'hidden'} justifyContent={'center'} >
+        <div className="wrapper">
+            <div className="base one"></div>
+            <div className="base two"></div>
+            <div className="base three"></div>
+            <div className="base four"></div>
+            <div className="base five"></div>
+            </div>
+
 
             <Box width="100%" position={'relative'}  color='black'  textAlign={'center'}  py={{ base: "10vh", md: "12vh", lg: "15vh", xl: "17vh" }}  maxW="1200px" >
-                <Flex alignItems={'center'}  flexDir={'column'} > 
+                <Flex color={'white'} alignItems={'center'}  flexDir={'column'} > 
                   
                         <Text fontSize={{ base: '3.5em',sm:'3.7em', md: '4em', lg: '4.5em' }} fontWeight="medium" overflowWrap="break-word" whiteSpace="pre-wrap" >
                             <AnimatedText text={t('Hero_1')}/>
@@ -62,12 +70,12 @@ const Main = () => {
                             <AnimatedText text={t('Hero_2')} startDelay={t('Hero_1').split(' ').length * 40}/>
                         </Text>
               
-                        <Text fontSize={{ base: '3.5em',sm:'3.7em', md: '4em', lg: '4.5em' }} fontWeight="medium" overflowWrap="break-word" whiteSpace="pre-wrap" >
+                        <Text fontSize={{ base: '3.5em',sm:'3.7em', md: '4em', lg: '4.5em' }}  fontWeight={600} color='brand.text_blue"' overflowWrap="break-word" whiteSpace="pre-wrap" >
                             <AnimatedText text={t('Hero_3')} startDelay={(t('Hero_1').split(' ').length + t('Hero_2').split(' ').length) * 40} />
                         </Text>
 
                     <ScrollAnimation animateIn="fadeInUp" animateOnce delay={(t('Hero_1').split(' ').length + t('Hero_2').split(' ').length + t('Hero_3').split(' ').length) * 40}>
-                        <Text mt='30px' maxW={'800px'} fontWeight={300} fontSize={{base: '.8em',sm:'.8em', md: '.9em', lg: '1em' }} color="brand.gray"  overflowWrap="break-word" whiteSpace="pre-wrap">
+                        <Text mt='30px' maxW={'800px'} fontWeight={300} fontSize={{base: '.8em',sm:'.8em', md: '.9em', lg: '1em' }} color="brand.gray_2"  overflowWrap="break-word" whiteSpace="pre-wrap">
                         {t('Subhero')}
                         </Text>
                     </ScrollAnimation>

@@ -18,7 +18,7 @@ const AnimatedText = ({ text, startDelay = 0 }:{text:string, startDelay?:number}
           key={index}
           animateIn="fadeInUp"
           animateOnce
-          delay={startDelay + index * 40}
+          delay={startDelay + index * 70}
           style={{ display: 'inline-block' }}
         >
           <span style={{ display: 'inline-block', marginRight: '0.3em' }} >

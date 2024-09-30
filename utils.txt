@@ -1,0 +1,116 @@
+        <Flex flexDir='column' width={'100vw'} alignItems={'center'}  bg='brand.gray_1'> 
+            <Box   width="100%" position={'relative'} px='4vw' color='black' textAlign={'center'} pb={{ base: "5vh", md: "6vh", lg: "7vh", xl: "8vh" }} pt={{ base: "10vh", md: "11vh", lg: "13vh", xl: "15vh" }}  maxW="1200px" >
+                <Flex alignItems={'center'}  flexDir={'column'} > 
+                    <ScrollAnimation animateIn="fadeIn" animateOnce >
+                        <Text color='brand.text_blue' fontWeight={'medium'} fontSize={{base: '1.2em',sm:'1.3em', md: '1.4em', lg: '1.5em' }} >{t('PreTitle')}</Text> 
+                    </ScrollAnimation>
+
+                    <Text fontSize={{ base: '2.2em',sm:'2.5em', md: '2.8em', lg: '3em' }} fontWeight="medium" overflowWrap="break-word" whiteSpace="pre-wrap" >
+                        <AnimatedText text={t('Title')}/>
+                    </Text>
+                    
+                    <ScrollAnimation animateIn="fadeInUp" animateOnce delay={t('Hero').split(' ').length * 40}> 
+                        <Text mt='30px' maxW={'800px'} fontWeight={300} fontSize={{base: '.8em',sm:'.8em', md: '.9em', lg: '1em' }}color="brand.text_gray"   overflowWrap="break-word" whiteSpace="pre-wrap">
+                            {t('SubTitle')}
+                        </Text>
+                    </ScrollAnimation>
+                </Flex>
+            </Box>
+        </Flex>
+
+
+            
+
+
+//"dev": "next dev -H 192.168.0.179 -p 3000",
+
+
+
+
+
+
+
+//SECTION BOX COMPONENT
+  const SectionSelect = () => {
+
+    //PRODUCTS SECTIONS AND ICONS
+    const productSections = [['Matilda', 'matilda'], ['SuperService', 'super-service'], [t('Integrations'), 'integrations'] ]
+    const productSubtitles = ['Matilda_Subtitle', 'SS_Subtitle', 'Integrations_Subtitle' ]
+    const iconsList = [FaRobot, IoFileTrayFull, FaPlug]
+
+    //INTEGRATIONS AND CHANNELS LIST
+    const integrationsList = [['Shopify',FaShopify], ['Salesforce', FaSalesforce], ['Stripe', FaCcStripe]]
+    const channelsList = [['Whatsapp',IoLogoWhatsapp], ['Email', IoMdMail], ['Instagram', AiFillInstagram]]
+
+    //LAST HOVERED INDEX
+    const [selectedSectionIndex, setSelectedSectionIndex] = useState<number>(0)
+ 
+    return(
+      <Flex>
+          <Box color='black' minW='15vw'>
+            {productSections.map((product, index) => {
+
+              const isSelected = selectedSectionIndex === index
+              return (
+                <Flex key={`section-${index}`} alignItems={'center'} gap='10px' p='20px' className="flex-container" cursor='pointer' onMouseEnter={() => setSelectedSectionIndex(index)} borderRadius={'.5em 0 0 .5em'} bg={isSelected?'gray.100':'white'}>
+                    <Icon as={iconsList[index]} color={isSelected?'blue.400':'black'}/>
+                    <Text className="underline-animation" fontWeight={isSelected?400:300}>{product[0]}</Text>
+                </Flex>
+              )
+            })}
+          </Box>
+          <Box bg='gray.100' width={'700px'} minH={'480px'} p='30px' borderRadius={`${selectedSectionIndex === 0?'0':'.5em'} .5em .5em.5em`}>
+              <Box bg='white' className="flex-container"  cursor={'pointer'}  borderColor={'gray.300'} borderWidth={'1px'} borderRadius={'.5em'} p='20px'>
+                <Flex alignItems={'center'} gap='10px' >
+                    <Icon as={iconsList[selectedSectionIndex]} color={'blue.400'}/>
+                    <Text color='black'>{productSections[selectedSectionIndex][0]}</Text>
+                </Flex>
+                <Text mt='1vh' color='gray.600' fontWeight={300} fontSize={'.8em'} >{t(productSubtitles[selectedSectionIndex])}</Text>
+
+                <Flex alignItems={'center'} gap='7px' color='blue.400' mt='2vh'  onClick={()=> router.push(`${productSections[selectedSectionIndex][1]}`)} > 
+                  <Icon as={FiArrowUpRight} mt='.4em'/>
+                  <Text mt='1vh' className="underline-animation" fontWeight={300} fontSize={'.9em'} >{t('Learn', {subject_index:selectedSectionIndex})} {productSections[selectedSectionIndex][0]}</Text>
+                </Flex>
+              </Box>
+
+              {selectedSectionIndex === 0 && <Flex></Flex>}
+              {selectedSectionIndex === 1 && <Flex></Flex>}
+              {selectedSectionIndex === 2 && 
+                <Flex mt='5vh' px='20px' color='black' fontWeight={300} >
+                  <Box flex={1}>
+                    <Text color='gray.600' fontSize={'.9em'} fontWeight={400}>{t('Platforms')}</Text>
+                    
+                    {integrationsList.map((integration, index) => (
+                      <Flex key={`integration-${index}`} alignItems={'center'} gap='10px' mt='2vh'>
+                        <Icon color='gray.700' boxSize={'18px'} as={integration[1]} />
+                        <Text>{integration[0]}</Text>
+                      </Flex>
+                    ))}
+                  
+                  <Flex className="flex-container"cursor={'pointer'} alignItems={'center'}  gap='7px' color='blue.400' mt='2vh' onClick={()=> router.push('/platforms')} > 
+                    <Icon as={FiArrowUpRight} mt='.4em'/>
+                    <Text mt='1vh' className="underline-animation" fontWeight={300} fontSize={'.9em'} >{t('More_platforms')}</Text>
+                  </Flex>
+                  
+                  </Box>
+                  <Box flex={1}>
+                    <Text color='gray.600' fontSize={'.9em'}>{t('Channels')}</Text>
+                    {channelsList.map((integration, index) => (
+                      <Flex key={`channel-${index}`} alignItems={'center'} gap='10px' mt='2vh'>
+                        <Icon color='gray.700' boxSize={'18px'} as={integration[1]} />
+                        <Text>{integration[0]}</Text>
+                      </Flex>
+                    ))}
+                  
+                  <Flex className="flex-container" alignItems={'center'} cursor={'pointer'} gap='7px' color='blue.400' mt='2vh'  onClick={()=> router.push('/channels')}> 
+                    <Icon as={FiArrowUpRight} mt='.4em'/>
+                    <Text mt='1vh' className="underline-animation" fontWeight={300} fontSize={'.9em'} >{t('More_channels')}</Text>
+                  </Flex>
+
+                  </Box>
+                </Flex>}
+
+          </Box>
+      </Flex>
+    )
+  }

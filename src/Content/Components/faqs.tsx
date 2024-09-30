@@ -20,7 +20,7 @@ function parseMarkdown(text: string): (string | JSX.Element)[] {
         lines.forEach((line, i) => {
           if (i > 0) lineBreakParsed.push(<br key={`${index}-${i}`} />)
           lineBreakParsed.push(line)
-        });
+        })
       } 
       else lineBreakParsed.push(part)
     })
@@ -60,7 +60,7 @@ const FAQS = ({faqsList}:{faqsList:string[][]}) => {
 
                 
                 {faqsList.map((faq, index) => (
-                    <ScrollAnimation animateIn="fadeInUp" animateOnce >
+                    <ScrollAnimation key={`faq-${index}`} animateIn="fadeInUp" animateOnce >
                         <FaqElement question={faq[0]} answer={faq[1]}/>
                     </ScrollAnimation>
                 ))}

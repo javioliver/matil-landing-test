@@ -263,3 +263,116 @@ transform: rotate(0deg)
   transition: transform 0.3s ease; 
 }
 
+
+
+@keyframes fly {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(20vw, -10vh) rotate(45deg);
+  }
+  50% {
+    transform: translate(-15vw, 15vh) rotate(90deg);
+  }
+  75% {
+    transform: translate(10vw, -5vh) rotate(135deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(180deg);
+  }
+}
+
+@keyframes flyPlus {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(-20vw, 10vh) rotate(-45deg);
+  }
+  50% {
+    transform: translate(15vw, -15vh) rotate(-90deg);
+  }
+  75% {
+    transform: translate(-10vw, 5vh) rotate(-135deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(-180deg);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  background: rgb(5, 102, 255); /* Color de fondo base */
+  position: absolute;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.base {
+  position: absolute;
+  filter: blur(80px); /* Ajustar el blur */
+  animation: glow 2s ease-in-out infinite; /* Añadir animación de brillo */
+  opacity: 0.9;
+}
+
+.one {
+  border-radius: 100%;
+  width: 50vw;
+  height: 50vw;
+  background-color: #00cfff; /* Azul neón brillante */
+  left: -30vw;
+  top: -20vh;
+  animation: fly 13s ease-in-out infinite, glow 2.5s ease-in-out infinite;
+}
+
+.two {
+  width: 50vw;
+  height: 70vh;
+  background-color: #0099ff; /* Azul más vivo */
+  bottom: -10vh;
+  left: -20vw;
+  animation: flyPlus 12s ease-in-out infinite, glow 3s ease-in-out infinite;
+}
+
+.three {
+  border-radius: 100%;
+  width: 70vw;
+  height: 70vw;
+  bottom: -20vh;
+  right: -25vw;
+  background-color: #00b3ff; /* Azul más intenso */
+  animation: fly 14s ease-in-out infinite, glow 3s ease-in-out infinite;
+}
+
+.four {
+  border-radius: 100%;
+  width: 50vw;
+  height: 50vw;
+  background-color: #0095ff; /* Azul intermedio brillante */
+  left: 10vw;
+  top: -10vh;
+  animation: flyPlus 15s ease-in-out infinite, glow 2.8s ease-in-out infinite;
+}
+
+.five {
+  border-radius: 100%;
+  width: 54vw;
+  height: 40vw;
+  background-color: #007fff; /* Azul oscuro brillante */
+  bottom: 15vh;
+  right: 10vw;
+  animation: fly 12s ease-in-out infinite, glow 3s ease-in-out infinite;
+}
+
+ 

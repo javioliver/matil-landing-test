@@ -46,7 +46,6 @@ const myFont = localFont({ src: [{
     style: 'normal',
   },
 ]})
-
 const theme = extendTheme({
   breakpoints: {
     sm: '450px',
@@ -57,11 +56,20 @@ const theme = extendTheme({
   colors: {
     brand: {
       clear_black: '#1A202C',
-      gray: '#4A5568',
       blue: 'linear-gradient(to right, rgba(0, 123, 255), rgba(33, 180, 253))',
-      text_blue:'rgb(5, 102, 255)'
+      text_blue:'rgb(5, 102, 255)',
+      black_button:'rgb(0, 20, 51)',
+      black_button_hover:'rgb(0, 20, 51, 0.8)',
+      gray_1:"rgb(245, 247, 249)",
+      gray_2:"rgb(211, 219, 229)",
+      text_gray:'rgb(100, 116, 145)'
     },
-  }
+  },
+  styles: {
+    global: {
+      body: {color: 'rgb(0, 20, 51)'}
+    },
+  },
 })
 
 function MyApp({ Component, pageProps }: AppProps) {
