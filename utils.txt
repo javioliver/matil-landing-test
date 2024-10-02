@@ -114,3 +114,33 @@
       </Flex>
     )
   }
+
+
+   <Box position='absolute' top={'25vh'}  right={svgStyles[businessTypeIndex].position === 'right'?`-${windowWidth - (containerRef.current?.getBoundingClientRect().right || 0)}px`:''}  left={svgStyles[businessTypeIndex].position === 'left'?`-${containerRef.current?.getBoundingClientRect().left}px`:''}  zIndex={1} width={svgStyles[businessTypeIndex].width} transition={'opacity 0.5s ease-in-out'}>
+      <svg  xmlns="http://www.w3.org/2000/svg"  viewBox={svgStyles[businessTypeIndex].viewBox} ref={svgRef} >
+                  <defs>
+                      <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="rgba(0, 102, 204, 1)" />
+                      <stop offset="100%" stopColor="rgb(0, 20, 51)" />
+                      </linearGradient>
+                  </defs>
+                  <defs>
+                  <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="rgb(5, 142, 255)" />
+                      <stop offset="100%" stopColor="rgb(5, 102, 255)" />
+                  </linearGradient>
+              </defs>
+                  <path
+                      className="path"
+                      fill="transparent"
+                      stroke={`url(#${svgStyles[businessTypeIndex].color})`}
+                      strokeWidth={svgStyles[businessTypeIndex].strokeWidth}
+                      strokeLinejoin="bevel" 
+                      d={svgStyles[businessTypeIndex].path}
+                      strokeDasharray="3000" 
+                      strokeDashoffset="3000" 
+                      style={{ transition: 'stroke-dashoffset 1.5s ease-out' }}
+                  />
+          </svg>
+      </Box>
+

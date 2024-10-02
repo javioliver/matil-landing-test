@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router'
 //REACT
-import { useState, useEffect, useRef, Fragment } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 //TRANSALATION
 import { useTranslations } from 'next-intl'
 //FRONT
@@ -70,9 +70,10 @@ const CustomMessages = ({index}:{index:number}) => {
         [
             {sender:0, content:'¿Que documentación tengo que aportar para solicitar un crédito?'}, 
             {sender:1, content:'Debes presentar el CIF, el beneficio neto y cantidad de deuda de la empresa, el importe que desea solicitar y el plazo de devolución. Después de ésto nos pondremos a estudiar su caso.'},
-            {sender:0, content:'Ok, aquí los tenéis:\nCIF:B12341234\nBeneficio neto:109.234€\nDeuda:49.034€\nY deseo solicitar 70.000€ a devolver en 3 años.'}, 
+            {sender:0, content:'Ok, aquí los tienes: B12341234, 109.234€ d ebeneficio, 49.034€ de deuda, y deseo solicitar 70.000€ a devolver en 3 años.'}, 
             {sender:1, content:'Muy bien, los datos parecen correctos y han superado el estudio automático inicial, en unos días nos pondremos en contacto con usted.'} 
-        ]
+        ],
+       
     ]
 
     return (
@@ -115,6 +116,7 @@ const UseBox = ({title, description, imageUrl, index}:{title:string, description
 
 const ScrollableBoxes = ({businessTypeIndex}:{businessTypeIndex:number}) => {
 
+   
     //TRANSLATION
     const t = useTranslations('Solutions')
 
@@ -122,83 +124,117 @@ const ScrollableBoxes = ({businessTypeIndex}:{businessTypeIndex:number}) => {
     const businessTypes = [ 'Online', 'Physical', 'Services']
     const imagesUrls = ['/images/ecommerce.png', '/images/store.png', '/images/service.png']
     const svgStyles = [
-        {right:'-30vw', color:'rgb(5, 102, 255)', path:'m60.21,195.98l785.74-113.71s-318.14,468.95-217.16,470.99,356.52-201.54,421.77-148.69c65.25,52.86-26.19,291.81-29.52,304.62,0,0,210.18-104.18,244.9-151.56'},
-        {left:'-30vw', color:'rgb(0, 20, 51)', path:'m60.21,195.98l785.74-113.71s-318.14,468.95-217.16,470.99,356.52-201.54,421.77-148.69c65.25,52.86-26.19,291.81-29.52,304.62,0,0,210.18-104.18,244.9-151.56'},
-        {right:'-30vw', color:'rgb(5, 102, 255)', path:'m60.21,195.98l785.74-113.71s-318.14,468.95-217.16,470.99,356.52-201.54,421.77-148.69c65.25,52.86-26.19,291.81-29.52,304.62,0,0,210.18-104.18,244.9-151.56'}
+        {strokeWidth:'65',width:'100vw',viewBox:'0 0 1358 754', position:'right', color:'grad2', path:'m0.21,195.98l785.74-113.71s-318.14,468.95-217.16,470.99,356.52-201.54,421.77-148.69c65.25,52.86-26.19,291.81-29.52,304.62,0,0,210.18-104.18,754.9-151.56'},
+        {strokeWidth:'35', width:'100vw', viewBox:'0 0 575 176', position:'left', color:'grad1', path:'M-52 0.634C0.4231 160.089 250.206 .93675 318.039 37.6594C349.457 58.315 333.251 105.715 322.993 132.976C450.088 65.591 498.847 107.182 575 107.572'},
+        {strokeWidth:'65', width:'100vw', viewBox:'0 0 1140 427', position:'right', color:'grad2', path:'M0.3,241l120-127.2l78.1,250.8c0,0,637.6-369.8,688.2-319.2c50.6,50.6-151,335.1-151,335.1L1140,224.9'},
     ]
 
-    //REFS
+      //GET SCREEN WIDTH
+      const [windowWidth, setWindowWidth] = useState(0); // Estado para almacenar el ancho de la ventana
+      useEffect(() => {
+          const handleResize = () => {setWindowWidth(window.innerWidth)}
+          if (typeof window !== 'undefined') {
+              setWindowWidth(window.innerWidth)
+              window.addEventListener('resize', handleResize)
+          }
+          return () => {if (typeof window !== 'undefined') window.removeEventListener('resize', handleResize)}
+          }, [])
+  
+      //SHOW SVGS LOGIC
+      const containerRef = useRef<HTMLDivElement>(null)
+      const svgRef = useRef(null)
+      useEffect(() => {
+          const path = svgRef.current ? svgRef.current.querySelector('.path') : null;
+  
+          const activateAnimation = (entries:any, observer:any) => {
+          entries.forEach((entry:any) => {
+              if (entry.isIntersecting) {
+              path.style.strokeDashoffset = '0'
+              observer.unobserve(entry.target)
+              }
+           
+          })
+          }
+          const observer = new IntersectionObserver(activateAnimation, { threshold: 0.9 })
+          if (svgRef.current) observer.observe(svgRef.current)
+          return () => {if (svgRef.current) observer.unobserve(svgRef.current)
+  }
+      }, [])
+  
     const boxRef1 = useRef<HTMLDivElement>(null)
     const boxRef2 = useRef<HTMLDivElement>(null)
     const boxRef3 = useRef<HTMLDivElement>(null)
     const boxRef4 = useRef<HTMLDivElement>(null)
 
     const refsArrays = [boxRef1, boxRef2, boxRef3, boxRef4]
-    const [scales, setScales] = useState([1, 1, 1, 1, 1, 1])
+
     useEffect(() => {
+        let ticking = false;
+    
         const handleScroll = () => {
-            const windowHeight = window.innerHeight;
-            let noResize:boolean = false
-            const newScales = refsArrays.map((ref, index) => {
-                if (ref.current) {
-                    const boxTop = ref.current.getBoundingClientRect().top;
-                    const boxAccumulationTop = windowHeight * 0.1 
-                    if (boxTop <= boxAccumulationTop) {
-                        noResize =true
-                    }
-                    const startScalingPoint = boxAccumulationTop + windowHeight * 0.1 
-                    if (windowHeight * 0.1  <= boxTop && boxTop <= startScalingPoint) {
-                        const distanceFromTop = Math.max(0, startScalingPoint - boxTop)
-                        const scale = Math.max(0.85, Math.min(1, 1 - distanceFromTop * 0.0008))
-                        return scale;
-                    }
-                }
-                return 1
-            })
-         if (!noResize) setScales(newScales)     
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const windowHeight = window.innerHeight
+                    let cumulativeTranslation = 0;
+                    const gapHeight = 26
+                    
+                    refsArrays.forEach((ref, index) => {
+                        if (ref.current) {
+                            const itemRect = ref.current.getBoundingClientRect();
+                            const distanceFromTop = itemRect.top
+                            const maxShrinkDistance = windowHeight * 0.25
+                            const scaleFactor = Math.max((0.85 + index * 0.03), Math.min(1, (distanceFromTop / maxShrinkDistance) * 1.3))
+                            const translateY = cumulativeTranslation
+                            if (index > 0) cumulativeTranslation += gapHeight * scaleFactor
+                                ref.current.style.transform = `translateY(${translateY}px) scale(${scaleFactor})`
+                        }
+                    })
+    
+                    ticking = false
+                })
+                ticking = true
+            }
         }
+    
         window.addEventListener('scroll', handleScroll);
-        return () => {window.removeEventListener('scroll', handleScroll)}
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        }
     }, [refsArrays])
+      
+    return (<>
+     
+        <Flex  ref={containerRef} flexDir={'column'} alignItems={'center'} position={'relative'} > 
 
-    const svgRef = useRef(null)
-    useEffect(() => {
-      const path = svgRef.current ?  svgRef?.current?.querySelector('.path') : ''
-        const activateAnimation = (entries:any, observer:any) => {
-        entries.forEach((entry:any) => {
-          if (entry.isIntersecting) {
-            path.style.strokeDashoffset = '0'
-            observer.unobserve(entry.target)
-          }
-        })
-      }
-      const observer = new IntersectionObserver(activateAnimation, {threshold: 0.8 })
-      if (svgRef.current) observer.observe(svgRef.current)
-      return () => {
-        if (svgRef.current) observer.unobserve(svgRef.current)
-      }
-    }, [])
+   <Box position='absolute' top={'65vh'}  right={svgStyles[businessTypeIndex].position === 'right'?`-${windowWidth - (containerRef.current?.getBoundingClientRect().right || 0)}px`:''}  left={svgStyles[businessTypeIndex].position === 'left'?`-${containerRef.current?.getBoundingClientRect().left}px`:''}  zIndex={1} width={svgStyles[businessTypeIndex].width} transition={'opacity 0.5s ease-in-out'}>
+      <svg  xmlns="http://www.w3.org/2000/svg"  viewBox={svgStyles[businessTypeIndex].viewBox} ref={svgRef} >
+                  <defs>
+                      <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="rgba(0, 102, 204, 1)" />
+                      <stop offset="100%" stopColor="rgb(0, 20, 51)" />
+                      </linearGradient>
+                  </defs>
+                  <defs>
+                  <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="rgb(5, 142, 255)" />
+                      <stop offset="100%" stopColor="rgb(5, 102, 255)" />
+                  </linearGradient>
+              </defs>
+                  <path
+                      className="path"
+                      fill="transparent"
+                      stroke={`url(#${svgStyles[businessTypeIndex].color})`}
+                      strokeWidth={svgStyles[businessTypeIndex].strokeWidth}
+                      strokeLinejoin="bevel" 
+                      d={svgStyles[businessTypeIndex].path}
+                      strokeDasharray="3000" 
+                      strokeDashoffset="3000" 
+                      style={{ transition: 'stroke-dashoffset 1.5s ease-out' }}
+                  />
+          </svg>
+      </Box>
 
-    return (
-        <Flex flexDir={'column'} alignItems={'center'} position={'relative'}> 
-            <Box position='absolute' top={'35vh'}  right={svgStyles[businessTypeIndex].right}  left={svgStyles[businessTypeIndex].left} zIndex={1} height={'10vh'} width={'80vw'}> 
-                <svg  xmlns="http://www.w3.org/2000/svg"  viewBox="-500 0 1358 754"ref={svgRef} >
-                    <path
-                        className="path"
-                        fill="transparent"
-                        stroke={svgStyles[businessTypeIndex].color}
-                        strokeWidth="65"
-                        strokeLinejoin="bevel" 
-                        d={svgStyles[businessTypeIndex].path}
-                        strokeDasharray="3000" 
-                        strokeDashoffset="3000" 
-                        style={{ transition: 'stroke-dashoffset 1.5s ease-out' }}
-                    />
-            </svg>
-
-            </Box>
-
-            <Flex flexDir={'column'} maxW={'800px'} textAlign={'center'} pt={{ base: "2vh", md: "2vh", lg: "2vh", xl: "3vh" }} mt={{ base: "6vh", md: "7vh", lg: "8vh", xl: "10vh" }} justifyContent={'center'} position='sticky' top={'10vh'} ref={boxRef1}  zIndex={10} transform={`scale(${scales[0]})`} transition="transform 0.3s ease" >
+            <Flex    transition='transform 0.2s ease-out' ref={boxRef1}  flexDir={'column'} maxW={'800px'} textAlign={'center'} pt={{ base: "2vh", md: "2vh", lg: "2vh", xl: "3vh" }} mt={{ base: "6vh", md: "7vh", lg: "8vh", xl: "10vh" }} justifyContent={'center'} position='sticky' top={'10vh'} zIndex={10}  >
                 <Box> 
                     <Flex display={'inline-block'} justifyContent={'center'} alignItems={'center'} bg={'brand.text_blue'} color={'white'} px='15px' py='5px' borderRadius={'2rem'}>
                         <Text fontSize={{base: '.8em',sm:'.8em', md: '.9em', lg: '1em'}}  fontWeight={500}> {t(businessTypes[businessTypeIndex])}</Text>
@@ -209,12 +245,13 @@ const ScrollableBoxes = ({businessTypeIndex}:{businessTypeIndex:number}) => {
                 </Text>
                 <Text mt='10px' maxW={'800px'} fontWeight={300} fontSize={{base: '.8em',sm:'.8em', md: '.9em', lg: '1em' }}color="brand.text_gray"   overflowWrap="break-word" whiteSpace="pre-wrap">{t(`${businessTypes[businessTypeIndex]}Des`)}</Text>
             </Flex>
-            {Array.from(Array(3).keys()).map((index) => (
-                <Box ref={refsArrays[index + 1]} p='30px 30px 0 30px' width={'100%'}  maxW={'800px'} zIndex={100 + index} top={'10vh'} translateY={`${index * 20}px`} bg={businessTypeIndex === 1?'brand.text_blue':'brand.black_button'} opacity={10} shadow={'lg'} position={'sticky'} key={`${businessTypeIndex}-case-${index}`} mt='2vh' transform={`translateY(${index * 16}px) scale(${scales[index + 1]})`} borderRadius={'1rem'}  transition="transform 0.3s ease opacity 0.3s ease">
+                {Array.from(Array(3).keys()).map((index) => (
+                <Box  transition='transform 0.2s ease-out'  ref={refsArrays[index + 1]} mt='5vh'height={'500px'}  className="js-stack-cards__item" p='30px 30px 0 30px' width={'100%'}  maxW={'800px'} zIndex={100 + index} top={'10vh'} bg={businessTypeIndex === 1?'brand.text_blue':'brand.black_button'}  shadow={'lg'} position={'sticky'} key={`${businessTypeIndex}-case-${index}`}  borderRadius={'1rem'}  >
                     <UseBox title={t(`UseCase_${index + businessTypeIndex * 3}`)} index={index + businessTypeIndex * 3} description={t(`UseCaseDes_${index + businessTypeIndex * 3}`)} imageUrl={imagesUrls[businessTypeIndex]}/>
                 </Box>
             ))}
-        </Flex>)
+        
+        </Flex></>)
 }
 
 const Solutions = () =>{
@@ -233,7 +270,7 @@ const Solutions = () =>{
             <meta name="description" content="Impulsa tu negocio con soluciones de IA. Mejora la atención al cliente, aumenta las ventas proactivas y envía correos masivos personalizados con nuestra tecnología innovadora. Descubre cómo la inteligencia artificial puede transformar tu empresa."/>
         </Head>
 
-            <Box position='absolute' top={'25vh'}  left={'-30vw'} zIndex={1} height={'10vh'} width={'80vw'}> 
+            <Box position='absolute' top={'10vh'}  left={0} zIndex={1} width={'70vw'}> 
                 <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1358 754">
                     <path 
                         className="path" 
@@ -241,7 +278,7 @@ const Solutions = () =>{
                         stroke="rgb(5, 102, 255)" 
                         strokeWidth="65" 
                         strokeLinejoin="bevel" 
-                        d="m60.21,195.98l785.74-113.71s-318.14,468.95-217.16,470.99,356.52-201.54,421.77-148.69c65.25,52.86-26.19,291.81-29.52,304.62,0,0,210.18-104.18,244.9-151.56"
+                        d="m-500.21,195.98l785.74-113.71s-318.14,468.95-217.16,470.99,356.52-201.54,421.77-148.69c65.25,52.86-26.19,291.81-29.52,304.62,0,0,210.18-104.18,244.9-151.56"
                         strokeDasharray="3000" 
                         strokeDashoffset="3000">
                         <animate 
@@ -258,7 +295,7 @@ const Solutions = () =>{
 
      
 
-        <Flex  zIndex={1}  flexDir='column' width={'100vw'} overflow={'hidden'} alignItems={'center'}  bg='white' pb={{ base: "10vh", md: "11vh", lg: "13vh", xl: "15vh" }}>
+        <Flex  zIndex={1}  flexDir='column' width={'100vw'} alignItems={'center'}  bg='white' pb={{ base: "10vh", md: "11vh", lg: "13vh", xl: "15vh" }}>
             
             <Flex flexDir='column' width={'100vw'} alignItems={'center'}  > 
                 <Box   width="100%" position={'relative'} px='4vw' color='black' textAlign={'center'} pb={{ base: "6vh", md: "8vh", lg: "10vh", xl: "12vh" }} pt={{ base: "10vh", md: "11vh", lg: "13vh", xl: "15vh" }}  maxW="1200px" >

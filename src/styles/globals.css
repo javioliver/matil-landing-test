@@ -376,3 +376,20 @@ transform: rotate(0deg)
 }
 
  
+
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px); /* Ajusta la distancia del "bounce" */
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.bounce {
+  animation: bounce 0.1s ease-in-out; /* Duración y tipo de animación */
+}

@@ -55,6 +55,7 @@ const theme = extendTheme({
   },
   colors: {
     brand: {
+      white_bg:'rgb(246, 249, 252)',
       clear_black: '#1A202C',
       blue: 'linear-gradient(to right, rgba(0, 123, 255), rgba(33, 180, 253))',
       text_blue:'rgb(5, 102, 255)',

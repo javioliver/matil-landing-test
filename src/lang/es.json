@@ -149,18 +149,27 @@
         "PreTitle":"Precios",
         "Title":"ROI Positivo Garantizado",
         "SubTitle":"Paga únicamente por las consultas resueltas completamente por Tilda, con un costo de mantenimiento inferior a cualquier plataforma similar, usuarios ilimitados y acceso a todas las funcionalidades.",
-        "Integration_Title":"Estudio Inicial Gratuito para la Integración a Medida",
-        "Integration_Title_2":"Integración a Medida con Resultados Inmediatos",
-        "Integration_Subtitle":"Ofrecemos una evaluación inicial gratuita y personalizada para conocer a fondo tu negocio y mostrarte todo lo que nuestra tecnología puede hacer por ti. Si decides seguir adelante, integraremos Tilda en tus sistemas y procesos, sin importar su complejidad.",  
-        "Integration_Button":"Solicita tu Estudio Inicial",
-        "Integration_Feature_1":"Estudio gratuito personalizado",
-        "Integration_Feature_Description_1":"Comenzamos con una evaluación sin costo para conocer a fondo tu negocio y adaptar Tilda a tus necesidades.",
-        "Integration_Feature_2":"Integración 100% a medida",
-        "Integration_Feature_Description_2":"Nos encargamos de integrar Matilda a tus sistemas y procesos actuales, sin importar la complejidad, asegurando que encaje perfectamente en tu operación.",  
+        
+    
+        "Integration_Title_2":"Precios a Medida",
+        "Integration_Subtitle":"/Paga/ únicamente por las /consultas resueltas/ completamente por /Tilda/ y un costo de /mantenimiento/ en función del volumen de tickets /inferior/ a /cualquier plataforma/ similar.",  
+        "SolvedTicket":"Ticket Resuelto por Tilda",
+        "ManagedTicket":"Ticket Gestionado",
+        "Integration_Button":"Solicitar Estudio Inicial Gratuito",
+        
+        "UnlimitedUsers":"Usuarios ilimitados",
+        "AccessFeatures":"Acceso a todas las funcionalidades",
+        "AnyChannel":"Integración con cualquier canal",
+
+
+        "IntegrationStudie":"Integración a Medida", 
+        "IntegrationStudieDes":"/Integramos Tilda/ con vuestros /sistemas/ y /procesos/, sean cuales sean.",
+        "IntegrationStudieDes2":"Ofrecemos una /evaluación gratuita/ para identificar tus necesidades y mostrarte cómo /Tilda/ puede transformar tu negocio.",
+        "Integration_Feature_1":"Estudio inicial gratuito",
+        "Integration_Feature_2":"Flujos 100% a medida",
         "Integration_Feature_3":"Asequible y de alto valor",
-        "Integration_Feature_Description_3":"Comparado con realizar el proceso por cuenta agena, nuestra integración inicial es económica y diseñanad apara maximizar la eficiencia.",
-        "Integration_Feature_4":"Integración rápida y efectiva",
-        "Integration_Feature_Description_4":"Nos comprometemos a completar la integración en menos de 3 semanas desde su inicio.",
+        "Integration_Feature_4":"En menos de 3 semanas",
+ 
         "EstimateTitle":"Descubre tu ahorro: Calcula tu precio",
         "Pay_1":"Pagar mensualmente",
         "Pay_2":"Pagar anualmente",

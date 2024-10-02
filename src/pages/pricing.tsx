@@ -7,18 +7,20 @@ import { useState, useEffect } from 'react'
 //TRANSALATION
 import { useTranslations } from 'next-intl'
 //FRONT
-import { Flex, Box, Text, Image, Icon, Button, Grid, SliderMark, Slider, SliderFilledTrack, SliderTrack, SliderThumb } from '@chakra-ui/react'
-import ScrollAnimation from "react-animate-on-scroll"
+import { Flex, Box, Text, Icon, Button, Grid, SliderMark, Slider, SliderFilledTrack, SliderTrack, SliderThumb } from '@chakra-ui/react'
 import "animate.css/animate.compat.css"
 //COMPONENTS
 import Footer from '../Content/Components/footer'
 import FAQS from '../Content/Components/faqs'
-import AnimatedText from '@/Content/Widgets/AnimatedText'
+//FUNCTIONS
+import HighlightText from '@/Content/Functions/HighlightText'
 //ICONS
 import { IconType } from 'react-icons'
 import { TbCurrencyDollarOff } from "react-icons/tb";
-import { MdIntegrationInstructions, MdOutlineDoubleArrow } from "react-icons/md"
-import { FaPiggyBank } from "react-icons/fa6"
+import { FaPiggyBank, FaClock, FaShareNodes } from "react-icons/fa6"
+import { BsPeopleFill } from "react-icons/bs";
+import { IoChatbubbleEllipses } from "react-icons/io5";
+import { FaKey } from "react-icons/fa6";
 
 export async function getStaticProps({locale}:GetStaticPropsContext) {return {props: {messages: require(`../lang/${locale}.json`)}}}
 
@@ -73,14 +75,34 @@ const Pricing =()=>{
     //ICON AND INTEGRATION EXPLANATION
     const IntegrationComponent = ({icon, title, description}:{icon:IconType, title:string, description:string}) => {
         return(  
-        <Flex flex='1' gap='10px' mt='5vh'>
+        <Flex bg='brand.gray_1' flex='1' gap='10px' p='15px' borderRadius={'calc(0.4rem - 4px)'}>
             <Icon color='brand.text_blue' boxSize={'25px'} mt='.2em' as={icon}/>
             <Box>
                 <Text>{title}</Text>
-                <Text  fontWeight={300} fontSize={{ base: '.7em',sm:'.7em', md: '.75em', lg: '.8em' }}color="gray.600"  overflowWrap="break-word" whiteSpace="pre-wrap">{description}</Text>
+                <HighlightText text={description} color1='rgb(100, 116, 145)' color2='rgb(5, 102, 255)' bold fontSize={{ base: '.7em',sm:'.7em', md: '.75em', lg: '.8em' }}/>
             </Box>
         </Flex>)
     }
+
+    const FeatureComponent = ({icon, title}:{icon:IconType, title:string}) => {
+        return(  
+            <Flex  flex='1' alignItems='center' bg='rgb(31, 68, 104)' p='15px' borderRadius={'calc(0.4rem - 4px)'} gap='10px'>
+                <Icon as={icon}/>
+                <Text fontWeight={500} fontSize={{base: '1em',sm:'1.1em', md: '1.2em', lg: '1em' }} color='white'>{title} </Text>
+            </Flex>
+            )
+ 
+    }
+
+    const PriceComponent = ({title, price}:{price:string, title:string}) => {
+        return(  
+        <Box  flex='1' textAlign={'center'} bg='brand.gray_1' p='15px' borderRadius={'calc(0.7rem - 5px)'}>
+            <Text fontSize={{base: '1.4em',sm:'1.6em', md: '1.8em', lg: '2em' }} fontWeight={500}>{price}</Text>
+            <HighlightText text={title} color1='rgb(100, 116, 145)' color2='rgb(5, 102, 255)' bold fontSize={{ base: '.7em',sm:'.7em', md: '.75em', lg: '.8em' }}/>
+        </Box>
+        )
+    }
+
     return(<> 
 
         <Head>
@@ -88,51 +110,80 @@ const Pricing =()=>{
             <meta name="description" content="Impulsa tu negocio con soluciones de IA. Mejora la atención al cliente, aumenta las ventas proactivas y envía correos masivos personalizados con nuestra tecnología innovadora. Descubre cómo la inteligencia artificial puede transformar tu empresa."/>
         </Head>
 
-        <Flex flexDir='column' width={'100vw'} alignItems={'center'}  bg='brand.gray_1'> 
-            <Box   width="100%" position={'relative'} px='4vw' color='black' textAlign={'center'} pb={{ base: "5vh", md: "6vh", lg: "7vh", xl: "8vh" }} pt={{ base: "10vh", md: "11vh", lg: "13vh", xl: "15vh" }}  maxW="1200px" >
+        <Flex bg='brand.white_bg' flexDir='column' width={'100vw'} alignItems={'center'}  > 
+            <Box   width="100%" position={'relative'} px='4vw'  textAlign={'center'} pb={{ base: "5vh", md: "6vh", lg: "7vh", xl: "8vh" }} pt={{ base: "10vh", md: "11vh", lg: "13vh", xl: "15vh" }}  maxW="1200px" >
                 <Flex alignItems={'center'}  flexDir={'column'} > 
                     <Text color='brand.text_blue' fontWeight={'medium'} fontSize={{base: '1.2em',sm:'1.3em', md: '1.4em', lg: '1.5em' }} >{t('PreTitle')}</Text> 
                     <Text fontSize={{ base: '2.2em',sm:'2.5em', md: '2.8em', lg: '3em' }} fontWeight="medium" overflowWrap="break-word" whiteSpace="pre-wrap" >{t('Title')}</Text>   
-                    <Text mt='30px' maxW={'800px'} fontWeight={300} fontSize={{base: '.8em',sm:'.8em', md: '.9em', lg: '1em' }}color="brand.text_gray"   overflowWrap="break-word" whiteSpace="pre-wrap">
-                            {t('SubTitle')}
-                    </Text>
+                 
                 </Flex>
             </Box>
         </Flex>
         
-        <Flex px='4vw' width={'100vw'}  justifyContent={'center'}  mt={{ base: "4vh", md: "4vh", lg: "5vh", xl: "6vh" }}   >
-            <Box  width="100%" overflow={'hidden'} textAlign={'center'}  maxW="1200px"  >
-                <Text fontSize={{ base: '1.5em',sm:'1.6em', md: '1.8em', lg: '2em' }} fontWeight="medium" overflowWrap="break-word" whiteSpace="pre-wrap" color={'brand.clear_black'} >
-                    {t('Integration_Title')}
-                </Text>
+        <Box width={'100%'} mt='-20vh' position='absolute' zIndex={1} height={'70vh'} bg='linear-gradient(to right, rgba(0, 123, 255,0.8), rgba(33, 180, 253,0.7))' clipPath= 'polygon(0 65%, 100% 0, 100% 35%, 0 100%)'/>
+      
+        <Flex px='4vw' width={'100vw'}  bg='brand.white_bg' justifyContent={'center'}   >
 
-                <Flex  bg='brand.gray_1' shadow={'lg'} width="100%" alignItems={'center'} flexDir={{ base: 'column',sm:'column', md: 'column', lg:'row' }}  gap={{ base: '30px',sm:'50px', md: '80px', lg: '100px' }}  textAlign={'start'} mt={{ base: '1vh',sm:'1vh', md: '2vh', lg: '2vh' }} p='30px'  borderRadius={'1rem'} borderColor={'brand.gray_2'} borderWidth={'1px'} maxW="1200px" >
-                    <Box  flex='5'> 
-                        <Text fontSize={{base: '1em',sm:'1.1em', md: '1.2em', lg: '1.3em' }} whiteSpace="no-wrap">
-                            {t('Integration_Title_2')}
-                        </Text>
-                        <Text mt='5px'  fontWeight={300} fontSize={{ base: '.7em',sm:'.7em', md: '.75em', lg: '.8em' }}color="gray.600"  overflowWrap="break-word" whiteSpace="pre-wrap">
-                            {t('Integration_Subtitle')}
-                        </Text>
-                        <Flex flexDir={{ base: 'column',sm:'column', md: 'row' }}>
-                            <IntegrationComponent icon={TbCurrencyDollarOff} title={t('Integration_Feature_1')}  description={t('Integration_Feature_Description_1')}/>
-                            <IntegrationComponent icon={MdIntegrationInstructions} title={t('Integration_Feature_2')}  description={t('Integration_Feature_Description_2')}/>
+            <Flex maxW={'1200px'}gap={{base: '25px',sm:'35px', md: '50px', lg: '60px'}}> 
+                <Box flex='2'  bg='white' zIndex={2} boxShadow={'lg'}  flexDir={{ base: 'column',sm:'column', md: 'column', lg:'row' }}  p='4px'  borderRadius={'.4rem'}  maxW="1000px" >
+
+                    <Flex height={'100%'}  flexDir={{ base: 'column',sm:'column', md: 'column', lg:'row' }}  >
+                        <Flex flexDir={'column'}justifyContent={'space-between'}  p='20px' flex='1'> 
+                            <Box flex='1'> 
+                                <Text  fontSize={{base: '1em',sm:'1.1em', md: '1.2em', lg: '1.3em' }} whiteSpace="no-wrap">
+                                    {t('Integration_Title_2')}
+                                </Text>
+                                <HighlightText text={ t('Integration_Subtitle')} color1='rgb(100, 116, 145)' color2='rgb(5, 102, 255)' bold fontSize={{ base: '.7em',sm:'.7em', md: '.75em', lg: '.8em' }}/>
+                                <Flex mt='15px' flex='1' alignItems='center'  gap='10px'>
+                                    <Icon as={BsPeopleFill} color={'brand.text_blue'}/>
+                                    <Text fontSize={{ base: '.7em',sm:'.7em', md: '.75em', lg: '.8em' }} color='brand.button_black'>{t('UnlimitedUsers')} </Text>
+                                </Flex>
+                                <Flex mt='5px'   flex='1' alignItems='center' gap='10px'>
+                                    <Icon as={FaKey} color={'brand.text_blue'}/>
+                                    <Text fontSize={{ base: '.7em',sm:'.7em', md: '.75em', lg: '.8em' }} color='brand.button_black'>{t('AccessFeatures')} </Text>
+                                </Flex>
+                                <Flex mt='5px'   flex='1' alignItems='center' gap='10px'>
+                                    <Icon as={IoChatbubbleEllipses} color={'brand.text_blue'}/>
+                                    <Text fontSize={{ base: '.7em',sm:'.7em', md: '.75em', lg: '.8em' }} color='brand.button_black'>{t('AnyChannel')} </Text>
+                                </Flex>
+                            </Box>   
                         </Flex>
-                        <Flex flexDir={{ base: 'column',sm:'column', md: 'row' }}>
-                            <IntegrationComponent icon={FaPiggyBank} title={t('Integration_Feature_3')}  description={t('Integration_Feature_Description_3')}/>
-                            <IntegrationComponent icon={MdOutlineDoubleArrow} title={t('Integration_Feature_4')}  description={t('Integration_Feature_Description_4')}/>
+
+                        <Flex flexDir={'column'} justifyContent={'space-between'} gap='4px'  flex='1' >
+                            <PriceComponent price={'0.7€'} title={t('SolvedTicket')}  />
+                            <PriceComponent price={'0.12€'} title={t('ManagedTicket')} />
                         </Flex>
-                    </Box>
-                    <Flex flexDir={'column'} alignItems={'center'} flex='1'> 
-                        <Image width={'150px'} src='/images/ai-first.png'/>
-                        <Button mt='30px' px='40px' py='25px' fontWeight={400} fontSize={'1.2em'} color='white' bg='brand.black_button' onClick={() => router.push('contact')} _hover={{bg:'brand.black_button_hover'}} borderRadius={'1rem'}>{t('Integration_Button')}</Button>
+                    </Flex>
+
+                </Box>
+
+                <Box flex='2'  bg='brand.black_button' zIndex={2} boxShadow={'lg'}  flexDir={{ base: 'column',sm:'column', md: 'column', lg:'row' }}  p='4px'  borderRadius={'.4rem'}  maxW="1000px" >
+                <Flex height={'100%'}  color='white' flexDir={{ base: 'column',sm:'column', md: 'column', lg:'row' }} >
+                    <Flex flexDir={'column'} justifyContent={'space-between'}  p='20px' flex='1'> 
+                        <Box flex='1'> 
+                            <Text  fontSize={{base: '1em',sm:'1.1em', md: '1.2em', lg: '1.3em' }} whiteSpace="no-wrap">
+                                {t('IntegrationStudie')}
+                            </Text>
+                            <HighlightText text={ t('IntegrationStudieDes')} color1='rgb(245, 247, 249)' color2='#00CFFF' bold fontSize={{ base: '.7em',sm:'.7em', md: '.75em', lg: '.8em' }}/>
+
+                            <HighlightText text={ t('IntegrationStudieDes2')} color1='rgb(245, 247, 249)' color2='#00CFFF' bold fontSize={{ base: '.7em',sm:'.7em', md: '.75em', lg: '.8em' }}/>
+                        </Box>
+                        <Button size='sm' width={'100%'} fontWeight={400}  color='brand.black_button' bg='white' onClick={() => router.push('contact')} _hover={{bg:'brand.gray_1'}} borderRadius={'.5rem'}>{t('Integration_Button')}</Button>
+                    </Flex>
+
+                    <Flex flexDir={'column'} gap='4px' flex='1' >
+                        <FeatureComponent icon={FaClock} title={t('Integration_Feature_4')} />
+                        <FeatureComponent icon={TbCurrencyDollarOff} title={t('Integration_Feature_1')} />
+                        <FeatureComponent icon={FaShareNodes} title={t('Integration_Feature_2')}  />
+                        <FeatureComponent icon={FaPiggyBank} title={t('Integration_Feature_3')} />
                     </Flex>
                 </Flex>
-            </Box>
 
+                </Box>
+            </Flex>
         </Flex>
     
-        <Flex px='4vw' alignItems={'center'} flexDir={'column'}   py={{ base: "4vh", md: "4vh", lg: "6vh", xl: "8vh" }} >
+        <Flex px='4vw' bg='brand.white_bg' alignItems={'center'} flexDir={'column'}   py={{ base: "4vh", md: "4vh", lg: "6vh", xl: "8vh" }} >
             <Text fontSize={{ base: '1.5em',sm:'1.6em', md: '1.8em', lg: '2em' }} fontWeight="medium" overflowWrap="break-word" whiteSpace="pre-wrap" color={'brand.clear_black'} >
                 {t('EstimateTitle')}
             </Text>
@@ -142,7 +193,7 @@ const Pricing =()=>{
                 <Text  fontSize={{base: '1em',sm:'1.1em', md: '1.2em', lg: '1.3em' }}fontWeight={400}>{t('EstimateTickets')}</Text>
             </Box>
 
-            <Flex position={'relative'} fontSize={'.9em'} borderRadius={'2em'} p='.2em' bg='brand.gray_1' mt={{ base: '1vh',sm:'1vh', md: '2vh', lg: '2vh' }} display={'inline-flex'}>    
+            <Flex position={'relative'} fontSize={'.9em'} borderRadius={'2em'} p='.2em' bg='brand.gray_2' mt={{ base: '1vh',sm:'1vh', md: '2vh', lg: '2vh' }} display={'inline-flex'}>    
                 
                 <Flex position='absolute' height='calc(100% - 8px)' bg='white' borderRadius={'calc(2em - 4px)'} transition={'all 0.3s ease'} style={{width: `${indicatorStyle.width}px`, left: `${indicatorStyle.left}px`}}/>
                 <Flex position={'relative'}  cursor='pointer'  id={`section-btn-${0}`} p='10px'  onClick={() => setPaymentMethod(0)}>
@@ -158,7 +209,7 @@ const Pricing =()=>{
 
             <Grid templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(2, 1fr)", lg: "repeat(4, 1fr)" }} mt={{ base: '2vh',sm:'2vh', md: '3vh', lg: '4vh' }}   gap={'20px'} width="100%" maxW={'1200px'}>
                 {plansNames.map((element, index) => (
-                    <Box shadow={'md'}  textAlign={'center'} borderColor={'gray.200'} borderWidth={'1px'} p='20px' borderRadius={'1em'}>
+                    <Box shadow={'md'} bg='white' textAlign={'center'} borderColor={'gray.200'} borderWidth={'1px'} p='20px' borderRadius={'1em'}>
                         <Text fontSize={{base: '1em',sm:'1.2em', md: '1.3em', lg: '1.4em' }} >{element}</Text>
                         <Text  minH="80px" mt='10px' fontWeight={300} color={'brand.text_gray'} fontSize={{ base: '.7em',sm:'.7em', md: '.75em', lg: '.8em' }}>{plansDescriptions[index]}</Text>
 
@@ -194,7 +245,7 @@ const Pricing =()=>{
                 <Text color='blue.500' fontWeight={500}>{t('Step')} 2</Text>
                 <Text  fontSize={{base: '1em',sm:'1.1em', md: '1.2em', lg: '1.3em' }} fontWeight={400}>{t('EstimateMatildaPercentage')}</Text>
             </Box>
-            <Box shadow={'lg'}  mt={{ base: '1vh',sm:'1vh', md: '2vh', lg: '2vh' }} width="100%" alignItems={'center'} flexDir={{ base: 'column',sm:'column', md: 'row' }} textAlign={'start'}  p='30px 30px 90px 30px' bg='gray.50' borderRadius={'1rem'}  borderWidth={'1px'} maxW="1200px" >
+            <Box bg='white' shadow={'lg'}  mt={{ base: '1vh',sm:'1vh', md: '2vh', lg: '2vh' }} width="100%" alignItems={'center'} flexDir={{ base: 'column',sm:'column', md: 'row' }} textAlign={'start'}  p='30px 30px 90px 30px'  borderRadius={'1rem'}  borderWidth={'1px'} maxW="1200px" >
                 <Text   fontSize={{base: '1em',sm:'1.1em', md: '1.2em', lg: '1.3em' }} mb='2vh'>{t('TicketsByMatildaNum1')} <span style={{background:'#BEE3F8', borderRadius:'10rem', fontWeight:500, padding:'5px 11px 5px 11px'}}>{matildaPercentage}%</span> {t('TicketsByMatildaNum2')}</Text>
                 <Slider defaultValue={matildaPercentage} mb='1vh' mt='5vh' aria-label='slider-ex' onChange={(value) => setMatildaPercentage(value)} min={20} max={100}>
                     {Array.from(Array(9).keys()).map((markIndex:number) => (
