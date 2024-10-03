@@ -304,7 +304,7 @@ const Solutions = () =>{
                             <Text  zIndex={2}  color='brand.text_blue' fontWeight={'medium'} fontSize={{base: '1.2em',sm:'1.3em', md: '1.4em', lg: '1.5em' }} >{t('PreTitle')}</Text> 
                         </ScrollAnimation>
 
-                        <Text fontSize={{ base: '2.2em',sm:'2.5em', md: '2.8em', lg: '3em' }} fontWeight="medium" overflowWrap="break-word" whiteSpace="pre-wrap" >
+                        <Text fontSize={{ base: '2.5em',sm:'2.8em', md: '3.1em', lg: '3.5em' }} fontWeight="medium" overflowWrap="break-word" whiteSpace="pre-wrap" >
                             <AnimatedText text={t('Title')}/>
                         </Text>
                         

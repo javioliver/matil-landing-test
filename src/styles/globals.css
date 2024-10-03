@@ -393,3 +393,24 @@ transform: rotate(0deg)
 .bounce {
   animation: bounce 0.1s ease-in-out; /* Duración y tipo de animación */
 }
+
+
+
+/* shape divider - add this to the container holding the HTML widget */
+
+selector {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 33%, 0% 60%);
+}
+
+
+
+/* add this to the HTML widget custom CSS section */
+
+#gradient-canvas {
+	position: absolute;
+	height: 100vh;
+	width: 100%;
+	background: lightgrey;
+}
+
+

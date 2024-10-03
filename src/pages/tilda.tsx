@@ -3,6 +3,12 @@ import Head from 'next/head'
 import { GetStaticPropsContext } from 'next'
 //REACT
 import { useState, useEffect, useMemo } from 'react'
+import MeshGradient from 'mesh-gradient.js';
+const COLORS =   ["#eb75b6",
+"#ddf3ff",
+"#6e3deb",
+"#c92f3c"]
+import MeshGradientBackground from '@/Content/Gradient/gradient';
 //TRANSLATION
 import { useTranslations } from 'next-intl'
 //FRONT
@@ -14,6 +20,7 @@ import Footer from '@/Content/Components/footer'
 import FAQS from '@/Content/Components/faqs'
 import AnimatedText from '@/Content/Widgets/AnimatedText'
 import Chatbot from '@/Content/Widgets/Chatbot'
+
 //ICONS
 import { GiVelociraptor } from "react-icons/gi"
 import { FaChartPie, FaClipboardCheck, FaLanguage, FaFile, FaDatabase } from "react-icons/fa6"
@@ -22,6 +29,26 @@ import { MdMarkChatUnread } from "react-icons/md"
 
 const Matilda =()=>{
 
+
+    const gradient = new MeshGradient();
+    const canvasId = "my-canvas"
+  
+    useEffect(() => {
+        // Inicializa el gradiente
+        gradient.initGradient("#" + canvasId, COLORS);
+    
+        // Inicia un intervalo para mover el mesh cada 100ms
+        const interval = setInterval(() => {
+          const randomValue = Math.floor(Math.random() * 1000); // Genera un valor aleatorio para el mesh
+          gradient.changePosition(randomValue); // Cambia la posición del mesh
+        }, 6000); // Cambia el valor de tiempo para controlar la velocidad de la animación
+    
+        // Limpia el intervalo cuando el componente se desmonte
+        return () => {
+          clearInterval(interval);
+        };
+      }, [gradient]);
+    
     //TRANSLATION
     const t = useTranslations('Matilda')
     const t_chats = useTranslations('Chats')
@@ -44,7 +71,7 @@ const Matilda =()=>{
                 [2000, { text: t_chats('Chat_29'), botMessage: true }]
             ],
             [
-                [1000, { text: t_chats('Chat_21'), botMessage: false }],
+                [1000, { text: t_chats('Chat_31'), botMessage: false }],
                 [100, { text: t_chats('Chat_32'), botMessage: true }],
                 [2500, { text: t_chats('Chat_33'), botMessage: false }],
                 [100, { text: t_chats('Chat_34'), botMessage: true }],
@@ -78,30 +105,19 @@ const Matilda =()=>{
             return () => clearInterval(interval)
         }, [currentChat])
 
-        const imagesList = ['clothes_store.jpg', 'computer_store.jpg', 'bank.jpg']
 
         const chatContent = useMemo(() => (
             <Chatbot currentChat={chats[currentChat]} />
-        ), [currentChat]);
+        ), [currentChat])
 
         return(
-        <Box mt={{ base: "10vh", md: "12vh", lg: "15vh", xl: "18vh" }} textAlign={'start'}>
-            <Flex position={'relative'} justifyContent={'center'}> 
-                <Image zIndex={1} width="96vw"  height={'400px'} borderRadius="1rem" maxW="1200px" src={`/images/${imagesList[currentChat]}`} objectFit="cover" />
-                <Box position={'absolute'} zIndex={100}  height={{base: '330px',sm:'350px', md: '450px', lg: '480px'}} width={{base: '280px',sm:'280px', md: '330px', lg: '330px' }}  bottom={0} borderRadius={'1rem 1rem 0 0'}  overflow={'hidden'} bg='white' >
+        <Flex flex={'1'} justifyContent={'center'}   mt={{ base: "6vh", md: "7vh", lg: "8vh", xl: "10vh" }} >
+            <ScrollAnimation animateIn="fadeIn" animateOnce > 
+                <Box bg='white' borderColor={'#eaebee'} borderWidth={'7px'} height={'590px'}  width={'310px'}   borderRadius={'2rem'}  overflow={'hidden'} boxShadow={'0 44px 89px -18px rgba(50,50,93,.35),0 26px 54px -26px rgba(0,0,0,.3),inset 0 -1px 3px 0 rgba(10,37,64,.35)'} >
                     {chatContent}
                 </Box>
-            
-            </Flex>  
-            
-            <Flex mt='50px' justifyContent="center" gap='20px'>
-                {progress.map((value, index) => (
-                    <Box cursor={'pointer'} onClick={() => setCurrentChat(index)} key={`progress_bar-${index}`} bg='gray.300' borderRadius={'1rem'}  height={'5px'}  width={'70px'} overflow="hidden" position="relative">
-                        <Box bg='brand.text_blue'  height='100%' width={`${value}%`} transition="width 0.3s ease"/>
-                    </Box>
-                ))}
-            </Flex>
-        </Box>)
+            </ScrollAnimation>
+        </Flex>)
     }
 
     //FAQS LIST
@@ -113,34 +129,31 @@ const Matilda =()=>{
             <meta name="description" content="Impulsa tu negocio con soluciones de IA. Mejora la atención al cliente, aumenta las ventas proactivas y envía correos masivos personalizados con nuestra tecnología innovadora. Descubre cómo la inteligencia artificial puede transformar tu empresa."/>
         </Head>
 
-        <Flex flexDir='column' width={'100vw'} alignItems={'center'}>
+        <Flex flexDir='column' width={'100vw'} alignItems={'center'} bg='brand.white_bg'>
            
             {/*HERO AND EXAMPLES CHATS COMPONENT*/}
-            <Flex flexDir='column' width={'100vw'} alignItems={'center'} bgGradient={'linear-gradient(to bottom, #ffffff, #EDF2F7)'}> 
-                <Box   width="100%" position={'relative'} px='4vw' color='black' textAlign={'center'} py={{ base: "10vh", md: "12vh", lg: "15vh", xl: "17vh" }}  maxW="1200px" >
-                    <Flex alignItems={'center'}  flexDir={'column'} > 
-
-                        <ScrollAnimation animateIn="fadeIn" animateOnce >
-                            <Text color='brand.text_blue' fontWeight={'medium'} fontSize={{base: '1.2em',sm:'1.3em', md: '1.4em', lg: '1.5em' }} >Matilda</Text> 
-                        </ScrollAnimation>
-
-                        <Text fontSize={{ base: '3em',sm:'3.3em', md: '4em', lg: '4.5em' }} fontWeight="medium" overflowWrap="break-word" whiteSpace="pre-wrap" >
-                            <AnimatedText text={t('Hero')}/>
-                        </Text>
-                        
-                        <ScrollAnimation animateIn="fadeInUp" animateOnce delay={t('Hero').split(' ').length * 40}> 
-                            <Text mt='30px' maxW={'800px'} fontWeight={300} fontSize={{base: '.8em',sm:'.8em', md: '.9em', lg: '1em' }} color="brand.gray"  overflowWrap="break-word" whiteSpace="pre-wrap">
-                                {t('Subhero')}
+            <Flex flexDir='column' width={'100vw'} alignItems={'center'}> 
+                <Flex maxW={'1200px'}> 
+                    <Box flex={'1'}  width="100%" position={'relative'} px='4vw' color='black'  py={{ base: "10vh", md: "12vh", lg: "15vh", xl: "17vh" }}  maxW="1200px" >
+                        <Flex  zIndex={2}  flexDir={'column'} > 
+                            <Text fontSize={{ base: '2.5em',sm:'2.8em', md: '3.1em', lg: '3.5em' }}  fontWeight="medium" overflowWrap="break-word" whiteSpace="pre-wrap" >
+                                <AnimatedText text={t('Hero')}/>
                             </Text>
-                        </ScrollAnimation>
-                    </Flex>
-                    <MatildaChatsComponent/>  
-                </Box>
+                            <ScrollAnimation animateIn="fadeInUp" animateOnce delay={t('Hero').split(' ').length * 70 + 300}> 
+                                <Text mt='10px' maxW={'800px'} fontWeight={300} fontSize={{base: '.8em',sm:'.8em', md: '.9em', lg: '1em' }}color="brand.text_gray"   overflowWrap="break-word" whiteSpace="pre-wrap">
+                                    {t('Subhero')}
+                                </Text>
+                            </ScrollAnimation>
+                        </Flex>
+                     </Box>
+                     <MatildaChatsComponent/>  
+                </Flex>
             </Flex>
-
+            <MeshGradientBackground/>
+              
  
+
             {/*MATILDA ADVANTAGES*/}
-            <Flex bg='white' px='4vw' width="100vw"  flexDir={'column'}  alignItems={'center'}  py={{ base: "5vh", md: "7vh", lg: "10vh", xl: "12vh" }}> 
         
                 {/*FIRST LINE*/}
                 <Flex maxW="1000px" width="100%"  gap={{ base: "30px", md: "30px", lg: "40px", xl: "50px" }} flexDir={{ base: "column", md: "column", lg: "row", xl: "row" }}>
@@ -224,7 +237,7 @@ const Matilda =()=>{
                     </ScrollAnimation >
                 </Flex>
               
-            </Flex>
+ 
 
             {/*MATILDA FEATURES*/}
             <Flex  bg='rgb(0, 20, 51)' clipPath='polygon(0 100px, 100% 0, 100% 100%, 0 100%)' width={'100vw'} justifyContent={'center'} px='4vw' > 

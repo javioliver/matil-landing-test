@@ -41,7 +41,7 @@ const Header=({isComputerWidth}:{isComputerWidth:boolean})=>{
 
   //SECTIONS THAT HAS A WHITE BACKGROUND AND THE HEADER TEXT WILL BE BLACK
   const pathname = router.pathname
-  const blackTextSections = ['/matilda', '/super-service', '/integrations', '/channels', '/platforms', '/pricing', '/solutions']
+  const blackTextSections = ['/tilda', '/super-service', '/integrations', '/channels', '/platforms', '/pricing', '/solutions']
 
   //MOTION BOX
   const MotionFlex = motion(Box)

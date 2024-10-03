@@ -90,7 +90,10 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
   }, [])
 
+  
+
   return (
+    
     <NextIntlClientProvider locale={router.locale} timeZone="Europe/Paris" messages={pageProps.messages}>
       <ChakraProvider theme={theme}>
         <main className={myFont.className}>

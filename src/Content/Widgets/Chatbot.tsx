@@ -195,7 +195,7 @@ const Chatbot = ({ currentChat }:ChatbotProps) =>{
             
                 <div style={{display:'flex', gap:'3%', flex:'1', alignItems:'center'}}>
                     <div style={{display:'flex', alignItems:'center', flexDirection:'row', gap:'15px', marginTop:'10px'}} >    
-                        <img src='/images/Isotipo.svg' height="25px" width="25px" />
+                        <img src='/images/matil-simple-white.svg' height="19px" width="19px" />
                         <span style={{color:'white', fontWeight:500,  whiteSpace: 'nowrap',textOverflow: 'ellipsis', fontSize:'1.4em' }} >MATIL</span>
                     </div>
                 </div>
@@ -225,7 +225,7 @@ const Chatbot = ({ currentChat }:ChatbotProps) =>{
                     <Flex fontWeight={300} fontSize={'.9em'}  gap='10px' key={index} width={'100%'}  mt = {index == 0 ? '0px' : (message.botMessage == messages[index - 1].botMessage? '3px':'15px')} alignItems={'end'} flexDir={message.botMessage ? 'row':'row-reverse'} animation = {message.botMessage ? 'expandFromLeft 0.5s ease-out' : 'expandFromRight 0.5s ease-out'}>
                         {(message.botMessage && !isNextMessageBot)&& 
                         
-                        <Image src='/images/Isotipo.svg' width='20px'/>}
+                        <Image src='/images/matilda.svg' width='20px'/>}
                         <Box  maxW='80%' ml={(message.botMessage && !isNextMessageBot)?'0':'30px'} bg={message.botMessage?'gray.100':'linear-gradient(to right, #5B88F1, #76C8DF)'} color={message.botMessage?'black':'white'} p = '8px' borderRadius = {message.botMessage ? (isNextMessageBot && isLastMessageBot)? '.2rem .7rem .7rem .2rem' : isNextMessageBot?'.7rem .7rem .7rem .2rem': isLastMessageBot ? '.2rem .7rem .7rem .7rem':'.7rem' : (!isNextMessageBot && !isLastMessageBot && !isLastMessage)? '.7rem .2rem .2rem .7rem' : (isNextMessageBot || isLastMessage)?'.7rem .2rem .7rem .7rem':'.7rem .7rem .2rem .7rem'}>
                             {message.text === 'Cargando...' ?
                             <div className="writing-animation">
