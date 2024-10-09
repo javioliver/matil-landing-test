@@ -66,6 +66,20 @@ const theme = extendTheme({
       text_gray:'rgb(100, 116, 145)'
     },
   },
+  fontSizes: {
+    '3xs': 'clamp(9px, 1.3vw + 4px, 11px)',
+    '2xs': 'clamp(12px, 1.6vw + 4px, 13px)', 
+    xs: 'clamp(14px, 2vw + 4px, 16px)', 
+    sm: 'clamp(16px, 2.5vw + 4px, 18px)',
+    md: 'clamp(18px, 3vw + 4px, 20px)',
+    lg: 'clamp(20px, 3.5vw + 4px, 24px)',
+    xl: 'clamp(22px, 4vw + 4px, 28px)',
+    '2xl': 'clamp(24px, 5vw + 4px, 32px)',
+    '3xl': 'clamp(30px, 6vw + 4px, 40px)',
+    '4xl': 'clamp(36px, 7vw + 4px, 48px)',
+    '5xl': 'clamp(42px, 8vw + 4px, 56px)',
+    '6xl': 'clamp(56px, 9vw + 4px, 72px)',
+  },
   styles: {
     global: {
       body: {color: 'rgb(0, 20, 51)'}

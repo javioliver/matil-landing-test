@@ -19,7 +19,7 @@ import { IoFileTrayFull, IoPricetags, IoHeadset } from "react-icons/io5"
 
 
 //HEADER SECTIONS COMPONENT
-const HeaderSection = ({t, router, section}:{t:any, router:any, section:'Tilda' | 'Integrations' | 'Pricing' | 'Solutions' }) => {
+const HeaderSection = ({t, router, section}:{t:any, router:any, section:'Tilda' | 'Platform' | 'Pricing' | 'Solutions' }) => {
 
   //BOOLEAN FOR SHOW THE SECTION BOX
   const [isHovering, setIsHovering] = useState<boolean>(false)
@@ -33,7 +33,7 @@ const HeaderSection = ({t, router, section}:{t:any, router:any, section:'Tilda' 
 
 
 
-const Header=({isComputerWidth}:{isComputerWidth:boolean})=>{
+const Header = ({isComputerWidth}:{isComputerWidth:boolean})=>{
 
   //ROUNTING AND TRANSLATION CONSTANTS
   const router = useRouter()
@@ -41,7 +41,7 @@ const Header=({isComputerWidth}:{isComputerWidth:boolean})=>{
 
   //SECTIONS THAT HAS A WHITE BACKGROUND AND THE HEADER TEXT WILL BE BLACK
   const pathname = router.pathname
-  const blackTextSections = ['/tilda', '/super-service', '/integrations', '/channels', '/platforms', '/pricing', '/solutions']
+  const blackTextSections = ['/tilda', '/integrations', '/channels', '/platform', '/pricing', '/solutions']
 
   //MOTION BOX
   const MotionFlex = motion(Box)
@@ -54,25 +54,24 @@ const Header=({isComputerWidth}:{isComputerWidth:boolean})=>{
   const handleScroll = () => {
       const scrollY = window.scrollY
       const newScrollProgress = Math.min(scrollY / 200, 1)
- 
       const headerWidth = `${100 - newScrollProgress * 15}%`
       const backgroundColor = `rgba(256, 256, 256, ${newScrollProgress/1.1})`
       const boxShadow = `0 4px 8px rgba(0, 0, 0, ${newScrollProgress * 0.05})`
-
       if ( headerRef.current) {
         headerRef.current.style.backgroundColor = backgroundColor
         headerRef.current.style.boxShadow = boxShadow
         headerRef.current.style.width = headerWidth
       }
-     
   }
   useEffect(() => {
     window.addEventListener('scroll', handleScroll)
     return () => {window.removeEventListener('scroll', handleScroll)}
   }, [])
 
-  return( 
-      <Flex width={'100vw'} bg='green'  justifyContent={'center'} position={'fixed'} top={0} left={0} zIndex={1000000}> 
+  return( <> 
+
+  
+      <Flex width={'100vw'} justifyContent={'center'} position={isComputerWidth?'fixed':'absolute'} top={0} left={0} zIndex={1000000}> 
         <Flex maxW={'1200px'} width={'100%'} justifyContent={'center'} position={'relative'}> 
           {isComputerWidth ? 
 
@@ -84,7 +83,7 @@ const Header=({isComputerWidth}:{isComputerWidth:boolean})=>{
                 </Flex>
                 <Flex gap='3vw' alignItems={'center'}> 
                   <HeaderSection t={t} router={router} section={'Tilda'}/>
-                  <HeaderSection t={t} router={router} section={'Integrations'}/>
+                  <HeaderSection t={t} router={router} section={'Platform'}/>
                   <HeaderSection t={t} router={router} section={'Pricing'}/>
                   <HeaderSection t={t} router={router} section={'Solutions'}/>
                 </Flex>
@@ -92,7 +91,7 @@ const Header=({isComputerWidth}:{isComputerWidth:boolean})=>{
                   <Flex gap='10px' >                  
                     <ArrowButton onClick={() => router.push('contact')} text={t('Contact')} bg='transparent' color='brand.text_blue' hover={{bg:'transparent', color:'brand.text_blue'}} fontSize={{base: '.7em',sm:'.7em', md: '.8em', lg: '.9em'}}/>
                     <ArrowButton onClick={() => window.open('https://superservice.matil.es/', '_blank')} text={t('Sign in')} bg='brand.black_button' color='white' hover={{bg:'brand.black_button_hover', color:'brand.gray_1'}} fontSize={{base: '.7em',sm:'.7em', md: '.8em', lg: '.9em'}}/>       
-                   </Flex>
+                  </Flex>
           </Flex>
           :
           <Flex mt={'5vh'} bg={'transparent'} width={'100%'}  color={blackTextSections.includes(pathname)?'brand.black_button':'white'} borderRadius={'1rem'} px={{ base: '20px', sm: '30px', md: '50px' }} maxW='1200px' justifyContent='space-between' alignItems='center'  >
@@ -174,7 +173,7 @@ const Header=({isComputerWidth}:{isComputerWidth:boolean})=>{
           </Flex>}
         </Flex>
        </Flex>
-    )
+       </>)
 }
 
 export default Header

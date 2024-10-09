@@ -17,8 +17,8 @@
         "More_platforms":"Ver todas las plataformas",
         "More_channels":"Ver todos los canales",
         "Privacy":"Política de Privacidad",
-        "Cookies":"Política de Cookies"
-
+        "Cookies":"Política de Cookies",
+        "Platform":"Plataforma"
     },
     "Main": {
         "Hero_1":"La Nueva Era",
@@ -40,7 +40,34 @@
     },
     "Matilda": {
         "Hero":"Libera a tu equipo del 80% del trabajo con Matilda",
-        "Subhero":"Matilda es una IA especializada en tu negocio que se encarga de responder preguntas frecuentes y automatizar tareas repetitivas, permitiendo que tu equipo se concentre en lo que realmente importa.",
+        "Subhero":"Tilda es una IA especializada en tu negocio que se encarga de responder preguntas frecuentes y automatizar tareas repetitivas, permitiendo que tu equipo se concentre en lo que realmente importa.",
+        
+        "FeaturesTitle":"Respuestas Rápidas, Clientes Satisfechos: Automatiza y Optimiza tu Soporte",
+        "Automation":"Automatización de consultas",
+        "CSAT":"Aumento en el CSAT",
+        "ResponseTime":"Reducción en tiempos de respuesta",
+        "Atention":"Atención 24h e instantánea",
+        "AtentionDes":"Tilda puede ofrecer /respuestas instantáneas/ las /24 horas del día/, asegurando que nunca dejes de atender a tus clientes.",
+        "MultiLanguage":"Internacionaliza tu negocio",
+        "MultiLanguageDes":"Tilda se integra con /cualquier canal/ y entiende y contesta en /decenas/ de /idiomas/, lo que facilita la comunicación con clientes de diferentes partes del mundo.",
+        "Productivity":"Aumenta la productividad",
+        "ProductivityDes":"Tilda puede ejecutar tareas como consultas a /bases de datos/, /envíos de mail/ y mucho más. De esta manera, se /libera/ al equipo de estas /tareas repetitivas/ y se /elimina/ la posibilidad de /error humano/.",
+        "Analytics":"Entiende a tus clientes",
+        "AnalyticsDes":"Tilda /detecta/, /extrae/ y /almacena/ la /intención/ de tus clientes, para ofrecerte un /análisis detallado/ que te permita /conocer/ con estadísticas sus /necesidades/.",
+        "IntegrationTitle":"Integración 100% a medida",
+        "IntegrationTitleDes":"Explora cómo nuestro proceso de integración personalizado asegura que Tilda y nuestra plataforma funcionen sinérgicamente con tu estructura empresarial, mejorando significativamente tu rendimiento y resultados.",
+        "Study":"Análisis inicial detallado",
+        "StudyDes":"Realizamos un /análisis exhaustivo/ para entender tus procesos y estructuras actuales, asegurando que /captamos/ las /necesidades específicas/ de tu negocio.",
+        "Development":"Desarrollos de soluciones personalizadas",
+        "DevelopmentDes":"Diseñamos /soluciones a medida/ que se integran de manera fluida con tus sistemas, /mejorando/ la /eficiencia/ operativa y /automatizando tareas/ repetitivas.",
+        "Test":"Testeo y puesta en marcha",
+        "TestDes":"Realizamos un /testeo riguroso/ para validar que cada solución funcione sin contratiempos antes de su implementación, garantizando una /transición fluida/y un /rendimiento óptimo/ desde el primer día.",
+        "FollowUp":"Seguimiento y ajuste continuo",
+        "FollowUpDes":"Tras implementar Tilda, /proporcionamos formación/ y /hacemos/ los /ajustes/ necesarios para /optimizar/ su /funcionamiento/ según evolucionen tus necesidades.",
+        "OtherIntegrations":"Integra Tilda con los sistemas que ya usas",
+        "OtherIntegrationsDes":"Además de personalizar integraciones específicas para tu empresa, Tilda también se conecta de manera fluida con una amplia variedad de herramientas estándar del mercado. Esto incluye plataformas de comunicación, sistemas de gestión de proyectos, herramientas de CRM, y más. ",
+
+
         "Matilda_Title": "La IA que se adapta a tu negocio para ayudarte a crecer",
         "Matilda_Time":"Reduce los tiempos de primera respuesta",
         "Matilda_Time_Subtitle":"La rapidez es una pieza fundamental una atención al cliente satisfactoria. Matilda puede dar respuesta instantánea a múltiples clientes",

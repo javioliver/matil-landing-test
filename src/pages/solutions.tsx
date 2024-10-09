@@ -7,7 +7,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 //TRANSALATION
 import { useTranslations } from 'next-intl'
 //FRONT
-import { Flex, Box, Text, Image, Icon, Button, Grid, SliderMark, Slider, SliderFilledTrack, SliderTrack, SliderThumb } from '@chakra-ui/react'
+import { Flex, Box, Text, Image, Heading } from '@chakra-ui/react'
 import ScrollAnimation from "react-animate-on-scroll"
 import "animate.css/animate.compat.css"
 //COMPONENTS
@@ -77,7 +77,7 @@ const CustomMessages = ({index}:{index:number}) => {
     ]
 
     return (
-        <Box zIndex={100} width={'40%'} left={'30%'}  bottom={'10px'} position={'absolute'} >
+        <Box zIndex={100} width={{ base: '100%',sm:'100%', md: '70%', lg:'40%' }} left={{ base: '0',sm:'0', md: '15%', lg:'30%' }}  bottom={'10px'} >
             {messagesList[index].map((message, index) => {
                   const lines = message.content.split('\n');
 
@@ -85,7 +85,7 @@ const CustomMessages = ({index}:{index:number}) => {
                 <Flex w='100%' flexDir={message.sender?'row':'row-reverse'} key={`message-${index}`} >
                     <Box shadow={'lg'} px='10px' py='8px' mt='8px' maxW={'80%'} borderRadius={message.sender?'.2rem .7rem .7rem .7rem':'.7rem .2rem .7rem .7rem'} bg={message.sender?'brand.text_blue':'brand.gray_1'} > 
                          {lines.map((line, index2) => (
-                            <Text   key={`line-${index}-${index2}`}color={message.sender?'white':'brand.clear_black'}   fontSize={{base: '.55em',sm:'.55em', md: '.6em', lg: '.65em' }}>
+                            <Text   key={`line-${index}-${index2}`}color={message.sender?'white':'brand.clear_black'}   fontSize={'3xs'}>
                             {line}
                             {index < lines.length - 1 && <br />}
                             </Text>
@@ -100,12 +100,12 @@ const CustomMessages = ({index}:{index:number}) => {
 
 const UseBox = ({title, description, imageUrl, index}:{title:string, description:string, imageUrl:string, index:number}) => {
     return (<>
-        <Flex color='white'>
-            <Text flex='1' color='white' fontSize={{base: '1em',sm:'1.1em', md: '1.2em', lg: '1.3em' }} fontWeight={400}>{title}</Text>
-            <Text flex='1' color='brand.gray_1' fontSize={{base: '.6em',sm:'.6em', md: '.7em', lg: '.8em' }} fontWeight={300} >{description}</Text>
+        <Flex color='white' gap='10px' flexDir={{ base: 'column',sm:'column', md: 'row', lg:'row' }} textAlign={{ base: 'center',sm:'center', md: 'start', lg:'start' }}>
+            <Text flex='1' color='white' fontSize={'md'} fontWeight={400}>{title}</Text>
+            <Text flex='1' color='brand.gray_1' fontSize={'2xs'}fontWeight={300} >{description}</Text>
         </Flex>
-        <Flex justifyContent={'center'} position={'relative'}mt={{ base: "2vh", md: "2vh", lg: "2vh", xl: "8vh" }}> 
-            <Box position={'relative'} width={'100%'}>
+        <Flex justifyContent={'center'} position={'relative'} mt={'50px'}> 
+            <Box position={'absolute'} bottom={'0'} width={'100%'}>
                 <Box zIndex={99} bg={Math.trunc(index/3) === 1?'brand.text_blue':'brand.black_button'} opacity={Math.trunc(index/3) === 1?0.2:0.4} height={'100%'} width={'100%'} position='absolute' />
                 <Image zIndex={98} src={imageUrl} width={'100%'}  mt='20px'/>
             </Box>
@@ -114,7 +114,7 @@ const UseBox = ({title, description, imageUrl, index}:{title:string, description
     </>)
 }
 
-const ScrollableBoxes = ({businessTypeIndex}:{businessTypeIndex:number}) => {
+const ScrollableBoxes = ({businessTypeIndex, isComputerWidth}:{businessTypeIndex:number, isComputerWidth:boolean}) => {
 
    
     //TRANSLATION
@@ -144,7 +144,7 @@ const ScrollableBoxes = ({businessTypeIndex}:{businessTypeIndex:number}) => {
       const containerRef = useRef<HTMLDivElement>(null)
       const svgRef = useRef(null)
       useEffect(() => {
-          const path = svgRef.current ? svgRef.current.querySelector('.path') : null;
+          const path = svgRef.current ? (svgRef.current as any).querySelector('.path') : null;
   
           const activateAnimation = (entries:any, observer:any) => {
           entries.forEach((entry:any) => {
@@ -204,54 +204,54 @@ const ScrollableBoxes = ({businessTypeIndex}:{businessTypeIndex:number}) => {
       
     return (<>
      
-        <Flex  ref={containerRef} flexDir={'column'} alignItems={'center'} position={'relative'} > 
+    <Flex  ref={containerRef} flexDir={'column'} alignItems={'center'} position={'relative'} > 
 
-   <Box position='absolute' top={'65vh'}  right={svgStyles[businessTypeIndex].position === 'right'?`-${windowWidth - (containerRef.current?.getBoundingClientRect().right || 0)}px`:''}  left={svgStyles[businessTypeIndex].position === 'left'?`-${containerRef.current?.getBoundingClientRect().left}px`:''}  zIndex={1} width={svgStyles[businessTypeIndex].width} transition={'opacity 0.5s ease-in-out'}>
-      <svg  xmlns="http://www.w3.org/2000/svg"  viewBox={svgStyles[businessTypeIndex].viewBox} ref={svgRef} >
-                  <defs>
-                      <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="rgba(0, 102, 204, 1)" />
-                      <stop offset="100%" stopColor="rgb(0, 20, 51)" />
-                      </linearGradient>
-                  </defs>
-                  <defs>
-                  <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="rgb(5, 142, 255)" />
-                      <stop offset="100%" stopColor="rgb(5, 102, 255)" />
-                  </linearGradient>
-              </defs>
-                  <path
-                      className="path"
-                      fill="transparent"
-                      stroke={`url(#${svgStyles[businessTypeIndex].color})`}
-                      strokeWidth={svgStyles[businessTypeIndex].strokeWidth}
-                      strokeLinejoin="bevel" 
-                      d={svgStyles[businessTypeIndex].path}
-                      strokeDasharray="3000" 
-                      strokeDashoffset="3000" 
-                      style={{ transition: 'stroke-dashoffset 1.5s ease-out' }}
-                  />
-          </svg>
-      </Box>
+        {isComputerWidth && <Box position='absolute' top={'65vh'}  right={svgStyles[businessTypeIndex].position === 'right'?`-${windowWidth - (containerRef.current?.getBoundingClientRect().right || 0)}px`:''}  left={svgStyles[businessTypeIndex].position === 'left'?`-${containerRef.current?.getBoundingClientRect().left}px`:''}  zIndex={1} width={svgStyles[businessTypeIndex].width} transition={'opacity 0.5s ease-in-out'}>
+            <svg  xmlns="http://www.w3.org/2000/svg"  viewBox={svgStyles[businessTypeIndex].viewBox} ref={svgRef} >
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="rgba(0, 102, 204, 1)" />
+                        <stop offset="100%" stopColor="rgb(0, 20, 51)" />
+                        </linearGradient>
+                    </defs>
+                    <defs>
+                    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="rgb(5, 142, 255)" />
+                        <stop offset="100%" stopColor="rgb(5, 102, 255)" />
+                    </linearGradient>
+                </defs>
+                    <path
+                        className="path"
+                        fill="transparent"
+                        stroke={`url(#${svgStyles[businessTypeIndex].color})`}
+                        strokeWidth={svgStyles[businessTypeIndex].strokeWidth}
+                        strokeLinejoin="bevel" 
+                        d={svgStyles[businessTypeIndex].path}
+                        strokeDasharray="3000" 
+                        strokeDashoffset="3000" 
+                        style={{ transition: 'stroke-dashoffset 1.5s ease-out' }}
+                    />
+            </svg>
+        </Box>}
 
-            <Flex    transition='transform 0.2s ease-out' ref={boxRef1}  flexDir={'column'} maxW={'800px'} textAlign={'center'} pt={{ base: "2vh", md: "2vh", lg: "2vh", xl: "3vh" }} mt={{ base: "6vh", md: "7vh", lg: "8vh", xl: "10vh" }} justifyContent={'center'} position='sticky' top={'10vh'} zIndex={10}  >
-                <Box> 
-                    <Flex display={'inline-block'} justifyContent={'center'} alignItems={'center'} bg={'brand.text_blue'} color={'white'} px='15px' py='5px' borderRadius={'2rem'}>
-                        <Text fontSize={{base: '.8em',sm:'.8em', md: '.9em', lg: '1em'}}  fontWeight={500}> {t(businessTypes[businessTypeIndex])}</Text>
-                    </Flex>
-                </Box>
-                <Text fontSize={{ base: '1.5em',sm:'1.6em', md: '1.8em', lg: '2em' }} fontWeight="medium" overflowWrap="break-word" whiteSpace="pre-wrap" color={'brand.clear_black'} >
-                    {t(`${businessTypes[businessTypeIndex]}Title`)}
-                </Text>
-                <Text mt='10px' maxW={'800px'} fontWeight={300} fontSize={{base: '.8em',sm:'.8em', md: '.9em', lg: '1em' }}color="brand.text_gray"   overflowWrap="break-word" whiteSpace="pre-wrap">{t(`${businessTypes[businessTypeIndex]}Des`)}</Text>
+        <Flex transition='transform 0.2s ease-out' ref={boxRef1}  flexDir={'column'} maxW={'800px'} textAlign={'center'}  mt={'75px'} justifyContent={'center'} position='sticky' top={'10vh'} zIndex={10}  >
+            <Box> 
+                <Flex display={'inline-block'} justifyContent={'center'} alignItems={'center'} bg={'brand.text_blue'} color={'white'} px='15px' py='5px' borderRadius={'2rem'}>
+                    <Text fontSize={'md'} fontWeight={500}> {t(businessTypes[businessTypeIndex])}</Text>
+                </Flex>
+            </Box>
+            <Text fontSize={'2xl'}  fontWeight="500" overflowWrap="break-word" whiteSpace="pre-wrap" color={'brand.clear_black'} >
+                {t(`${businessTypes[businessTypeIndex]}Title`)}
+            </Text>
+            <Text mt='10px' maxW={'800px'} fontWeight={300} fontSize={'sm'}color="brand.text_gray"   overflowWrap="break-word" whiteSpace="pre-wrap">{t(`${businessTypes[businessTypeIndex]}Des`)}</Text>
+        </Flex>
+            {Array.from(Array(3).keys()).map((index) => (
+            <Flex  flexDir={'column'} justifyContent={'space-between'} transition='transform 0.2s ease-out'  ref={refsArrays[index + 1]} mt='5vh'   className="js-stack-cards__item" p='30px 30px 0 30px' width={'100%'}  maxW={'800px'} zIndex={100 + index} top={'10vh'} bg={businessTypeIndex === 1?'brand.text_blue':'brand.black_button'}  shadow={'lg'} position={'sticky'} key={`${businessTypeIndex}-case-${index}`}  borderRadius={'1rem'}  >
+                <UseBox title={t(`UseCase_${index + businessTypeIndex * 3}`)} index={index + businessTypeIndex * 3} description={t(`UseCaseDes_${index + businessTypeIndex * 3}`)} imageUrl={imagesUrls[businessTypeIndex]}/>
             </Flex>
-                {Array.from(Array(3).keys()).map((index) => (
-                <Box  transition='transform 0.2s ease-out'  ref={refsArrays[index + 1]} mt='5vh'height={'500px'}  className="js-stack-cards__item" p='30px 30px 0 30px' width={'100%'}  maxW={'800px'} zIndex={100 + index} top={'10vh'} bg={businessTypeIndex === 1?'brand.text_blue':'brand.black_button'}  shadow={'lg'} position={'sticky'} key={`${businessTypeIndex}-case-${index}`}  borderRadius={'1rem'}  >
-                    <UseBox title={t(`UseCase_${index + businessTypeIndex * 3}`)} index={index + businessTypeIndex * 3} description={t(`UseCaseDes_${index + businessTypeIndex * 3}`)} imageUrl={imagesUrls[businessTypeIndex]}/>
-                </Box>
-            ))}
-        
-        </Flex></>)
+        ))}
+    
+    </Flex></>)
 }
 
 const Solutions = () =>{
@@ -263,6 +263,17 @@ const Solutions = () =>{
     //FAQS LIST
     const faqsList = [[t('FAQ_1'), t('FAQ_ANSWER_1')], [t('FAQ_2'), t('FAQ_ANSWER_2')], [t('FAQ_3'), t('FAQ_ANSWER_3')], [t('FAQ_4'), t('FAQ_ANSWER_4')], [t('FAQ_5'), t('FAQ_ANSWER_5')], [t('FAQ_6'), t('FAQ_ANSWER_6')], [t('FAQ_6'), t('FAQ_ANSWER_6')]]
 
+    //DECIDE IF THE USER IS USING A COMPUTER, FOR ADJUSTING THE HEADER
+    const [isComputerWidth, setIsComputerWidth] = useState(true)
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+        const handleResize = () => {setIsComputerWidth(window.innerWidth > 900)}
+        handleResize();
+        window.addEventListener('resize', handleResize)
+        return () => window.removeEventListener('resize', handleResize)
+        }
+    }, [])
+
     return(<> 
 
         <Head>
@@ -270,46 +281,45 @@ const Solutions = () =>{
             <meta name="description" content="Impulsa tu negocio con soluciones de IA. Mejora la atención al cliente, aumenta las ventas proactivas y envía correos masivos personalizados con nuestra tecnología innovadora. Descubre cómo la inteligencia artificial puede transformar tu empresa."/>
         </Head>
 
-            <Box position='absolute' top={'10vh'}  left={0} zIndex={1} width={'70vw'}> 
-                <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1358 754">
-                    <path 
-                        className="path" 
-                        fill="transparent" 
-                        stroke="rgb(5, 102, 255)" 
-                        strokeWidth="65" 
-                        strokeLinejoin="bevel" 
-                        d="m-500.21,195.98l785.74-113.71s-318.14,468.95-217.16,470.99,356.52-201.54,421.77-148.69c65.25,52.86-26.19,291.81-29.52,304.62,0,0,210.18-104.18,244.9-151.56"
-                        strokeDasharray="3000" 
-                        strokeDashoffset="3000">
-                        <animate 
-                        attributeName="stroke-dashoffset" 
-                        from="3000" 
-                        to="0" 
-                        dur="1.5s" 
-                        begin={`${(t('Title').split(' ').length * 70 + 700) / 1000}s`}
-                        repeatCount="1" 
-                        fill="freeze" />
-                    </path>
-                    </svg>
-                </Box>
+        {isComputerWidth && <Box position='absolute' top={'10vh'}  left={0} zIndex={1} width={'70vw'}> 
+            <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1358 754">
+                <path 
+                    className="path" 
+                    fill="transparent" 
+                    stroke="rgb(5, 102, 255)" 
+                    strokeWidth="65" 
+                    strokeLinejoin="bevel" 
+                    d="m-500.21,195.98l785.74-113.71s-318.14,468.95-217.16,470.99,356.52-201.54,421.77-148.69c65.25,52.86-26.19,291.81-29.52,304.62,0,0,210.18-104.18,244.9-151.56"
+                    strokeDasharray="3000" 
+                    strokeDashoffset="3000">
+                    <animate 
+                    attributeName="stroke-dashoffset" 
+                    from="3000" 
+                    to="0" 
+                    dur="1.5s" 
+                    begin={`${(t('Title').split(' ').length * 70 + 700) / 1000}s`}
+                    repeatCount="1" 
+                    fill="freeze" />
+                </path>
+                </svg>
+        </Box>}
 
-     
-
-        <Flex  zIndex={1}  flexDir='column' width={'100vw'} alignItems={'center'}  bg='white' pb={{ base: "10vh", md: "11vh", lg: "13vh", xl: "15vh" }}>
+        {/*ALL SECTION*/}
+        <Flex px='4vw' zIndex={1}  flexDir='column' width={'100vw'} alignItems={'center'}  bg='white' py={{ base: '100px',sm:'100px', md: '150px' }}>
             
             <Flex flexDir='column' width={'100vw'} alignItems={'center'}  > 
-                <Box   width="100%" position={'relative'} px='4vw' color='black' textAlign={'center'} pb={{ base: "6vh", md: "8vh", lg: "10vh", xl: "12vh" }} pt={{ base: "10vh", md: "11vh", lg: "13vh", xl: "15vh" }}  maxW="1200px" >
-                    <Flex  zIndex={2}  alignItems={'center'}  flexDir={'column'} > 
+                <Box   width="100%" position={'relative'} px='4vw' color='black' textAlign={'center'}  maxW="1200px" >
+                    <Flex zIndex={2}  alignItems={'center'}  flexDir={'column'} > 
                         <ScrollAnimation animateIn="fadeIn" animateOnce >
-                            <Text  zIndex={2}  color='brand.text_blue' fontWeight={'medium'} fontSize={{base: '1.2em',sm:'1.3em', md: '1.4em', lg: '1.5em' }} >{t('PreTitle')}</Text> 
+                            <Text  zIndex={2}  color='brand.text_blue' fontWeight={'500'} fontSize={'lg'} >{t('PreTitle')}</Text> 
                         </ScrollAnimation>
 
-                        <Text fontSize={{ base: '2.5em',sm:'2.8em', md: '3.1em', lg: '3.5em' }} fontWeight="medium" overflowWrap="break-word" whiteSpace="pre-wrap" >
-                            <AnimatedText text={t('Title')}/>
-                        </Text>
+                        <Heading fontSize={'5xl'} fontWeight="600" overflowWrap="break-word" whiteSpace="pre-wrap" >
+                            <AnimatedText text={t('Title')}/> 
+                        </Heading>
                         
                         <ScrollAnimation animateIn="fadeInUp" animateOnce delay={t('Title').split(' ').length * 70 + 300}> 
-                            <Text mt='10px' maxW={'800px'} fontWeight={300} fontSize={{base: '.8em',sm:'.8em', md: '.9em', lg: '1em' }}color="brand.text_gray"   overflowWrap="break-word" whiteSpace="pre-wrap">
+                            <Text mt='10px' maxW={'800px'} fontWeight={300} fontSize={'sm'} color="brand.text_gray"   overflowWrap="break-word" whiteSpace="pre-wrap">
                                 {t('SubTitle')}
                             </Text>
                         </ScrollAnimation>
@@ -317,23 +327,20 @@ const Solutions = () =>{
                 </Box>
             </Flex>
 
-            <Box textAlign={'center'}  zIndex={10} maxWidth={'1000px'} >
+            <Box textAlign={'center'} mt='75px'  zIndex={10} maxWidth={'1000px'} >
                 <ScrollAnimation animateIn="fadeIn" animateOnce delay={t('Title').split(' ').length * 70 + 600}> 
-                    <Text fontSize={{ base: '1.6em',sm:'1.7em', md: '1.9em', lg: '2.1em' }} fontWeight="medium" overflowWrap="break-word" whiteSpace="pre-wrap" color={'brand.clear_black'} >
+                    <Heading as='h2' fontSize={'2xl'} fontWeight="600" overflowWrap="break-word" whiteSpace="pre-wrap" color={'brand.clear_black'} >
                         {t('UsesCasesDes')}
-                    </Text>
+                    </Heading>
                 </ScrollAnimation>
             </Box>
             <Flex flexDir={'column'} alignItems={'center'} zIndex={1000} opacity={1} width={'100%'} maxW={'1000px'}> 
                 {Array.from(Array(3).keys()).map((index) => (
-                    <ScrollAnimation key={`use-case-${index}`} animateIn="fadeIn" animateOnce delay={index === 0?t('Title').split(' ').length * 70 + 800:0}>            
-                        <ScrollableBoxes businessTypeIndex={index}/>
+                    <ScrollAnimation key={`use-case-${index}`} style={{marginTop:index !== 0 ?'100px':''}} animateIn="fadeIn" animateOnce delay={index === 0?t('Title').split(' ').length * 70 + 800:0}>            
+                        <ScrollableBoxes businessTypeIndex={index} isComputerWidth={isComputerWidth}/>
                     </ScrollAnimation>
                 ))}
             </Flex>
-    
-
-    
         </Flex>  
 
         <FAQS faqsList={faqsList}/>
