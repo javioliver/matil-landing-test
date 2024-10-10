@@ -109,9 +109,25 @@
         "FAQ_7": "¿Cómo puedo asegurar la privacidad de mis datos?",
         "FAQ_ANSWER_7": "Matilda está diseñada para proteger la privacidad de tus datos. Hemos realizado un exhaustivo estudio de impacto para garantizar que tus datos estén seguros. OpenAI, el desarrollador de los modelos que utiliza Matilda, no retendrá ni utilizará tus datos para fines comerciales. Matilda trabaja únicamente con la información proporcionada por tu empresa y sigue estrictos protocolos de seguridad para asegurar que toda la información se maneje de manera confidencial y segura."
     },
-    "SuperService": {
+    "Platform": {
         "Hero":"Servicio Humano, Tiempo Superhumano",
         "Subhero":"Simplifica tu trabajo gestionando todas las comunicaciones desde un único lugar. Nuestra plataforma integra todas las fuentes de información para que puedas acceder y controlar fácilmente tu flujo comunicativo junto a Matilda.",
+        "Card_1":"Centraliza tus tickets",
+        "Card_1Des":"Centraliza tus tickets",
+        "Card_2":"Entiende a tus clientes",
+        "Card_2Des":"Centraliza tus tickets",
+        "Card_3":"Adapta a Tilda",
+        "Card_3Des":"Centraliza tus tickets",
+        "HelpCenter":"Centro de ayuda",
+        "HelpCenterTitle":"Atención Siempre a tu Alcance ",
+        "HelpCenterDes":"Ofrece un contenido de soporte excepcional y potencia tu servicio con un centro de ayuda completamente personalizable. Tus clientes podrán acceder a la información que necesitan a través de cualquier canal, en el momento que lo deseen..",
+        "Productivity":"Tickets",
+        "ProductivityTitle":"Maximiza la Productividad de Tu Equipo",
+        "ProductivityDes":"Impulsa la eficiencia centralizando todos los tickets de soporte en una sola plataforma. Define reglas personalizadas que se adapten a tu negocio y transforma la manera en que tu equipo gestiona las consultas..",
+        "Tilda":"Tilda",
+        "TildaTitle":"Servicio Humano, Tiempo Sobrehumano",
+        "TildaDes":"Con Tilda, obtienes un asistente que conoce al detalle los procesos de tu negocio. Responde a preguntas y realiza acciones como lo haría un humano, ¡pero de manera instantánea y disponible las 24 horas del día!",
+
         "Sections_Title":"Gestiona toda la comunicación con tus clientes con una única herramienta",
         "Sections_Subtitle":"Gestiona toda la comunicación con tus clientes con una única herramienta",
         "Tickets_Title":"",

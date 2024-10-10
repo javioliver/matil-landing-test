@@ -35,7 +35,7 @@ const FAQS = ({faqsList}:{faqsList:string[][]}) => {
 
         const [isExpanded, setIsExpanded] = useState<boolean>(false)
         return(<> 
-            <Flex cursor={'pointer'}fontSize={{ base: '1em',sm:'1em', md: '1.1em', lg: '1.2em' }} justifyContent={'space-between'} gap='50px' color='brand.text_blue'  alignItems={'center'} py='25px' onClick={() =>setIsExpanded(!isExpanded) }> 
+            <Flex cursor={'pointer'}fontSize={'md'} justifyContent={'space-between'} gap='50px' color='brand.text_blue'  alignItems={'center'} py='25px' onClick={() => setIsExpanded(!isExpanded) }> 
                 <Text  fontWeight="medium" overflowWrap="break-word" whiteSpace="pre-wrap" >
                 {question}
                 </Text>
@@ -43,17 +43,17 @@ const FAQS = ({faqsList}:{faqsList:string[][]}) => {
             </Flex>
     
             <Collapse in={isExpanded} animateOpacity >
-                <Text fontWeight={300}  fontSize={{ base: '.9em',sm:'.9em', md: '1em', lg: '1.1em' }} >{parseMarkdown(answer)}</Text>
+                <Text fontWeight={300}  fontSize={'sm'} >{parseMarkdown(answer)}</Text>
             </Collapse>
 
         </>)
     }
     return (
            
-        <Flex width={'100%'} px='4vw' justifyContent={'center'}  paddingTop={{ base:'5vh', sm: '8vh', md: '15vh' }} paddingBottom={{ base:'30vh', sm: '20vh', md: '30vh' }}bg='brand.white_bg' clipPath= 'polygon(0 0, 100% 0, 100% 85%, 0 100%)'>
+        <Flex width={'100%'} px='4vw' justifyContent={'center'}  paddingTop={'75px'} paddingBottom={{ base:'20vh', sm: '15vh', md: '20vh' }}bg='brand.white_bg' clipPath= 'polygon(0 0, 100% 0, 100% 85%, 0 100%)'>
             <Box maxW={'700px'}>  
                 <ScrollAnimation animateIn="fadeIn" animateOnce >
-                    <Text textAlign={'center'} fontSize={{ base: '2.2em',sm:'2.5em', md: '2.8em', lg: '3em' }} mb={{ base:'2vh', sm: '3vh', md: '5vh' }} fontWeight="medium" overflowWrap="break-word" whiteSpace="pre-wrap" color={'brand.clear_black'} >
+                    <Text textAlign={'center'} fontSize={'3xl'} mb={{ base:'2vh', sm: '3vh', md: '5vh' }} fontWeight="medium" overflowWrap="break-word" whiteSpace="pre-wrap" color={'brand.clear_black'} >
                     {t('FAQS')}
                     </Text>
                 </ScrollAnimation>

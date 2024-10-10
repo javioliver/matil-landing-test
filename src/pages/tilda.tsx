@@ -92,14 +92,11 @@ const Matilda =()=>{
     const gradient = new MeshGradient()
     const canvasId = "my-canvas"
     useEffect(() => {
-        // Inicializa el gradiente
         gradient.initGradient("#" + canvasId, COLORS);
-    
-        // Inicia un intervalo para mover el mesh cada 100ms
         const interval = setInterval(() => {
-          const randomValue = Math.floor(Math.random() * 1000); // Genera un valor aleatorio para el mesh
-          gradient.changePosition(randomValue); // Cambia la posición del mesh
-        }, 6000); // Cambia el valor de tiempo para controlar la velocidad de la animación
+          const randomValue = Math.floor(Math.random() * 1000)
+          gradient.changePosition(randomValue)
+        }, 6000)
     
         // Limpia el intervalo cuando el componente se desmonte
         return () => {
@@ -214,13 +211,13 @@ const Matilda =()=>{
             {/*HERO AND EXAMPLES CHATS COMPONENT*/}
             <Flex flexDir='column' width={'100vw'} alignItems={'center'}> 
                 <Flex maxW={'1200px'}> 
-                    <Box flex={'1'}  width="100%" position={'relative'} px='4vw' color='black'  py={{ base: "10vh", md: "12vh", lg: "15vh", xl: "17vh" }}  maxW="1200px" >
+                    <Box flex={'1'}  width="100%" position={'relative'} px='4vw' color='black'  py={'150px'}  maxW="1200px" >
                         <Flex  zIndex={2}  flexDir={'column'} > 
-                            <Text fontSize={{ base: '2.5em',sm:'2.8em', md: '3.1em', lg: '3.5em' }}  fontWeight="medium" overflowWrap="break-word" whiteSpace="pre-wrap" >
+                            <Text fontSize={'5xl'}  fontWeight="500" overflowWrap="break-word" whiteSpace="pre-wrap" >
                                 <AnimatedText text={t('Hero')}/>
                             </Text>
                             <ScrollAnimation animateIn="fadeInUp" animateOnce delay={t('Hero').split(' ').length * 70 + 300}> 
-                                <Text mt='10px' maxW={'800px'} fontWeight={300} fontSize={{base: '.8em',sm:'.8em', md: '.9em', lg: '1em' }}color="brand.text_gray"   overflowWrap="break-word" whiteSpace="pre-wrap">
+                                <Text mt='10px' maxW={'800px'} fontWeight={300} fontSize={'sm'}color="brand.text_gray"   overflowWrap="break-word" whiteSpace="pre-wrap">
                                     {t('Subhero')}
                                 </Text>
                             </ScrollAnimation>
@@ -233,18 +230,18 @@ const Matilda =()=>{
                 <MeshGradientBackground/>
             </Box>
 
-            <Flex width="100%" py='10vh' justifyContent={'center'} >
-                 <Grid maxW="1200px"  width="100%" gap={{ base: "15px", md: "15px", lg: "20px", xl: "20px" }} flexDir={{ base: "column", md: "column", lg: "row", xl: "row" }}       templateColumns={{ base: "1fr", md: "1fr 1fr", lg: "repeat(4, 1fr)", xl: "repeat(4, 1fr)" }}>
+            <Flex width="100%" py='75px' justifyContent={'center'} >
+                 <Grid maxW="1200px"  width="100%" gap={'32px'} templateColumns={{ base: "1fr", md: "1fr 1fr", lg: "repeat(4, 1fr)", xl: "repeat(4, 1fr)" }}>
                     {improvesList.map((improve, index)=> (
                         <ScrollAnimation delay={100 * index} key={`improve-${index}`} style={{flex:'1'}} animateIn="fadeIn" animateOnce >
                             <Image height={'40px'} src={improve.icon}/>
                             <Flex mt='20px' gap='10px'> 
                                 <Box height={'25px'} width={'2px'} bg='brand.text_blue'/>
                                 <Box flex='1'> 
-                                    <Text zIndex={1} position="relative"  fontSize={{base: '.9em',sm:'.9em', md: '.9em', lg: '1em' }}  fontWeight="medium" overflowWrap="break-word" whiteSpace="pre-wrap" >
+                                    <Text zIndex={1} position="relative"  fontSize={'sm'}  fontWeight="medium" overflowWrap="break-word" whiteSpace="pre-wrap" >
                                     {improve.title}
                                     </Text>
-                                    <Text mt='10px' zIndex={1} position="relative" fontSize={{base: '.9em',sm:'.9em', md: '.9em', lg: '1em' }}  color='brand.text_gray' fontWeight={'300'}>
+                                    <Text mt='10px' zIndex={1} position="relative" fontSize={'sm'}  color='brand.text_gray' fontWeight={'300'}>
                                         <HighlightText text={improve.description} color1='rgb(100, 116, 145)' color2='rgb(5, 102, 255)'/>
                                     </Text>
                                 </Box>
@@ -256,17 +253,16 @@ const Matilda =()=>{
 
 
             <Flex width="100%" textAlign={'center'}  bg='brand.white_bg'  flexDirection={'column'} alignItems={'center'} justifyContent={'center'} py='15vh'   >   
-                <Text maxW="1000px"  fontSize={'2.6em'} mb='7vh'>{t('FeaturesTitle')}</Text>
-
-                <Flex maxW="1200px"  width="100%" color='white'  gap={{ base: "15px", md: "15px", lg: "20px", xl: "20px" }} flexDir={{ base: "column", md: "column", lg: "row", xl: "row" }}>
+                <Text maxW="1000px"  fontSize={'3xl'} mb='7vh'>{t('FeaturesTitle')}</Text>
+                <Flex maxW="1200px"  width="100%" color='white'  gap={'32px'} flexDir={{ base: "column", md: "column", lg: "row", xl: "row" }}>
                     {featuresList.map((feature, index)=> (
                         <ScrollAnimation delay={100 * index} key={`feature-${index}`} style={{flex:'1'}} animateIn="fadeIn" animateOnce >
                             <Flex flexDir={'column'} justifyContent={'space-between'} position='relative' flex='1' textAlign={'center'} overflow={'hidden'} borderRadius={'.5rem'} bg={`url(${feature.image})`} bgSize="cover" bgPosition="center" bgRepeat="no-repeat"   py='60px' boxShadow={'rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px'}>
                                 <Box  position="absolute" top={0} left={0} right={0} bottom={0} bg={`linear-gradient(transparent 0%, ${feature.color})`} zIndex={0} />   
-                                <Text zIndex={1} position="relative" fontSize={{ base: '2.5em',sm:'2.8em', md: '3.1em', lg: '3.5em' }}  fontWeight="medium" overflowWrap="break-word" whiteSpace="pre-wrap" >
+                                <Text zIndex={1} position="relative" fontSize={'5xl'}  fontWeight="600" overflowWrap="break-word" whiteSpace="pre-wrap" >
                                     {<AnimatedPercentage start={0} end={feature.max}/>} %
                                 </Text>
-                                <Text zIndex={1} position="relative" fontSize={{base: '1em',sm:'1.1em', md: '1.2em', lg: '1.4em' }} fontWeight={'500'}>{feature.title}</Text>
+                                <Text zIndex={1} position="relative" fontSize={'md'} fontWeight={'500'}>{feature.title}</Text>
                             </Flex>
                         </ScrollAnimation>
                     ))}
@@ -275,11 +271,11 @@ const Matilda =()=>{
       
             {/*MATILDA FEATURES*/}
             <Box  bg='brand.white_bg'>
-                <Flex  bg='brand.black_button'  clipPath='polygon(0 100px, 100% 0, 100% 100%, 0 100%)' width={'100vw'} justifyContent={'center'} px='4vw' > 
-                    <Flex px='4vw' width="100vw"  flexDir={'column'}  alignItems={'center'}   py={{ base:"calc(5vh + 100px)", md: "calc(7vh + 100px)", lg: "calc(10vh + 100px)", xl: "calc(12vh + 100px)" }} > 
+                <Flex  bg='brand.black_button'  clipPath='polygon(0 100px, 100% 0, 100% 100%, 0 100%)' width={'100vw'} justifyContent={'center'}  > 
+                    <Flex px='4vw'   width="100vw"  flexDir={'column'}  alignItems={'center'}   py={{ base:"calc(5vh + 100px)", md: "calc(7vh + 100px)", lg: "calc(10vh + 100px)", xl: "calc(12vh + 100px)" }} > 
                             
                             {/*FIRST LINE*/}
-                            <Flex maxW="1000px" width="100%"  gap={{ base: "30px", md: "30px", lg: "40px", xl: "50px" }} flexDir={{ base: "column", md: "column", lg: "row-reverse", xl: "row-reverse" }}>
+                            <Flex maxW="1000px" width="100%"  gap={'32px'} flexDir={{ base: "column", md: "column", lg: "row-reverse", xl: "row-reverse" }}>
                                 <ScrollAnimation style={{flex:'2'}} animateIn="fadeInUp" animateOnce >
                                     <Text textAlign={{ base: 'center',sm:'center', md: 'start', lg: 'start' }} color='white' flex='2' fontSize={{ base: '2em',sm:'2.1em', md: '2.3em', lg: '2.5em' }}><span style={{color:'rgb(5, 102, 255)'}}>Matilda</span> {t('Matilda_Feature')}</Text>
                                 </ScrollAnimation >
@@ -365,13 +361,13 @@ const Matilda =()=>{
                                 </ScrollAnimation >
                             </Flex>
                         
-                        </Flex>
+                    </Flex>
                 </Flex>
             </Box>
 
-            <Flex width="100%" py='75px' px='4vw' bg='brand.white_bg' justifyContent={'center'} >
+            <Flex width="100%" py='100px' px='4vw' bg='brand.white_bg' justifyContent={'center'} >
                 <Box maxW={'1200px'} width={'100%'}> 
-                    <Text fontSize={'xl'}  fontWeight="500" overflowWrap="break-word" whiteSpace="pre-wrap" >{t('IntegrationTitle')}</Text>
+                    <Text fontSize={'2xl'}  fontWeight="500" overflowWrap="break-word" whiteSpace="pre-wrap" >{t('IntegrationTitle')}</Text>
                     <Text  fontSize={'sm'} mt='20px'  fontWeight="300" color='brand.text_gray' overflowWrap="break-word" whiteSpace="pre-wrap" >{t('IntegrationTitleDes')}</Text>
                     <Grid maxW="1200px" mt='50px'  width="100%" gap='32px' templateColumns={{ base: "1fr", md: "1fr 1fr", lg: "repeat(2, 1fr)", xl: "repeat(2, 1fr)" }}>
                         {integrationProcessList.map((improve, index)=> (

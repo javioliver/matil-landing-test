@@ -41,7 +41,7 @@ const Header = ({isComputerWidth}:{isComputerWidth:boolean})=>{
 
   //SECTIONS THAT HAS A WHITE BACKGROUND AND THE HEADER TEXT WILL BE BLACK
   const pathname = router.pathname
-  const blackTextSections = ['/tilda', '/integrations', '/channels', '/platform', '/pricing', '/solutions']
+  const blackTextSections = ['/tilda', '/integrations', '/channels', '/pricing', '/solutions']
 
   //MOTION BOX
   const MotionFlex = motion(Box)
@@ -55,7 +55,7 @@ const Header = ({isComputerWidth}:{isComputerWidth:boolean})=>{
       const scrollY = window.scrollY
       const newScrollProgress = Math.min(scrollY / 200, 1)
       const headerWidth = `${100 - newScrollProgress * 15}%`
-      const backgroundColor = `rgba(256, 256, 256, ${newScrollProgress/1.1})`
+      const backgroundColor = blackTextSections.includes(pathname) ?`rgba(256, 256, 256, ${newScrollProgress/1.1})`:`rgba(0, 20, 51, ${newScrollProgress/1.5})`
       const boxShadow = `0 4px 8px rgba(0, 0, 0, ${newScrollProgress * 0.05})`
       if ( headerRef.current) {
         headerRef.current.style.backgroundColor = backgroundColor
@@ -75,7 +75,7 @@ const Header = ({isComputerWidth}:{isComputerWidth:boolean})=>{
         <Flex maxW={'1200px'} width={'100%'} justifyContent={'center'} position={'relative'}> 
           {isComputerWidth ? 
 
-            <Flex display={'inline-flex'} ref={headerRef} top={'3vh'}bg={'transparent'} width={'100%'} position='absolute' color={blackTextSections.includes(pathname) ? 'brand.black_button' : 'white'} _hover={{color:blackTextSections.includes(pathname) ? 'brand.black_button' : 'white'}} 
+            <Flex display={'inline-flex'} ref={headerRef} top={'3vh'} bg={'transparent'} width={'100%'} position='absolute' color={blackTextSections.includes(pathname) ? 'brand.black_button' : 'white'} _hover={{color:blackTextSections.includes(pathname) ? 'brand.black_button' : 'white'}} 
             borderRadius={'10rem'} px={{ base: '10px', sm: '12px', md: '15px' }}  py={{ base: '5px', sm: '7px', md: '10px' }}  justifyContent='space-between' alignItems='center' transition="background-color 0.1s ease, width 0.1s ease, box-shadow 0.1s ease" > 
                 <Flex gap='10px' alignItems={'center'} onClick={()=> router.push('/') } cursor={'pointer'}  fontSize='xl' fontWeight={500} >
                     <Image height={'25px'} src='/images/matil-simple.svg'/>
