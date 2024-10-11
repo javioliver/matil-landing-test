@@ -114,7 +114,7 @@ const Pricing =()=>{
                 </Flex>
             </Box>
             <Box width={'100vw'} zIndex={1}  bg='brand.white_bg'  mt='-15vh' height={'60vh'} top={0} clipPath='polygon(0 60%, 100% 0%, 100% 40%, 0 100%)'> 
-                <MeshGradientBackground/>
+                <MeshGradientBackground colors={["#11efe3",  "#0073e6", "#00299c"]}/>
             </Box>
         </Flex>
         <Flex px='4vw' width={'100vw'} mt='-45vh'   bg='brand.white_bg' justifyContent={'center'}   >

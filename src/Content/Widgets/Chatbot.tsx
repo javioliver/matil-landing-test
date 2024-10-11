@@ -191,7 +191,7 @@ const Chatbot = ({ currentChat }:ChatbotProps) =>{
      
   return(<> 
         <Flex flexDir={'column'}  height={'100%'}> 
-            <div style={{height:'50px', background:`linear-gradient(to right, #a7daee,#255cd1)`, display:'flex', alignItems:'center', padding:'0 4%', justifyContent:'space-between', zIndex:10}} > 
+            <div style={{height:'50px', background:`linear-gradient(to right, #58daf4, rgb(5, 102, 255))`, display:'flex', alignItems:'center', padding:'0 4%', justifyContent:'space-between', zIndex:10}} > 
             
                 <div style={{display:'flex', gap:'3%', flex:'1', alignItems:'center'}}>
                     <div style={{display:'flex', alignItems:'center', flexDirection:'row', gap:'15px', marginTop:'10px'}} >    
@@ -207,8 +207,8 @@ const Chatbot = ({ currentChat }:ChatbotProps) =>{
                 <svg viewBox="0 0 500 150" preserveAspectRatio="none" style={{ width: '100%', height: '100%' }}>
                     <defs>
                         <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" style={{ stopColor: '#255cd1', stopOpacity: 1 }} />
-                        <stop offset="100%" style={{ stopColor: '#a7daee', stopOpacity: 1 }} />
+                        <stop offset="0%" style={{ stopColor: 'rgb(5, 102, 255)', stopOpacity: 1 }} />
+                        <stop offset="100%" style={{ stopColor: '#58daf4', stopOpacity: 1 }} />
                         </linearGradient>
                     </defs>
                     <path d="M0,50 C150,125 350,25 500,50 L500,150 L0,150 Z" fill="url(#waveGradient)"></path>
@@ -226,7 +226,7 @@ const Chatbot = ({ currentChat }:ChatbotProps) =>{
                         {(message.botMessage && !isNextMessageBot)&& 
                         
                         <Image src='/images/matilda.svg' width='20px'/>}
-                        <Box  maxW='80%' ml={(message.botMessage && !isNextMessageBot)?'0':'30px'} bg={message.botMessage?'gray.100':'linear-gradient(to right, #5B88F1, #76C8DF)'} color={message.botMessage?'black':'white'} p = '8px' borderRadius = {message.botMessage ? (isNextMessageBot && isLastMessageBot)? '.2rem .7rem .7rem .2rem' : isNextMessageBot?'.7rem .7rem .7rem .2rem': isLastMessageBot ? '.2rem .7rem .7rem .7rem':'.7rem' : (!isNextMessageBot && !isLastMessageBot && !isLastMessage)? '.7rem .2rem .2rem .7rem' : (isNextMessageBot || isLastMessage)?'.7rem .2rem .7rem .7rem':'.7rem .7rem .2rem .7rem'}>
+                        <Box  maxW='80%' ml={(message.botMessage && !isNextMessageBot)?'0':'30px'} bg={message.botMessage?'gray.100':'linear-gradient(to right,  rgb(5, 102, 255), #58daf4)'} color={message.botMessage?'black':'white'} p = '8px' borderRadius = {message.botMessage ? (isNextMessageBot && isLastMessageBot)? '.2rem .7rem .7rem .2rem' : isNextMessageBot?'.7rem .7rem .7rem .2rem': isLastMessageBot ? '.2rem .7rem .7rem .7rem':'.7rem' : (!isNextMessageBot && !isLastMessageBot && !isLastMessage)? '.7rem .2rem .2rem .7rem' : (isNextMessageBot || isLastMessage)?'.7rem .2rem .7rem .7rem':'.7rem .7rem .2rem .7rem'}>
                             {message.text === 'Cargando...' ?
                             <div className="writing-animation">
                                 <span className="bounce-dot"></span>

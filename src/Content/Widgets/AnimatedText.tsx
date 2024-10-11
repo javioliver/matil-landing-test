@@ -3,7 +3,7 @@ import { Text } from '@chakra-ui/react';
 import ScrollAnimation from 'react-animate-on-scroll';
 
 const AnimatedText = ({ text, startDelay = 0 }:{text:string, startDelay?:number}) => {
-  const [isClient, setIsClient] = useState(false);
+  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
     setIsClient(true);
@@ -14,18 +14,10 @@ const AnimatedText = ({ text, startDelay = 0 }:{text:string, startDelay?:number}
   return (<> 
    
       {isClient && words.map((word, index) => (
-        <ScrollAnimation
-          key={index}
-          animateIn="fadeInUp"
-          animateOnce
-          delay={startDelay + index * 70}
-          style={{ display: 'inline-block' }}
-        >
-          <span style={{ display: 'inline-block', marginRight: '0.3em' }} >
+           <span key={`fragment-${index}`} style={{ display: 'inline-block', marginRight: '0.3em' }} >
             {word}
           </span>
-        </ScrollAnimation>
-      ))}
+       ))}
  
  </>);
 };

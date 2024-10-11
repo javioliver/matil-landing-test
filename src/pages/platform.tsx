@@ -3,12 +3,13 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { GetStaticPropsContext } from 'next'
 //REACT
-import { useState, useEffect, useMemo, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 //TRANSLATION
 import { useTranslations } from 'next-intl'
 //FRONT
-import { Flex, Text, Box } from '@chakra-ui/react'
+import { Flex, Text, Box, Grid, Image } from '@chakra-ui/react'
 import ScrollAnimation from "react-animate-on-scroll"
+import HighlightText from '@/Content/Functions/HighlightText'
 import "animate.css/animate.compat.css"
 //COMPONENTS
 import Footer from '@/Content/Components/footer'
@@ -65,7 +66,19 @@ const Platform =()=>{
     const faqsList = [[t('FAQ_1'), t('FAQ_ANSWER_1')], [t('FAQ_2'), t('FAQ_ANSWER_2')], [t('FAQ_3'), t('FAQ_ANSWER_3')], [t('FAQ_4'), t('FAQ_ANSWER_4')], [t('FAQ_5'), t('FAQ_ANSWER_5')], [t('FAQ_6'), t('FAQ_ANSWER_6')], [t('FAQ_7'), t('FAQ_ANSWER_7')]]
 
     //MAIN SECTIONS LIST
-    const mainSectionList = [['Tilda', ''],['HelpCenter',''], ['Productivity', '']]
+    const mainSectionList = [
+        {title:'Tilda', color:'#11efe3'},
+        {title:'HelpCenter', color:'#0073e6'},
+        {title:'Productivity', color:'#00299c'},
+    ]
+
+    //CHANNELS LIST
+    const channelsList:any[] = [
+        {title:'WebChat', icon:'/images/icons/chat.svg'},
+        {title:'Mail', icon:'/images/icons/mail.svg'},
+        {title:'Call',  icon:'/images/icons/call.svg'},
+        {title:'SocialMedia',  icon:'/images/icons/social-network.svg'},
+    ]
 
     //SCROLL LOGIC
     const [scrollY, setScrollY] = useState(0)
@@ -84,7 +97,7 @@ const Platform =()=>{
             <meta name="description" content="Impulsa tu negocio con soluciones de IA. Mejora la atención al cliente, aumenta las ventas proactivas y envía correos masivos personalizados con nuestra tecnología innovadora. Descubre cómo la inteligencia artificial puede transformar tu empresa."/>
         </Head>
  
-        <Flex ref={heroRef} flexDir='column' position={'sticky'} zIndex={1} top='0' bg='brand.black_button' opacity={0.99} width={'100vw'}alignItems={'center'}> 
+        <Flex ref={heroRef} flexDir='column' position={'sticky'} zIndex={1} top='0'bgGradient='linear(to-br,#00299c,rgb(0, 20, 51) )' width={'100vw'}alignItems={'center'}> 
           
                 <Flex maxW={'1200px'} > 
                     <Box flex={'1'}  width="100%" position={'relative'} px='4vw' color='black'  py={'150px'}  maxW="1200px" >
@@ -110,17 +123,32 @@ const Platform =()=>{
         
         <Flex flexDir='column' zIndex={10} py='75px' position={'absolute'}  bg='white'  width={'100vw'} alignItems={'center'}> 
            
-            <Flex flex='column' maxW={'1200px'} height={'550px'} w={'100%'} justifyContent={'space-between'}   gap='32px' zIndex={2} > 
+            <Flex maxW={'1200px'} height={'550px'} w={'100%'} justifyContent={'space-between'}   gap='32px' zIndex={2} > 
                 <FloatingCards scrollY={scrollY}/>
             </Flex>
+
             <Box w={'100%'} maxW={'1200px'} zIndex={3}  pb='75px'  transition={'all .7s ease'}  transform={`translateY(${scrollY < 150?'-550px':'0px'})`}>
                 {mainSectionList.map((section, index) => (
                     <Flex key={`section-${index}`} gap='32px' mt='75px' flexDir={index % 2 === 0?'row':'row-reverse'}  >
                         <Box flex='1'> 
-                            <Text fontSize={'lg'} color='brand.text_blue' fontWeight={'500'}>{t(section[0])}</Text>
-                            <Text fontSize={'2xl'} fontWeight={'500'}>{t(`${section[0]}Title`)}</Text>
-                            <Text fontSize={'sm'} color={'brand.text_gray'} fontWeight={'300'}>{t(`${section[0]}Des`)}</Text>
+                            <Flex display={'inline-block'} justifyContent={'center'} bgGradient='linear(to-br, #00299c, rgb(0, 20, 51))' alignItems={'center'} bg={''} color={'white'} px='15px' py='3px' borderRadius={'2rem'}>
+                                <Text fontSize={'md'} fontWeight={500}> {t(section.title)}</Text>
+                            </Flex>
+                            <Text fontSize={'2xl'} mt='10px' fontWeight={'500'}>{t(`${section.title}Title`)}</Text>
+                            <Text fontSize={'xs'} color={'brand.text_gray'} fontWeight={'300'}>{t(`${section.title}Des`)}</Text>
+                            {Array.from({length:3}).map((_, index2) => (<> 
 
+                                <Flex  gap='10px' mt='20px' > 
+                                    <Box height={'30px'} width={'3px'} bg={'#00299c'}/>
+                                    <Box flex='1'> 
+                                        <Text fontWeight={500} fontSize={'md'}>{t(`${section.title}Feature_${index2 + 1}`)}</Text>
+                                        <Text mt='10px' zIndex={1} position="relative" fontSize={'xs'}  color='brand.text_gray' fontWeight={'300'}>
+                                            <HighlightText text={t(`${section.title}FeatureDes_${index2 + 1}`)} color1='rgb(100, 116, 145)' color2='rgb(5, 102, 255)'/>
+                                        </Text>
+                                    </Box>
+                                </Flex>
+                                </>
+                            ))}
                         </Box>
                         <Box flex='1'>
 
@@ -128,8 +156,26 @@ const Platform =()=>{
                     </Flex>
                 ))}
             </Box>
-            
-         
+
+            <Flex alignItems='center' flexDir={'column'} py='75px'  maxW={'1200px'}  w={'100%'} justifyContent={'space-between'}   gap='32px' zIndex={2} > 
+                <Text fontSize={'4xl'} fontWeight={'500'}>{t(`ChannelsTitle`)}</Text>
+                <Grid maxW="1000px" mt='50px'  width="100%" gap='32px' templateColumns={{ base: "1fr", md: "1fr 1fr", lg: "repeat(2, 1fr)", xl: "repeat(2, 1fr)" }}>
+                    {channelsList.map((cha, index)=> (
+                        <ScrollAnimation delay={100 * index} key={`feature-${index}`} style={{flex:'1'}} animateIn="fadeIn" animateOnce >
+                            <Flex flexDir={'column'}  bg='rgb(0, 20, 51)' color={'white'} justifyContent={'space-between'} position='relative' flex='1' overflow={'hidden'} borderRadius={'1rem'}  p='30px' boxShadow={'rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px'}>
+                                <Box  position="absolute" top={0} left={0} right={0} bottom={0}  zIndex={0} />
+                                <Flex gap='20px' alignItems={'center'}>
+                                    <Image height='40px' src={cha.icon}/>
+                                    <Text fontWeight={500} fontSize={'xl'}>{t(cha.title)}</Text>
+                                </Flex>
+                                <Box mt='20px' mb='20px' width={'100%'} height={'1px'} bg='brand.gray_2'/>
+                                <Text zIndex={1} position="relative" color='brand.gray_2' fontSize={'sm'} fontWeight={'300'}>{t(`${cha.title}Des`)}</Text>
+                            </Flex>
+                        </ScrollAnimation>
+                    ))}
+                </Grid>
+            </Flex>
+
             <FAQS faqsList={faqsList}/>
             <Footer/>
  
