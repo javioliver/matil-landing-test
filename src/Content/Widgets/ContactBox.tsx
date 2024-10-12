@@ -59,8 +59,8 @@ const ContactBox = () => {
     return(<>
        <Box boxShadow={'3px 5px 20px 3px rgba(0, 0, 0, 0.15)'} maxW='600px' flex='4' p='35px' bg ='white' borderRadius={'1rem'} width={{ base: '100%', md: 'auto' }}height="auto" flexShrink="0" >
             
-            <Text fontWeight={'medium'} fontSize={'1.5em'}>{t('ContactBox_Title')}</Text>
-            <Text color='gray.600' fontSize={'1em'} fontWeight={300}>{t('ContactBox_Subtitle')}</Text>
+            <Text fontWeight={'500'} fontSize={'xl'}>{t('ContactBox_Title')}</Text>
+            <Text color='brand.text_gray' fontSize={'sm'} fontWeight={300}>{t('ContactBox_Subtitle')}</Text>
             <NormalInput placeholder={'Javier Sánchez'} field={t('ContactBox_1')} value={name} setValue={setName} mt='40px'/>
             <NormalInput placeholder={'correo@ejemplo.com'} field={t('ContactBox_2')} value={mail} setValue={setMail}  mt='10px'/>
             <NormalInput placeholder={'666 66 66 66'} field={t('ContactBox_3')} value={tlf} setValue={setTlf} mt='10px'/>
@@ -68,18 +68,19 @@ const ContactBox = () => {
             <NormalSelector  field={t('ContactBox_5')}  selectorList={['1-5', '5-20', '20-50', '+50']} value={numWorkers} setValue={setNumWorkers} mt='10px'/>
             <NormalSelector  field={t('ContactBox_6')}  selectorList={['0-1000', '1000-5000', '5000-50000', '+50000']} value={numConsults} setValue={setNumConsults} mt='10px'/>
             
-            <Flex justifyContent='end'  mt="30px" > 
-                <Flex alignItems={'flex-start'}  gap='10px'  width={{sm:'100%', md:'200px', xl:'300px'}} > 
-                <Checkbox id='myCheckbox' mt='4px' size='sm' colorScheme="blue"  isChecked={isChecked}  onChange={() => setIsChecked(!isChecked)} >
-                  <Text fontSize={'.8em'} color='gray.600' fontWeight={300}>
+            <Flex  mt="30px" > 
+                <Flex alignItems={'flex-start'}  gap='10px'  width={'100%'} > 
+                <Checkbox id='myCheckbox' mt='4px' size='md' colorScheme="blue"  isChecked={isChecked}  onChange={() => setIsChecked(!isChecked)} >
+                  
+                </Checkbox>
+                <Text fontSize={'2xs'} color='brand.text_gray' fontWeight={300}>
                     {t('ContactBox_Agree')}
                   </Text>
-                </Checkbox>
                 </Flex>
             </Flex>
             
-            <Flex flexDir={'row-reverse'} mt="30px" alignItems={'center'} justifyContent={'space-between'}> 
-              <ArrowButton isDisabled={isDisabled} text={'Enviar'} onClick={handleSubmit}/>
+            <Flex flexDir={'row-reverse'} mt="30px" alignItems={'center'} justifyContent={'space-between'}>
+            <ArrowButton text={t('Send')} onClick={handleSubmit}  bgGradient='linear(to-br, #58daf4, rgb(5, 102, 255))' color='white' hover={{color:'brand.gray_1', bg:'linear(to-br, #58daf4, rgb(5, 12, 255))'}}  fontSize={'sm'}/>
               {sended ? <Text fontSize={'.8em'} color='green.500'>* {t('ContactBox_Sended')}</Text>:submited && <Text fontSize={'.7em'} color='red'>* {t('ContactBox_Failed')}</Text>}
             </Flex>
         </Box>  

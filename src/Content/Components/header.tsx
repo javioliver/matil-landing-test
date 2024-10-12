@@ -25,8 +25,8 @@ const HeaderSection = ({t, router, section}:{t:any, router:any, section:'Tilda' 
   const [isHovering, setIsHovering] = useState<boolean>(false)
   return(
     <Box position='relative' onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}> 
-      <Flex alignItems={'center'} fontWeight={400} cursor={'pointer'}   gap='5px' color={isHovering?'gray.600':''}>
-        <Text fontSize={{base: '.8em',sm:'.8em', md: '.9em', lg: '1em'}} onClick={()=>{router.push(`/${section.toLowerCase()}`) }} >{section === 'Tilda'?section:t(section)}</Text>
+      <Flex alignItems={'center'} fontWeight={400} cursor={'pointer'}   gap='5px' opacity={isHovering?0.7:1}>
+        <Text fontSize={'sm'} onClick={()=>{router.push(`/${section.toLowerCase()}`) }} >{section === 'Tilda'?section:t(section)}</Text>
       </Flex>    
     </Box>
 )}
@@ -41,7 +41,7 @@ const Header = ({isComputerWidth}:{isComputerWidth:boolean})=>{
 
   //SECTIONS THAT HAS A WHITE BACKGROUND AND THE HEADER TEXT WILL BE BLACK
   const pathname = router.pathname
-  const blackTextSections = ['/tilda', '/integrations', '/channels', '/pricing', '/solutions']
+  const whiteTextSections = ['/platform', '/']
 
   //MOTION BOX
   const MotionFlex = motion(Box)
@@ -55,12 +55,26 @@ const Header = ({isComputerWidth}:{isComputerWidth:boolean})=>{
       const scrollY = window.scrollY
       const newScrollProgress = Math.min(scrollY / 200, 1)
       const headerWidth = `${100 - newScrollProgress * 15}%`
-      const backgroundColor = blackTextSections.includes(pathname) ?`rgba(256, 256, 256, ${newScrollProgress/1.1})`:`rgba(0, 20, 51, ${newScrollProgress/1.5})`
-      const boxShadow = `0 4px 8px rgba(0, 0, 0, ${newScrollProgress * 0.05})`
+      const backgroundColor = `rgba(256, 256, 256, ${newScrollProgress/1.5})`
+      let color = 'rgb(0, 20, 51)'
+      if (whiteTextSections.includes(pathname)) {
+        const whiteRGB = [255, 255, 255]
+        const targetRGB = [0, 20, 51]
+        const progress = Math.min(newScrollProgress / 1.1, 1)
+        const interpolatedColor = whiteRGB.map((start, index) => {
+          const end = targetRGB[index];
+          return Math.round(start + progress * (end - start))
+        })
+        color = `rgb(${interpolatedColor[0]}, ${interpolatedColor[1]}, ${interpolatedColor[2]})`;
+      }
+
+      const boxShadow = `2px 2px 8px rgba(0, 0, 0, ${newScrollProgress * 0.2})`
       if ( headerRef.current) {
         headerRef.current.style.backgroundColor = backgroundColor
         headerRef.current.style.boxShadow = boxShadow
         headerRef.current.style.width = headerWidth
+        headerRef.current.style.color = color
+
       }
   }
   useEffect(() => {
@@ -75,11 +89,11 @@ const Header = ({isComputerWidth}:{isComputerWidth:boolean})=>{
         <Flex maxW={'1200px'} width={'100%'} justifyContent={'center'} position={'relative'}> 
           {isComputerWidth ? 
 
-            <Flex display={'inline-flex'} ref={headerRef} top={'3vh'} bg={'transparent'} width={'100%'} position='absolute' color={blackTextSections.includes(pathname) ? 'brand.black_button' : 'white'} _hover={{color:blackTextSections.includes(pathname) ? 'brand.black_button' : 'white'}} 
+            <Flex display={'inline-flex'} ref={headerRef} top={'3vh'} bg={'transparent'} width={'100%'} position='absolute' color={whiteTextSections.includes(pathname) ?  'white':'brand.black_button' } _hover={{color:whiteTextSections.includes(pathname) ? 'brand.black_button' : 'white'}} 
             borderRadius={'10rem'} px={{ base: '10px', sm: '12px', md: '15px' }}  py={{ base: '5px', sm: '7px', md: '10px' }}  justifyContent='space-between' alignItems='center' transition="background-color 0.1s ease, width 0.1s ease, box-shadow 0.1s ease" > 
-                <Flex gap='10px' alignItems={'center'} onClick={()=> router.push('/') } cursor={'pointer'}  fontSize='xl' fontWeight={500} >
+                <Flex gap='7px' alignItems={'center'} onClick={()=> router.push('/') } cursor={'pointer'}  fontSize='xl' fontWeight={500} >
                     <Image height={'25px'} src='/images/matil-simple.svg'/>
-                    <Text fontSize={'1.1em'} mt='-2px'>MATIL </Text>
+                    <Text fontSize={'lg'}>MATIL </Text>
                 </Flex>
                 <Flex gap='3vw' alignItems={'center'}> 
                   <HeaderSection t={t} router={router} section={'Tilda'}/>
@@ -89,15 +103,15 @@ const Header = ({isComputerWidth}:{isComputerWidth:boolean})=>{
                 </Flex>
 
                   <Flex gap='10px' >                  
-                    <ArrowButton onClick={() => router.push('contact')} text={t('Contact')} bg='transparent' color='brand.text_blue' hover={{bg:'transparent', color:'brand.text_blue'}} fontSize={{base: '.7em',sm:'.7em', md: '.8em', lg: '.9em'}}/>
-                    <ArrowButton onClick={() => window.open('https://superservice.matil.es/', '_blank')} text={t('Sign in')} bg='brand.black_button' color='white' hover={{bg:'brand.black_button_hover', color:'brand.gray_1'}} fontSize={{base: '.7em',sm:'.7em', md: '.8em', lg: '.9em'}}/>       
+                    <ArrowButton onClick={() => router.push('contact')} text={t('Contact')} bg='transparent'  hover={{bg:'transparent', color:'brand.text_blue'}} fontSize={'xs'}/>
+                    <ArrowButton onClick={() => window.open('https://app.matil.ai/', '_blank')} borderRadius={'2rem'} text={t('Sign in')} bg={ 'brand.text_blue'} color='white' hover={{bg:'rgb(5, 79, 235)', color:'brand.gray_1'}} fontSize={'xs'}/>       
                   </Flex>
           </Flex>
           :
-          <Flex mt={'5vh'} bg={'transparent'} width={'100%'}  color={blackTextSections.includes(pathname)?'brand.black_button':'white'} borderRadius={'1rem'} px={{ base: '20px', sm: '30px', md: '50px' }} maxW='1200px' justifyContent='space-between' alignItems='center'  >
+          <Flex mt={'5vh'} bg={'transparent'} width={'100%'}  color={whiteTextSections.includes(pathname)?'brand.black_button':'white'} borderRadius={'1rem'} px={{ base: '20px', sm: '30px', md: '50px' }} maxW='1200px' justifyContent='space-between' alignItems='center'  >
               <Flex gap='10px' alignItems={'center'} onClick={()=> router.push('/') } cursor={'pointer'}  fontSize='xl' fontWeight={500} >
                 <Image height={'20px'} src='/images/matil-simple.svg'/>
-                <Text mt='4px' color={blackTextSections.includes(pathname)?'':'white'}>MATIL</Text>
+                <Text mt='4px' color={whiteTextSections.includes(pathname)?'':'white'}>MATIL</Text>
               </Flex>
               <Icon aria-label='menu' as={RxHamburgerMenu} boxSize={8} cursor='pointer' color={'brand.clear_black'} onClick={()=>setShowMenu(true)}/>
               

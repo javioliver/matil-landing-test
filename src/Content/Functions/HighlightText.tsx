@@ -7,8 +7,8 @@ const HighlightText = ({ text, color1='gray.300', color2='cyan.400', fontSize, b
     return (
     <span>
         {text.split('/').map((part, index) => {
-            if (index % 2 === 1) return <span style={{fontSize:fontSize, color:color2, fontWeight:bold?500:400 }}>{part}</span>
-            else return <span style={{fontSize:fontSize, color:color1}}>{part}</span>
+            if (index % 2 === 1) return <span key={`span-${index}`} style={{fontSize:fontSize, color:color2, fontWeight:bold?500:400 }}>{part}</span>
+            else return <span key={`span-${index}`}  style={{fontSize:fontSize, color:color1}}>{part}</span>
         })}
     </span>
     )

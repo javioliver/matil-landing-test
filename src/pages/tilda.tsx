@@ -197,7 +197,8 @@ const Matilda =()=>{
 
 
             <Flex width="100%" textAlign={'center'}  bg='brand.white_bg'  flexDirection={'column'} alignItems={'center'} justifyContent={'center'} py='15vh'   >   
-                <Text maxW="1000px"  fontSize={'3xl'} mb='7vh'>{t('FeaturesTitle')}</Text>
+                <Text maxW="1000px"  fontSize={'3xl'} >{t('PricingTitle')}</Text>
+
                 <Flex maxW="1200px"  width="100%" color='white'  gap={'32px'} flexDir={{ base: "column", md: "column", lg: "row", xl: "row" }}>
                     {featuresList.map((feature, index)=> (
                         <ScrollAnimation delay={100 * index} key={`feature-${index}`} style={{flex:'1'}} animateIn="fadeIn" animateOnce >
@@ -215,7 +216,7 @@ const Matilda =()=>{
       
             {/*MATILDA FEATURES*/}
             <Box  bg='brand.white_bg'>
-                <Flex  bg='brand.black_button'  clipPath='polygon(0 100px, 100% 0, 100% 100%, 0 100%)' width={'100vw'} justifyContent={'center'}  > 
+                <Flex  bgGradient='linear(to-br,#00299c, rgb(0, 20, 51))'  clipPath='polygon(0 100px, 100% 0, 100% 100%, 0 100%)' width={'100vw'} justifyContent={'center'}  > 
                     <Flex px='4vw'   width="100vw"  flexDir={'column'}  alignItems={'center'}   py={{ base:"calc(5vh + 100px)", md: "calc(7vh + 100px)", lg: "calc(10vh + 100px)", xl: "calc(12vh + 100px)" }} > 
                             
                             {/*FIRST LINE*/}

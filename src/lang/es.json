@@ -18,11 +18,12 @@
         "More_channels":"Ver todos los canales",
         "Privacy":"Política de Privacidad",
         "Cookies":"Política de Cookies",
-        "Platform":"Plataforma"
+        "Platform":"Plataforma",
+        "FooterCTA":"Adelántate a la nueva era de la atención al cliente con Tilda "
     },
     "Main": {
-        "Hero":"La Nueva Era de la Atención al Cliente es IA-Primero",
-        "Subhero":"Ahorra hasta el 80% en consultas de clientes sin intervención humana. Ofrece un soporte más rápido y de mayor calidad, mejorando la satisfacción del cliente con nuestra avanzada solución de servicio al cliente impulsada por IA.",
+        "Hero":"Transforma tu servicio al cliente con la IA",
+        "Subhero":"Optimiza tu atención al cliente con IA capaz de resolver hasta el 80% de las consultas. Mejora tiempos de respuesta, reduce costos y ofrece soporte 24/7 sin esfuerzo.",
         "Matilda_Title": "La IA especializada a tu negocio",
         "Matilda_Subtitle": "Potencia tus interacciones con una inteligencia artificial hecha a medida para tus necesidades empresariales. Resuelve hasta un 80% de las consultas de tus clientes sin la intervención de un agente humano.\n\nMatilda no solo puede responder preguntas, sino también ejecutar tareas específicas, mejorando la eficiencia y productividad de tu equipo.",
         "Solved_Consults": "Consultas resueltas por Matilda", 
@@ -34,7 +35,19 @@
         "More_Matilda":"Descubrir Matilda",
         "More_SS":"Descubrir SuperService",
         "More_Integrations":"Ver más integraciones",
-        "Integrations_End":"y cualquier integración que se te ocurra"
+        "Integrations_End":"y cualquier integración que se te ocurra",
+        "PricingTitle":"Maxima Calidad y ROI Positivo Garantizado",
+        "PricingDes":"Paga solo por consultas resueltas, garantizando la rentabilidad. Este enfoque nos motiva a ofrecerte siempre la máxima calidad en cada interacción por eso ofercemos:",
+        "PricingFeature1":"Estudio Inicial Gratuito e Integracion a Medida",
+        "PricingFeature1Des":"/Estudiamos/ de manera /gratuita/ la /viabilidad/ y /eficacia/ de nuestra solución y hacemos una /integración/ completamente /a medida/.",
+        "PricingFeature2":"Integracion con Cualquier Canal sin Coste Adicional",
+        "PricingFeature2Des":"Queremos que /Tilda resuelva/ el /máximo de consultas/ posibles, por eso, a diferencia de nuestros competidores, añadir /canales NO/ tiene un /coste extra/.",
+        "PricingFeature3":"Coste de Mantenimiento Inferior a Cualquier Plataforma Similar",
+        "PricingFeature3Des":"La /plataforma/ tiene un /coste/ de mantenimiento /ínfimo/ en funcion del volumen de tickets, ya que /solo/ queremos /ganar dinero/ donde realmente /aportamos valor/."
+
+
+
+
     },
     "Matilda": {
         "Hero":"Libera a tu equipo del 80% del trabajo con Matilda",
@@ -290,9 +303,9 @@
     "Sections": {
         "FAQS":"Preguntas Frecuentes", 
         "Contact_Title":"Adelántate a la nueva era de la atención al cliente",
-        "Contact_Subtitle":"Lidera la transformación de la atención al cliente con la filosofía IA-Primero.",
+        "Contact_Subtitle":"Solicita tu estudio inicial gratuito y te contactaremos lo antes posible para llevar tu servicio al cliente al siguiente nivel.",
         "ContactBox_Title":"¿Cómo podemos contactarte?",
-        "ContactBox_Subitle":"Rellena la información y te contactaremos en menos de 24h",
+        "ContactBox_Subtitle":"Rellena la información y te contactaremos lo antes posible.",
         "ContactBox_1":"Nombre y Apellidos",
         "ContactBox_2":"Correo corporativo",
         "ContactBox_3":"Teléfono",
@@ -301,7 +314,8 @@
         "ContactBox_6":"Núm. consultas al mes",
         "ContactBox_Agree":"Acepto el envío de comunicaciones comerciales, por correo electrónico, relativas a MATIL SL",
         "ContactBox_Sended":"Tu mensaje ha sido enviado con éxito",
-        "ContactBox_Failed":"Rellene todos los campos para eniviar el formulario"
+        "ContactBox_Failed":"Rellene todos los campos para eniviar el formulario",
+        "Send":"Enviar"
     },
     "Chats":{
         "Chat_11": "Hola, pedí unas botas hace una semana y me gustaría saber dónde están",
