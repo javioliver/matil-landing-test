@@ -16,12 +16,12 @@ const Footer=()=>{
     return(
         <Flex bg='white' px='4vw' flexDir={'column'} alignItems={'center'} fontSize={'sm'}   pb='50px' color='brand.clear_black' zIndex={1000} > 
             
-            <Flex width={'100%'} flexDirection={{ base: 'column', sm:'column', lg: 'row' }} gap='32px'  py='30px' maxW={'1000px'} alignItems={'center'} justifyContent={'space-between'} >
+            <Flex width={'100%'} flexDirection={{ base: 'column', sm:'column', lg: 'row' }} gap='32px'  py={{ base: '0', sm:'0', lg: '30px' }} maxW={'1000px'} alignItems={'center'} justifyContent={'space-between'} >
                 <Flex alignItems={'center'} gap='7px'> 
                     <Image height={'20px'} src='/images/matil-simple.svg'/>
                     <Text fontWeight={500}>MATIL</Text>
                 </Flex>
-                <Text  color='brand.text_gray' fontSize={'xs'} fontWeight={300}>{t('FooterCTA')}</Text>
+                <Text textAlign={'center'} color='brand.text_gray' fontSize={'xs'} fontWeight={300}>{t('FooterCTA')}</Text>
                 <Box> 
                 <ArrowButton text={t('Contact')} onClick={() => router.push('/tilda')} bgGradient='linear(to-br,#00299c, rgb(0, 20, 51))' color='white' hover={{color:'brand.gray_1', bg:'linear(to-br,#33299c, rgb(0, 10, 41))'}} fontSize={'xs'}/>
                 </Box>
@@ -29,18 +29,16 @@ const Footer=()=>{
          
             <Flex width="100%" py='30px'color="black" justifyContent="center" alignItems={'center'}  maxW={'1000px'} >
                 <Flex color='brand.clear_black' fontSize={'sm'} fontWeight={'500'} alignItems={{ base: 'center', sm: 'center', lg: 'start' }} width="100%" maxW="1200px" flexDirection={{ base: 'column', sm:'column', lg: 'row' }} gap='32px'  justifyContent={{ base: 'flex-start', sm: 'flex-start', lg: 'center' }}px={{ base: '20px', sm: '30px', md: '50px' }} >
-
-                    <Box cursor={'pointer'} onClick={() => router.push('tilda')} _hover={{color:'brand.text_gray'}}  borderLeftWidth={'1px'} borderLeftColor={{ base: 'gray.50', sm: 'gray.50', md: 'gray.200' }}borderRightWidth={'1px'} borderRightColor={{ base: 'gray.50', sm: 'gray.50', md: 'gray.200' }} px='32px'>
+                    <Box cursor={'pointer'} onClick={() => router.push('tilda')} _hover={{color:'brand.text_gray'}}  px='32px'>
                         <Text >TILDA</Text>
                     </Box>
-                  
-                    <Box  cursor={'pointer'} onClick={() => router.push('platform')} _hover={{color:'brand.text_gray'}}   borderLeftWidth={'1px'} borderLeftColor={{ base: 'gray.50', sm: 'gray.50', md: 'gray.200' }}borderRightWidth={'1px'} borderRightColor={{ base: 'gray.50', sm: 'gray.50', md: 'gray.200' }} px='32px'>
+                    <Box  cursor={'pointer'} onClick={() => router.push('platform')} _hover={{color:'brand.text_gray'}}   px='32px'>
                         <Text >{t('Platform').toUpperCase()}</Text>
                     </Box>
-                    <Box   cursor={'pointer'} onClick={() => router.push('pricing')}_hover={{color:'brand.text_gray'}} borderRightWidth={'1px'} borderRightColor={{ base: 'gray.50', sm: 'gray.50', md: 'gray.200' }} px='32px'>
+                    <Box   cursor={'pointer'} onClick={() => router.push('pricing')}_hover={{color:'brand.text_gray'}} px='32px'>
                         <Text >{t('Pricing').toUpperCase()}</Text>
                     </Box>
-                    <Box cursor={'pointer'} onClick={() => router.push('solutions')} _hover={{color:'brand.text_gray'}} borderRightWidth={'1px'} borderRightColor={{ base: 'gray.50', sm: 'gray.50', md: 'gray.200' }} px='32px'>
+                    <Box cursor={'pointer'} onClick={() => router.push('solutions')} px='32px'>
                         <Text>{t('Solutions').toUpperCase()}</Text>
                     </Box>
                 </Flex>

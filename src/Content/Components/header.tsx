@@ -108,78 +108,57 @@ const Header = ({isComputerWidth}:{isComputerWidth:boolean})=>{
                   </Flex>
           </Flex>
           :
-          <Flex mt={'5vh'} bg={'transparent'} width={'100%'}  color={whiteTextSections.includes(pathname)?'brand.black_button':'white'} borderRadius={'1rem'} px={{ base: '20px', sm: '30px', md: '50px' }} maxW='1200px' justifyContent='space-between' alignItems='center'  >
+          <Flex mt={'5vh'} bg={'transparent'} width={'100%'}  color={whiteTextSections.includes(pathname)?'white':'brand.black_button'} borderRadius={'1rem'} px={{ base: '20px', sm: '30px', md: '50px' }} maxW='1200px' justifyContent='space-between' alignItems='center'  >
               <Flex gap='10px' alignItems={'center'} onClick={()=> router.push('/') } cursor={'pointer'}  fontSize='xl' fontWeight={500} >
                 <Image height={'20px'} src='/images/matil-simple.svg'/>
-                <Text mt='4px' color={whiteTextSections.includes(pathname)?'':'white'}>MATIL</Text>
+                <Text mt='4px' >MATIL</Text>
               </Flex>
-              <Icon aria-label='menu' as={RxHamburgerMenu} boxSize={8} cursor='pointer' color={'brand.clear_black'} onClick={()=>setShowMenu(true)}/>
+              <Icon aria-label='menu' as={RxHamburgerMenu} boxSize={10} cursor='pointer' onClick={()=>setShowMenu(true)}/>
               
               {(showMenu && !isComputerWidth) &&
                 <MotionFlex display={'flex'} maxH={'96vh'} flexDir={'column'} onMouseDown={(e)=>{e.stopPropagation()}}   bg='white' boxShadow={'0 0 10px 1px rgba(0, 0, 0, 0.15)'} zIndex={10000} position={'fixed'} top={'2vh'} left={'2vw'} borderRadius={'1rem'} width={{base:'96vw', sm:'96vw',md:'60vw'}}  p='10px'  initial={{ opacity: 0 }} animate={{ opacity: 1}} exit={{ opacity: 0}} transition={{ duration: 0.5 }} >
               
                 <Flex  p='10px' color='black' justifyContent={'space-between'} alignItems={'center'}>
-                  <Text>MATIL</Text>
+                  <Text fontSize={'sm'}>MATIL</Text>
                   <Icon as={RxCross2} onClick={()=>setShowMenu(false)} cursor={'pointer'}/>
                 </Flex>
 
                 <Box flex='1' overflow={'scroll'}  borderRadius={'.5rem'}> 
-                  <Box   p='10px' mt='10px' bg='gray.50' borderRadius={'.5rem'}>
-                      <Text fontWeight={'medium'}  color='brand.clear_black' >{t('Product')}</Text>
-                      <Flex mt='10px' gap='10px'  cursor={'pointer'}  onClick={()=> router.push('/matilda')}  _hover={{bg:'gray.100', color:'brand.clear_black'}} p='15px' borderRadius={'1rem'} color='gray.400' > 
-                          <Icon mt='3px' as={FaRobot} boxSize={'18px'} />
-                          <Box> 
-                            <Text color='brand.clear_black' >Matilda</Text>
-                            <Text fontSize={'.8em'} fontWeight={300}>{t('Matilda_Subtitle')}</Text>
-                          </Box>
-                      </Flex>
-                      <Flex mt='10px' gap='10px'  cursor={'pointer'}  onClick={()=> router.push('/super-service')} _hover={{bg:'gray.100', color:'brand.clear_black'}} p='15px' borderRadius={'1rem'} color='gray.400' > 
-                          <Icon mt='3px' as={IoFileTrayFull} boxSize={'18px'} />
-                          <Box> 
-                            <Text color='brand.clear_black' >SuperService</Text>
-                            <Text fontSize={'.8em'} fontWeight={300}>{t('SS_Subtitle')}</Text>
-                          </Box>
-                      </Flex>
-                      <Flex mt='10px' gap='10px'  cursor={'pointer'} onClick={()=> router.push('/integrations')}  _hover={{bg:'gray.100', color:'brand.clear_black'}} p='15px' borderRadius={'1rem'} color='gray.400' > 
-                        <Icon mt='3px' as={FaPlug} boxSize={'18px'} />
-                          <Box> 
-                            <Text color='brand.clear_black' >{t('Integrations')}</Text>
-                            <Text fontSize={'.8em'} fontWeight={300}>{t('Integrations_Subtitle')}</Text>
-                            <Flex>
-                              <Flex flex='1' cursor={'pointer'} className="flex-container" alignItems={'center'}  gap='7px' color='blue.400' mt='2vh' onClick={(e) => {e.stopPropagation();router.push('/platforms')}} > 
-                                <Icon as={FiArrowUpRight} mt='.4em'/>
-                                <Text mt='1vh' className="underline-animation" fontWeight={300} fontSize={'.9em'} >{t('More_platforms')}</Text>
-                              </Flex>
-                              <Flex flex='1'  cursor={'pointer'}className="flex-container" alignItems={'center'}  gap='7px' color='blue.400' mt='2vh' onClick={(e) => {e.stopPropagation();router.push('/channels')}}> 
-                                <Icon as={FiArrowUpRight} mt='.4em'/>
-                                <Text mt='1vh' className="underline-animation" fontWeight={300} fontSize={'.9em'} >{t('More_channels')}</Text>
-                              </Flex>
-                            </Flex>
-                          </Box>
-                      </Flex>
-                  </Box>    
+                  
+                    <Flex mt='10px' bg='brand.gray_1' gap='10px'  cursor={'pointer'}  onClick={()=> {router.push('/tilda');setShowMenu(false)}}  _hover={{bg:'gray.100', color:'brand.clear_black'}} p='15px' borderRadius={'1rem'} color='gray.400' > 
+                      <Icon mt='3px' as={FaRobot} boxSize={'18px'} />
+                      <Box> 
+                        <Text color='brand.clear_black' >Tilda</Text>
+                        <Text fontSize={'.8em'} fontWeight={300}>{t('Matilda_Subtitle')}</Text>
+                      </Box>
+                  </Flex>
 
-                  <Box  p='10px' mt='10px' bg='gray.50' borderRadius={'.5rem'}>
-                    <Text fontWeight={'medium'}  color='brand.clear_black' >{t('Pricing')}</Text>
-                    <Flex mt='10px' gap='10px'  cursor={'pointer'}  onClick={()=> router.push('/pricing')}  _hover={{bg:'gray.100', color:'brand.clear_black'}} p='15px' borderRadius={'1rem'} color='gray.400' > 
-                          <Icon mt='3px' as={IoPricetags} boxSize={'18px'} />
-                          <Box> 
-                            <Text color='brand.clear_black' >{t('Pricing')}</Text>
-                            <Text fontSize={'.8em'} fontWeight={300}>{t('Pricing_Subtitle')}</Text>
-                          </Box>
-                      </Flex>
-
-                  </Box>
-                  <Box  p='10px' mt='10px' bg='gray.50' borderRadius={'.5rem'}>
-                    <Text fontWeight={'medium'}  color='brand.clear_black' >{t('Solutions')}</Text>
-                    <Flex mt='10px' gap='10px'  cursor={'pointer'}  onClick={()=> router.push('solutions')}  _hover={{bg:'gray.100', color:'brand.clear_black'}} p='15px' borderRadius={'1rem'} color='gray.400' > 
-                          <Icon mt='3px' as={IoHeadset} boxSize={'18px'} />
-                          <Box> 
-                            <Text color='brand.clear_black' >{t('Solutions')}</Text>
-                            <Text fontSize={'.8em'} fontWeight={300}>{t('Solutions_Subtitle')}</Text>
-                          </Box>
-                      </Flex>
-                  </Box>
+                  <Flex mt='10px' bg='brand.gray_1' gap='10px'  cursor={'pointer'}  onClick={()=> {router.push('/platform');setShowMenu(false)}}  _hover={{bg:'gray.100', color:'brand.clear_black'}} p='15px' borderRadius={'1rem'} color='gray.400' > 
+                      <Icon mt='3px' as={IoFileTrayFull} boxSize={'18px'} />
+                      <Box> 
+                        <Text color='brand.clear_black' >{t('Platform')}</Text>
+                        <Text fontSize={'.8em'} fontWeight={300}>{t('Matilda_Subtitle')}</Text>
+                      </Box>
+                  </Flex>
+                     
+                  <Flex mt='10px' bg='brand.gray_1' gap='10px'  cursor={'pointer'}  onClick={()=> {router.push('/pricing');;setShowMenu(false)}}  _hover={{bg:'gray.100', color:'brand.clear_black'}} p='15px' borderRadius={'1rem'} color='gray.400' > 
+                      <Icon mt='3px' as={IoPricetags} boxSize={'18px'} />
+                      <Box> 
+                        <Text color='brand.clear_black' >{t('Pricing')}</Text>
+                        <Text fontSize={'.8em'} fontWeight={300}>{t('Pricing_Subtitle')}</Text>
+                      </Box>
+                  </Flex>
+                     
+                  <Flex mt='10px' bg='brand.gray_1' gap='10px'  cursor={'pointer'}  onClick={()=> {router.push('/solutions');setShowMenu(false)}}  _hover={{bg:'gray.100', color:'brand.clear_black'}} p='15px' borderRadius={'1rem'} color='gray.400' > 
+                      <Icon mt='3px' as={IoHeadset} boxSize={'18px'} />
+                      <Box> 
+                        <Text color='brand.clear_black' >{t('Solutions')}</Text>
+                        <Text fontSize={'.8em'} fontWeight={300}>{t('Solutions_Subtitle')}</Text>
+                      </Box>
+                  </Flex>
+  
+ 
+               
 
                 </Box>
                 </MotionFlex>

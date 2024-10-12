@@ -77,8 +77,8 @@ const theme = extendTheme({
     '2xl': 'clamp(24px, 5vw + 4px, 32px)',
     '3xl': 'clamp(30px, 6vw + 4px, 40px)',
     '4xl': 'clamp(36px, 7vw + 4px, 48px)',
-    '5xl': 'clamp(42px, 8vw + 4px, 56px)',
-    '6xl': 'clamp(56px, 9vw + 4px, 72px)',
+    '5xl': 'clamp(40px, 8vw + 4px, 56px)',
+    '6xl': 'clamp(46px, 9vw + 4px, 72px)',
   },
   styles: {
     global: {

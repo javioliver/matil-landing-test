@@ -76,7 +76,7 @@ const Main = () => {
 
         <Flex flexDir='column' width={'100vw'} alignItems={'center'} bg='transparent' px='4vw'>
 
-            <Flex width="100%" maxW="1200px" gap='32px' justifyContent={{ md: 'space-between' }} py={'100px'}   flexDirection={{ base: 'column', md: 'row' }}>
+            <Flex width="100%" maxW="1200px" gap='32px' justifyContent={{ md: 'space-between' }} py={{ base: '0', md: '100px' }}   flexDirection={{ base: 'column', md: 'row' }}>
                 <Box> 
                     <ScrollAnimation animateIn="fadeIn" animateOnce>
                         <Flex display={'inline-block'} justifyContent={'center'} bgGradient='linear(to-br, #58daf4, rgb(5, 102, 255))' alignItems={'center'} bg={''} color={'white'} px='15px' py='3px' borderRadius={'2rem'}>
@@ -166,15 +166,15 @@ const Main = () => {
         </Flex>
 
         <Flex width="100%"   justifyContent={'center'} px='4vw' overflow={'hidden'} >
-            <Flex gap='32px' maxW={'1200px'} width={'100%'}> 
+            <Flex gap='32px'pt={{ base: '75px', md: '0' }}  maxW={'1200px'} width={'100%'}  flexDirection={{ base: 'column', md: 'row' }}> 
                 
-                <Box py='75px' flex={'1'} > 
+                <Flex flexDir={'column'}  justifyContent={'center'} flex={{ base: '', md: '1' }} > 
                     <ScrollAnimation animateIn="fadeIn" animateOnce>
                         <Text fontSize={'xl'}  fontWeight="500" overflowWrap="break-word" whiteSpace="pre-wrap" >{t('Integrations_Title')}</Text>
                         <Text  fontSize={'sm'} mt='20px'  fontWeight="300" color='brand.text_gray' overflowWrap="break-word" whiteSpace="pre-wrap" >{t('Integrations_Subtitle')}</Text>
                     </ScrollAnimation>
-                </Box>
-                <Box flex='1' height={'400px'}overflow={'hidden'}>
+                </Flex>
+                <Box flex={{ base: '', md: '1' }} height={'400px'}overflow={'hidden'}>
                     <ScrollAnimation animateIn="fadeIn" animateOnce>
                         <CompaniesRiver/>
                     </ScrollAnimation>
@@ -182,7 +182,7 @@ const Main = () => {
             </Flex>
         </Flex>
 
-        <Flex width="100%" py='75px' bg='brand.gray_1'   flexDirection={'column'} alignItems={'center'}  >
+        <Flex width="100%" py='75px' bg='brand.gray_1'  px='4vw' flexDirection={'column'} alignItems={'center'}  >
                 <ScrollAnimation animateIn="fadeIn" animateOnce>
                     <Text maxW="1000px" textAlign={'center'} fontWeight={500}fontSize={'3xl'}>{t('PricingTitle')}</Text>
                 </ScrollAnimation>

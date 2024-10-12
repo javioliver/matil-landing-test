@@ -131,7 +131,7 @@ const Matilda =()=>{
         ), [currentChat])
 
         return(
-        <Flex flex={'1'} justifyContent={'center'}   mt={{ base: "6vh", md: "7vh", lg: "8vh", xl: "10vh" }} >
+        <Flex flex={'1'} justifyContent={'center'} zIndex={2} >
             <ScrollAnimation animateIn="fadeIn" animateOnce > 
                 <Box bg='white' borderColor={'#eaebee'} borderWidth={'7px'} height={'590px'}  width={'310px'}   borderRadius={'2rem'}  overflow={'hidden'} boxShadow={'0 44px 89px -18px rgba(50,50,93,.35),0 26px 54px -26px rgba(0,0,0,.3),inset 0 -1px 3px 0 rgba(10,37,64,.35)'} >
                     {chatContent}
@@ -154,14 +154,14 @@ const Matilda =()=>{
            
             {/*HERO AND EXAMPLES CHATS COMPONENT*/}
             <Flex flexDir='column' width={'100vw'} alignItems={'center'}> 
-                <Flex maxW={'1200px'}> 
-                    <Box flex={'1'}  width="100%" position={'relative'} px='4vw' color='black'  py={'150px'}  maxW="1200px" >
+                <Flex maxW={'1200px'} position='relative' flexDir={{ base: "column", md: 'row'}}  py={'150px'} gap='50px' > 
+                    <Box flex={'1'}  width="100%" position={'relative'} px='4vw' color='black'   maxW="1200px" >
                         <Flex  zIndex={2}  flexDir={'column'} > 
-                            <Text fontSize={'5xl'}  fontWeight="500" overflowWrap="break-word" whiteSpace="pre-wrap" >
+                            <Text fontSize={'5xl'}  zIndex={2} fontWeight="500" overflowWrap="break-word" whiteSpace="pre-wrap" >
                                 <AnimatedText text={t('Hero')}/>
                             </Text>
-                            <ScrollAnimation animateIn="fadeInUp" animateOnce delay={t('Hero').split(' ').length * 70 + 300}> 
-                                <Text mt='10px' maxW={'800px'} fontWeight={300} fontSize={'sm'}color="brand.text_gray"   overflowWrap="break-word" whiteSpace="pre-wrap">
+                            <ScrollAnimation style={{ zIndex:2}} animateIn="fadeInUp" animateOnce delay={t('Hero').split(' ').length * 70 + 300}> 
+                                <Text mt='10px'  maxW={'800px'} fontWeight={300} fontSize={'sm'}color="brand.text_gray"   overflowWrap="break-word" whiteSpace="pre-wrap">
                                     {t('Subhero')}
                                 </Text>
                             </ScrollAnimation>
@@ -170,11 +170,11 @@ const Matilda =()=>{
                      <MatildaChatsComponent/>  
                 </Flex>
             </Flex>
-            <Box width={'100vw'} zIndex={1} mt='-15vh' height={'60vh'} top={0} clipPath='polygon(0 0, 100% 60%, 100% 100%, 0 40%)'> 
+            <Box width={'100vw'} zIndex={0} mt='-15vh' height={'60vh'} position={{ base: "absolute", md: 'relative'}} top={{ base: "100vh", md: '0'}} clipPath='polygon(0 0, 100% 60%, 100% 100%, 0 40%)'> 
                 <MeshGradientBackground colors={["#11efe3",  "#0073e6", "#00299c"]}/>
             </Box>
 
-            <Flex width="100%" py='75px' justifyContent={'center'} >
+            <Flex width="100%" py='75px' px='4vw' justifyContent={'center'} >
                  <Grid maxW="1200px"  width="100%" gap={'32px'} templateColumns={{ base: "1fr", md: "1fr 1fr", lg: "repeat(4, 1fr)", xl: "repeat(4, 1fr)" }}>
                     {improvesList.map((improve, index)=> (
                         <ScrollAnimation delay={100 * index} key={`improve-${index}`} style={{flex:'1'}} animateIn="fadeIn" animateOnce >
@@ -196,10 +196,10 @@ const Matilda =()=>{
             </Flex> 
 
 
-            <Flex width="100%" textAlign={'center'}  bg='brand.white_bg'  flexDirection={'column'} alignItems={'center'} justifyContent={'center'} py='15vh'   >   
+            <Flex width="100%" textAlign={'center'}  bg='brand.white_bg'  flexDirection={'column'} alignItems={'center'} justifyContent={'center'} py='75px' px='4vw'   >   
                 <Text maxW="1000px"  fontSize={'3xl'} >{t('PricingTitle')}</Text>
 
-                <Flex maxW="1200px"  width="100%" color='white'  gap={'32px'} flexDir={{ base: "column", md: "column", lg: "row", xl: "row" }}>
+                <Flex maxW="1200px"  width="100%" color='white'  gap={'32px'} my='50px' flexDir={{ base: "column", md: "column", lg: "row", xl: "row" }}>
                     {featuresList.map((feature, index)=> (
                         <ScrollAnimation delay={100 * index} key={`feature-${index}`} style={{flex:'1'}} animateIn="fadeIn" animateOnce >
                             <Flex flexDir={'column'} justifyContent={'space-between'} position='relative' flex='1' textAlign={'center'} overflow={'hidden'} borderRadius={'.5rem'} bg={`url(${feature.image})`} bgSize="cover" bgPosition="center" bgRepeat="no-repeat"   py='60px' boxShadow={'rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px'}>
@@ -310,7 +310,7 @@ const Matilda =()=>{
                 </Flex>
             </Box>
 
-            <Flex width="100%" py='100px' px='4vw' bg='brand.white_bg' justifyContent={'center'} >
+            <Flex width="100%" py='75px' px='4vw' bg='brand.white_bg' justifyContent={'center'} >
                 <Box maxW={'1200px'} width={'100%'}> 
                     <Text fontSize={'2xl'}  fontWeight="500" overflowWrap="break-word" whiteSpace="pre-wrap" >{t('IntegrationTitle')}</Text>
                     <Text  fontSize={'sm'} mt='20px'  fontWeight="300" color='brand.text_gray' overflowWrap="break-word" whiteSpace="pre-wrap" >{t('IntegrationTitleDes')}</Text>
