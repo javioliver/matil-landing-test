@@ -2,8 +2,9 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { GetStaticPropsContext } from 'next'
+
 //REACT
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useMemo } from 'react'
 //TRANSLATION
 import { useTranslations } from 'next-intl'
 //FRONT
@@ -20,9 +21,9 @@ const FloatingCards = ({scrollY, isComputerWidth}:{scrollY:number, isComputerWid
 
     const t = useTranslations('Platform')
     const floatingCards = [
-        {title:t('Card_1'), description:'3f4ihevi3rf iug3rebgfi 3reiguv r3fr3,mvr,mrevb m,ebef23ef, ew3fn3erw gvijr3iuvr ',image:''},
-        {title:t('Card_2'), description:'3f4ihevi3rf iug3rebgfi 3reiguv r3g 3fr3,mvr,mrevb m,ebef23ef, ew3fn3erw gvijr3iuvrvijr3iuvr ',image:''},
-        {title:t('Card_3'), description:'3f4ihevi3rf iug3rebgfi 3reiguv r3g 3fr3,mvr,mrevb m,ebef23ef, ew3fn3erw gvijr3iuvrvijr3iuvr ', image:''}
+        {title:t('Card_1'), description:t('Card_1Des'),image:'/images/tickets-screen.png'},
+        {title:t('Card_2'), description:t('Card_2Des'),image:'/images/stats-screen.png'},
+        {title:t('Card_3'), description:t('Card_3Des'), image:'/images/stats-screen.png'}
     ] 
 
     const [selectedIndex, setSelectedIndex] = useState<number>(0)
@@ -33,6 +34,7 @@ const FloatingCards = ({scrollY, isComputerWidth}:{scrollY:number, isComputerWid
      
 
     const areCardsFloating = (scrollY < 150 && isComputerWidth)
+     
     return (<>
         {floatingCards.map((card, index) => {
             let animationIndex = 0
@@ -42,10 +44,11 @@ const FloatingCards = ({scrollY, isComputerWidth}:{scrollY:number, isComputerWid
               
             return (
                 
-            <Flex flexDir={'column'} overflow={'hidden'} position={isComputerWidth?'absolute':'relative'} mt={isComputerWidth?'':'32px'} top={isComputerWidth ? areCardsFloating?`${-550 + scrollY}px`:'100px':``} left={isComputerWidth?areCardsFloating?'55vw':400 + index * 400:''} key={`card-${index}`} boxShadow={'rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px'} zIndex={1000 - animationIndex} borderRadius={'.5rem'} height={'470px'} width={'360px'}  transition={'all .7s ease'}  transform={areCardsFloating?`rotate(${8 *animationIndex}deg)  translateY(${animationIndex * 30}px) translateX(${animationIndex * 90}px) scale(${1 - animationIndex * 0.07})`:''} >
-                <Box bg='rgba(256,256,256,0.5)' height='70%'>
-                </Box>
-                <Box p='20px' height='30%' bg='white' > 
+            <Flex flexDir={'column'} overflow={'hidden'} position={isComputerWidth?'absolute':'relative'} mt={isComputerWidth?'':'32px'} top={isComputerWidth ? areCardsFloating?`${-550 }px`:'100px':``} left={isComputerWidth?areCardsFloating?'55vw':400 + index * 400:''} key={`card-${index}`} boxShadow={'rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px'} zIndex={1000 - animationIndex} borderRadius={'.5rem'} height={'420px'} width={'300px'}  transition={'all .7s ease'}  transform={areCardsFloating?`rotate(${8 *animationIndex}deg)  translateY(${animationIndex * 30}px) translateX(${animationIndex * 90}px) scale(${1 - animationIndex * 0.07})`:''} >
+                <Flex alignItems={'center'}  bg='white'   height='60%'>
+                    <Image src={card.image}/>
+                </Flex>
+                <Box p='20px' height='40%'  bg='brand.gray_1'  borderTop={'1px'} borderColor={'gray.200'}> 
                     <Text fontWeight={500} fontSize={'lg'}>{card.title}</Text>
                     <Text fontWeight={300} color='brand.text_gray' fontSize={'xs'}>{card.description}</Text>
                 </Box>
@@ -64,7 +67,7 @@ const Platform =()=>{
     const heroRef = useRef<HTMLDivElement>(null)
 
     //FAQS LIST
-    const faqsList = [[t('FAQ_1'), t('FAQ_ANSWER_1')], [t('FAQ_2'), t('FAQ_ANSWER_2')], [t('FAQ_3'), t('FAQ_ANSWER_3')], [t('FAQ_4'), t('FAQ_ANSWER_4')], [t('FAQ_5'), t('FAQ_ANSWER_5')], [t('FAQ_6'), t('FAQ_ANSWER_6')], [t('FAQ_7'), t('FAQ_ANSWER_7')]]
+    const faqsList = [[t('FAQ_1'), t('FAQ_ANSWER_1')], [t('FAQ_2'), t('FAQ_ANSWER_2')], [t('FAQ_3'), t('FAQ_ANSWER_3')], [t('FAQ_4'), t('FAQ_ANSWER_4')], [t('FAQ_5'), t('FAQ_ANSWER_5')], [t('FAQ_6'), t('FAQ_ANSWER_6')]]
 
     
     //MAIN SECTIONS LIST
@@ -74,6 +77,7 @@ const Platform =()=>{
         {title:'Productivity', color:'#00299c'},
     ]
 
+    const sectionsImages = ['/images/tickets.svg', '/images/tickets.svg', '/images/tickets.svg']
     //CHANNELS LIST
     const channelsList:any[] = [
         {title:'WebChat', icon:'/images/icons/chat.svg'},
@@ -95,6 +99,8 @@ const Platform =()=>{
         handleResize()
         return () => {window.removeEventListener('scroll', handleScroll)}
     }, [])
+
+   
 
     return(<>
         <Head>
@@ -118,7 +124,7 @@ const Platform =()=>{
                         </Flex>
                      </Box>
 
-                    <Box flex='1'   display={{ base: 'none', md: 'block' }}  ></Box>
+                    <Box flex='1'display={{ base: 'none', md: 'block' }}  ></Box>
                 </Flex>
         </Flex>
 
@@ -136,7 +142,7 @@ const Platform =()=>{
 
             <Box w={'100%'}  maxW={'1200px'} zIndex={3}  pb={isComputerWidth?'75px':''}  pt={isComputerWidth?'':'75px'} transition={'all .7s ease'}  transform={isComputerWidth?`translateY(${scrollY < 150?'-550px':'0px'})`:''}>
                 {mainSectionList.map((section, index) => (
-                    <Flex key={`section-${index}`} gap='32px' mt={isComputerWidth?'75px':'30px' } flexDir={isComputerWidth?index % 2 === 0?'row':'row-reverse':'column'}  >
+                    <Flex key={`section-${index}`} gap='32px' alignItems={'center'} mt={isComputerWidth?'75px':'30px' } flexDir={isComputerWidth?index % 2 === 0?'row':'row-reverse':'column'}  >
                         <Box flex='1'> 
                             <ScrollAnimation animateIn="fadeIn" animateOnce> 
                                 <Flex display={'inline-block'} justifyContent={'center'} bgGradient='linear(to-br, #00299c, rgb(0, 20, 51))' alignItems={'center'}  color={'white'} px='15px' py='3px' borderRadius={'2rem'}>
@@ -167,7 +173,7 @@ const Platform =()=>{
                             ))}
                         </Box>
                         <ScrollAnimation animateIn="fadeIn" style={{flex:'1'}} animateOnce> 
-
+                            <Image borderRadius={'.7rem'} src={sectionsImages[index]}  boxShadow={'rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px'}/>
                         </ScrollAnimation>
                     </Flex>
                 ))}

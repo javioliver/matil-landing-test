@@ -158,7 +158,7 @@ const Main = () => {
 
                 <ScrollAnimation style={{flex:'4'}} animateIn="fadeInRight" animateOnce>
                     <Box  overflow={'hidden'} position={'relative'} borderRadius={'.5rem'} >
-                        <Image src='/images/estadisticas.png'/>
+                        <Image src='/images/screen.png'/>
                     </Box>
                 </ScrollAnimation>
     

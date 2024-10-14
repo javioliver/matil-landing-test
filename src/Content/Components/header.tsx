@@ -74,13 +74,14 @@ const Header = ({isComputerWidth}:{isComputerWidth:boolean})=>{
         headerRef.current.style.boxShadow = boxShadow
         headerRef.current.style.width = headerWidth
         headerRef.current.style.color = color
-
       }
   }
   useEffect(() => {
+    handleScroll()
     window.addEventListener('scroll', handleScroll)
     return () => {window.removeEventListener('scroll', handleScroll)}
-  }, [])
+  }, [pathname])
+
 
   return( <> 
 
@@ -89,7 +90,7 @@ const Header = ({isComputerWidth}:{isComputerWidth:boolean})=>{
         <Flex maxW={'1200px'} width={'100%'} justifyContent={'center'} position={'relative'}> 
           {isComputerWidth ? 
 
-            <Flex display={'inline-flex'} ref={headerRef} top={'3vh'} bg={'transparent'} width={'100%'} position='absolute' color={whiteTextSections.includes(pathname) ?  'white':'brand.black_button' } _hover={{color:whiteTextSections.includes(pathname) ? 'brand.black_button' : 'white'}} 
+            <Flex display={'inline-flex'} ref={headerRef} top={'3vh'} bg={'transparent'} width={'100%'} position='absolute' color={whiteTextSections.includes(pathname) ?  'white':'brand.black_button' }  
             borderRadius={'10rem'} px={{ base: '10px', sm: '12px', md: '15px' }}  py={{ base: '5px', sm: '7px', md: '10px' }}  justifyContent='space-between' alignItems='center' transition="background-color 0.1s ease, width 0.1s ease, box-shadow 0.1s ease" > 
                 <Flex gap='7px' alignItems={'center'} onClick={()=> router.push('/') } cursor={'pointer'}  fontSize='xl' fontWeight={500} >
                     <Image height={'25px'} src='/images/matil-simple.svg'/>

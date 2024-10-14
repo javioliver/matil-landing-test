@@ -216,13 +216,13 @@ const Matilda =()=>{
       
             {/*MATILDA FEATURES*/}
             <Box  bg='brand.white_bg'>
-                <Flex  bgGradient='linear(to-br,#00299c, rgb(0, 20, 51))'  clipPath='polygon(0 100px, 100% 0, 100% 100%, 0 100%)' width={'100vw'} justifyContent={'center'}  > 
-                    <Flex px='4vw'   width="100vw"  flexDir={'column'}  alignItems={'center'}   py={{ base:"calc(5vh + 100px)", md: "calc(7vh + 100px)", lg: "calc(10vh + 100px)", xl: "calc(12vh + 100px)" }} > 
+                <Flex  bgGradient='linear(to-br,#00299c, rgb(0, 20, 51))' px='4vw'     clipPath='polygon(0 100px, 100% 0, 100% 100%, 0 100%)' width={'100vw'} justifyContent={'center'}  > 
+                    <Flex  width="100vw"  flexDir={'column'}  alignItems={'center'}   py={{ base:"calc(5vh + 100px)", md: "calc(7vh + 100px)", lg: "calc(10vh + 100px)", xl: "calc(12vh + 100px)" }} > 
                             
                             {/*FIRST LINE*/}
                             <Flex maxW="1000px" width="100%"  gap={'32px'} flexDir={{ base: "column", md: "column", lg: "row-reverse", xl: "row-reverse" }}>
                                 <ScrollAnimation style={{flex:'2'}} animateIn="fadeInUp" animateOnce >
-                                    <Text textAlign={{ base: 'center',sm:'center', md: 'start', lg: 'start' }} color='white' flex='2' fontSize={{ base: '2em',sm:'2.1em', md: '2.3em', lg: '2.5em' }}><span style={{color:'rgb(5, 102, 255)'}}>Matilda</span> {t('Matilda_Feature')}</Text>
+                                    <Text textAlign={{ base: 'center',sm:'center', md: 'start', lg: 'start' }} color='white' flex='2' fontSize={{ base: '2em',sm:'2.1em', md: '2.3em', lg: '2.5em' }}>{t('Matilda_Feature')}</Text>
                                 </ScrollAnimation >
 
                                 <ScrollAnimation style={{flex:'1'}} animateIn="fadeIn" animateOnce >
