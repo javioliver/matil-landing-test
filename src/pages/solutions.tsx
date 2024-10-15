@@ -206,7 +206,8 @@ const ScrollableBoxes = ({businessTypeIndex, isComputerWidth}:{businessTypeIndex
      
     <Flex  ref={containerRef} flexDir={'column'} alignItems={'center'} position={'relative'} > 
 
-        {isComputerWidth && <Box position='absolute' top={'65vh'}  right={svgStyles[businessTypeIndex].position === 'right'?`-${windowWidth - (containerRef.current?.getBoundingClientRect().right || 0)}px`:''}  left={svgStyles[businessTypeIndex].position === 'left'?`-${containerRef.current?.getBoundingClientRect().left}px`:''}  zIndex={1} width={svgStyles[businessTypeIndex].width} transition={'opacity 0.5s ease-in-out'}>
+        {isComputerWidth && 
+        <Box position='absolute' top={'65vh'}  right={svgStyles[businessTypeIndex].position === 'right'?`-${windowWidth - (containerRef.current?.getBoundingClientRect().right || 0)}px`:''}  left={svgStyles[businessTypeIndex].position === 'left'?`-${containerRef.current?.getBoundingClientRect().left}px`:''}  zIndex={-1} width={svgStyles[businessTypeIndex].width} transition={'opacity 0.5s ease-in-out'}>
             <svg  xmlns="http://www.w3.org/2000/svg"  viewBox={svgStyles[businessTypeIndex].viewBox} ref={svgRef} >
                     <defs>
                         <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -334,7 +335,7 @@ const Solutions = () =>{
                     </Heading>
                 </ScrollAnimation>
             </Box>
-            <Flex flexDir={'column'} alignItems={'center'} zIndex={1000} opacity={1} width={'100%'} maxW={'1000px'}> 
+            <Flex flexDir={'column'} alignItems={'center'} zIndex={10} opacity={1} width={'100%'} maxW={'1000px'}> 
                 {Array.from(Array(3).keys()).map((index) => (
                     <ScrollAnimation key={`use-case-${index}`} style={{marginTop:index !== 0 ?'100px':''}} animateIn="fadeIn" animateOnce delay={index === 0?t('Title').split(' ').length * 70 + 800:0}>            
                         <ScrollableBoxes businessTypeIndex={index} isComputerWidth={isComputerWidth}/>

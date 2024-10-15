@@ -31,13 +31,18 @@ const Main = () => {
   //NEXT ROUTING
   const router = useRouter()
 
-  const matildaChat:[number, {text:string, botMessage:boolean}][] = [
-        [1000, { text: t_chats('Chat_11'), botMessage: false }],
-        [100, { text: t_chats('Chat_12'), botMessage: true }],
-        [3500, { text: t_chats('Chat_13'), botMessage: false }],
-        [100, { text: t_chats('Chat_14'), botMessage: true }],
-        [4500, { text: t_chats('Chat_15'), botMessage: true }]
+  const matildaChat:[number, {text:string, botMessage:boolean, id:string}][] = [
+        [1000, {id:'1', text: t_chats('Chat_11'), botMessage: false }],
+        [100, { id:'2',text: t_chats('Chat_12'), botMessage: true }],
+        [3500, {id:'3', text: t_chats('Chat_13'), botMessage: false }],
+        [100, { id:'4',text: t_chats('Chat_14'), botMessage: true }],
+        [4500, {id:'5', text: t_chats('Chat_15'), botMessage: false }],
+        [100, {id:'6', text: t_chats('Chat_16'), botMessage: true }]
+
     ]
+
+    const platformIcons = ['/images/logos/whatsapp.png', '/images/logos/instagram.png', '/images/logos/mail.png', '/images/logos/messenger.png', '/images/logos/google-business.svg', '/images/logos/call.png']
+  
 
     const pricingIconsList = ['/images/icons/study-dark.svg','/images/icons/channels.svg', '/images/icons/save-money.svg']
   return (<>
@@ -63,8 +68,9 @@ const Main = () => {
                             </Text>
                         </ScrollAnimation>
                     </Flex>
-                    <ScrollAnimation animateIn="fadeIn" animateOnce delay={(t('Hero').split(' ').length) * 100 + 300} style={{position:'relative', zIndex:10, maxWidth:'1000px'}} >
-                        <Image mt='50px' src={`/images/screen.png`} width={'100%'} boxShadow={'rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px'} borderRadius={'.5rem'}/>
+                    <ScrollAnimation animateIn="fadeIn" animateOnce delay={(t('Hero').split(' ').length) * 100 + 300} style={{position:'relative', zIndex:10,  width:'100%', maxWidth:'1200px'}} >
+                        <Image mt='50px' src={`/images/main.svg`} width={'100%'} />
+                       
                     </ScrollAnimation>
 
                 </Flex>
@@ -134,12 +140,12 @@ const Main = () => {
         </Flex>  
 
         <Flex bgGradient='linear(to-br,#00299c, rgb(0, 20, 51))'  clipPath='polygon(0 10%, 100% 0, 100% 100%, 0 100%)' width={'100vw'} justifyContent={'center'} px='4vw' > 
-            <Flex width="100%" maxW="1200px" gap='50px' justifyContent={{ md: 'space-between' }} py={{ base: "10vh", md: "12vh", lg: "15vh", xl: "17vh" }}  flexDirection={{ base: 'column', md: 'row' }}>
+            <Flex width="100%" maxW="1200px" gap='50px' justifyContent={{ md: 'space-between' }} py={{ base: "14vh", md: "14vh", lg: "15vh", xl: "17vh" }}  flexDirection={{ base: 'column', md: 'row' }}>
  
-                <Box flex={'3'} width={{ base: '100%', md: 'auto' }}>
+                <Box flex={'3'}  width={{ base: '100%', md: 'auto' }}>
                     <ScrollAnimation animateIn="fadeIn" animateOnce>
                         <Flex display={'inline-block'} justifyContent={'center'} bgGradient='linear(to-br, #58daf4, rgb(5, 102, 255))' alignItems={'center'} bg={''} color={'white'} px='15px' py='3px' borderRadius={'2rem'}>
-                            <Text fontSize={'md'} fontWeight={500}>Tilda</Text>
+                            <Text fontSize={'md'} fontWeight={500}>{t('Platform')}</Text>
                         </Flex>
                     </ScrollAnimation>
                     <ScrollAnimation animateIn="fadeIn" animateOnce>
@@ -155,13 +161,22 @@ const Main = () => {
                     <ArrowButton text={t('More_SS')} onClick={() => router.push('/platform')} bg='transparent' border='1px solid white' color='white' hover={{color:'brand.gray_1', bg:'rgb(0, 20, 101)'}} fontSize={'sm'}/>
                     </Box>
       
-
-                <ScrollAnimation style={{flex:'4'}} animateIn="fadeInRight" animateOnce>
-                    <Box  overflow={'hidden'} position={'relative'} borderRadius={'.5rem'} >
-                        <Image src='/images/screen.png'/>
+                <Flex flex='5' height={'100%'}> 
+                     <Box bg='rgb(0, 27, 71)' overflow={'hidden'} position={'relative'} borderRadius={'1.5rem'} >
+                        <Flex height={'100px'} gap='20px' alignItems={'center'} ml='50px'>
+                            {platformIcons.map((icon, index) => (
+                                <ScrollAnimation key={`icons-${index}`}  animateIn="fadeIn" delay={index * 100}  animateOnce>
+                                    <Flex bg='white' alignItems={'center'} justifyContent={'center'} key={`platform-icon-${index}`} borderRadius={'full'} height={'60px'} width={'60px'}>
+                                        <Image src={icon} boxSize='35px'/>
+                                    </Flex>
+                                </ScrollAnimation>
+                            ))}
+                        </Flex>       
+                        <ScrollAnimation style={{flex:'1', marginLeft:'50px'}} animateIn="fadeIn" animateOnce>
+                            <Image borderRadius={'.5rem 0 0 0'}src='/images/tickets-table.svg'/>
+                        </ScrollAnimation>
                     </Box>
-                </ScrollAnimation>
-    
+                 </Flex>
             </Flex> 
         </Flex>
 
@@ -170,12 +185,12 @@ const Main = () => {
                 
                 <Flex flexDir={'column'}  justifyContent={'center'} flex={{ base: '', md: '1' }} > 
                     <ScrollAnimation animateIn="fadeIn" animateOnce>
-                        <Text fontSize={'xl'}  fontWeight="500" overflowWrap="break-word" whiteSpace="pre-wrap" >{t('Integrations_Title')}</Text>
+                        <Text fontSize={'2xl'}  fontWeight="500" overflowWrap="break-word" whiteSpace="pre-wrap" >{t('Integrations_Title')}</Text>
                         <Text  fontSize={'sm'} mt='20px'  fontWeight="300" color='brand.text_gray' overflowWrap="break-word" whiteSpace="pre-wrap" >{t('Integrations_Subtitle')}</Text>
                     </ScrollAnimation>
                 </Flex>
                 <Box flex={{ base: '', md: '1' }} height={'400px'}overflow={'hidden'}>
-                    <ScrollAnimation animateIn="fadeIn" animateOnce>
+                    <ScrollAnimation  animateIn="fadeIn" animateOnce>
                         <CompaniesRiver/>
                     </ScrollAnimation>
                 </Box>

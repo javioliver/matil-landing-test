@@ -86,7 +86,7 @@ const Header = ({isComputerWidth}:{isComputerWidth:boolean})=>{
   return( <> 
 
   
-      <Flex width={'100vw'} justifyContent={'center'} position={isComputerWidth?'fixed':'absolute'} top={0} left={0} zIndex={1000000}> 
+      <Flex width={'100vw'} justifyContent={'center'} position={isComputerWidth?'fixed':'absolute'} top={0} left={0} zIndex={1000}> 
         <Flex maxW={'1200px'} width={'100%'} justifyContent={'center'} position={'relative'}> 
           {isComputerWidth ? 
 

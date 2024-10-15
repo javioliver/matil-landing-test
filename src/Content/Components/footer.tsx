@@ -7,6 +7,7 @@ import { useTranslations } from 'next-intl'
 //FRONT
 import { Box, Flex, Text, Image } from '@chakra-ui/react'
 import ArrowButton from '../Widgets/ArrowButton'
+import LanguageSwitcher from '../Widgets/LanguageSwitcher'
 const Footer=()=>{
 
     //ROUNTING AND TRANSLATION CONSTANTS
@@ -14,7 +15,7 @@ const Footer=()=>{
     const t = useTranslations('Header')
     
     return(
-        <Flex bg='white' px='4vw' flexDir={'column'} alignItems={'center'} fontSize={'sm'}   pb='50px' color='brand.clear_black' zIndex={1000} > 
+        <Flex bg='white' px='4vw' flexDir={'column'} alignItems={'center'} fontSize={'sm'} pb='50px'   color='brand.clear_black' zIndex={1000} > 
             
             <Flex width={'100%'} flexDirection={{ base: 'column', sm:'column', lg: 'row' }} gap='32px'  py={{ base: '0', sm:'0', lg: '30px' }} maxW={'1000px'} alignItems={'center'} justifyContent={'space-between'} >
                 <Flex alignItems={'center'} gap='7px'> 
@@ -44,21 +45,19 @@ const Footer=()=>{
                 </Flex>
             </Flex>
           
-
-
-            <Flex width="100%"  py="30px"  alignItems="center">
-                <Flex  fontSize={'2xs'} width="100%" maxW="1000px" justifyContent="center" alignItems="center"  >
-                    <Text textAlign="center" fontWeight={300}>  
-                        <Box as="span" onClick={() => router.push('privacy-policy')} sx={{ cursor: 'pointer', _hover: { color: 'rgb(100, 116, 145)' }, mx: 2 }}>
-                        {t('Privacy')}
-                        </Box>
-                        |
-                        <Box as="span" onClick={() => router.push('cookies-policy')} sx={{ cursor: 'pointer', _hover: { color: 'rgb(100, 116, 145)' }, mx: 2 }}>
-                        {t('Cookies')}
-                        </Box>
-                    </Text>
-                </Flex>
+            <Flex  fontSize={'2xs'} width="100%" maxW="1000px"  alignItems="center"  >
+                <LanguageSwitcher/>
+                <Text textAlign="center" fontWeight={300}>  
+                    <Box as="span" onClick={() => router.push('privacy-policy')} sx={{ cursor: 'pointer', _hover: { color: 'rgb(100, 116, 145)' }, mx: 2 }}>
+                    {t('Privacy')}
+                    </Box>
+                    |
+                    <Box as="span" onClick={() => router.push('cookies-policy')} sx={{ cursor: 'pointer', _hover: { color: 'rgb(100, 116, 145)' }, mx: 2 }}>
+                    {t('Cookies')}
+                    </Box>
+                </Text>
             </Flex>
+          
              
         </Flex>)
     }

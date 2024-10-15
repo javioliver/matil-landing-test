@@ -31,22 +31,7 @@ import HighlightText from '@/Content/Functions/HighlightText';
 
 
 
-const Matilda =()=>{
-
-    const gradient = new MeshGradient()
-    const canvasId = "my-canvas"
-    useEffect(() => {
-        gradient.initGradient("#" + canvasId, COLORS);
-        const interval = setInterval(() => {
-          const randomValue = Math.floor(Math.random() * 1000)
-          gradient.changePosition(randomValue)
-        }, 6000)
-    
-        // Limpia el intervalo cuando el componente se desmonte
-        return () => {
-          clearInterval(interval);
-        };
-      }, [gradient])
+const Matilda =()=>{  
     
     //TRANSLATION
     const t = useTranslations('Matilda')
@@ -54,8 +39,8 @@ const Matilda =()=>{
 
     //FEATURES LIST
     const featuresList = [
-        {max:90, title:t('Automation'), color:'#11efe3', image:'/images/customer-support.png'},
-        {max:81, title:t('CSAT'), color:'#0073e6', image:'/images/client.png'},
+        {max:80, title:t('Automation'), color:'#11efe3', image:'/images/customer-support.png'},
+        {max:84, title:t('CSAT'), color:'#0073e6', image:'/images/client.png'},
         {max:93, title:t('ResponseTime'), color:'#00299c', image:'/images/support-team.png'},
 
     ]
@@ -64,7 +49,6 @@ const Matilda =()=>{
         {title:t('Analytics'), description:t('AnalyticsDes'), icon:'/images/icons/chart.png'},
         {title:t('MultiLanguage'), description:t('MultiLanguageDes'), icon:'/images/icons/world.svg'},
         {title:t('Atention'), description:t('AtentionDes'), icon:'/images/icons/clock.svg'},
-
     ]
 
     const integrationProcessList = [
@@ -140,7 +124,6 @@ const Matilda =()=>{
         </Flex>)
     }
 
-  
     //FAQS LIST
     const faqsList = [[t('FAQ_1'), t('FAQ_ANSWER_1')], [t('FAQ_2'), t('FAQ_ANSWER_2')], [t('FAQ_3'), t('FAQ_ANSWER_3')], [t('FAQ_4'), t('FAQ_ANSWER_4')], [t('FAQ_5'), t('FAQ_ANSWER_5')], [t('FAQ_6'), t('FAQ_ANSWER_6')], [t('FAQ_7'), t('FAQ_ANSWER_7')]]
 
@@ -170,11 +153,11 @@ const Matilda =()=>{
                      <MatildaChatsComponent/>  
                 </Flex>
             </Flex>
-            <Box width={'100vw'} zIndex={0} mt='-15vh' height={'60vh'} position={{ base: "absolute", md: 'relative'}} top={{ base: "100vh", md: '0'}} clipPath='polygon(0 0, 100% 60%, 100% 100%, 0 40%)'> 
+            <Box width={'100vw'} zIndex={0} mt='-25vh' height={'60vh'} position={{ base: "absolute", md: 'relative'}} top={{ base: "100vh", md: '0'}} clipPath='polygon(0 0, 100% 60%, 100% 100%, 0 40%)'> 
                 <MeshGradientBackground colors={["#11efe3",  "#0073e6", "#00299c"]}/>
             </Box>
 
-            <Flex width="100%" py='75px' px='4vw' justifyContent={'center'} >
+            <Flex width="100%" pb='75px' px='4vw' justifyContent={'center'} >
                  <Grid maxW="1200px"  width="100%" gap={'32px'} templateColumns={{ base: "1fr", md: "1fr 1fr", lg: "repeat(4, 1fr)", xl: "repeat(4, 1fr)" }}>
                     {improvesList.map((improve, index)=> (
                         <ScrollAnimation delay={100 * index} key={`improve-${index}`} style={{flex:'1'}} animateIn="fadeIn" animateOnce >
@@ -197,7 +180,7 @@ const Matilda =()=>{
 
 
             <Flex width="100%" textAlign={'center'}  bg='brand.white_bg'  flexDirection={'column'} alignItems={'center'} justifyContent={'center'} py='75px' px='4vw'   >   
-                <Text maxW="1000px"  fontSize={'3xl'} >{t('PricingTitle')}</Text>
+                <Text maxW="1000px"  fontSize={'3xl'} >{t('FeaturesTitle')}</Text>
 
                 <Flex maxW="1200px"  width="100%" color='white'  gap={'32px'} my='50px' flexDir={{ base: "column", md: "column", lg: "row", xl: "row" }}>
                     {featuresList.map((feature, index)=> (
@@ -217,22 +200,25 @@ const Matilda =()=>{
             {/*MATILDA FEATURES*/}
             <Box  bg='brand.white_bg'>
                 <Flex  bgGradient='linear(to-br,#00299c, rgb(0, 20, 51))' px='4vw'     clipPath='polygon(0 100px, 100% 0, 100% 100%, 0 100%)' width={'100vw'} justifyContent={'center'}  > 
-                    <Flex  width="100vw"  flexDir={'column'}  alignItems={'center'}   py={{ base:"calc(5vh + 100px)", md: "calc(7vh + 100px)", lg: "calc(10vh + 100px)", xl: "calc(12vh + 100px)" }} > 
+                    <Flex  width="100vw"  flexDir={'column'}  alignItems={'center'}   py={{ base:"calc(5vh + 100px)", md: "calc(7vh + 100px)", lg: "calc(8vh + 50px)", xl: "calc(10vh + 50px)" }} > 
                             
+                            <Text color={'white'} maxW={'800px'} textAlign={'center'} fontSize={'3xl'} fontWeight={500}>{t('Matilda_Title')}</Text>
                             {/*FIRST LINE*/}
-                            <Flex maxW="1000px" width="100%"  gap={'32px'} flexDir={{ base: "column", md: "column", lg: "row-reverse", xl: "row-reverse" }}>
+                            <Flex maxW="1000px" mt='75px' width="100%"  gap={'32px'} flexDir={{ base: "column", md: "column", lg: "row-reverse", xl: "row-reverse" }}>
                                 <ScrollAnimation style={{flex:'2'}} animateIn="fadeInUp" animateOnce >
-                                    <Text textAlign={{ base: 'center',sm:'center', md: 'start', lg: 'start' }} color='white' flex='2' fontSize={{ base: '2em',sm:'2.1em', md: '2.3em', lg: '2.5em' }}>{t('Matilda_Feature')}</Text>
+                                    <Text textAlign={{ base: 'center',sm:'center', md: 'start', lg: 'start' }} color='white' flex='2' fontSize={'3xl'}>
+                                     {t('Matilda_Feature')}
+                                    </Text>
                                 </ScrollAnimation >
 
                                 <ScrollAnimation style={{flex:'1'}} animateIn="fadeIn" animateOnce >
                                     <Box bg='brand.text_blue'  borderRadius={'1rem'} p='20px'>
                                         <Flex gap='15px' alignItems={'center'} color='white'> 
                                             <Icon as={IoCall} color='' boxSize={'35px'}/>
-                                            <Text fontSize={{base: '1em',sm:'1em', md: '1.1em', lg: '1.2em' }}>{t('Features_Calls')}</Text>
+                                            <Text fontSize={'lg'} fontWeight={'500'}>{t('Features_Calls')}</Text>
                                         </Flex>
                                         <Box width={'100%'} height={'1px'} bg='gray.300' mb='20px' mt='20px'/>
-                                        <Text fontWeight={300} color='gray.200'  fontSize={{base: '.8em',sm:'.8em', md: '.85em', lg: '.9em' }}>{t('Features_Calls_Subtitle')}</Text>
+                                        <Text fontWeight={300} color='white'  fontSize={'xs'}>{t('Features_Calls_Subtitle')}</Text>
                                     </Box>
                                 </ScrollAnimation>
                             </Flex> 
@@ -243,10 +229,10 @@ const Matilda =()=>{
                                     <Box bg='brand.text_blue' color='white' borderRadius={'1rem'} p='20px' height={'100%'}>
                                         <Flex gap='15px' alignItems={'center'}> 
                                             <Icon as={FaFile}  boxSize={'34px'}/>
-                                            <Text fontSize={{base: '1em',sm:'1em', md: '1.1em', lg: '1.2em' }}>{t('Features_Files')}</Text>
+                                            <Text fontSize={'lg'} fontWeight={500}>{t('Features_Files')}</Text>
                                         </Flex>
                                         <Box width={'100%'} height={'1px'} bg='gray.300' mb='20px' mt='20px'/>
-                                        <Text fontWeight={300} color='gray.200'  fontSize={{base: '.8em',sm:'.8em', md: '.85em', lg: '.9em' }}>{t('Features_Files_Subtitle')}</Text>
+                                        <Text fontWeight={300} fontSize={'xs'}>{t('Features_Files_Subtitle')}</Text>
                                     </Box>   
                                 </ScrollAnimation>
 
@@ -254,10 +240,10 @@ const Matilda =()=>{
                                     <Box  bg='gray.100' borderRadius={'1rem'} p='20px'  height={'100%'}>
                                         <Flex gap='15px' color='black'  alignItems={'center'}> 
                                             <Icon as={MdMarkChatUnread}  boxSize={'35px'}/>
-                                            <Text fontSize={{base: '1em',sm:'1em', md: '1.1em', lg: '1.2em' }}>{t('Features_Conversation')}</Text>
+                                            <Text fontSize={'lg'} fontWeight={500}>{t('Features_Conversation')}</Text>
                                         </Flex>
                                         <Box width={'100%'} height={'1px'} bg='gray.300' mb='20px' mt='20px'/>
-                                        <Text fontWeight={300} color='gray.600'  fontSize={{base: '.8em',sm:'.8em', md: '.85em', lg: '.9em' }}>{t('Features_Conversation_Subtitle')}</Text>
+                                        <Text fontWeight={300} color='brand.text_gray'  fontSize={'xs'}>{t('Features_Conversation_Subtitle')}</Text>
                                     </Box>
                                 </ScrollAnimation>
                             </Flex> 
@@ -269,10 +255,10 @@ const Matilda =()=>{
                                     <Box bg='brand.text_blue' color='white' borderRadius={'1rem'} p='20px' height={'100%'}>
                                         <Flex gap='15px' alignItems={'center'}> 
                                             <Icon as={FaDatabase}  boxSize={'34px'}/>
-                                            <Text fontSize={{base: '1em',sm:'1em', md: '1.1em', lg: '1.2em' }}>{t('Features_Work')}</Text>
+                                            <Text fontSize={'lg'} fontWeight={500}>{t('Features_Work')}</Text>
                                         </Flex>
                                         <Box width={'100%'} height={'1px'} bg='gray.300' mb='20px' mt='20px'/>
-                                        <Text fontWeight={300} color='gray.200'  fontSize={{base: '.8em',sm:'.8em', md: '.85em', lg: '.9em' }}>{t('Features_Work_Subtitle')}</Text>
+                                        <Text fontWeight={300} color='white'  fontSize={'xs'}>{t('Features_Work_Subtitle')}</Text>
                                     </Box>   
                                 </ScrollAnimation>
 
@@ -280,10 +266,10 @@ const Matilda =()=>{
                                     <Box bg='brand.text_blue'  borderRadius={'1rem'} p='20px'>
                                         <Flex gap='15px' alignItems={'center'} color='white'> 
                                             <Icon as={IoSettingsSharp}  boxSize={'35px'}/>
-                                            <Text fontSize={{base: '1em',sm:'1em', md: '1.1em', lg: '1.2em' }}>{t('Features_Edit')}</Text>
+                                            <Text fontSize={'lg'} fontWeight={500}>{t('Features_Edit')}</Text>
                                         </Flex>
                                         <Box width={'100%'} height={'1px'} bg='gray.300' mb='20px' mt='20px'/>
-                                        <Text fontWeight={300} color='gray.200'  fontSize={{base: '.8em',sm:'.8em', md: '.85em', lg: '.9em' }}>{t('Features_Edit_Subtitle')}</Text>
+                                        <Text fontWeight={300} color='white'  fontSize={'xs'}>{t('Features_Edit_Subtitle')}</Text>
                                     </Box>
                                 </ScrollAnimation>
                             </Flex>
@@ -294,15 +280,15 @@ const Matilda =()=>{
                                     <Box bg='brand.text_blue'  borderRadius={'1rem'} p='20px' height={'100%'}> 
                                         <Flex gap='15px' alignItems={'center'} color='white'> 
                                             <Icon as={IoShieldCheckmarkSharp}  boxSize={'35px'}/>
-                                            <Text fontSize={{base: '1em',sm:'1em', md: '1.1em', lg: '1.2em' }}>{t('Features_Data')}</Text>
+                                            <Text fontSize={'lg'} fontWeight={500}>{t('Features_Data')}</Text>
                                         </Flex>
                                         <Box width={'100%'} height={'1px'} bg='gray.300' mb='20px' mt='20px'/>
-                                        <Text fontWeight={300} color='gray.200'  fontSize={{base: '.8em',sm:'.8em', md: '.85em', lg: '.9em' }}>{t('Features_Data_Subtitle')}</Text>
+                                        <Text fontWeight={300} color='white'  fontSize={'xs'}>{t('Features_Data_Subtitle')}</Text>
                                     </Box>
                                 </ScrollAnimation>
 
                                 <ScrollAnimation style={{flex:'2'}} animateIn="fadeInUp" animateOnce >
-                                    <Text textAlign={{ base: 'center',sm:'center', md: 'start', lg: 'start' }}  color='white' fontSize={{ base: '2em',sm:'2.1em', md: '2.3em', lg: '2.5em' }}>{t('Matilda_Agents')}</Text>
+                                    <Text textAlign={{ base: 'center',sm:'center', md: 'start', lg: 'start' }}  color='white' fontSize={'3xl'}>{t('Matilda_Agents')}</Text>
                                 </ScrollAnimation >
                             </Flex>
                         
