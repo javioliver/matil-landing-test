@@ -24,7 +24,7 @@ const Footer=()=>{
                 </Flex>
                 <Text textAlign={'center'} color='brand.text_gray' fontSize={'xs'} fontWeight={300}>{t('FooterCTA')}</Text>
                 <Box> 
-                <ArrowButton text={t('Contact')} onClick={() => router.push('/tilda')} bgGradient='linear(to-br,#00299c, rgb(0, 20, 51))' color='white' hover={{color:'brand.gray_1', bg:'linear(to-br,#33299c, rgb(0, 10, 41))'}} fontSize={'xs'}/>
+                <ArrowButton text={t('Contact')} onClick={() => router.push('/contact')} bgGradient='linear(to-br,#00299c, rgb(0, 20, 51))' color='white' hover={{color:'brand.gray_1', bg:'linear(to-br,#33299c, rgb(0, 10, 41))'}} fontSize={'xs'}/>
                 </Box>
             </Flex>
          

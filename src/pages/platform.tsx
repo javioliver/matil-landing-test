@@ -41,9 +41,10 @@ const FloatingCards = ({scrollY, isComputerWidth, flexWidth}:{scrollY:number, is
             else if (selectedIndex === 1) animationIndex = (index + 2) % 3
             else if (selectedIndex === 2) animationIndex = (index + 1) % 3
               
+            console.log(flexWidth)
             return (
                 
-            <Flex flexDir={'column'} overflow={'hidden'} position={isComputerWidth?'absolute':'relative'} mt={isComputerWidth?'':'32px'} top={isComputerWidth ? areCardsFloating?`${-600 }px`:'0':``} left={isComputerWidth?areCardsFloating?'60%': index * ((flexWidth || 0) - 300)/2:''} key={`card-${index}`} boxShadow={'rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px'} zIndex={1000 - animationIndex} borderRadius={'.5rem'} height={'420px'} width={'300px'}  transition={'all .7s ease'}  transform={areCardsFloating?`rotate(${8 *animationIndex}deg)  translateY(${animationIndex * 30}px) translateX(${animationIndex * 90}px) scale(${1 - animationIndex * 0.07})`:''} >
+            <Flex flexDir={'column'} overflow={'hidden'} position={isComputerWidth?'absolute':'relative'} mt={isComputerWidth?'':'32px'} top={isComputerWidth ? areCardsFloating?`${-700 }px`:'0':``} left={isComputerWidth?areCardsFloating?'60%': index * ((flexWidth || 0) - 300)/2:''} key={`card-${index}`} boxShadow={'rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px'} zIndex={1000 - animationIndex} borderRadius={'.5rem'} height={'450px'} width={'300px'}  transition={'all .7s ease'}  transform={areCardsFloating?`rotate(${8 *animationIndex}deg)  translateY(${animationIndex * 30}px) translateX(${animationIndex * 90}px) scale(${1 - animationIndex * 0.07})`:''} >
                 <Flex alignItems={'center'}  bg='white'   height='60%'>
                     <Image src={card.image}/>
                 </Flex>
@@ -77,7 +78,7 @@ const Platform =()=>{
         {title:'Productivity', color:'#00299c'},
     ]
 
-    const sectionsImages = ['/images/tickets.svg', '/images/tickets.svg', '/images/tickets.svg']
+    const sectionsImages = ['/images/tilda-screen.svg', '/images/clients.svg', '/images/help-center.svg']
     //CHANNELS LIST
     const channelsList:any[] = [
         {title:'WebChat', icon:'/images/icons/chat.svg'},
@@ -110,7 +111,7 @@ const Platform =()=>{
  
         <Flex ref={heroRef} flexDir='column'  zIndex={1} top='0'bgGradient='linear(to-br,#00299c,rgb(0, 20, 51) )' width={'100vw'}alignItems={'center'}> 
             <Box   width="100%" position={'relative'} px='4vw' color='black'py={'150px'}  maxW="1200px" >
-                <Flex overflow={'hidden'} w='50%'  transition="all 0.3s ease" zIndex={2}  flexDir={'column'} > 
+                <Flex overflow={'hidden'} w={isComputerWidth?'50%':'100%'}  transition="all 0.3s ease" zIndex={2}  flexDir={'column'} > 
                     <Text color={'white'} fontSize={'5xl'}  fontWeight="500" overflowWrap="break-word" whiteSpace="pre-wrap" >
                         <AnimatedText text={t('Hero')}/>
                     </Text>
@@ -125,11 +126,11 @@ const Platform =()=>{
         </Flex>
 
         
-        <Flex flexDir='column' zIndex={10} pt='75px' ref={cardsFlexRef} position={{ base: "relative", md: 'absolute'}}  bg='white'  width={'100vw'} alignItems={'center'}> 
+        <Flex flexDir='column' zIndex={10} pt='75px' ref={cardsFlexRef} p='4vw' position={{ base: "relative", md: 'absolute'}}  bg='white'  width={'100vw'} alignItems={'center'}> 
 
-                <Box maxW={'1200px'} width={'100%'} p='4vw'>
+                <Flex flexDir={'column'} alignItems={'center'} width={'100%'} p='4vw'>
                     {isComputerWidth ?
-                        <ScrollAnimation animateIn="fadeIn" animateOnce delay={t('Hero').split(' ').length * 100 + 300} style={{maxWidth:'1200px',position:'relative', display:'flex', height:'550px', width:'100%', justifyCintent:'space-between', gap:'32px', zIndex:2 }}> 
+                        <ScrollAnimation animateIn="fadeIn" animateOnce delay={t('Hero').split(' ').length * 100 + 300} style={{maxWidth:'1200px',position:'relative', display:'flex', height:'550px', width:'100%', justifyCintent:'space-between', zIndex:2 }}> 
                             <FloatingCards flexWidth={Math.min((cardsFlexRef.current?.getBoundingClientRect().width || 0) - 0.08 * windowWidth, 1200)} scrollY={scrollY} isComputerWidth={isComputerWidth}/>
                         </ScrollAnimation>
                     :
@@ -137,7 +138,7 @@ const Platform =()=>{
                         <FloatingCards scrollY={scrollY} isComputerWidth={isComputerWidth}/>
                     </ScrollAnimation>}
 
-                    <Box w={'100%'}  maxW={'1200px'} zIndex={3}  pb={isComputerWidth?'75px':''}  pt={isComputerWidth?'':'75px'} transition={'all .7s ease'}  transform={isComputerWidth?`translateY(${scrollY < 150?'-550px':'0px'})`:''}>
+                    <Box w={'100%'}  maxW={'1200px'} zIndex={3}  pb={isComputerWidth?'75px':''}  pt={isComputerWidth?'':'75px'}   transition={'all .7s ease'}  transform={isComputerWidth?`translateY(${scrollY < 150?'-550px':'0px'})`:''}>
                         {mainSectionList.map((section, index) => (
                             <Flex key={`section-${index}`} gap='32px' alignItems={'center'} mt={isComputerWidth?'75px':'30px' } flexDir={isComputerWidth?index % 2 === 0?'row':'row-reverse':'column'}  >
                                 <Box flex='1'> 
@@ -198,7 +199,7 @@ const Platform =()=>{
                             ))}
                         </Grid>
                     </Flex>
-                </Box>
+                </Flex>
             <FAQS faqsList={faqsList}/>
             <Footer/>
  
