@@ -70,9 +70,9 @@ const ContactBox = () => {
             
             <Flex  mt="30px" > 
                 <Flex alignItems={'flex-start'}  gap='10px'  width={'100%'} > 
-                <Checkbox id='myCheckbox' mt='4px' size='md' colorScheme="blue"  isChecked={isChecked}  onChange={() => setIsChecked(!isChecked)} >
+                <Checkbox  id='myCheckbox' mt='4px' size='md' colorScheme="blue"  isChecked={isChecked}  onChange={() => setIsChecked(!isChecked)} />
                   
-                </Checkbox>
+          
                 <Text fontSize={'2xs'} color='brand.text_gray' fontWeight={300}>
                     {t('ContactBox_Agree')}
                   </Text>

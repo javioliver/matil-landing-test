@@ -1,6 +1,5 @@
 //NEXT
-import Head from 'next/head'
-import { useRouter } from 'next/router'
+import { NextSeo } from 'next-seo'
 import { GetStaticPropsContext } from 'next'
 
 //REACT
@@ -104,10 +103,10 @@ const Platform =()=>{
    
 
     return(<>
-         <Head>
-            <title>MATIL</title>
-            <meta name="description" content="Impulsa tu negocio con soluciones de IA. Mejora la atención al cliente, aumenta las ventas proactivas y envía correos masivos personalizados con nuestra tecnología innovadora. Descubre cómo la inteligencia artificial puede transformar tu empresa."/>
-        </Head>
+        <NextSeo
+        title="HelpDesk - Soluciones de Atención al Cliente"
+        description="Mejora la atención al cliente con nuestra plataforma HelpDesk, diseñada para optimizar la gestión de consultas y brindar un soporte excepcional."
+        />
  
         <Flex ref={heroRef} flexDir='column'  zIndex={1} top='0'bgGradient='linear(to-br,#00299c,rgb(0, 20, 51) )' width={'100vw'}alignItems={'center'}> 
             <Box   width="100%" position={'relative'} px='4vw' color='black'py={'150px'}  maxW="1200px" >

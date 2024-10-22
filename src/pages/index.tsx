@@ -42,15 +42,9 @@ const Main = () => {
     ]
 
     const platformIcons = ['/images/logos/whatsapp.png', '/images/logos/instagram.png', '/images/logos/mail.png', '/images/logos/messenger.png', '/images/logos/google-business.svg', '/images/logos/call.png']
-  
-
     const pricingIconsList = ['/images/icons/study-dark.svg','/images/icons/channels.svg', '/images/icons/save-money.svg']
-  return (<>
- 
-      <Head>
-        <title>MATIL</title>
-        <meta name="description" content="Impulsa tu negocio con soluciones de IA. Mejora la atención al cliente, aumenta las ventas proactivas y envía correos masivos personalizados con nuestra tecnología innovadora. Descubre cómo la inteligencia artificial puede transformar tu empresa."/>
-      </Head>
+    
+    return (<>
 
         <Flex position={'relative'} flexDir='column' width={'100vw'} alignItems={'center'}>
             <MeshGradientBackground colors={["#58daf4", "#a8aae4", "#0566ff"]}/>
@@ -70,7 +64,6 @@ const Main = () => {
                     </Flex>
                     <ScrollAnimation animateIn="fadeIn" animateOnce delay={(t('Hero').split(' ').length) * 100 + 300} style={{position:'relative', zIndex:10,  width:'100%', maxWidth:'1200px'}} >
                         <Image mt='50px' src={`/images/main.svg`} width={'100%'} />
-                       
                     </ScrollAnimation>
 
                 </Flex>

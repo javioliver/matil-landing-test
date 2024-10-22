@@ -1,7 +1,7 @@
 //NEXT
-import Head from 'next/head'    
 import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router'
+import { NextSeo } from 'next-seo'
 //REACT
 import { useState, useEffect, useRef, useCallback } from 'react'
 //TRANSALATION
@@ -277,10 +277,10 @@ const Solutions = () =>{
 
     return(<> 
 
-        <Head>
-            <title>MATIL</title>
-            <meta name="description" content="Impulsa tu negocio con soluciones de IA. Mejora la atención al cliente, aumenta las ventas proactivas y envía correos masivos personalizados con nuestra tecnología innovadora. Descubre cómo la inteligencia artificial puede transformar tu empresa."/>
-        </Head>
+        <NextSeo
+            title="Casos de Uso - Potencia tu Negocio con IA"
+            description="Explora cómo nuestras soluciones de inteligencia artificial se aplican en diversos sectores para resolver problemas reales y mejorar la eficiencia."
+        />
 
         {isComputerWidth && <Box position='absolute' top={'10vh'}  left={0} zIndex={1} width={'70vw'}> 
             <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1358 754">
@@ -307,7 +307,6 @@ const Solutions = () =>{
 
         {/*ALL SECTION*/}
         <Flex px='4vw' zIndex={1}  flexDir='column' width={'100vw'} alignItems={'center'}  bg='white' py={{ base: '100px',sm:'100px', md: '150px' }}>
-            
             <Flex flexDir='column' width={'100vw'} alignItems={'center'}  > 
                 <Box   width="100%" position={'relative'} px='4vw' color='black' textAlign={'center'}  maxW="1200px" >
                     <Flex zIndex={2}  alignItems={'center'}  flexDir={'column'} > 

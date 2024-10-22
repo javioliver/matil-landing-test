@@ -20,7 +20,7 @@ const Footer=()=>{
             <Flex width={'100%'} flexDirection={{ base: 'column', sm:'column', lg: 'row' }} gap='32px'  py={{ base: '0', sm:'0', lg: '30px' }} maxW={'1000px'} alignItems={'center'} justifyContent={'space-between'} >
                 <Flex alignItems={'center'} gap='7px'> 
                     <Image height={'20px'} src='/images/matil-simple.svg'/>
-                    <Text fontWeight={500}>MATIL</Text>
+                    <Text fontWeight={500}>matil</Text>
                 </Flex>
                 <Text textAlign={'center'} color='brand.text_gray' fontSize={'xs'} fontWeight={300}>{t('FooterCTA')}</Text>
                 <Box> 

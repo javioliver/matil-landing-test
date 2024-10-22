@@ -102,10 +102,10 @@ const Chatbot = ({ currentChat }:ChatbotProps) =>{
         <Flex flexDir={'column'}  height={'95%'}> 
             <div style={{height:'50px', background:`linear-gradient(to right, #58daf4, rgb(5, 102, 255))`, display:'flex', alignItems:'center', padding:'0 4%', justifyContent:'space-between', zIndex:10}} > 
             
-                <div style={{display:'flex', gap:'3%', flex:'1', alignItems:'center'}}>
-                    <div style={{display:'flex', alignItems:'center', flexDirection:'row', gap:'15px', marginTop:'10px'}} >    
+                <div style={{display:'flex', gap:'5px', flex:'1', alignItems:'center'}}>
+                    <div style={{display:'flex', alignItems:'center', flexDirection:'row', gap:'10px', marginTop:'10px'}} >    
                         <img src='/images/matil-simple-white.svg' height="19px" width="19px" />
-                        <span style={{color:'white', fontWeight:500,  whiteSpace: 'nowrap',textOverflow: 'ellipsis', fontSize:'1.4em' }} >MATIL</span>
+                        <span style={{color:'white', fontWeight:500,  whiteSpace: 'nowrap',textOverflow: 'ellipsis', fontSize:'1.4em' }} >matil</span>
                     </div>
                 </div>
                     

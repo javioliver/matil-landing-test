@@ -1,7 +1,7 @@
 //NEXT
-import Head from 'next/head'    
 import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router'
+import { NextSeo } from 'next-seo'
 //REACT
 import { useState, useEffect } from 'react'
 //TRANSALATION
@@ -100,10 +100,10 @@ const Pricing =()=>{
     <Box bg='brand.white_bg'> 
 
         {/*HEAD*/}
-        <Head>
-            <title>MATIL</title>
-            <meta name="description" content="Impulsa tu negocio con soluciones de IA. Mejora la atención al cliente, aumenta las ventas proactivas y envía correos masivos personalizados con nuestra tecnología innovadora. Descubre cómo la inteligencia artificial puede transformar tu empresa."/>
-        </Head>
+        <NextSeo
+            title="Precios - Elige el Plan que se Adapta a Ti"
+            description="Descubre nuestros planes de precios flexibles y elige la mejor opción para tu negocio. Obtén soluciones de IA accesibles y efectivas."
+            />
 
         {/*HERO*/}
         <Flex flexDir='column' width={'100vw'} alignItems={'center'}  > 

@@ -1,14 +1,9 @@
 //NEXT
-import Head from 'next/head'
 import { GetStaticPropsContext } from 'next'
 //REACT
 import { useState, useEffect, useMemo } from 'react'
-import MeshGradient from 'mesh-gradient.js';
-const COLORS =   ["#eb75b6",
-"#ddf3ff",
-"#6e3deb",
-"#c92f3c"]
-import MeshGradientBackground from '@/Content/Gradient/gradient';
+import { NextSeo } from 'next-seo'
+import MeshGradientBackground from '@/Content/Gradient/gradient'
 //TRANSLATION
 import { useTranslations } from 'next-intl'
 //FRONT
@@ -128,10 +123,9 @@ const Matilda =()=>{
     const faqsList = [[t('FAQ_1'), t('FAQ_ANSWER_1')], [t('FAQ_2'), t('FAQ_ANSWER_2')], [t('FAQ_3'), t('FAQ_ANSWER_3')], [t('FAQ_4'), t('FAQ_ANSWER_4')], [t('FAQ_5'), t('FAQ_ANSWER_5')], [t('FAQ_6'), t('FAQ_ANSWER_6')], [t('FAQ_7'), t('FAQ_ANSWER_7')]]
 
     return(<>
-        <Head>
-            <title>MATIL</title>
-            <meta name="description" content="Impulsa tu negocio con soluciones de IA. Mejora la atención al cliente, aumenta las ventas proactivas y envía correos masivos personalizados con nuestra tecnología innovadora. Descubre cómo la inteligencia artificial puede transformar tu empresa."/>
-        </Head>
+        <NextSeo
+        title="Tilda - Tu Asistente Virtual Inteligente"
+        description="Descubre a Tilda, tu asistente virtual inteligente que transforma la atención al cliente y optimiza tus ventas con soluciones de IA."/>
 
         <Flex flexDir='column' width={'100vw'} alignItems={'center'} >
            
