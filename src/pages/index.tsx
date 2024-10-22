@@ -47,7 +47,7 @@ const Main = () => {
     return (<>
 
         <Flex position={'relative'} flexDir='column' width={'100vw'} alignItems={'center'}>
-            <MeshGradientBackground colors={["#58daf4", "#a8aae4", "#0566ff"]}/>
+            <MeshGradientBackground colors={["#58daf4", "#88c8f4", "#0566ff"]}/>
              
             <Flex position='relative' px='4vw' width={'100vw'}  overflow={'hidden'} justifyContent={'center'} >
  

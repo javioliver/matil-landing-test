@@ -31,16 +31,16 @@ const Footer=()=>{
             <Flex width="100%" py='30px'color="black" justifyContent="center" alignItems={'center'}  maxW={'1000px'} >
                 <Flex color='brand.clear_black' fontSize={'sm'} fontWeight={'500'} alignItems={{ base: 'center', sm: 'center', lg: 'start' }} width="100%" maxW="1200px" flexDirection={{ base: 'column', sm:'column', lg: 'row' }} gap='32px'  justifyContent={{ base: 'flex-start', sm: 'flex-start', lg: 'center' }}px={{ base: '20px', sm: '30px', md: '50px' }} >
                     <Box cursor={'pointer'} onClick={() => router.push('tilda')} _hover={{color:'brand.text_gray'}}  px='32px'>
-                        <Text >TILDA</Text>
+                        <Text >Tilda</Text>
                     </Box>
                     <Box  cursor={'pointer'} onClick={() => router.push('platform')} _hover={{color:'brand.text_gray'}}   px='32px'>
-                        <Text >{t('Platform').toUpperCase()}</Text>
+                        <Text >{t('Platform')}</Text>
                     </Box>
                     <Box   cursor={'pointer'} onClick={() => router.push('pricing')}_hover={{color:'brand.text_gray'}} px='32px'>
-                        <Text >{t('Pricing').toUpperCase()}</Text>
+                        <Text >{t('Pricing')}</Text>
                     </Box>
                     <Box cursor={'pointer'} onClick={() => router.push('solutions')} px='32px'>
-                        <Text>{t('Solutions').toUpperCase()}</Text>
+                        <Text>{t('Solutions')}</Text>
                     </Box>
                 </Flex>
             </Flex>

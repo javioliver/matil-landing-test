@@ -51,7 +51,7 @@ const FAQS = ({faqsList}:{faqsList:string[][]}) => {
     return (
            
         <Flex width={'100%'} px='4vw' justifyContent={'center'}  paddingTop={'75px'} paddingBottom={{ base:'20vh', sm: '15vh', md: '20vh' }}bg='brand.white_bg' clipPath= 'polygon(0 0, 100% 0, 100% 85%, 0 100%)'>
-            <Box maxW={'700px'}>  
+            <Box width={'100%'} maxW={'700px'}>  
                 <ScrollAnimation animateIn="fadeIn" animateOnce >
                     <Text textAlign={'center'} fontSize={'3xl'} mb={{ base:'2vh', sm: '3vh', md: '5vh' }} fontWeight="medium" overflowWrap="break-word" whiteSpace="pre-wrap" color={'brand.clear_black'} >
                     {t('FAQS')}
