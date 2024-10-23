@@ -23,9 +23,6 @@ import { IoCall, IoSettingsSharp, IoShieldCheckmarkSharp } from "react-icons/io5
 import { MdMarkChatUnread } from "react-icons/md"
 import HighlightText from '@/Content/Functions/HighlightText';
 
-
-
-
 const Matilda =()=>{  
     
     //TRANSLATION

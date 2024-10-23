@@ -1,12 +1,13 @@
 
 //NEXT
 import { useRouter } from 'next/router'
+import Image from 'next/image'
 //REACT
 import React, { useState, useEffect, useRef } from 'react'
  //TRANSALATION
 import { useTranslations } from 'next-intl'
 //FRONT
-import { Box, Flex, Text, Icon, Image } from '@chakra-ui/react'
+import { Box, Flex, Text, Icon } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 //COMPONENTS
 import ArrowButton from '../Widgets/ArrowButton'
@@ -93,7 +94,7 @@ const Header = ({isComputerWidth}:{isComputerWidth:boolean})=>{
             <Flex display={'inline-flex'} ref={headerRef} top={'3vh'} bg={'transparent'} width={'100%'} position='absolute' color={whiteTextSections.includes(pathname) ?  'white':'brand.black_button' }  
             borderRadius={'10rem'} paddingRight={{ base: '10px', sm: '12px', md: '15px' }} paddingLeft={{ base: '15px', sm: '18px', md: '25px' }}  py={{ base: '5px', sm: '7px', md: '10px' }}  justifyContent='space-between' alignItems='center' transition="background-color 0.1s ease, width 0.1s ease, box-shadow 0.1s ease" > 
                 <Flex gap='7px' alignItems={'center'} onClick={()=> router.push('/') } cursor={'pointer'}  fontSize='xl' fontWeight={500} >
-                    <Image height={'25px'} src='/images/matil-simple.svg'/>
+                    <Image height={25} width={25} alt={t('AltImage1')} src='/images/matil-simple.svg'/>
                     <Text fontSize={'lg'}>matil </Text>
                 </Flex>
                 <Flex gap='3vw' alignItems={'center'}> 
@@ -111,7 +112,7 @@ const Header = ({isComputerWidth}:{isComputerWidth:boolean})=>{
           :
           <Flex mt={'5vh'} bg={'transparent'} width={'100%'}  color={whiteTextSections.includes(pathname)?'white':'brand.black_button'} borderRadius={'1rem'} px={{ base: '20px', sm: '30px', md: '50px' }} maxW='1200px' justifyContent='space-between' alignItems='center'  >
               <Flex gap='10px' alignItems={'center'} onClick={()=> router.push('/') } cursor={'pointer'}  fontSize='xl' fontWeight={500} >
-                <Image height={'20px'} src='/images/matil-simple.svg'/>
+                <Image height={25} width={25} alt={t('AltImage1')} src='/images/matil-simple.svg'/>
                 <Text mt='4px' >Matil</Text>
               </Flex>
               <Icon aria-label='menu' as={RxHamburgerMenu} boxSize={10} cursor='pointer' onClick={()=>setShowMenu(true)}/>

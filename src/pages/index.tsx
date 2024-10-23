@@ -1,12 +1,11 @@
 //NEXT
-import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { GetStaticPropsContext } from 'next'
-import { useEffect, useState } from 'react'
+import Image from 'next/image'
 //TRANSLATION
 import { useTranslations } from 'next-intl'
 //FRONT
-import { Flex, Text, Box, Image, Grid } from '@chakra-ui/react'
+import { Flex, Text, Box, Grid } from '@chakra-ui/react'
 import ScrollAnimation from "react-animate-on-scroll"
 import "animate.css/animate.compat.css"
 import MeshGradientBackground from '@/Content/Gradient/gradient'
@@ -41,7 +40,7 @@ const Main = () => {
 
     ]
 
-    const platformIcons = ['/images/logos/whatsapp.png', '/images/logos/instagram.png', '/images/logos/mail.png', '/images/logos/messenger.png', '/images/logos/google-business.svg', '/images/logos/call.png']
+    const platformIcons = ['/images/logos/whatsapp.png', '/images/logos/instagram.png', '/images/logos/mail.png', '/images/logos/messenger.png',  '/images/logos/google-business.svg', '/images/logos/call.png']
     const pricingIconsList = ['/images/icons/study-dark.svg','/images/icons/channels.svg', '/images/icons/save-money.svg']
     
     return (<>
@@ -62,8 +61,8 @@ const Main = () => {
                             </Text>
                         </ScrollAnimation>
                     </Flex>
-                    <ScrollAnimation animateIn="fadeIn" animateOnce delay={(t('Hero').split(' ').length) * 100 + 300} style={{position:'relative', zIndex:10,  width:'100%', maxWidth:'1200px'}} >
-                        <Image mt='50px' src={`/images/main.svg`} width={'100%'} />
+                    <ScrollAnimation  animateIn="fadeIn" animateOnce delay={(t('Hero').split(' ').length) * 100 + 300} style={{position:'relative', zIndex:10,marginTop:'50px',  width:'100%', maxWidth:'1200px'}} >
+                        <Image   width={0} style={{width:'100%'}} height={0} alt={t('AltImage1')} src={`/images/main.svg`} />
                     </ScrollAnimation>
 
                 </Flex>
@@ -160,13 +159,13 @@ const Main = () => {
                             {platformIcons.map((icon, index) => (
                                 <ScrollAnimation key={`icons-${index}`}  animateIn="fadeIn" delay={index * 100}  animateOnce>
                                     <Flex bg='white' alignItems={'center'} justifyContent={'center'} key={`platform-icon-${index}`} borderRadius={'full'} height={'60px'} width={'60px'}>
-                                        <Image src={icon} boxSize='35px'/>
+                                        <Image width={35} height={35} src={icon} alt={t(`AltImage${index + 2}`)}/>
                                     </Flex>
                                 </ScrollAnimation>
                             ))}
                         </Flex>       
                         <ScrollAnimation style={{flex:'1', marginLeft:'50px'}} animateIn="fadeIn" animateOnce>
-                            <Image borderRadius={'.5rem 0 0 0'}src='/images/tickets-table.svg'/>
+                            <Image  width={0} height={0} style={{width:'100%'}} alt={t('AltImage7')} src='/images/tickets-table.svg'/>
                         </ScrollAnimation>
                     </Box>
                  </Flex>
@@ -201,7 +200,7 @@ const Main = () => {
                 <Grid maxW="1200px" mt='75px'  width="100%" gap={'32px'} templateColumns={{ base: "1fr", md: "1fr 1fr", lg: "repeat(3, 1fr)", xl: "repeat(3, 1fr)" }}>
                 {pricingIconsList.map((icon, index)=> (
                     <ScrollAnimation delay={100 * index} key={`improve-${index}`} style={{flex:'1'}} animateIn="fadeIn" animateOnce >
-                        <Image height={'40px'} src={icon}/>
+                        <Image alt=''  height={50} width={50} src={icon}/>
                         <Flex mt='20px' gap='10px'> 
                             <Box height={'25px'} width={'2px'} bg='brand.text_blue'/>
                             <Box flex='1'> 

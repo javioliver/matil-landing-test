@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react'
-
-import { Box, Flex, Image, Text, IconButton, Icon } from '@chakra-ui/react'
-import { LuPaperclip } from "react-icons/lu";
+import Image from 'next/image'
+import { Box, Flex, Text, IconButton, Icon } from '@chakra-ui/react'
 import { FaFile, FaFolder } from "react-icons/fa"
 
+import { useTranslations } from 'next-intl'
 
 
 interface Message {
@@ -30,6 +30,8 @@ interface ChatbotProps{
 }
 const Chatbot = ({ currentChat }:ChatbotProps) =>{
         
+    const t = useTranslations('Header')
+
     const [messages, setMessages] = useState<any>([])
     const indexRef = useRef(0)
     const timeoutsRef = useRef<any>([])
@@ -104,7 +106,7 @@ const Chatbot = ({ currentChat }:ChatbotProps) =>{
             
                 <div style={{display:'flex', gap:'5px', flex:'1', alignItems:'center'}}>
                     <div style={{display:'flex', alignItems:'center', flexDirection:'row', gap:'10px', marginTop:'10px'}} >    
-                        <img src='/images/matil-simple-white.svg' height="19px" width="19px" />
+                        <Image src='/images/matil-simple-white.svg' height={20}width={20} alt={t('AltImage1')} />
                         <span style={{color:'white', fontWeight:500,  whiteSpace: 'nowrap',textOverflow: 'ellipsis', fontSize:'1.4em' }} >matil</span>
                     </div>
                 </div>
@@ -134,7 +136,7 @@ const Chatbot = ({ currentChat }:ChatbotProps) =>{
                     <Flex   key={`message-${index}`} fontWeight={300} fontSize={'.9em'}  gap='10px' width={'100%'}  mt = {index == 0 ? '0px' : (message.botMessage == messages[index - 1].botMessage? '3px':'15px')} alignItems={'end'} flexDir={message.botMessage ? 'row':'row-reverse'} animation = {message.botMessage ? 'expandFromLeft 0.5s ease-out' : 'expandFromRight 0.5s ease-out'}>
                         {(message.botMessage && !isNextMessageBot)&& 
                         
-                        <Image src='/images/matilda.svg' width='20px'/>}
+                        <Image src='/images/matilda.svg' width={20} height={20} alt={t('AltImage2')}/>}
                         <Box  maxW='80%' ml={(message.botMessage && !isNextMessageBot)?'0':'30px'} bg={message.botMessage?'gray.100':'linear-gradient(to right,  rgb(5, 102, 255), #58daf4)'} color={message.botMessage?'black':'white'} p = '8px' borderRadius = {message.botMessage ? (isNextMessageBot && isLastMessageBot)? '.2rem .7rem .7rem .2rem' : isNextMessageBot?'.7rem .7rem .7rem .2rem': isLastMessageBot ? '.2rem .7rem .7rem .7rem':'.7rem' : (!isNextMessageBot && !isLastMessageBot && !isLastMessage)? '.7rem .2rem .2rem .7rem' : (isNextMessageBot || isLastMessage)?'.7rem .2rem .7rem .7rem':'.7rem .7rem .2rem .7rem'}>
                             {message.text === 'Cargando...' ?
                             <div className="writing-animation">
@@ -143,9 +145,7 @@ const Chatbot = ({ currentChat }:ChatbotProps) =>{
                                 <span className="bounce-dot"></span>
                             </div>:
                             <> 
-                            {message.text[0] === '/' ?
-                             <Image src={message.text} height={'200px'}/>:
-                             <>{message.text.split('-')[0] === 'FILE'||  message.text.split('-')[0] === 'FOLDER' ? 
+                           {message.text.split('-')[0] === 'FILE'||  message.text.split('-')[0] === 'FOLDER' ? 
                              <Box>
                                 <Flex gap='7px' alignItems={'center'}>
                                     <Icon as={ message.text.split('-')[0] === 'FOLDER'?FaFolder:FaFile}/>
@@ -159,7 +159,7 @@ const Chatbot = ({ currentChat }:ChatbotProps) =>{
                                     return <Text as="span" key={`fragment-${index2}`}>{part}</Text>
                                 })}
                                 </Text>                             
-                             }</>}</>}
+                             }</>}
                         </Box>
                     </Flex>
                     )

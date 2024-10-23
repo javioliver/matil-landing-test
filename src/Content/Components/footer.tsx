@@ -2,10 +2,11 @@
 
 //NEXT
 import { useRouter } from 'next/router'
+import Image from 'next/image'
 //TRANSALATION
 import { useTranslations } from 'next-intl'
 //FRONT
-import { Box, Flex, Text, Image } from '@chakra-ui/react'
+import { Box, Flex, Text } from '@chakra-ui/react'
 import ArrowButton from '../Widgets/ArrowButton'
 import LanguageSwitcher from '../Widgets/LanguageSwitcher'
 const Footer=()=>{
@@ -19,7 +20,7 @@ const Footer=()=>{
             
             <Flex width={'100%'} flexDirection={{ base: 'column', sm:'column', lg: 'row' }} gap='32px'  py={{ base: '0', sm:'0', lg: '30px' }} maxW={'1000px'} alignItems={'center'} justifyContent={'space-between'} >
                 <Flex alignItems={'center'} gap='7px'> 
-                    <Image height={'20px'} src='/images/matil-simple.svg'/>
+                    <Image height={20} width={20} alt={t('AltImage1')} src='/images/matil-simple.svg'/>
                     <Text fontWeight={500}>matil</Text>
                 </Flex>
                 <Text textAlign={'center'} color='brand.text_gray' fontSize={'xs'} fontWeight={300}>{t('FooterCTA')}</Text>

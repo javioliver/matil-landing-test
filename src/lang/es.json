@@ -19,7 +19,12 @@
         "Privacy":"Política de Privacidad",
         "Cookies":"Política de Cookies",
         "Platform":"Plataforma",
-        "FooterCTA":"Adelántate a la nueva era de la atención al cliente con Tilda "
+        "FooterCTA":"Adelántate a la nueva era de la atención al cliente con Tilda ",
+        "AltImage1":"Logo de Matil",
+        "AltImage2":"Avatar del chat"
+
+
+
     },
     "Main": {
         "Hero":"Transforma tu servicio al cliente con la IA",
@@ -44,7 +49,16 @@
         "PricingFeature2Des":"Queremos que /Tilda resuelva/ el /máximo de consultas/ posibles, por eso, a diferencia de nuestros competidores, añadir /canales NO/ tiene un /coste extra/.",
         "PricingFeature3":"Coste de Mantenimiento Inferior a Cualquier Plataforma Similar",
         "PricingFeature3Des":"La /plataforma/ tiene un /coste/ de mantenimiento /ínfimo/ en funcion del volumen de conversaciones, ya que /solo/ queremos /ganar dinero/ donde realmente /aportamos valor/.",
-        "Platform":"Plataforma"
+        "Platform":"Plataforma",
+        "AltImage1":"Imagen de la bandeja de conversaciones de la aplicación Helpdesk y a la izquierda el Chatbot personalizable de Matil",
+        "AltImage2":"Logo de Whatsapp",
+        "AltImage3":"Logo de Instagram",
+        "AltImage4":"Logo del correo electrónico de apple",
+        "AltImage5":"Logo de Facebook Messenger",
+        "AltImage6":"Logo de Google Business",
+        "AltImage7":"Icono verde de un teléfono",
+        "AltImage8":"Imagen de la bandeja de conversaciones de la aplicación Helpdesk."
+
     },
     "Matilda": {
         "Hero":"Libera a tu equipo del 80% del trabajo con Tilda",
