@@ -8,15 +8,10 @@
 
 
 //Converting colors to proper format
-function normalizeColor(hexCode) {
-    return [(hexCode >> 16 & 255) / 255, (hexCode >> 8 & 255) / 255, (255 & hexCode) / 255]
-  } ["SCREEN", "LINEAR_LIGHT"].reduce((hexCode, t, n) => Object.assign(hexCode, {
-    [t]: n
-  }), {});
+function normalizeColor(hexCode) {return [(hexCode >> 16 & 255) / 255, (hexCode >> 8 & 255) / 255, (255 & hexCode) / 255]} 
+
+    ["SCREEN", "LINEAR_LIGHT"].reduce((hexCode, t, n) => Object.assign(hexCode, {[t]: n}), {});
   
-  //Essential functionality of WebGl
-  //t = width
-  //n = height
   class MiniGl {
     constructor(canvas, width, height, debug = false) {
         const _miniGl = this,
@@ -266,8 +261,6 @@ function normalizeColor(hexCode) {
     }
   }
   
-  
-  
   //Sets initial properties
   function e(object, propertyName, val) {
     return propertyName in object ? Object.defineProperty(object, propertyName, {
@@ -337,16 +330,6 @@ function normalizeColor(hexCode) {
           requestAnimationFrame(() => {
               this.el && (this.computedCanvasStyle = getComputedStyle(this.el), this.waitForCssVars())
           })
-          /*
-          this.scrollObserver = await s.create(.1, !1),
-          this.scrollObserver.observe(this.el),
-          this.scrollObserver.onSeparate(() => {
-              window.removeEventListener("scroll", this.handleScroll), window.removeEventListener("mousedown", this.handleMouseDown), window.removeEventListener("mouseup", this.handleMouseUp), window.removeEventListener("keydown", this.handleKeyDown), this.isIntersecting = !1, this.conf.playing && this.pause()
-          }), 
-          this.scrollObserver.onIntersect(() => {
-              window.addEventListener("scroll", this.handleScroll), window.addEventListener("mousedown", this.handleMouseDown), window.addEventListener("mouseup", this.handleMouseUp), window.addEventListener("keydown", this.handleKeyDown), this.isIntersecting = !0, this.addIsLoadedClass(), this.play()
-          })*/
-  
         )
     }
     disconnect() {
@@ -358,7 +341,7 @@ function normalizeColor(hexCode) {
                 value: 0
             }),
             u_shadow_power: new this.minigl.Uniform({
-                value: 5
+                value: 0
             }),
             u_darken_top: new this.minigl.Uniform({
                 value: "" === this.el.dataset.jsDarkenTop ? 1 : 0
@@ -472,10 +455,7 @@ function normalizeColor(hexCode) {
     init() {
         this.initGradientColors(), this.initMesh(), this.resize(), requestAnimationFrame(this.animate), window.addEventListener("resize", this.resize)
     }
-    /*
-    * Waiting for the css variables to become available, usually on page load before we can continue.
-    * Using default colors assigned below if no variables have been found after maxCssVarRetries
-    */
+ 
     waitForCssVars() {
         if (this.computedCanvasStyle && -1 !== this.computedCanvasStyle.getPropertyValue("--gradient-color-1").indexOf("#")) this.init(), this.addIsLoadedClass();
         else {
@@ -485,13 +465,10 @@ function normalizeColor(hexCode) {
             requestAnimationFrame(() => this.waitForCssVars())
         }
     }
-    /*
-    * Initializes the four section colors by retrieving them from css variables.
-    */
+ 
     initGradientColors() {
         this.sectionColors = ["--gradient-color-1", "--gradient-color-2", "--gradient-color-3", "--gradient-color-4"].map(cssPropertyName => {
             let hex = this.computedCanvasStyle.getPropertyValue(cssPropertyName).trim();
-            //Check if shorthand hex value was used and double the length so the conversion in normalizeColor will work.
             if (4 === hex.length) {
                 const hexTemp = hex.substr(1).split("").map(hexTemp => hexTemp + hexTemp).join("");
                 hex = `#${hexTemp}`

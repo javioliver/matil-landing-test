@@ -65,17 +65,13 @@ const ContactBox = () => {
             <NormalInput placeholder={'correo@ejemplo.com'} field={t('ContactBox_2')} value={mail} setValue={setMail}  mt='10px'/>
             <NormalInput placeholder={'666 66 66 66'} field={t('ContactBox_3')} value={tlf} setValue={setTlf} mt='10px'/>
             <NormalInput placeholder={'Matil SL'} field={t('ContactBox_4')} value={companyName} setValue={setCompanyName}  mt='10px'/>
-            <NormalSelector  field={t('ContactBox_5')}  selectorList={['1-5', '5-20', '20-50', '+50']} value={numWorkers} setValue={setNumWorkers} mt='10px'/>
-            <NormalSelector  field={t('ContactBox_6')}  selectorList={['0-1000', '1000-5000', '5000-50000', '+50000']} value={numConsults} setValue={setNumConsults} mt='10px'/>
+            <NormalSelector  field={t('ContactBox_5')}  selectorList={['1-5', '5-10', '10-20','20-30', '30-40','40-50', '+50']} value={numWorkers} setValue={setNumWorkers} mt='10px'/>
+            <NormalSelector  field={t('ContactBox_6')}  selectorList={['0-500','500-1000', '1000-2000', '2000-4000', '4000-6000','6000-8000','8000-10000',  '+10000']} value={numConsults} setValue={setNumConsults} mt='10px'/>
             
             <Flex  mt="30px" > 
                 <Flex alignItems={'flex-start'}  gap='10px'  width={'100%'} > 
-                <Checkbox  id='myCheckbox' mt='4px' size='md' colorScheme="blue"  isChecked={isChecked}  onChange={() => setIsChecked(!isChecked)} />
-                  
-          
-                <Text fontSize={'2xs'} color='brand.text_gray' fontWeight={300}>
-                    {t('ContactBox_Agree')}
-                  </Text>
+                  <Checkbox  id='myCheckbox' aria-labelledby="checkboxLabel" mt='4px' size='md' colorScheme="blue"  isChecked={isChecked}  onChange={() => setIsChecked(!isChecked)} />
+                  <Text id="checkboxLabel"  fontSize={'2xs'} color='brand.text_gray' fontWeight={300}>{t('ContactBox_Agree')}</Text>
                 </Flex>
             </Flex>
             

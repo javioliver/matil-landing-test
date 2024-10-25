@@ -22,33 +22,37 @@
         "FooterCTA":"Adelántate a la nueva era de la atención al cliente con Tilda ",
         "AltImage1":"Logo de Matil",
         "AltImage2":"Avatar del chat"
-
-
-
     },
     "Main": {
-        "Hero":"Transforma tu servicio al cliente con la IA",
-        "Subhero":"Optimiza tu atención al cliente con IA capaz de resolver hasta el 80% de las consultas. Mejora tiempos de respuesta, reduce costos y ofrece soporte 24h sin esfuerzo.",
+        "Title":"Crece Ofreciendo la Mejor Atención al Cliente con IA",
+        "Description":"Descubre todo lo que la IA puede hacer por tu empresa: resuelve consultas, reduce costos y mejora tiempos de respuesta con un soporte personalizado 24h.",
+
+        "Hero":"Marca la diferencia y escala tu negocio con la IA",
+        "Subhero":"Automatiza hasta el 80% de las consultas y ofrece un soporte de calidad rápido y disponible las 24 horas. Mejora la experiencia de tus clientes, optimiza costos y acelera tiempos de respuesta sin complicaciones.",
         "Matilda_Title": "La IA Especializada en tu Negocio",
-        "Matilda_Subtitle": "Potencia tus interacciones con una inteligencia artificial hecha a medida para tus necesidades empresariales. Resuelve hasta el 80% de las consultas de tus clientes sin la intervención de un agente humano.\n\nTilda es un simple bot conversacional, puede ejecutar tareas específicas, mejorando la eficiencia y productividad de tu equipo.",
+        "Matilda_Subtitle": "Potencia tus interacciones con una inteligencia artificial hecha a medida para tus necesidades empresariales. Resuelve hasta el 80% de las consultas de tus clientes sin la intervención de un agente humano.\n\nTilda no es un simple chatbot conversacional, puede entender y ejecutar tareas complejas, liberando a tu equipo de gran parte de la carga de trabajo sin perder calidad.",
         "Solved_Consults": "Consultas resueltas por Tilda", 
         "Agents_Productivity": "Aumento en la productividad de los agentes", 
-        "SS_Title":"Gestión Integral del Soporte",
+
+        "SS_Title":"El Helpdesk que Complementa a Tilda",
         "SS_Subtitle":"Canaliza todos tus canales en una única plataforma HelpDesk para gestionar conversaciones y contactos de manera eficiente.\n\nConfigura y consulta las estadísticas de Tilda, asegurando un servicio al cliente de alta calidad y un seguimiento detallado del rendimiento.",
         "Integrations_Title":"Integraciones para potenciar a Tilda",
-        "Integrations_Subtitle":"Optimiza el rendimiento de Tilda con integraciones simplificadas. Conéctala fácilmente con tus sistemas y plataformas existentes para maximizar la eficiencia y obtener el máximo beneficio de nuestra tecnología de inteligencia artificial avanzada.",
+        "Integrations_Subtitle":"Potencia el rendimiento de Tilda con integraciones fáciles y ágiles. Conéctala sin complicaciones a tus sistemas y plataformas actuales para maximizar la eficiencia y aprovechar al máximo nuestra avanzada tecnología de inteligencia artificial.",
         "More_Matilda":"Descubrir Tilda",
         "More_SS":"Descubrir la plataforma",
+
         "More_Integrations":"Ver más integraciones",
         "Integrations_End":"y cualquier integración que se te ocurra",
-        "PricingTitle":"Máxima Calidad y ROI Positivo Garantizado",
-        "PricingDes":"Paga solo por consultas resueltas, garantizando la rentabilidad. Este enfoque nos motiva a ofrecerte siempre la máxima calidad en cada interacción, por lo que ofrecemos:",
-        "PricingFeature1":"Estudio Inicial Gratuito e Integracion a Medida",
-        "PricingFeature1Des":"/Estudiamos/ de manera /gratuita/ la /viabilidad/ y /eficacia/ de nuestra solución y hacemos una /integración/ completamente /a medida/.",
-        "PricingFeature2":"Integracion con Cualquier Canal sin Coste Adicional",
+       
+        "PricingTitle":"Máxima Calidad y Rentabilidad Garantizada",
+        "PricingDes":"Paga solo por las consultas resueltas por Tilda, asegurando un retorno positivo de la inversión. Nuestro modelo nos impulsa a brindarte la mejor calidad en cada interacción. Te ofrecemos:",
+        "PricingFeature1":"Estudio Inicial Gratuito e Integración a Medida",
+        "PricingFeature1Des":"/Estudiamos/ de manera /gratuita/ la /viabilidad/ y /eficacia/ de nuestra solución y hacemos una /integración/ completamente /adapatada/ a tus /necesidades/.",
+        "PricingFeature2":"Integración Multicanal sin Costos Adicionales",
         "PricingFeature2Des":"Queremos que /Tilda resuelva/ el /máximo de consultas/ posibles, por eso, a diferencia de nuestros competidores, añadir /canales NO/ tiene un /coste extra/.",
         "PricingFeature3":"Coste de Mantenimiento Inferior a Cualquier Plataforma Similar",
-        "PricingFeature3Des":"La /plataforma/ tiene un /coste/ de mantenimiento /ínfimo/ en funcion del volumen de conversaciones, ya que /solo/ queremos /ganar dinero/ donde realmente /aportamos valor/.",
+        "PricingFeature3Des":"La /plataforma/ tiene un /coste/ de mantenimiento /ínfimo/, ya que /solo/ queremos /ganar dinero/ donde realmente /aportamos valor/.",
+       
         "Platform":"Plataforma",
         "AltImage1":"Imagen de la bandeja de conversaciones de la aplicación Helpdesk y a la izquierda el Chatbot personalizable de Matil",
         "AltImage2":"Logo de Whatsapp",
@@ -61,6 +65,9 @@
 
     },
     "Matilda": {
+        "Title":"Tilda: automatiza el 80% de las consultas sin perder calidad",
+        "Description":"Tilda es un chatbot con IA multicanal adaptado específicamente a las necesidades de tu negocio.",
+
         "Hero":"Libera a tu equipo del 80% del trabajo con Tilda",
         "Subhero":"Tilda es una IA diseñada específicamente para potenciar tu negocio. Responde rápidamente a las preguntas frecuentes y automatiza tareas repetitivas, liberando así a tu equipo para que se enfoque en lo que realmente importa: ¡hacer crecer tu empresa!",
         "FeaturesTitle":"Respuestas Rápidas y Clientes Satisfechos",
@@ -115,10 +122,21 @@
         "FAQ_6": "¿Tilda funciona con los modelos de ChatGPT?",
         "FAQ_ANSWER_6": "Sí, Tilda funciona con los modelos de ChatGPT, que son reconocidos como líderes en el sector de la inteligencia artificial. Estos modelos son los más avanzados y fiables del mercado, garantizando un rendimiento superior en la generación de lenguaje natural. Gracias a su capacidad para entender y producir respuestas coherentes y contextualmente adecuadas, Tilda puede ofrecer interacciones de alta calidad, alineadas con las expectativas y necesidades de tu empresa.",
         "FAQ_7": "¿Cómo puedo asegurar la privacidad de mis datos?",
-        "FAQ_ANSWER_7": "Tilda está diseñada para proteger la privacidad de tus datos. Hemos realizado un exhaustivo estudio de impacto para garantizar que tus datos estén seguros. OpenAI, el desarrollador de los modelos que utiliza Tilda, no retendrá ni utilizará tus datos para fines comerciales. Tilda trabaja únicamente con la información proporcionada por tu empresa y sigue estrictos protocolos de seguridad para asegurar que toda la información se maneje de manera confidencial y segura."
+        "FAQ_ANSWER_7": "Tilda está diseñada para proteger la privacidad de tus datos. Hemos realizado un exhaustivo estudio de impacto para garantizar que tus datos estén seguros. OpenAI, el desarrollador de los modelos que utiliza Tilda, no retendrá ni utilizará tus datos para fines comerciales. Tilda trabaja únicamente con la información proporcionada por tu empresa y sigue estrictos protocolos de seguridad para asegurar que toda la información se maneje de manera confidencial y segura.",
+        "AltImage1":"Dos flechas orientadas a la derecha, indicando velocidad.",
+        "AltImage2":"Un gráfico de lineas y por detrás un grañafico de barras.",
+        "AltImage3":"Un globo del mundo y abajo a la dercha un icono de usuario.",
+        "AltImage4":"Un documento y una lupa por encima.",
+        "AltImage5":"Un ordenador con un simbilo de código '</>' en el centeo de la pantalla.",
+        "AltImage6":"Un escudo con un icono de check en el centro.",
+        "AltImage7":"Un icono de check en el centro rodeado por dos flechas simbolizando un ciclo."
+
     },
     "Platform": {
-        "Hero":"Maximiza tu productividad junto a Tilda",
+        "Title":"Maximiza la productividad de tu equipo junto a Tilda",
+        "Description":"Unifica todos los canales de comunicación con Matil Helpdesk. Personaliza la IA y clasifica la intención de tus clientes para ofrecer el mejor servicio.",
+
+        "Hero":"Maximiza la productividad de tu equipo junto a Tilda",
         "Subhero":"Simplifica tu trabajo gestionando todas las comunicaciones desde un único lugar. Nuestra plataforma integra todas las fuentes de información para que puedas acceder y controlar fácilmente tu flujo comunicativo junto a Tilda.",
         "Card_1":"Canaliza tus conversaciones",
         "Card_1Des":"Canaliza todos tus canales en una única plataforma y deja que Tilda filtre y responda la mayoría.",
@@ -176,8 +194,11 @@
         "FAQ_ANSWER_6":"Sí, nuestro software es multiidioma y te permite ofrecer soporte en varios idiomas. Esto es ideal si tienes una audiencia internacional, ya que puedes expandir el alcance de tu centro de ayuda y ofrecer una experiencia personalizada en distintos idiomas."   
     },
     "Solutions":{
+        "Title":"Tilda, la IA que se adapta a tu negocio",
+        "Description":"Desde retail, eCommerce hasta servicios, cualquier sector puede beneficiarse de las ventajas de la IA. Mejora la atención al cliente, aumenta la eficiencia y automatiza procesos.",
+
         "PreTitle":"Casos de Uso",
-        "Title":"Tilda, Más que un Simple Asistente",
+        "Hero":"Tilda, Más que un Simple Asistente",
         "SubTitle":"Explora las increíbles capacidades de Tilda para tu negocio: entiende la intención, extrae la información necesaria de una manera natural y realiza acciones automáticamente.",
         "UsesCases":"Con Tilda, las intención de tus clientes se traduce en acciones",
         "UsesCasesDes":"Descubre cómo Tilda puede ser aplicada en diferentes sectores a través de una variedad de casos de uso que demuestran su versatilidad y eficacia.",
@@ -290,7 +311,7 @@
         "Contact_Title":"Adelántate a la nueva era de la atención al cliente",
         "Contact_Subtitle":"Solicita tu estudio inicial gratuito y te contactaremos lo antes posible para llevar tu servicio al cliente al siguiente nivel.",
         "ContactBox_Title":"¿Cómo podemos contactarte?",
-        "ContactBox_Subtitle":"Rellena la información y te contactaremos lo antes posible.",
+        "ContactBox_Subtitle":"Completa tus datos y nos comunicaremos contigo lo antes posible.",
         "ContactBox_1":"Nombre y Apellidos",
         "ContactBox_2":"Correo corporativo",
         "ContactBox_3":"Teléfono",

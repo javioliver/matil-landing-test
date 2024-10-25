@@ -68,7 +68,7 @@ const CompaniesRiver = () => {
                 {initialPositions.map((pos, index) => {
                     const randomScale = randomize(0.7, 0.8);
                     return (
-                        <Box  animation={`moveUp 30s linear  ${index*1.5}s infinite`} left={`${pos.x}%`}   bottom={`-200px`}   position='absolute' > 
+                        <Box key={`company-${index}`} animation={`moveUp 30s linear  ${index*1.5}s infinite`} left={`${pos.x}%`}   bottom={`-200px`}   position='absolute' > 
                             <Flex style={{transform: `scale(${randomScale})`}} key={index} boxShadow={'rgba(0, 0, 0, 0.1) 0px 15px 35px 0px, rgba(0, 0, 0, 0.07) 0px 3px 10px 0px'} borderRadius="50%" width="100px" height="100px" display="flex"justifyContent="center" alignItems="center"
                             backgroundColor={companiesList[index][1]} >
                                 <Image src={`/images/logos/${companiesList[index][0]}`} alt={`Logo ${index}`} width={60} height={60} />

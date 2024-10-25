@@ -315,7 +315,7 @@ const Solutions = () =>{
                         </ScrollAnimation>
 
                         <Heading fontSize={'5xl'} fontWeight="600" overflowWrap="break-word" whiteSpace="pre-wrap" >
-                            <AnimatedText text={t('Title')}/> 
+                            <AnimatedText text={t('Hero')}/> 
                         </Heading>
                         
                         <ScrollAnimation animateIn="fadeInUp" animateOnce delay={t('Title').split(' ').length * 70 + 300}> 

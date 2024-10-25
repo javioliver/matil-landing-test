@@ -1,9 +1,8 @@
 //NEXT
-import { NextSeo } from 'next-seo'
 import { GetStaticPropsContext } from 'next'
-
+import Head from 'next/head'
 //REACT
-import { useState, useEffect, useRef, useMemo } from 'react'
+import { useState, useEffect, useRef } from 'react'
 //TRANSLATION
 import { useTranslations } from 'next-intl'
 //FRONT
@@ -39,10 +38,7 @@ const FloatingCards = ({scrollY, isComputerWidth, flexWidth}:{scrollY:number, is
             if (selectedIndex === 0) animationIndex = index
             else if (selectedIndex === 1) animationIndex = (index + 2) % 3
             else if (selectedIndex === 2) animationIndex = (index + 1) % 3
-              
-            console.log(flexWidth)
             return (
-                
             <Flex flexDir={'column'} overflow={'hidden'} position={isComputerWidth?'absolute':'relative'} mt={isComputerWidth?'':'32px'} top={isComputerWidth ? areCardsFloating?`${-700 }px`:'0':``} left={isComputerWidth?areCardsFloating?'60%': index * ((flexWidth || 0) - 300)/2:''} key={`card-${index}`} boxShadow={'rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px'} zIndex={1000 - animationIndex} borderRadius={'.5rem'} height={'450px'} width={'300px'}  transition={'all .7s ease'}  transform={areCardsFloating?`rotate(${8 *animationIndex}deg)  translateY(${animationIndex * 30}px) translateX(${animationIndex * 90}px) scale(${1 - animationIndex * 0.07})`:''} >
                 <Flex alignItems={'center'}  bg='white'   height='60%'>
                     <Image src={card.image}/>
@@ -103,10 +99,11 @@ const Platform =()=>{
    
 
     return(<>
-        <NextSeo
-        title="HelpDesk - Soluciones de Atención al Cliente"
-        description="Mejora la atención al cliente con nuestra plataforma HelpDesk, diseñada para optimizar la gestión de consultas y brindar un soporte excepcional."
-        />
+
+        <Head>
+            <title>{t('Title')}</title>
+            <meta name="description" content={t('Description')} /> 
+        </Head>
  
         <Flex ref={heroRef} flexDir='column'  zIndex={1} top='0'bgGradient='linear(to-br,#00299c,rgb(0, 20, 51) )' width={'100vw'}alignItems={'center'}> 
             <Box   width="100%" position={'relative'} px='4vw' color='black'py={'150px'}  maxW="1200px" >
@@ -156,7 +153,7 @@ const Platform =()=>{
                                     </ScrollAnimation>
 
                                     {Array.from({length:3}).map((_, index2) => (<> 
-                                        <ScrollAnimation animateIn="fadeIn" animateOnce> 
+                                        <ScrollAnimation key={`feature-1-${index}`} animateIn="fadeIn" animateOnce> 
                                             <Flex  gap='10px' mt='20px' > 
                                                 <Box height={'30px'} width={'3px'} bg={'#00299c'}/>
                                                 <Box flex='1'> 

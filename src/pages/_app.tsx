@@ -2,8 +2,6 @@
 
 //NEXT
 import { AppProps } from 'next/app'
-import { DefaultSeo } from 'next-seo';
-import SEO from '../../next-seo.config';
 import dynamic from 'next/dynamic'
 import '../styles/globals.css'
 import localFont from 'next/font/local'
@@ -17,8 +15,6 @@ import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 import ReactGA from 'react-ga4'
 //COMPONENTS
 import Header from '../Content/Components/header'
-
-
 const CoockiesWarning = dynamic(() => import('../Content/Components/cookies'), {ssr: false})
 
 const myFont = localFont({ src: [{
@@ -112,8 +108,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     <NextIntlClientProvider locale={router.locale} timeZone="Europe/Paris" messages={pageProps.messages}>
       <ChakraProvider theme={theme}>
         <main className={myFont.className}>
-          <DefaultSeo {...SEO} />
-
           <Header isComputerWidth={isComputerWidth} />
           <Component {...pageProps} />
         </main>

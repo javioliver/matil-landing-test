@@ -19,10 +19,10 @@ const Contact = ()=>{
         <Flex width="100vw" color="black" justifyContent="center" >
           <Flex zIndex={2}  width="100%" maxW="1200px" gap='50px' justifyContent={{ md: 'space-between' }} px={{ base: '20px', sm: '30px', md: '50px' }} flexDirection={{ base: 'column',sm:'column', md: 'row' }}>
               <Box flex='4' width={{ base: '100%', md: 'auto' }} >
-                <Text overflowWrap="break-word" whiteSpace="pre-wrap" textAlign={{ base: 'center',sm:'center', md: 'start' }} fontSize={'3xl'}  >
+                <Text as='h2' overflowWrap="break-word" whiteSpace="pre-wrap" textAlign={{ base: 'center',sm:'center', md: 'start' }} fontSize={'3xl'}  >
                   {t('Contact_Title')}
                 </Text>
-                <Text mt='10px' fontSize={'1.1em'}  color="gray.600" fontWeight={300}  overflowWrap="break-word" whiteSpace="pre-wrap">
+                <Text as='h3' mt='10px' fontSize={'1.1em'}  color="gray.600" fontWeight={300}  overflowWrap="break-word" whiteSpace="pre-wrap">
                 {t('Contact_Subtitle')}
                 </Text>
               </Box>
