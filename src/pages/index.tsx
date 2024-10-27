@@ -19,7 +19,7 @@ const Contact = dynamic(() => import('../Content/Components/contact'))
 const Chatbot = dynamic(() => import('../Content/Widgets/Chatbot'))
 import ArrowButton from '@/Content/Widgets/ArrowButton'
 import AnimatedText from '@/Content/Widgets/AnimatedText'
- 
+  
  
 //MAIN FUNCTION
 const Main = () => {
@@ -32,18 +32,19 @@ const Main = () => {
   //NEXT ROUTING
   const router = useRouter()
 
+ 
   const matildaChat:[number, {text:string, botMessage:boolean, id:string}][] = [
-        [1000, {id:'1', text: t_chats('Chat_11'), botMessage: false }],
-        [100, { id:'2',text: t_chats('Chat_12'), botMessage: true }],
-        [3500, {id:'3', text: t_chats('Chat_13'), botMessage: false }],
-        [100, { id:'4',text: t_chats('Chat_14'), botMessage: true }],
-        [4500, {id:'5', text: t_chats('Chat_15'), botMessage: false }],
-        [100, {id:'6', text: t_chats('Chat_16'), botMessage: true }]
+    [1000, {id:'1', text: t_chats('Chat_11'), botMessage: false }],
+    [100, { id:'2',text: t_chats('Chat_12'), botMessage: true }],
+    [3500, {id:'3', text: t_chats('Chat_13'), botMessage: false }],
+    [100, { id:'4',text: t_chats('Chat_14'), botMessage: true }],
+    [4500, {id:'5', text: t_chats('Chat_15'), botMessage: false }],
+    [100, {id:'6', text: t_chats('Chat_16'), botMessage: true }]
+]
 
-    ]
 
-    const platformIcons = ['/images/logos/whatsapp.png', '/images/logos/instagram.png', '/images/logos/mail.png', '/images/logos/messenger.png',  '/images/logos/google-business.svg', '/images/logos/call.png']
-    const pricingIconsList = ['/images/icons/study-dark.svg','/images/icons/channels.svg', '/images/icons/save-money.svg']
+    const platformIcons = ['/images/logos/whatsapp.svg', '/images/logos/instagram.svg', '/images/logos/mail.svg', '/images/logos/facebook-messenger.svg',  '/images/logos/google-business.svg']
+    const pricingIconsList = [ '/images/icons/save-money.svg', '/images/icons/study-dark.svg','/images/icons/channels.svg',]
     
     return (<>
         <Head>
@@ -53,24 +54,26 @@ const Main = () => {
 
         <Flex position={'relative'} flexDir='column' width={'100vw'} alignItems={'center'}>
            
-           <Box height={'80vh'} position='relative' width={'100%'}> 
-                <MeshGradientBackground colors={["#58daf4", "#88c8f4", "#0566ff", "#a6e0f7"]}/>
-                <Box position="absolute" width={'100%'} right={0} top={'0vh'} height='80vh' bg={`linear-gradient(transparent 80%, white)`} zIndex={1} />
+           <Box height={'120vh'} position='relative' width={'100%'}> 
+                <MeshGradientBackground colors={["#00C8FF", "#0099FF", "#0566ff", "#5CD1FF"]}/>
+                <Box position="absolute" width={'100%'} right={0} top={'0vh'} height='120vh' bg={`linear-gradient(transparent 90%, white)`} zIndex={1} />
             </Box>
-            <Flex position='relative' px='4vw' width={'100vw'} mt='-80vh'  overflow={'hidden'} justifyContent={'center'} >
+            <Flex position='relative' px='4vw' width={'100vw'} mt='-120vh'  overflow={'hidden'} justifyContent={'center'} >
                 <Flex flexDir={'column'} alignItems={'center'} width="100%" position={'relative'}  color='black'  textAlign={'center'} pt={'120px'} pb='75px'  maxW="1200px" >
                     <Flex flex='1' color={'white'} alignItems={'center'}  flexDir={'column'} > 
                         <Text as={'h1'} maxW={'1000px'}  fontSize={'6xl'} fontWeight={500} overflowWrap="break-word" whiteSpace="pre-wrap" >
                             <AnimatedText text={t('Hero')}/>
                         </Text>
                         <ScrollAnimation animateIn="fadeInUp" animateOnce delay={(t('Hero').split(' ').length) * 100}>
-                            <Text  mt='30px' maxW={'900px'} fontWeight={300} fontSize={'sm'} color="white"  overflowWrap="break-word" whiteSpace="pre-wrap">
+                            <Text  mt='30px' maxW={'800px'} fontWeight={300} fontSize={'sm'} color="white"  overflowWrap="break-word" whiteSpace="pre-wrap">
                             {t('Subhero')}
                             </Text>
                         </ScrollAnimation>
                     </Flex>
-                    <ScrollAnimation  animateIn="fadeIn" animateOnce delay={(t('Hero').split(' ').length) * 100 + 300} style={{position:'relative', zIndex:10,marginTop:'50px',  width:'100%', maxWidth:'1200px'}} >
-                        <Image   width={0} style={{width:'100%'}} height={0} alt={t('AltImage1')} src={`/images/main.svg`} />
+                    <ScrollAnimation  animateIn="fadeIn" animateOnce delay={(t('Hero').split(' ').length) * 100 + 300} style={{ position:'relative', display:'flex', justifyContent:'center', width:'100%', zIndex:100,marginTop:'50px'}} >
+                      
+                        <Image quality={100} layout="responsive" width={80} style={{ borderRadius:'.7rem', maxWidth:'1200px'}} height={800} alt={t('AltImage1')} src={`/images/main.svg`} />
+
                     </ScrollAnimation>
 
                 </Flex>
@@ -103,7 +106,7 @@ const Main = () => {
                             <Box flex='1'> 
                                 <Flex alignItems='center' gap='10px'> 
                                     <Box height={'30px'} width={'3px'} bg={'brand.text_blue'}/>
-                                    <Text fontWeight={500} fontSize={'3xl'} color='brand.text_blue'>80%</Text>
+                                    <Text fontWeight={500} fontSize={'3xl'} color='brand.text_blue'>71%</Text>
                                 </Flex>
                                 <Text mt='10px' ml='13px' zIndex={1} position="relative" fontSize={'md'}fontWeight={'400'}>{t('Solved_Consults')}</Text>
                             </Box>
@@ -112,9 +115,9 @@ const Main = () => {
                             <Box flex='1'> 
                                 <Flex alignItems='center' gap='10px'> 
                                     <Box height={'30px'} width={'3px'} bg={'brand.text_blue'}/>
-                                    <Text fontWeight={500} fontSize={'3xl'} color='brand.text_blue'>x3.5</Text>
+                                    <Text fontWeight={500} fontSize={'3xl'} color='brand.text_blue'>x10</Text>
                                 </Flex>
-                                <Text mt='10px' ml='13px' zIndex={1} position="relative" fontSize={'md'}fontWeight={'400'}>{t('Agents_Productivity')}</Text>
+                                <Text mt='10px' ml='13px' zIndex={1} position="relative" fontSize={'md'}fontWeight={'400'}>{t('Reduce_ResolveTime')}</Text>
                             </Box>
                         </ScrollAnimation>
                     </Flex>
@@ -123,9 +126,9 @@ const Main = () => {
 
                 <ScrollAnimation animateIn="fadeInRight" animateOnce>
                     <Flex justifyContent={'center'} alignItems={{base:'center',sm:'center',md:'start',lg:'start',xl:'start'}} mt={{lg:'0px',xl:'-70px' }}  flexDir={{base:'column-reverse',sm:'column-reverse',md:'row',lg:'row',xl:'row'}}  height="auto" >
-                        <Box bg='white' borderColor={'#eaebee'} borderWidth={'7px'} height={'650px'}  width={'342px'}   borderRadius={'2rem'}  overflow={'hidden'} boxShadow={'0 44px 89px -18px rgba(50,50,93,.35),0 26px 54px -26px rgba(0,0,0,.3),inset 0 -1px 3px 0 rgba(10,37,64,.35)'} >
+                    <Box bg='white' borderColor={'#eaebee'} borderWidth={'7px'} height={'650px'}  width={'342px'}   borderRadius={'2rem'}  overflow={'hidden'} boxShadow={'0 44px 89px -18px rgba(50,50,93,.35),0 26px 54px -26px rgba(0,0,0,.3),inset 0 -1px 3px 0 rgba(10,37,64,.35)'} >
                             <Chatbot currentChat={matildaChat}/>
-                        </Box>
+                        </Box>               
                     </Flex>
                 </ScrollAnimation>
             </Flex> 
@@ -158,7 +161,7 @@ const Main = () => {
                             {platformIcons.map((icon, index) => (
                                 <ScrollAnimation key={`icons-${index}`}  animateIn="fadeIn" delay={index * 100}  animateOnce>
                                     <Flex bg='white' alignItems={'center'} justifyContent={'center'} key={`platform-icon-${index}`} borderRadius={'full'} height={'60px'} width={'60px'}>
-                                        <Image width={35} height={35} src={icon} alt={t(`AltImage${index + 2}`)}/>
+                                        <Image width={(index === 1 || index === 3 )?45: 35} height={(index === 1 || index === 3 )?45: 35} src={icon} alt={t(`AltImage${index + 2}`)}/>
                                     </Flex>
                                 </ScrollAnimation>
                             ))}

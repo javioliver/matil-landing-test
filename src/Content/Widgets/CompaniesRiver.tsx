@@ -21,35 +21,40 @@ const CompaniesRiver = () => {
         ['magento_logo.webp', 'orange.100 '], ['prestashop_logo.png', 'gray.100'],
         ['woo_logo.svg', 'purple.100 '], ['wix_logo.png', 'gray.100'],
     ]
-
-
- 
+    
     const randomize = (min:number, max:number) => Math.random() * (max - min) + min
     const generateInitialPositions = (count: number, windowHeight: number) => {
         const positions: { x: number, y: number }[] = []
-        const minDistance = 15
-        const isTooClose = (x1: number, y1: number, x2: number, y2: number) => {
+        const comp_dist = (x1: number, y1: number, x2: number, y2: number) => {
             const dx = x1 - x2
             const dy = y1 - y2
-            return Math.sqrt(dx * dx + dy * dy) < minDistance
+            return Math.sqrt(dx * dx + dy * dy)
         }
+        const y_mult = windowHeight / count 
         for (let i = 0; i < count; i++) {
             let x = 0
-            let y = count
-            let positionValid = false
+            let y = i// + randomize(0, 20)
+            let best_x = x
+            let best_y = y
             let attempts = 0
-            while (!positionValid && attempts < 100) {
-                x = randomize(0, 80)
-                positionValid = true
+            let best_dist = 0
+            let x_iter = 0
+            while (x_iter <= 80) {
+                let worst_dist = 10000
                 for (const pos of positions) {
-                    if (isTooClose(x, y, pos.x, pos.y)) {
-                    positionValid = false
-                    break
+                    const current_dist = comp_dist(x_iter, y, pos.x, pos.y)
+                    if (current_dist < worst_dist) {
+                        worst_dist = current_dist
                     }
                 }
-                attempts++
+                if (worst_dist > best_dist) {
+                    best_dist = worst_dist
+                    best_x = x_iter
+                    best_y = y
+                }
+                x_iter++
             }
-          positions.push({ x, y })
+            positions.push({ x:best_x, y:best_y })
         }
         return positions
       }

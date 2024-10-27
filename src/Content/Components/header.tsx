@@ -13,9 +13,12 @@ import { motion } from 'framer-motion'
 import ArrowButton from '../Widgets/ArrowButton'
 //ICONS
 import { RxHamburgerMenu, RxCross2 } from "react-icons/rx"
-import { FaRobot, FaPlug } from "react-icons/fa6"
-import { FiArrowUpRight } from "react-icons/fi"
+import { FaRobot } from "react-icons/fa6"
 import { IoFileTrayFull, IoPricetags, IoHeadset } from "react-icons/io5"
+import Logo from '../../../public/images/matil-logos/logo-word-white.svg';
+import LogoBlack from '../../../public/images/matil-logos/logo-word-gradient-black.svg'
+
+
 
 
 
@@ -51,17 +54,20 @@ const Header = ({isComputerWidth}:{isComputerWidth:boolean})=>{
   const [showMenu, setShowMenu] = useState<boolean>(false)
   
   //RESIZE SCROLL LOGIC
+  const svgRef = useRef(null)
   const headerRef = useRef<HTMLDivElement>(null)
+  const logoRef = useRef<HTMLDivElement>(null)
+
   const handleScroll = () => {
       const scrollY = window.scrollY
       const newScrollProgress = Math.min(scrollY / 200, 1)
       const headerWidth = `${100 - newScrollProgress * 15}%`
-      const backgroundColor = `rgba(256, 256, 256, ${newScrollProgress/1.5})`
+      const backgroundColor = `rgba(256, 256, 256, ${newScrollProgress/1.2})`
       let color = 'rgb(0, 20, 51)'
       if (whiteTextSections.includes(pathname)) {
         const whiteRGB = [255, 255, 255]
         const targetRGB = [0, 20, 51]
-        const progress = Math.min(newScrollProgress / 1.1, 1)
+        const progress = Math.min(newScrollProgress / 1.05, 1)
         const interpolatedColor = whiteRGB.map((start, index) => {
           const end = targetRGB[index];
           return Math.round(start + progress * (end - start))
@@ -70,11 +76,13 @@ const Header = ({isComputerWidth}:{isComputerWidth:boolean})=>{
       }
 
       const boxShadow = `2px 2px 8px rgba(0, 0, 0, ${newScrollProgress * 0.2})`
-      if ( headerRef.current) {
+      if ( headerRef.current && logoRef.current) {
         headerRef.current.style.backgroundColor = backgroundColor
         headerRef.current.style.boxShadow = boxShadow
         headerRef.current.style.width = headerWidth
         headerRef.current.style.color = color
+        logoRef.current.style.opacity = String(Math.min(1, newScrollProgress))
+      
       }
   }
   useEffect(() => {
@@ -83,6 +91,7 @@ const Header = ({isComputerWidth}:{isComputerWidth:boolean})=>{
     return () => {window.removeEventListener('scroll', handleScroll)}
   }, [pathname])
 
+  console.log( logoRef?.current?.style?.opacity)
 
   return( <> 
 
@@ -91,12 +100,19 @@ const Header = ({isComputerWidth}:{isComputerWidth:boolean})=>{
         <Flex maxW={'1200px'} width={'100%'} justifyContent={'center'} position={'relative'}> 
           {isComputerWidth ? 
 
-            <Flex display={'inline-flex'} ref={headerRef} top={'3vh'} bg={'transparent'} width={'100%'} position='absolute' color={whiteTextSections.includes(pathname) ?  'white':'brand.black_button' }  
+            <Flex   style={{backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)'}} display={'inline-flex'}  ref={headerRef} top={'3vh'} bg={'transparent'} width={'100%'} position='absolute' color={whiteTextSections.includes(pathname) ?  'white':'brand.black_button' }  
             borderRadius={'10rem'} paddingRight={{ base: '10px', sm: '12px', md: '15px' }} paddingLeft={{ base: '15px', sm: '18px', md: '25px' }}  py={{ base: '5px', sm: '7px', md: '10px' }}  justifyContent='space-between' alignItems='center' transition="background-color 0.1s ease, width 0.1s ease, box-shadow 0.1s ease" > 
-                <Flex gap='7px' alignItems={'center'} onClick={()=> router.push('/') } cursor={'pointer'}  fontSize='xl' fontWeight={500} >
-                    <Image height={25} width={25} alt={t('AltImage1')} src='/images/matil-simple.svg'/>
-                    <Text fontSize={'lg'}>matil </Text>
+                
+                <Flex w='90px' position={'relative'} alignItems={'center'}>
+                  <Flex position={'absolute'}  left={0}  zIndex={9} alignItems={'center'} onClick={()=> router.push('/') } cursor={'pointer'}  fontSize='xl' fontWeight={500} >
+                    < Logo style={{ width: 90 }} />
+                  </Flex>
+                  <Flex position={'absolute'}  left={0} zIndex={10} opacity={1} ref={logoRef} alignItems={'center'} onClick={()=> router.push('/') } cursor={'pointer'}  fontSize='xl' fontWeight={500} >
+                    < LogoBlack style={{ width: 90 }} />
+                  </Flex>
                 </Flex>
+
+
                 <Flex gap='3vw' alignItems={'center'}> 
                   <HeaderSection t={t} router={router} section={'Tilda'}/>
                   <HeaderSection t={t} router={router} section={'Platform'}/>
@@ -113,7 +129,7 @@ const Header = ({isComputerWidth}:{isComputerWidth:boolean})=>{
           <Flex mt={'5vh'} bg={'transparent'} width={'100%'}  color={whiteTextSections.includes(pathname)?'white':'brand.black_button'} borderRadius={'1rem'} px={{ base: '20px', sm: '30px', md: '50px' }} maxW='1200px' justifyContent='space-between' alignItems='center'  >
               <Flex gap='10px' alignItems={'center'} onClick={()=> router.push('/') } cursor={'pointer'}  fontSize='xl' fontWeight={500} >
                 <Image height={25} width={25} alt={t('AltImage1')} src='/images/matil-simple.svg'/>
-                <Text mt='4px' >Matil</Text>
+                <Text mt='4px' >matil</Text>
               </Flex>
               <Icon aria-label='menu' as={RxHamburgerMenu} boxSize={10} cursor='pointer' onClick={()=>setShowMenu(true)}/>
               

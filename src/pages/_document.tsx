@@ -14,6 +14,7 @@ class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
+          <script defer src="https://chat-widget-matlil.s3.eu-west-3.amazonaws.com/insert.js?organization_id=5&chatbot_id=3284263b-e62c-46c1-8045-69ec4ae6f215" id="matil-chat-widget"></script>
         </body>
       </Html>
     )

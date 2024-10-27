@@ -4,6 +4,7 @@ import { Box, Flex, Text, IconButton, Icon } from '@chakra-ui/react'
 import { FaFile, FaFolder } from "react-icons/fa"
 
 import { useTranslations } from 'next-intl'
+import Logo from '../../../public/images/matil-logos/logo-word-white.svg';
 
 
 interface Message {
@@ -82,7 +83,7 @@ const Chatbot = ({ currentChat }:ChatbotProps) =>{
         const changeConversation = () => {
             clearAllTimeouts()
             indexRef.current = 0
-            setMessages([{ text: `${obtenerSaludo()}, mi nombre es Tilda, soy tu asistente virtual.`, botMessage: true, id:'-2' }, { text: '¿En qué puedo ayudarle?',  id:'-1', botMessage: true }]);         
+            setMessages([]);         
             setCurrentSeries(currentChat)
         }
         changeConversation()
@@ -106,9 +107,8 @@ const Chatbot = ({ currentChat }:ChatbotProps) =>{
             
                 <div style={{display:'flex', gap:'5px', flex:'1', alignItems:'center'}}>
                     <div style={{display:'flex', alignItems:'center', flexDirection:'row', gap:'10px', marginTop:'10px'}} >    
-                        <Image src='/images/matil-simple-white.svg' height={20}width={20} alt={t('AltImage1')} />
-                        <span style={{color:'white', fontWeight:500,  whiteSpace: 'nowrap',textOverflow: 'ellipsis', fontSize:'1.4em' }} >matil</span>
-                    </div>
+                        <Logo style={{ width: 80, color:'white' }} />
+                     </div>
                 </div>
                     
             </div>
