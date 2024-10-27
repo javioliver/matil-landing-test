@@ -65,13 +65,13 @@ const CustomMessages = ({index}:{index:number}) => {
             {sender:0, content:'Hola, me gustarían enviar mi currículum'}, 
             {sender:1, content:'Buenas tardes, ¿En qué departamento te gustaría trabajar?'},
             {sender:0, content:'Ventas'},
-            {sender:1, content:'¡Genial! Para poder contactarte en el futuro, ¿podrías escribirme tu dirección de correo electrónico, por favo ?'}, 
+            {sender:1, content:'¡Genial! Para poder contactarte en el futuro, ¿Me podrías dar tu dirección de correo electrónico, por favor?'}, 
         ],
         [
-            {sender:0, content:'¿Que documentación tengo que aportar para solicitar un crédito?'}, 
-            {sender:1, content:'Debes presentar el CIF, el beneficio neto y cantidad de deuda de la empresa, el importe que desea solicitar y el plazo de devolución. Después de ésto nos pondremos a estudiar su caso.'},
-            {sender:0, content:'Ok, aquí los tienes: B12341234, 109.234€ d ebeneficio, 49.034€ de deuda, y deseo solicitar 70.000€ a devolver en 3 años.'}, 
-            {sender:1, content:'Muy bien, los datos parecen correctos y han superado el estudio automático inicial, en unos días nos pondremos en contacto con usted.'} 
+            {sender:0, content:'¿Qué documentación tengo que aportar para solicitar un crédito?'}, 
+            {sender:1, content:'Debe indicar el CIF, el beneficio neto y cantidad de deuda de la empresa, el importe que desea solicitar y el plazo de devolución.'},
+            {sender:0, content:'Ok, aquí los tienes: B12341234, 109.234€ de beneficio, 49.034€ de deuda, y deseo solicitar 70.000€ a devolver en 3 años.'}, 
+            {sender:1, content:'Muy bien, ha superado el estudio automático inicial, por favor, proporcione un número de teléfono para ponernos en contacto con usted.'} 
         ],
        
     ]
@@ -262,7 +262,7 @@ const Solutions = () =>{
     const router = useRouter()
   
     //FAQS LIST
-    const faqsList = [[t('FAQ_1'), t('FAQ_ANSWER_1')], [t('FAQ_2'), t('FAQ_ANSWER_2')], [t('FAQ_3'), t('FAQ_ANSWER_3')], [t('FAQ_4'), t('FAQ_ANSWER_4')], [t('FAQ_5'), t('FAQ_ANSWER_5')], [t('FAQ_6'), t('FAQ_ANSWER_6')], [t('FAQ_6'), t('FAQ_ANSWER_6')]]
+    const faqsList = [[t('FAQ_1'), t('FAQ_ANSWER_1')], [t('FAQ_2'), t('FAQ_ANSWER_2')], [t('FAQ_3'), t('FAQ_ANSWER_3')], [t('FAQ_4'), t('FAQ_ANSWER_4')], [t('FAQ_5'), t('FAQ_ANSWER_5')], [t('FAQ_7'), t('FAQ_ANSWER_7')]]
 
     //DECIDE IF THE USER IS USING A COMPUTER, FOR ADJUSTING THE HEADER
     const [isComputerWidth, setIsComputerWidth] = useState(true)

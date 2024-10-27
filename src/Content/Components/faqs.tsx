@@ -36,12 +36,11 @@ const FAQS = ({faqsList}:{faqsList:string[][]}) => {
         const [isExpanded, setIsExpanded] = useState<boolean>(false)
         return(<> 
             <Flex cursor={'pointer'}fontSize={'md'} justifyContent={'space-between'} gap='50px' color='brand.text_blue'  alignItems={'center'} py='25px' onClick={() => setIsExpanded(!isExpanded) }> 
-                <Text  fontWeight="medium" overflowWrap="break-word" whiteSpace="pre-wrap" >
+                <Text   maxWidth="90%"  fontWeight="medium" overflowWrap="break-word" whiteSpace="pre-wrap" >
                 {question}
                 </Text>
-                <IoIosArrowDown className={isExpanded ? "rotate-icon-up" : "rotate-icon-down"}/>
+                <IoIosArrowDown size='20px' className={isExpanded ? "rotate-icon-up" : "rotate-icon-down"}/>
             </Flex>
-    
             <Collapse in={isExpanded} animateOpacity >
                 <Text fontWeight={300}  fontSize={'sm'} >{parseMarkdown(answer)}</Text>
             </Collapse>

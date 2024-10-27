@@ -18,24 +18,18 @@ import { IoFileTrayFull, IoPricetags, IoHeadset } from "react-icons/io5"
 import Logo from '../../../public/images/matil-logos/logo-word-white.svg';
 import LogoBlack from '../../../public/images/matil-logos/logo-word-gradient-black.svg'
 
-
-
-
-
 //HEADER SECTIONS COMPONENT
 const HeaderSection = ({t, router, section}:{t:any, router:any, section:'Tilda' | 'Platform' | 'Pricing' | 'Solutions' }) => {
 
   //BOOLEAN FOR SHOW THE SECTION BOX
   const [isHovering, setIsHovering] = useState<boolean>(false)
   return(
-    <Box position='relative' onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}> 
+    <Box position='relative' mt='-2px' onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}> 
       <Flex alignItems={'center'} fontWeight={400} cursor={'pointer'}   gap='5px' opacity={isHovering?0.7:1}>
         <Text fontSize={'sm'} onClick={()=>{router.push(`/${section.toLowerCase()}`) }} >{section === 'Tilda'?section:t(section)}</Text>
       </Flex>    
     </Box>
 )}
-
-
 
 const Header = ({isComputerWidth}:{isComputerWidth:boolean})=>{
 
@@ -54,15 +48,16 @@ const Header = ({isComputerWidth}:{isComputerWidth:boolean})=>{
   const [showMenu, setShowMenu] = useState<boolean>(false)
   
   //RESIZE SCROLL LOGIC
-  const svgRef = useRef(null)
   const headerRef = useRef<HTMLDivElement>(null)
   const logoRef = useRef<HTMLDivElement>(null)
 
   const handleScroll = () => {
       const scrollY = window.scrollY
       const newScrollProgress = Math.min(scrollY / 200, 1)
-      const headerWidth = `${100 - newScrollProgress * 15}%`
+       const headerWidth = `${Math.min(1200, window.innerWidth) * (100 - newScrollProgress * 15) * 0.01}px`
+
       const backgroundColor = `rgba(256, 256, 256, ${newScrollProgress/1.2})`
+      const blurIntensity = Math.min(newScrollProgress * 7, 7);
       let color = 'rgb(0, 20, 51)'
       if (whiteTextSections.includes(pathname)) {
         const whiteRGB = [255, 255, 255]
@@ -81,6 +76,8 @@ const Header = ({isComputerWidth}:{isComputerWidth:boolean})=>{
         headerRef.current.style.boxShadow = boxShadow
         headerRef.current.style.width = headerWidth
         headerRef.current.style.color = color
+        headerRef.current.style.backdropFilter = `blur(${blurIntensity}px)`
+
         logoRef.current.style.opacity = String(Math.min(1, newScrollProgress))
       
       }
@@ -91,7 +88,6 @@ const Header = ({isComputerWidth}:{isComputerWidth:boolean})=>{
     return () => {window.removeEventListener('scroll', handleScroll)}
   }, [pathname])
 
-  console.log( logoRef?.current?.style?.opacity)
 
   return( <> 
 
@@ -100,7 +96,7 @@ const Header = ({isComputerWidth}:{isComputerWidth:boolean})=>{
         <Flex maxW={'1200px'} width={'100%'} justifyContent={'center'} position={'relative'}> 
           {isComputerWidth ? 
 
-            <Flex   style={{backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)'}} display={'inline-flex'}  ref={headerRef} top={'3vh'} bg={'transparent'} width={'100%'} position='absolute' color={whiteTextSections.includes(pathname) ?  'white':'brand.black_button' }  
+            <Flex  display={'inline-flex'}  ref={headerRef} top={'3vh'} bg={'transparent'} width={'100%'} position='fixed' color={whiteTextSections.includes(pathname) ?  'white':'brand.black_button' }  
             borderRadius={'10rem'} paddingRight={{ base: '10px', sm: '12px', md: '15px' }} paddingLeft={{ base: '15px', sm: '18px', md: '25px' }}  py={{ base: '5px', sm: '7px', md: '10px' }}  justifyContent='space-between' alignItems='center' transition="background-color 0.1s ease, width 0.1s ease, box-shadow 0.1s ease" > 
                 
                 <Flex w='90px' position={'relative'} alignItems={'center'}>
@@ -111,8 +107,6 @@ const Header = ({isComputerWidth}:{isComputerWidth:boolean})=>{
                     < LogoBlack style={{ width: 90 }} />
                   </Flex>
                 </Flex>
-
-
                 <Flex gap='3vw' alignItems={'center'}> 
                   <HeaderSection t={t} router={router} section={'Tilda'}/>
                   <HeaderSection t={t} router={router} section={'Platform'}/>

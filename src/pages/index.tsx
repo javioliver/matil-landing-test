@@ -56,7 +56,7 @@ const Main = () => {
            
            <Box height={'120vh'} position='relative' width={'100%'}> 
                 <MeshGradientBackground colors={["#00C8FF", "#0099FF", "#0566ff", "#5CD1FF"]}/>
-                <Box position="absolute" width={'100%'} right={0} top={'0vh'} height='120vh' bg={`linear-gradient(transparent 90%, white)`} zIndex={1} />
+                <Box position="absolute" width={'100%'} right={0} top={'0vh'} height='120vh' bg={`linear-gradient(transparent 70%, white)`} zIndex={1} />
             </Box>
             <Flex position='relative' px='4vw' width={'100vw'} mt='-120vh'  overflow={'hidden'} justifyContent={'center'} >
                 <Flex flexDir={'column'} alignItems={'center'} width="100%" position={'relative'}  color='black'  textAlign={'center'} pt={'120px'} pb='75px'  maxW="1200px" >

@@ -2,7 +2,7 @@
 import { GetStaticPropsContext } from 'next'
 import Head from 'next/head'
 //REACT
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useMemo } from 'react'
 //TRANSLATION
 import { useTranslations } from 'next-intl'
 //FRONT
@@ -63,17 +63,16 @@ const Platform =()=>{
     const cardsFlexRef = useRef<HTMLDivElement>(null)
 
     //FAQS LIST
-    const faqsList = [[t('FAQ_1'), t('FAQ_ANSWER_1')], [t('FAQ_2'), t('FAQ_ANSWER_2')], [t('FAQ_3'), t('FAQ_ANSWER_3')], [t('FAQ_4'), t('FAQ_ANSWER_4')], [t('FAQ_5'), t('FAQ_ANSWER_5')], [t('FAQ_6'), t('FAQ_ANSWER_6')]]
+    const faqsList = [[t('FAQ_1'), t('FAQ_ANSWER_1')],  [t('FAQ_3'), t('FAQ_ANSWER_3')], [t('FAQ_4'), t('FAQ_ANSWER_4')], [t('FAQ_5'), t('FAQ_ANSWER_5')], [t('FAQ_6'), t('FAQ_ANSWER_6')]]
 
     
     //MAIN SECTIONS LIST
     const mainSectionList = [
-        {title:'Tilda', color:'#11efe3'},
         {title:'HelpCenter', color:'#0073e6'},
         {title:'Productivity', color:'#00299c'},
     ]
 
-    const sectionsImages = ['/images/tilda-screen.svg', '/images/clients.svg', '/images/help-center.svg']
+    const sectionsImages = [ '/images/help-center.svg', '/images/clients.svg']
     //CHANNELS LIST
     const channelsList:any[] = [
         {title:'WebChat', icon:'/images/icons/chat.svg'},
@@ -97,6 +96,7 @@ const Platform =()=>{
     }, [])
 
    
+    const memoizedFaqs = useMemo(() => <FAQS faqsList={faqsList} />, [])
 
     return(<>
 
@@ -196,7 +196,7 @@ const Platform =()=>{
                         </Grid>
                     </Flex>
                 </Flex>
-            <FAQS faqsList={faqsList}/>
+                {memoizedFaqs}
             <Footer/>
  
         </Flex>

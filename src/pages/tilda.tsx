@@ -32,10 +32,9 @@ const Matilda =()=>{
 
     //FEATURES LIST
     const featuresList = [
-        {max:80, title:t('Automation'), color:'#11efe3', image:'/images/customer-support.png'},
-        {max:84, title:t('CSAT'), color:'#0073e6', image:'/images/client.png'},
-        {max:93, title:t('ResponseTime'), color:'#00299c', image:'/images/support-team.png'},
-
+        {max:71, title:t('Automation'), color:'#11efe3', image:'/images/customer-support.png'},
+        {max:63, title:t('CSAT'), color:'#0073e6', image:'/images/client.png'},
+        {max:93, title:t('ResponseTime'), color:'#00299c', image:'/images/support-team.png'}
     ]
     const improvesList = [
         {title:t('Productivity'), description:t('ProductivityDes'), icon:'/images/icons/arrows.svg'},

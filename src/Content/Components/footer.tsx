@@ -9,6 +9,8 @@ import { useTranslations } from 'next-intl'
 import { Box, Flex, Text } from '@chakra-ui/react'
 import ArrowButton from '../Widgets/ArrowButton'
 import LanguageSwitcher from '../Widgets/LanguageSwitcher'
+
+
 const Footer=()=>{
 
     //ROUNTING AND TRANSLATION CONSTANTS
@@ -16,13 +18,12 @@ const Footer=()=>{
     const t = useTranslations('Header')
     
     return(
-        <Flex bg='white' px='4vw' flexDir={'column'} alignItems={'center'} fontSize={'sm'} pb='50px'   color='brand.clear_black' zIndex={1000} > 
+        <Flex bg='white' px='4vw' flexDir={'column'} alignItems={'center'} fontSize={'sm'} pb='50px'  color='brand.clear_black' zIndex={1000} > 
             
             <Flex width={'100%'} flexDirection={{ base: 'column', sm:'column', lg: 'row' }} gap='32px'  py={{ base: '0', sm:'0', lg: '30px' }} maxW={'1000px'} alignItems={'center'} justifyContent={'space-between'} >
                 <Flex alignItems={'center'} gap='7px'> 
-                    <Image height={20} width={20} alt={t('AltImage1')} src='/images/matil-simple.svg'/>
-                    <Text fontWeight={500}>matil</Text>
-                </Flex>
+                    <Image height={0}  width={0} style={{width:'70px'}} alt={t('AltImage1')} src='/images/matil-logos/logo-word-gradient-black.svg'/>
+                 </Flex>
                 <Text textAlign={'center'} color='brand.text_gray' fontSize={'xs'} fontWeight={300}>{t('FooterCTA')}</Text>
                 <Box> 
                 <ArrowButton text={t('Contact')} onClick={() => router.push('/contact')} bgGradient='linear(to-br,#00299c, rgb(0, 20, 51))' color='white' hover={{color:'brand.gray_1', bg:'linear(to-br,#33299c, rgb(0, 10, 41))'}} fontSize={'xs'}/>

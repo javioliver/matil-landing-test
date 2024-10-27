@@ -9,9 +9,9 @@ const ArrowButton = ({onClick, text, isDisabled=false, bg, bgGradient, color, ho
     const [isHoveringButton, setIsHoveringButton] = useState(false)
     return(
     <Flex gap='16px' border={border?border:''} maxW='fit-content'alignItems={'center'} justifyContent={'center'}  onClick={onClick} onMouseEnter={()=>{setIsHoveringButton(true)}} onMouseLeave={()=>{setIsHoveringButton(false)}} color={color?isHoveringButton?hover.color:color:''} bgGradient={bgGradient?isHoveringButton?hover.bg:bgGradient:''}  bg={bg?isHoveringButton?hover.bg:bg:''} px='12px'  py='5px'  borderRadius={borderRadius?borderRadius:'.5rem'} cursor='pointer' > 
-        <Text fontWeight={400} fontSize={fontSize}>{text}</Text>
-        <Flex alignItems={'center'} mt='1px' > 
-            <Icon position="absolute" as={IoIosArrowForward} boxSize={'14px'} transition="margin-left 0.1s ease-in-out"  marginLeft={isHoveringButton ? "-7px" : "-13px"} />
+        <Text mt='-2px' fontWeight={400} fontSize={fontSize} >{text}</Text>
+        <Flex alignItems={'center'} > 
+            <Icon position="absolute" as={IoIosArrowForward} transition="margin-left 0.1s ease-in-out"  marginLeft={isHoveringButton ? "-7px" : "-13px"} />
         </Flex>
     </Flex>
     )
