@@ -19,7 +19,7 @@ import HighlightText from '@/Content/Functions/HighlightText'
 //ICONS
 import { IconType } from 'react-icons'
 import { TbCurrencyDollarOff } from "react-icons/tb";
-import { FaPiggyBank, FaClock, FaShareNodes } from "react-icons/fa6"
+import {  FaClock, FaShareNodes } from "react-icons/fa6"
 import { BsPeopleFill } from "react-icons/bs";
 import { IoChatbubbleEllipses } from "react-icons/io5";
 import { FaKey } from "react-icons/fa6";
@@ -83,6 +83,10 @@ const Pricing =()=>{
     return(
         <>
         <Head>
+            <link rel="icon" href="/images/matil-simple-gradient.svg" />
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/matil-simple-gradient.png" />
+            <link rel="icon" type="image/png" sizes="32x32" href="/images/matil-simple-gradient.png" />
+            <link rel="icon" type="image/png" sizes="16x16" href="/images/matil-simple-gradient.png" />
             <title>{t('Title')}</title>
             <meta name="description" content={t('Description')} /> 
         </Head >
@@ -171,7 +175,6 @@ const Pricing =()=>{
                     <Text color='brand.text_blue' fontSize={'md'} fontWeight={500}>{t('Step')} 1</Text>
                     <Text fontSize={'md'}  fontWeight={400}>{t('EstimateTickets')}</Text>
                 </Box>
-
             
                 <Box bg='white' shadow={'lg'}  mt={'30px'} width="100%" alignItems={'center'} flexDir={{ base: 'column',sm:'column', md: 'row' }} textAlign={'start'}  p='30px 30px 90px 30px'  borderRadius={'1rem'} maxW="1200px" >
                     <Text fontSize='md' mb='30px'>{t('TicketsNum1')} <span style={{background:'#BEE3F8', borderRadius:'10rem', fontWeight:500, padding:'5px 11px 5px 11px'}}>{selectedTickets}</span> {t('TicketsNum2')}</Text>
@@ -216,7 +219,7 @@ const Pricing =()=>{
                     <Text  fontSize={'md'}  fontWeight={400}>{t('EstimatedPrice')}</Text>
                 </Box>
 
-                <Flex position={'relative'} fontSize={'sxs'} borderRadius={'2rem'} p='4px' bg='brand.gray_2' mt={'30px'} display={'inline-flex'}>    
+                <Flex position={'relative'} fontSize={'xs'} borderRadius={'2rem'} p='4px' bg='brand.gray_2' mt={'30px'} display={'inline-flex'}>    
                     <Flex position='absolute' height='calc(100% - 8px)' bg='white' borderRadius={'calc(2rem - 4px)'} transition={'all 0.3s ease'} style={{width: `${indicatorStyle.width}px`, left: `${indicatorStyle.left}px`}}/>
                         <Flex position={'relative'}  cursor='pointer'  id={`section-btn-${0}`} p='10px'  onClick={() => setPaymentMethod(0)}>
                             <Text>{t('Pay_1')}</Text>
@@ -281,10 +284,11 @@ const Pricing =()=>{
 
                 </Box>
             </Flex>  
-            
-            <Box bg='white'> 
-                <FAQS faqsList={faqsList}/>
-            </Box>
+        </Box>
+        <Box bg='white'> 
+            <FAQS faqsList={faqsList}/>
+        </Box>
+        <Box height={'0vh'}> 
             <Footer/>
         </Box>
     </>)

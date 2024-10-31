@@ -1,9 +1,9 @@
 //NEXT
 import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router'
-import { NextSeo } from 'next-seo'
+import Head from 'next/head'
 //REACT
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useRef } from 'react'
 //TRANSALATION
 import { useTranslations } from 'next-intl'
 //FRONT
@@ -277,11 +277,15 @@ const Solutions = () =>{
 
     return(<> 
 
-        <NextSeo
-            title="Casos de Uso - Potencia tu Negocio con IA"
-            description="Explora cómo nuestras soluciones de inteligencia artificial se aplican en diversos sectores para resolver problemas reales y mejorar la eficiencia."
-        />
-
+        <Head>
+            <link rel="icon" href="/images/matil-simple-gradient.svg" />
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/matil-simple-gradient.png" />
+            <link rel="icon" type="image/png" sizes="32x32" href="/images/matil-simple-gradient.png" />
+            <link rel="icon" type="image/png" sizes="16x16" href="/images/matil-simple-gradient.png" />
+            <title>{t('Title')}</title>
+            <meta name="description" content={t('Description')} /> 
+        </Head >
+        
         {isComputerWidth && <Box position='absolute' top={'10vh'}  left={0} zIndex={1} width={'70vw'}> 
             <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1358 754">
                 <path 

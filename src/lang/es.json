@@ -122,12 +122,14 @@
         "Description":"Unifica todos los canales de comunicación con Matil Helpdesk. Personaliza la IA y clasifica la intención de tus clientes para ofrecer el mejor servicio.",
         "Hero":"Una única plataforma para todo tu equipo",
         "Subhero":"Simplifica tu trabajo gestionando todas las comunicaciones desde un único lugar. Nuestra plataforma integra todas las fuentes de información para que puedas acceder y controlar fácilmente tu flujo comunicativo junto a Tilda.",
-        "Card_1":"Canaliza tus conversaciones",
+       
+        "Card_1":"Canaliza todas tus conversaciones",
         "Card_1Des":"Canaliza todos tus canales en una única plataforma y deja que Tilda filtre y responda la mayoría.",
-        "Card_2":"Entiende a tus clientes",
+        "Card_2":"Entiende y clasifica a tus clientes",
         "Card_2Des":"Tilda entiende, clasifica y almacena la intención de tus clientes y otros datos, para mostrarlos en una sección de KPIs.",
-        "Card_3":"Adapta a Tilda",
+        "Card_3":"Obtén una visión general de tu servicio",
         "Card_3Des":"Nutre a Tilda con contexto y acciones especificas de tu negocio de una manera intuitiva.",
+        
         "HelpCenter":"Centro de ayuda",
         "HelpCenterTitle":"Atención Siempre a tu Alcance ",
         "HelpCenterDes":"Ofrece un contenido de soporte excepcional y potencia tu servicio con un centro de ayuda completamente personalizable. Tus clientes podrán acceder a la información que necesitan a través de cualquier canal, en el momento que lo deseen.",
@@ -137,15 +139,28 @@
         "HelpCenterFeatureDes_2":"Crea centros de ayuda adaptados a tu marca de manera rápida y sencilla.",
         "HelpCenterFeature_3":"Escalables y MultiIdioma",
         "HelpCenterFeatureDes_3":"Expande el contenido de tus centros de ayuda al público internacional con soporte en los principales idiomas.",
-        "Productivity":"Conversaciones",
-        "ProductivityTitle":"Maximiza la Productividad de Tu Equipo",
-        "ProductivityDes":"Impulsa la eficiencia centralizando todos los conversaciones de soporte en una sola plataforma. Define reglas personalizadas que se adapten a tu negocio y transforma la manera en que tu equipo gestiona las consultas.",
-        "ProductivityFeature_1":"Redirección de Conversaciones",
-        "ProductivityFeatureDes_1":"Crea grupos de agentes, vistas y establece reglas para organizar las conversaciones de la manera más conveniente.",
-        "ProductivityFeature_2":"Seguimiento de los Clientes",
-        "ProductivityFeatureDes_2":"Realiza un seguimiento de las conversaciones de un cliente para poder mejorar su experiencia",
-        "ProductivityFeature_3":"Recepción de Llamadas",
-        "ProductivityFeatureDes_3":"Recibe y guarda en forma de audios llamadas telefónicas en la misma plataforma donde gestionas las conversaciones.",
+        
+        "WorkFlows":"Flujos de trabajo",
+        "WorkFlowsTitle":"Maximiza la Productividad de Tu Equipo",
+        "WorkFlowsDes":"Impulsa la eficiencia centralizando todos los conversaciones de soporte en una sola plataforma. Define reglas personalizadas que se adapten a tu negocio y transforma la manera en que tu equipo gestiona las consultas.",
+        "WorkFlowsFeature_1":"Grupos y Vistas",
+        "WorkFlowsFeatureDes_1":"Crea grupos de agentes, vistas y establece reglas para organizar las conversaciones de la manera más conveniente.",
+        "WorkFlowsFeature_2":"Campos Personalizables",
+        "WorkFlowsFeatureDes_2":"Define campos personalizados para capturar información relevante de cada consulta, adaptándose a tus necesidades específicas.",
+        "WorkFlowsFeature_3":"Automatizaciones y Disparadores",
+        "WorkFlowsFeatureDes_3":"Automatiza acciones y establece disparadores que agilicen los procesos internos de una manera sencilla.",
+ 
+
+        "TildaEdit":"Tilda",
+        "TildaEditTitle":"Adapta Tilda a tu Empresa",
+        "TildaEditDes":"Personaliza Tilda según las necesidades de tu empresa, optimizando la experiencia y adaptando las respuestas para que se alineen con la identidad y objetivos de tu marca.",
+        "TildaEditFeature_1":"Funciones de Python",
+        "TildaEditFeatureDes_1":"Integra funciones de Python a las que Tilda es capaz de llamar. Tilda identifica que la intención del cliente requiere el uso de una función, le pide los datos necesarios (argumentos) y contesta en base al resultado de la función.",
+        "TildaEditFeature_2":"Base de Conocimiento",
+        "TildaEditFeatureDes_2":"Construye y organiza una base de conocimiento que Tilda utilizará para dar respuestas precisas y contextualizadas. Puedes nutrir a Tilda con el centro de ayuda, Pdfs, texto e incluso webs públicas.",
+        "TildaEditFeature_3":"Carácter e Instrucciones",
+        "TildaEditFeatureDes_3":"Configura el tono y estilo de Tilda, además de las instrucciones específicas que guiarán sus respuestas para reflejar la filosofía de tu marca.",
+ 
         "Tilda":"Tilda",
         "TildaTitle":"Servicio Humano, Tiempo Sobrehumano",
         "TildaDes":"Con Tilda, obtienes un asistente que conoce al detalle los procesos de tu negocio. Responde a preguntas y realiza acciones como lo haría un humano, ¡pero de manera instantánea y disponible las 24 horas del día!",
@@ -176,6 +191,7 @@
         "FAQ_ANSWER_6":"Sí, nuestro software es multiidioma y te permite ofrecer soporte en varios idiomas. Esto es ideal si tienes una audiencia internacional, ya que puedes expandir el alcance de tu centro de ayuda y ofrecer una experiencia personalizada en distintos idiomas."   
     },
     "Solutions":{
+
         "Title":"Tilda, la IA que se adapta a tu negocio",
         "Description":"Desde retail, eCommerce hasta servicios, cualquier sector puede beneficiarse de las ventajas de la IA. Mejora la atención al cliente, aumenta la eficiencia y automatiza procesos.",
         "PreTitle":"Casos de Uso",

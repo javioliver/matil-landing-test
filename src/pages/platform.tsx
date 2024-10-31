@@ -19,9 +19,9 @@ const FloatingCards = ({scrollY, isComputerWidth, flexWidth}:{scrollY:number, is
 
     const t = useTranslations('Platform')
     const floatingCards = [
-        {title:t('Card_1'), description:t('Card_1Des'),image:'/images/tickets-screen.png'},
-        {title:t('Card_2'), description:t('Card_2Des'),image:'/images/stats-screen.png'},
-        {title:t('Card_3'), description:t('Card_3Des'), image:'/images/functions.png'}
+        {title:t('Card_1'), description:t('Card_1Des'),image:'/images/ES/ticket.png'},
+        {title:t('Card_2'), description:t('Card_2Des'),image:'/images/ES/stats.png'},
+        {title:t('Card_3'), description:t('Card_3Des'), image:'/images/ES/client.png'}
     ] 
 
     const [selectedIndex, setSelectedIndex] = useState<number>(0)
@@ -30,6 +30,7 @@ const FloatingCards = ({scrollY, isComputerWidth, flexWidth}:{scrollY:number, is
          return () => {clearInterval(interval)}
       }, [])
      
+    const boxWidth = isComputerWidth ? Math.min(330, ((flexWidth || 0) - 60) / 3) : 350
     const areCardsFloating = (scrollY < 150 && isComputerWidth)
      
     return (<>
@@ -39,11 +40,11 @@ const FloatingCards = ({scrollY, isComputerWidth, flexWidth}:{scrollY:number, is
             else if (selectedIndex === 1) animationIndex = (index + 2) % 3
             else if (selectedIndex === 2) animationIndex = (index + 1) % 3
             return (
-            <Flex flexDir={'column'} overflow={'hidden'} position={isComputerWidth?'absolute':'relative'} mt={isComputerWidth?'':'32px'} top={isComputerWidth ? areCardsFloating?`${-700 }px`:'0':``} left={isComputerWidth?areCardsFloating?'60%': index * ((flexWidth || 0) - 300)/2:''} key={`card-${index}`} boxShadow={'rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px'} zIndex={1000 - animationIndex} borderRadius={'.5rem'} height={'450px'} width={'300px'}  transition={'all .7s ease'}  transform={areCardsFloating?`rotate(${8 *animationIndex}deg)  translateY(${animationIndex * 30}px) translateX(${animationIndex * 90}px) scale(${1 - animationIndex * 0.07})`:''} >
-                <Flex alignItems={'center'}  bg='white'   height='60%'>
+            <Flex flexDir={'column'} overflow={'hidden'} position={isComputerWidth?'absolute':'relative'} mt={isComputerWidth?'':'32px'} top={isComputerWidth ? areCardsFloating?`${-700 }px`:'0':``} left={isComputerWidth?areCardsFloating?'60%': index * ((flexWidth || 0) - boxWidth)/2:''} key={`card-${index}`} boxShadow={'rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px'} zIndex={1000 - animationIndex} borderRadius={'.5rem'}  width={`${boxWidth}px`}  transition={'all .7s ease'}  transform={areCardsFloating?`rotate(${8 *animationIndex}deg)  translateY(${animationIndex * 30}px) translateX(${animationIndex * 90}px) scale(${1 - animationIndex * 0.07})`:''} >
+                <Flex alignItems={'center'}  bg='rgba(226,226,226,0.3)'   height={`${boxWidth}px`} maxH={ `${boxWidth}px`}>
                     <Image src={card.image}/>
                 </Flex>
-                <Box p='20px' height='40%'  bg='brand.gray_1'  borderTop={'1px'} borderColor={'gray.200'}> 
+                <Box p='20px'  bg='brand.gray_1'  borderTop={'1px'} borderColor={'gray.300'}> 
                     <Text fontWeight={500} fontSize={'lg'}>{card.title}</Text>
                     <Text fontWeight={300} color='brand.text_gray' fontSize={'xs'}>{card.description}</Text>
                 </Box>
@@ -69,10 +70,11 @@ const Platform =()=>{
     //MAIN SECTIONS LIST
     const mainSectionList = [
         {title:'HelpCenter', color:'#0073e6'},
-        {title:'Productivity', color:'#00299c'},
+        {title:'WorkFlows', color:'#0073e6'},
+        {title:'TildaEdit', color:'#00299c'},
     ]
 
-    const sectionsImages = [ '/images/help-center.svg', '/images/clients.svg']
+    const sectionsImages = [ '/images/ES/help-center.png', '/images/ES/settings.png',  '/images/ES/tilda.svg',]
     //CHANNELS LIST
     const channelsList:any[] = [
         {title:'WebChat', icon:'/images/icons/chat.svg'},
@@ -101,6 +103,10 @@ const Platform =()=>{
     return(<>
 
         <Head>
+            <link rel="icon" href="/images/matil-simple-gradient.svg" />
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/matil-simple-gradient.png" />
+            <link rel="icon" type="image/png" sizes="32x32" href="/images/matil-simple-gradient.png" />
+            <link rel="icon" type="image/png" sizes="16x16" href="/images/matil-simple-gradient.png" />
             <title>{t('Title')}</title>
             <meta name="description" content={t('Description')} /> 
         </Head>
@@ -122,9 +128,9 @@ const Platform =()=>{
         </Flex>
 
         
-        <Flex flexDir='column' zIndex={10} pt='75px' ref={cardsFlexRef} p='4vw' position={{ base: "relative", md: 'absolute'}}  bg='white'  width={'100vw'} alignItems={'center'}> 
+        <Flex flexDir='column' zIndex={10} pt='75px' ref={cardsFlexRef} px='4vw' position={{ base: "relative", md: 'absolute'}}    width={'100vw'} alignItems={'center'}> 
 
-                <Flex flexDir={'column'} alignItems={'center'} width={'100%'} p='4vw'>
+                <Flex flexDir={'column'} ref={cardsFlexRef} maxW={'1200px'} alignItems={'center'} width={'100%'} p='4vw'>
                     {isComputerWidth ?
                         <ScrollAnimation animateIn="fadeIn" animateOnce delay={t('Hero').split(' ').length * 100 + 300} style={{maxWidth:'1200px',position:'relative', display:'flex', height:'550px', width:'100%', justifyCintent:'space-between', zIndex:2 }}> 
                             <FloatingCards flexWidth={Math.min((cardsFlexRef.current?.getBoundingClientRect().width || 0) - 0.08 * windowWidth, 1200)} scrollY={scrollY} isComputerWidth={isComputerWidth}/>
@@ -169,7 +175,9 @@ const Platform =()=>{
                                     ))}
                                 </Box>
                                 <ScrollAnimation animateIn="fadeIn" style={{flex:'1'}} animateOnce> 
-                                    <Image borderRadius={'.7rem'} src={sectionsImages[index]}  boxShadow={'rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px'}/>
+                                    <Flex justifyContent={'end'} alignItems={'end'}  background={'gray.100'}  borderRadius={'1rem'} p={index === 0?'30px 0px 0 30px':index === 1 ?'30px 30px 0 0':'20px 0px 0 0px'}> 
+                                        <Image  src={sectionsImages[index]}   borderRadius={index === 0?'1rem 0 0 0':index === 1 ?'0 1rem 0 0':'20px 0px 0 0px'} />
+                                    </Flex>
                                 </ScrollAnimation>
                             </Flex>
                         ))}

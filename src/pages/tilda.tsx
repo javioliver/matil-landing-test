@@ -121,6 +121,10 @@ const Matilda =()=>{
 
     return(<>
         <Head>
+            <link rel="icon" href="/images/matil-simple-gradient.svg" />
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/matil-simple-gradient.png" />
+            <link rel="icon" type="image/png" sizes="32x32" href="/images/matil-simple-gradient.png" />
+            <link rel="icon" type="image/png" sizes="16x16" href="/images/matil-simple-gradient.png" />
             <title>{t('Title')}</title>
             <meta name="description" content={t('Description')} /> 
         </Head>
