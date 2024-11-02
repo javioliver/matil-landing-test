@@ -1,14 +1,13 @@
 //NEXT
 import { GetStaticPropsContext } from 'next'
 import { useRouter } from 'next/router'
-import { NextSeo } from 'next-seo'
 import Head from 'next/head'
 //REACT
 import { useState, useEffect } from 'react'
 //TRANSALATION
 import { useTranslations } from 'next-intl'
 //FRONT
-import { Flex, Box, Text, Icon, Button, Grid, SliderMark, Slider, SliderFilledTrack, SliderTrack, SliderThumb, Heading } from '@chakra-ui/react'
+import { Flex, Box, Text, Icon, Button, SliderMark, Slider, SliderFilledTrack, SliderTrack, SliderThumb, Heading } from '@chakra-ui/react'
 import "animate.css/animate.compat.css"
 //COMPONENTS
 import Footer from '../Content/Components/footer'
