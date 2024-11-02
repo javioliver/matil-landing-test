@@ -54,7 +54,38 @@ const Main = () => {
             <link rel="icon" type="image/png" sizes="16x16" href="/images/matil-simple-gradient.png" />
             <title>{t('Title')}</title>
             <meta name="description" content={t('Description')} /> 
-        </Head>
+            <script type="application/ld+json" dangerouslySetInnerHTML={{
+            __html: JSON.stringify(
+            {
+                "@context": "https://schema.org/", 
+                "@type": "BreadcrumbList", 
+                "itemListElement": [{
+                "@type": "ListItem", 
+                "position": 1, 
+                "name": "Tilda",
+                "item": "https://matil.ai/tilda"  
+                },{
+                "@type": "ListItem", 
+                "position": 2, 
+                "name": t('Pricing'),
+                "item": "https://matil.ai/pricing"  
+                },
+                {
+                "@type": "ListItem", 
+                "position": 1, 
+                "name": t('Solutions'),
+                "item": "https://matil.ai/solutions"  
+                },
+                {
+                "@type": "ListItem", 
+                "position": 1, 
+                "name": t('Platform'),
+                "item": "https://matil.ai/platform"  
+                }]
+                
+            })}} />
+
+         </Head>
 
         <Flex position={'relative'} flexDir='column' width={'100vw'} alignItems={'center'}>
            
