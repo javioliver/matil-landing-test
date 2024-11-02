@@ -235,7 +235,7 @@ const Pricing =()=>{
                 </Flex>
 
                 <Box width="100%"   color='white'   p='30px' bg={'brand.black_button'}  borderRadius={'1rem'} shadow={'lg'}  mt={'30px'} maxW="1200px" >
-                    <Text  fontSize={'md'} mb='30px'>{t('CurrentPrice1')} <span style={{background:'rgb(211, 219, 229)',  color:'#222', borderRadius:'10rem', fontWeight:500, padding:'5px 11px 5px 11px'}}>{selectedTickets * matildaPercentage * 0.01}</span> {t('CurrentPrice2')} </Text>
+                    <Text  fontSize={'md'} mb='30px'>{t('CurrentPrice1')} <span style={{background:'rgb(211, 219, 229)',  color:'#222', borderRadius:'10rem', fontWeight:500, padding:'5px 11px 5px 11px'}}>{Math.floor(selectedTickets * matildaPercentage * 0.01)}</span> {t('CurrentPrice2')} </Text>
                     <Box height={'1px'} width={'100%'} bg='brand.gray_2' mt='10px' mb='20px'/>
                     <Flex justifyContent={'space-between'} gap='32px'  flexDir={{ base: 'column-reverse',sm:'column-reverse', md: 'row' }}>
                         <Box flex='1'>

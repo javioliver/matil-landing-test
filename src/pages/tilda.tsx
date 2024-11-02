@@ -320,8 +320,8 @@ const Matilda =()=>{
             </Flex> 
             
             <Flex width="100%"   justifyContent={'center'} px='4vw' overflow={'hidden'} >
-                <Flex gap='32px' maxW={'1200px'} width={'100%'}> 
-                    <Box py='75px' flex={'1'} > 
+                <Flex gap='32px' maxW={'1200px'}  flexDir={{ base: "column", md: "column", lg: "row", xl: "row" }}width={'100%'}> 
+                    <Box py='75px' flex={{ base: "", md: "", lg: "1", xl: "1"}}> 
                         <Text as='h2'  fontSize={'xl'}  fontWeight="500" overflowWrap="break-word" whiteSpace="pre-wrap" >{t('OtherIntegrations')}</Text>
                         <Text   as='h3' fontSize={'sm'} mt='20px'  fontWeight="300" color='brand.text_gray' overflowWrap="break-word" whiteSpace="pre-wrap" >{t('OtherIntegrationsDes')}</Text>
                     </Box>

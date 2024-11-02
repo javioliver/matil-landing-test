@@ -123,15 +123,15 @@ const Header = ({isComputerWidth}:{isComputerWidth:boolean})=>{
           <Flex mt={'5vh'} bg={'transparent'} width={'100%'}  color={whiteTextSections.includes(pathname)?'white':'brand.black_button'} borderRadius={'1rem'} px={{ base: '20px', sm: '30px', md: '50px' }} maxW='1200px' justifyContent='space-between' alignItems='center'  >
               <Flex gap='10px' alignItems={'center'} onClick={()=> router.push('/') } cursor={'pointer'}  fontSize='xl' fontWeight={500} >
                 <Image height={25} width={25} alt={t('AltImage1')} src='/images/matil-simple.svg'/>
-                <Text mt='4px' >matil</Text>
+                <Text mt='4px' color={whiteTextSections.includes(pathname)?'white':'brand.black_button'} >matil</Text>
               </Flex>
-              <Icon aria-label='menu' as={RxHamburgerMenu} boxSize={10} cursor='pointer' onClick={()=>setShowMenu(true)}/>
+              <Icon aria-label='menu'  color={whiteTextSections.includes(pathname)?'white':'brand.black_button'} as={RxHamburgerMenu} boxSize={10} cursor='pointer' onClick={()=>setShowMenu(true)}/>
               
               {(showMenu && !isComputerWidth) &&
-                <MotionFlex display={'flex'} maxH={'96vh'} flexDir={'column'} onMouseDown={(e)=>{e.stopPropagation()}}   bg='white' boxShadow={'0 0 10px 1px rgba(0, 0, 0, 0.15)'} zIndex={10000} position={'fixed'} top={'2vh'} left={'2vw'} borderRadius={'1rem'} width={{base:'96vw', sm:'96vw',md:'60vw'}}  p='10px'  initial={{ opacity: 0 }} animate={{ opacity: 1}} exit={{ opacity: 0}} transition={{ duration: 0.5 }} >
+                <MotionFlex display={'flex'} maxH={'96vh'} flexDir={'column'} onMouseDown={(e)=>{e.stopPropagation()}}   bg='white' boxShadow={'0 0 10px 1px rgba(0, 0, 0, 0.15)'} zIndex={10000} position={'fixed'} top={'0vh'} left={'2vw'} borderRadius={'1rem'} width={{base:'96vw', sm:'96vw',md:'60vw'}}  p='10px'  initial={{ opacity: 0 }} animate={{ opacity: 1}} exit={{ opacity: 0}} transition={{ duration: 0.5 }} >
               
                 <Flex  p='10px' color='black' justifyContent={'space-between'} alignItems={'center'}>
-                  <Text fontSize={'sm'}>Matil</Text>
+                  <Text fontSize={'sm'}>matil</Text>
                   <Icon as={RxCross2} onClick={()=>setShowMenu(false)} cursor={'pointer'}/>
                 </Flex>
 
@@ -141,7 +141,7 @@ const Header = ({isComputerWidth}:{isComputerWidth:boolean})=>{
                       <Icon mt='3px' as={FaRobot} boxSize={'18px'} />
                       <Box> 
                         <Text color='brand.clear_black' >Tilda</Text>
-                        <Text fontSize={'.8em'} fontWeight={300}>{t('Matilda_Subtitle')}</Text>
+                        <Text fontSize={'.8em'} fontWeight={300}>{t('Tilda_Subtitle')}</Text>
                       </Box>
                   </Flex>
 
@@ -149,7 +149,7 @@ const Header = ({isComputerWidth}:{isComputerWidth:boolean})=>{
                       <Icon mt='3px' as={IoFileTrayFull} boxSize={'18px'} />
                       <Box> 
                         <Text color='brand.clear_black' >{t('Platform')}</Text>
-                        <Text fontSize={'.8em'} fontWeight={300}>{t('Matilda_Subtitle')}</Text>
+                        <Text fontSize={'.8em'} fontWeight={300}>{t('Platform_Subtitle')}</Text>
                       </Box>
                   </Flex>
                      

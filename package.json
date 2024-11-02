@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -H 10.37.129.2 -p 3000",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -24,7 +24,6 @@
     "mesh-gradient.js": "^0.0.5",
     "next": "14.2.5",
     "next-intl": "^3.17.2",
-    "next-seo": "^6.6.0",
     "react": "^18.2.0",
     "react-animate-on-scroll": "^2.1.9",
     "react-dom": "^18.2.0",

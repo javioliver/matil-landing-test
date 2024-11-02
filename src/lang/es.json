@@ -2,9 +2,9 @@
     "Header": {
         "Product":"Producto",
         "Pricing":"Precio",
-        "Pricing_Subtitle":"Descubre el plan que mejor se adapta a tus necesidades: explora nuestras opciones de precios flexibles y personalizables para que Tilda pueda optimizar la atención al cliente de tu empresa.",
+        "Pricing_Subtitle":"Sólo ganamos cuando tú ganas",
         "Solutions":"Casos de uso",
-        "Solutions_Subtitle":"Explora los casos de uso de Tilda y descubre cómo nuestra IA puede resolver desafíos específicos de atención al cliente en diversos sectores.",
+        "Solutions_Subtitle":"Explora las increíbles capacidades de Tilda para tu negocio.",
         "Contact":"Contacto",
         "Sign in":"Inciar sesión",
         "Integrations":"Integraciones",
@@ -13,6 +13,8 @@
         "Privacy":"Política de Privacidad",
         "Cookies":"Política de Cookies",
         "Platform":"Plataforma",
+        "Platform_Subtitle":"Unifica todos los canales de comunicación en única plataforma.",
+        "Tilda_Subtitle":"Descubre la IA que se adapta a tu negocio.",
         "FooterCTA":"Adelántate a la nueva era de la atención al cliente con Tilda ",
         "AltImage1":"Logo de Matil",
         "AltImage2":"Avatar del chat"
@@ -56,8 +58,9 @@
         "AltImage8":"Imagen de la bandeja de conversaciones de la aplicación Helpdesk."
     },
     "Matilda": {
-        "Title":"Tilda: automatiza el 80% de las consultas sin perder calidad",
+        "Title":"Tilda: automatiza el 71% de las consultas sin perder calidad",
         "Description":"Tilda es un chatbot con IA multicanal adaptado específicamente a las necesidades de tu negocio.",
+
         "Hero":"Libera a tu equipo de las consultas repetitivas",
         "Subhero":"Tilda es la asistente ideal: trabaja como un miembro más de tu equipo, accediendo a las mismas herramientas para responder con precisión y efectividad.",
         "FeaturesTitle":"Respuestas Rápidas y Clientes Satisfechos",
@@ -123,7 +126,8 @@
     },
     "Platform": {
         "Title":"Una Única Plataforma Para Todo tu Equipo",
-        "Description":"Unifica todos los canales de comunicación con Matil Helpdesk. Personaliza la IA y clasifica la intención de tus clientes para ofrecer el mejor servicio.",
+        "Description":"Unifica todos los canales de comunicación en única plataforma. Personaliza la IA y clasifica la intención de tus clientes para ofrecer el mejor servicio.",
+        
         "Hero":"Una única plataforma para todo tu equipo",
         "Subhero":"Simplifica tu trabajo gestionando todas las comunicaciones desde un único lugar. Nuestra plataforma integra todas las fuentes de información para que puedas acceder y controlar fácilmente tu flujo comunicativo junto a Tilda.",
        
@@ -195,7 +199,6 @@
         "FAQ_ANSWER_6":"Sí, nuestro software es multiidioma y te permite ofrecer soporte en varios idiomas. Esto es ideal si tienes una audiencia internacional, ya que puedes expandir el alcance de tu centro de ayuda y ofrecer una experiencia personalizada en distintos idiomas."   
     },
     "Solutions":{
-
         "Title":"Tilda, la IA que se adapta a tu negocio",
         "Description":"Desde retail, eCommerce hasta servicios, cualquier sector puede beneficiarse de las ventajas de la IA. Mejora la atención al cliente, aumenta la eficiencia y automatiza procesos.",
         "PreTitle":"Casos de Uso",

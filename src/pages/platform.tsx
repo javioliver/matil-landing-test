@@ -130,7 +130,7 @@ const Platform =()=>{
         </Flex>
 
         
-        <Flex flexDir='column' zIndex={10} pt='75px' ref={cardsFlexRef} px='4vw' position={{ base: "relative", md: 'absolute'}}    width={'100vw'} alignItems={'center'}> 
+        <Flex flexDir='column' zIndex={10} pt='75px' ref={cardsFlexRef}  position={{ base: "relative", md: 'absolute'}}    width={'100vw'} alignItems={'center'}> 
 
                 <Flex flexDir={'column'} ref={cardsFlexRef} maxW={'1200px'} alignItems={'center'} width={'100%'} p='4vw'>
                     {isComputerWidth ?

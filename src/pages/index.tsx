@@ -94,11 +94,11 @@ const Main = () => {
 
         <Flex position={'relative'} flexDir='column' width={'100vw'} alignItems={'center'}>
            
-           <Box height={'120vh'} position='relative' width={'100%'}> 
+           <Box height={{base:'80vh', sm:'80vh', md:'120vh'}} position='relative' width={'100%'}> 
                 <MeshGradientBackground colors={["#00C8FF", "#0099FF", "#0566ff", "#5CD1FF"]}/>
-                <Box position="absolute" width={'100%'} right={0} top={'0vh'} height='120vh' bg={`linear-gradient(transparent 70%, white)`} zIndex={1} />
+                <Box position="absolute" width={'100%'} right={0} top={'0vh'} height={{base:'80vh', sm:'80vh', md:'120vh'}} bg={`linear-gradient(transparent 70%, white)`} zIndex={1} />
             </Box>
-            <Flex position='relative' px='4vw' width={'100vw'} mt='-120vh'  overflow={'hidden'} justifyContent={'center'} >
+            <Flex position='relative' px='4vw' width={'100vw'}mt={{base:'-80vh', sm:'-80vh', md:'-120vh'}}   overflow={'hidden'} justifyContent={'center'} >
                 <Flex flexDir={'column'} alignItems={'center'} width="100%" position={'relative'}  color='black'  textAlign={'center'} pt={'120px'} pb='75px'  maxW="1200px" >
                     <Flex flex='1' color={'white'} alignItems={'center'}  flexDir={'column'} > 
                         <Text as={'h1'} maxW={'1000px'}  fontSize={'6xl'} fontWeight={500} overflowWrap="break-word" whiteSpace="pre-wrap" >
