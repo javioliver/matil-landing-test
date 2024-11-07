@@ -58,6 +58,10 @@ const Footer=()=>{
                     {t('Cookies')}
                     </Box>
                 </Text>
+                |
+                <Box as="span" onClick={() => router.push('terms-and-conditions')} sx={{ cursor: 'pointer', _hover: { color: 'rgb(100, 116, 145)' }, mx: 2 }}>
+                    {t('TermsConditions')}
+                </Box>
             </Flex>
           
              
