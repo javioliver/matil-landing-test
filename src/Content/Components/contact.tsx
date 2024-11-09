@@ -6,9 +6,10 @@ import React from 'react'
 //TRANSLATION
 import { useTranslations } from 'next-intl'
 //FRONT
-import { Box, Flex, Text } from '@chakra-ui/react'
+import { Box, Flex, Text, Icon } from '@chakra-ui/react'
 import ContactBox from '../Widgets/ContactBox'
-import MeshGradientBackground from '../Gradient/gradient'
+
+import { FaPhone } from 'react-icons/fa6'
 const Contact = ()=>{
 
     //TRANSLATION

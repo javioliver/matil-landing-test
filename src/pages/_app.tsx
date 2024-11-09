@@ -110,9 +110,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <main className={myFont.className}>
           <Header isComputerWidth={isComputerWidth} />
           <Component {...pageProps} />
+          <CoockiesWarning />
         </main>
-        <CoockiesWarning />
-      </ChakraProvider>
+       </ChakraProvider>
     </NextIntlClientProvider>
 
     </>)

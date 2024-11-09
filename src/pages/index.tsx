@@ -20,7 +20,6 @@ const Chatbot = dynamic(() => import('../Content/Widgets/Chatbot'))
 import ArrowButton from '@/Content/Widgets/ArrowButton'
 import AnimatedText from '@/Content/Widgets/AnimatedText'
   
- 
 //MAIN FUNCTION
 const Main = () => {
 
@@ -47,50 +46,51 @@ const Main = () => {
     const pricingIconsList = [ '/images/icons/save-money.svg', '/images/icons/study-dark.svg','/images/icons/channels.svg',]
     
     return (<>
-        <Head>
  
-        <link rel="icon" type="image/png" href="/images/favicon/favicon-96x96.png" sizes="96x96" />
-        <link rel="icon" type="image/svg+xml" href="/images/favicon/favicon.svg" />
-        <link rel="shortcut icon" href="/images/favicon/favicon.ico" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png" />
-        <meta name="apple-mobile-web-app-title" content="MyWebSite" />
-        <link rel="manifest" href="/images/favicon/site.webmanifest" />
+            <Head>
+    
+            <link rel="icon" type="image/png" href="/images/favicon/favicon-96x96.png" sizes="96x96" />
+            <link rel="icon" type="image/svg+xml" href="/images/favicon/favicon.svg" />
+            <link rel="shortcut icon" href="/images/favicon/favicon.ico" />
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png" />
+            <meta name="apple-mobile-web-app-title" content="MyWebSite" />
+            <link rel="manifest" href="/images/favicon/site.webmanifest" />
 
-            <title>{t('Title')}</title>
-            <meta name="apple-mobile-web-app-title" content={t('Title')}/>
-            <meta name="description" content={t('Description')} /> 
-            <script type="application/ld+json" dangerouslySetInnerHTML={{
-            __html: JSON.stringify(
-            {
-                "@context": "https://schema.org/", 
-                "@type": "BreadcrumbList", 
-                "itemListElement": [{
-                "@type": "ListItem", 
-                "position": 1, 
-                "name": "Tilda",
-                "item": "https://matil.ai/tilda"  
-                },{
-                "@type": "ListItem", 
-                "position": 2, 
-                "name": t('Pricing'),
-                "item": "https://matil.ai/pricing"  
-                },
+                <title>{t('Title')}</title>
+                <meta name="apple-mobile-web-app-title" content={t('Title')}/>
+                <meta name="description" content={t('Description')} /> 
+                <script type="application/ld+json" dangerouslySetInnerHTML={{
+                __html: JSON.stringify(
                 {
-                "@type": "ListItem", 
-                "position": 1, 
-                "name": t('Solutions'),
-                "item": "https://matil.ai/solutions"  
-                },
-                {
-                "@type": "ListItem", 
-                "position": 1, 
-                "name": t('Platform'),
-                "item": "https://matil.ai/platform"  
-                }]
-                
-            })}} />
+                    "@context": "https://schema.org/", 
+                    "@type": "BreadcrumbList", 
+                    "itemListElement": [{
+                    "@type": "ListItem", 
+                    "position": 1, 
+                    "name": "Tilda",
+                    "item": "https://matil.ai/tilda"  
+                    },{
+                    "@type": "ListItem", 
+                    "position": 2, 
+                    "name": t('Pricing'),
+                    "item": "https://matil.ai/pricing"  
+                    },
+                    {
+                    "@type": "ListItem", 
+                    "position": 1, 
+                    "name": t('Solutions'),
+                    "item": "https://matil.ai/solutions"  
+                    },
+                    {
+                    "@type": "ListItem", 
+                    "position": 1, 
+                    "name": t('Platform'),
+                    "item": "https://matil.ai/platform"  
+                    }]
+                    
+                })}} />
 
-         </Head>
+            </Head>
 
         <Flex position={'relative'} flexDir='column' width={'100vw'} alignItems={'center'}>
            
