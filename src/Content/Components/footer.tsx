@@ -24,8 +24,7 @@ const Footer=()=>{
                 <Flex flexDir={'column'} alignItems={{ base: 'center', sm:'center', lg: 'start' }} maxW={{ base: '100%', sm:'100%', lg: '200px' }} > 
                     <Image height={0}  width={0} style={{width:'70px'}} alt={t('AltImage1')} src='/images/matil-logos/logo-word-gradient-black.svg'/>
                     <Text  color='brand.text_gray' mt='10px' fontSize={'2xs'} fontWeight={300}>{t('FooterCTA')}</Text>
-                      <Text fontSize={'2xs'}  mt='5px'>+34 656 30 63 61</Text>
-                    <Text fontSize={'2xs'} >javi@matil.es</Text>
+                      
                 </Flex>
                 <Flex width="100%" color="black" justifyContent="center"   maxW={'1000px'} >
                     <Flex color='brand.clear_black' fontSize={'sm'} fontWeight={'500'} alignItems={{ base: 'center', sm: 'center', lg: 'start' }} width="100%" maxW="1200px" flexDirection={{ base: 'column', sm:'column', lg: 'row' }} gap='32px'  justifyContent={{ base: 'flex-start', sm: 'flex-start', lg: 'center' }}px={{ base: '20px', sm: '30px', md: '50px' }} >
