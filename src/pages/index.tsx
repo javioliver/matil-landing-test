@@ -15,7 +15,6 @@ import HighlightText from '@/Content/Functions/HighlightText'
 const CompaniesRiver = dynamic(() => import('../Content/Widgets/CompaniesRiver'))
 //COMPONENTS
 const Footer = dynamic(() => import('../Content/Components/footer'))
-const Contact = dynamic(() => import('../Content/Components/contact'))
 const Chatbot = dynamic(() => import('../Content/Widgets/Chatbot'))
 import ArrowButton from '@/Content/Widgets/ArrowButton'
 import AnimatedText from '@/Content/Widgets/AnimatedText'
@@ -105,15 +104,18 @@ const Main = () => {
                             <AnimatedText text={t('Hero')}/>
                         </Text>
                         <ScrollAnimation animateIn="fadeInUp" animateOnce delay={(t('Hero').split(' ').length) * 100}>
-                            <Text  mt='30px' maxW={'800px'} fontWeight={300} fontSize={'sm'} color="white"  overflowWrap="break-word" whiteSpace="pre-wrap">
+                            <Text  mt='30px' maxW={'900px'} fontWeight={300} fontSize={'md'} color="white"  overflowWrap="break-word" whiteSpace="pre-wrap">
                             {t('Subhero')}
                             </Text>
                         </ScrollAnimation>
+                        
                     </Flex>
-                    <ScrollAnimation  animateIn="fadeIn" animateOnce delay={(t('Hero').split(' ').length) * 100 + 300} style={{ position:'relative', display:'flex', justifyContent:'center', width:'100%', zIndex:100,marginTop:'50px'}} >
-                      
-                        <Image quality={100} layout="responsive" width={80} style={{ borderRadius:'.7rem', maxWidth:'1200px'}} height={800} alt={t('AltImage1')} src={`/images/main.svg`} />
+                    <ScrollAnimation animateIn="fadeIn" style={{marginTop:'50px', zIndex:100000}} animateOnce delay={(t('Hero').split(' ').length) * 100}>
+                        <ArrowButton  text={t('Contact')} onClick={() => router.push('/contact')} bg='white' shadow='lg' color='brand.black_button' hover={{color:'brand.black_button_hover', bg:'brand.gray_1'}} fontSize={'lg'}/>
+                    </ScrollAnimation>
 
+                    <ScrollAnimation  animateIn="fadeIn" animateOnce delay={(t('Hero').split(' ').length) * 100 + 300} style={{ position:'relative', display:'flex', justifyContent:'center', width:'100%', zIndex:100,marginTop:'50px'}} > 
+                        <Image quality={100} layout="responsive" width={80} style={{ borderRadius:'.7rem', maxWidth:'1200px'}} height={800} alt={t('AltImage1')} src={`/images/main.svg`} />
                     </ScrollAnimation>
 
                 </Flex>
@@ -231,7 +233,7 @@ const Main = () => {
             </Flex>
         </Flex>
 
-        <Flex width="100%" py='75px' bg='brand.gray_1'  px='4vw' flexDirection={'column'} alignItems={'center'}  >
+        <Flex width="100%" py='75px' paddingBottom={{ base:'20vh', sm: '15vh', md: '20vh' }}bg='brand.white_bg' clipPath= 'polygon(0 0, 100% 0, 100% 85%, 0 100%)'  px='4vw' flexDirection={'column'} alignItems={'center'}  >
                 <ScrollAnimation animateIn="fadeIn" animateOnce>
                     <Text maxW="1000px"  as={'h2'}  textAlign={'center'} fontWeight={500}fontSize={'3xl'}>{t('PricingTitle')}</Text>
                 </ScrollAnimation>
@@ -258,7 +260,6 @@ const Main = () => {
                 ))}
             </Grid>
         </Flex> 
-        <Contact/>
         <Footer/>
       </>)
 }

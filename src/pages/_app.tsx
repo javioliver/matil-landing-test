@@ -89,7 +89,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
 
   //DECIDE IF THE USER IS USING A COMPUTER, FOR ADJUSTING THE HEADER
-  const [isComputerWidth, setIsComputerWidth] = useState(true)
+  const [isComputerWidth, setIsComputerWidth] = useState<boolean | null>(null)
   useEffect(() => {
     if (typeof window !== 'undefined') {
       ReactGA.initialize('G-H00C9148KH')

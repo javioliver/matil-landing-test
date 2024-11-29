@@ -31,7 +31,7 @@ const HeaderSection = ({t, router, section}:{t:any, router:any, section:'Tilda' 
     </Box>
 )}
 
-const Header = ({isComputerWidth}:{isComputerWidth:boolean})=>{
+const Header = ({isComputerWidth}:{isComputerWidth:boolean | null})=>{
 
   //ROUNTING AND TRANSLATION CONSTANTS
   const router = useRouter()
@@ -89,92 +89,93 @@ const Header = ({isComputerWidth}:{isComputerWidth:boolean})=>{
   }, [pathname])
 
 
-  return( <> 
+  return(
+  <>
+  {(pathname !== '/contact' && isComputerWidth !== null) && 
+    <Flex width={'100vw'} justifyContent={'center'} position={isComputerWidth?'fixed':'absolute'} top={0} left={0} zIndex={1000}> 
+      <Flex maxW={'1200px'}  width={'100%'} justifyContent={'center'} position={'relative'}> 
+        {isComputerWidth ? 
 
-  
-      <Flex width={'100vw'} justifyContent={'center'} position={isComputerWidth?'fixed':'absolute'} top={0} left={0} zIndex={1000}> 
-        <Flex maxW={'1200px'} width={'100%'} justifyContent={'center'} position={'relative'}> 
-          {isComputerWidth ? 
-
-            <Flex  display={'inline-flex'}  ref={headerRef} top={'3vh'} bg={'transparent'} width={'100%'} position='fixed' color={whiteTextSections.includes(pathname) ?  'white':'brand.black_button' }  
-            borderRadius={'10rem'} paddingRight={{ base: '10px', sm: '12px', md: '15px' }} paddingLeft={{ base: '15px', sm: '18px', md: '25px' }}  py={{ base: '5px', sm: '7px', md: '10px' }}  justifyContent='space-between' alignItems='center' transition="background-color 0.1s ease, width 0.1s ease, box-shadow 0.1s ease" > 
-                
-                <Flex w='90px' position={'relative'} alignItems={'center'}>
-                  <Flex position={'absolute'}  left={0}  zIndex={9} alignItems={'center'} onClick={()=> router.push('/') } cursor={'pointer'}  fontSize='xl' fontWeight={500} >
-                    < Logo style={{ width: 90 }} />
-                  </Flex>
-                  <Flex position={'absolute'}  left={0} zIndex={10} opacity={1} ref={logoRef} alignItems={'center'} onClick={()=> router.push('/') } cursor={'pointer'}  fontSize='xl' fontWeight={500} >
-                    < LogoBlack style={{ width: 90 }} />
-                  </Flex>
+          <Flex maxW={'1200px'} display={'inline-flex'}  ref={headerRef} top={'3vh'} bg={'transparent'} width={'calc(100%)'} position='fixed' color={whiteTextSections.includes(pathname) ?  'white':'brand.black_button' }  
+          borderRadius={'10rem'} paddingRight={{ base: '10px', sm: '12px', md: '15px' }} paddingLeft={{ base: '15px', sm: '18px', md: '25px' }}  py={{ base: '5px', sm: '7px', md: '10px' }}  justifyContent='space-between' alignItems='center' transition="background-color 0.1s ease, width 0.1s ease, box-shadow 0.1s ease" > 
+              
+              <Flex w='90px' position={'relative'} alignItems={'center'}>
+                <Flex position={'absolute'}  left={0}  zIndex={9} alignItems={'center'} onClick={()=> router.push('/') } cursor={'pointer'}  fontSize='xl' fontWeight={500} >
+                  < Logo style={{ width: 90 }} />
                 </Flex>
-                <Flex gap='3vw' alignItems={'center'}> 
-                  <HeaderSection t={t} router={router} section={'Tilda'}/>
-                  <HeaderSection t={t} router={router} section={'Platform'}/>
-                  <HeaderSection t={t} router={router} section={'Pricing'}/>
-                  <HeaderSection t={t} router={router} section={'Solutions'}/>
+                <Flex position={'absolute'}  left={0} zIndex={10} opacity={1} ref={logoRef} alignItems={'center'} onClick={()=> router.push('/') } cursor={'pointer'}  fontSize='xl' fontWeight={500} >
+                  < LogoBlack style={{ width: 90 }} />
                 </Flex>
-
-                  <Flex gap='10px' >                  
-                    <ArrowButton onClick={() => router.push('contact')} text={t('Contact')} bg='transparent'  hover={{bg:'transparent', color:'brand.text_blue'}} fontSize={'xs'}/>
-                    <ArrowButton onClick={() => window.open('https://app.matil.ai/', '_blank')} borderRadius={'2rem'} text={t('Sign in')} bg={ 'brand.text_blue'} color='white' hover={{bg:'rgb(5, 79, 235)', color:'brand.gray_1'}} fontSize={'xs'}/>       
-                  </Flex>
-          </Flex>
-          :
-          <Flex mt={'5vh'} bg={'transparent'} width={'100%'}  color={whiteTextSections.includes(pathname)?'white':'brand.black_button'} borderRadius={'1rem'} px={{ base: '20px', sm: '30px', md: '50px' }} maxW='1200px' justifyContent='space-between' alignItems='center'  >
-              <Flex gap='10px' alignItems={'center'} onClick={()=> router.push('/') } cursor={'pointer'}  fontSize='xl' fontWeight={500} >
-                <Image height={25} width={25} alt={t('AltImage1')} src='/images/matil-simple.svg'/>
-                <Text mt='4px' color={whiteTextSections.includes(pathname)?'white':'brand.black_button'} >matil</Text>
               </Flex>
-              <Icon aria-label='menu'  color={whiteTextSections.includes(pathname)?'white':'brand.black_button'} as={RxHamburgerMenu} boxSize={10} cursor='pointer' onClick={()=>setShowMenu(true)}/>
-              
-              {(showMenu && !isComputerWidth) &&
-                <MotionFlex display={'flex'} maxH={'96vh'} flexDir={'column'} onMouseDown={(e)=>{e.stopPropagation()}}   bg='white' boxShadow={'0 0 10px 1px rgba(0, 0, 0, 0.15)'} zIndex={10000} position={'fixed'} top={'0vh'} left={'2vw'} borderRadius={'1rem'} width={{base:'96vw', sm:'96vw',md:'60vw'}}  p='10px'  initial={{ opacity: 0 }} animate={{ opacity: 1}} exit={{ opacity: 0}} transition={{ duration: 0.5 }} >
-              
-                <Flex  p='10px' color='black' justifyContent={'space-between'} alignItems={'center'}>
-                  <Text fontSize={'sm'}>matil</Text>
-                  <Icon as={RxCross2} onClick={()=>setShowMenu(false)} cursor={'pointer'}/>
+              <Flex gap='3vw' alignItems={'center'}> 
+                <HeaderSection t={t} router={router} section={'Tilda'}/>
+                <HeaderSection t={t} router={router} section={'Platform'}/>
+                <HeaderSection t={t} router={router} section={'Pricing'}/>
+                <HeaderSection t={t} router={router} section={'Solutions'}/>
+              </Flex>
+
+                <Flex gap='10px' >                  
+                  <ArrowButton onClick={() => router.push('contact')} text={t('Contact')} bg='transparent'  hover={{bg:'transparent', color:'brand.text_blue'}} fontSize={'xs'}/>
+                  <ArrowButton onClick={() => window.open('https://app.matil.ai/', '_blank')} borderRadius={'2rem'} text={t('Sign in')} bg={ 'brand.text_blue'} color='white' hover={{bg:'rgb(5, 79, 235)', color:'brand.gray_1'}} fontSize={'xs'}/>       
+                </Flex>
+        </Flex>
+        :
+        <Flex mt={'5vh'} bg={'transparent'} width={'100%'}  color={whiteTextSections.includes(pathname)?'white':'brand.black_button'} borderRadius={'1rem'} px={{ base: '20px', sm: '30px', md: '50px' }} maxW='1200px' justifyContent='space-between' alignItems='center'  >
+            <Flex gap='10px' alignItems={'center'} onClick={()=> router.push('/') } cursor={'pointer'}  fontSize='xl' fontWeight={500} >
+              <Image height={25} width={25} alt={t('AltImage1')} src='/images/matil-simple.svg'/>
+              <Text mt='4px' color={whiteTextSections.includes(pathname)?'white':'brand.black_button'} >matil</Text>
+            </Flex>
+            <Icon aria-label='menu'  color={whiteTextSections.includes(pathname)?'white':'brand.black_button'} as={RxHamburgerMenu} boxSize={10} cursor='pointer' onClick={()=>setShowMenu(true)}/>
+            
+            {(showMenu && !isComputerWidth) &&
+              <MotionFlex display={'flex'} maxH={'96vh'} flexDir={'column'} onMouseDown={(e)=>{e.stopPropagation()}}   bg='white' boxShadow={'0 0 10px 1px rgba(0, 0, 0, 0.15)'} zIndex={10000} position={'fixed'} top={'0vh'} left={'2vw'} borderRadius={'1rem'} width={{base:'96vw', sm:'96vw',md:'60vw'}}  p='10px'  initial={{ opacity: 0 }} animate={{ opacity: 1}} exit={{ opacity: 0}} transition={{ duration: 0.5 }} >
+            
+              <Flex color='#000331'  p='10px'  justifyContent={'space-between'} alignItems={'center'}>
+                <Logo style={{ width: 60 }} />
+                <Icon as={RxCross2} onClick={()=>setShowMenu(false)} cursor={'pointer'}/>
+              </Flex>
+
+              <Box flex='1' overflow={'scroll'}  borderRadius={'.5rem'}> 
+                
+                  <Flex mt='10px' bg='brand.gray_1' gap='10px'  cursor={'pointer'}  onClick={()=> {router.push('/tilda');setShowMenu(false)}}  _hover={{bg:'gray.100', color:'brand.clear_black'}} p='15px' borderRadius={'1rem'} color='gray.400' > 
+                    <Icon mt='3px' as={FaRobot} boxSize={'18px'} />
+                    <Box> 
+                      <Text color='brand.clear_black' >Tilda</Text>
+                      <Text fontSize={'.8em'} fontWeight={300}>{t('Tilda_Subtitle')}</Text>
+                    </Box>
                 </Flex>
 
-                <Box flex='1' overflow={'scroll'}  borderRadius={'.5rem'}> 
-                  
-                    <Flex mt='10px' bg='brand.gray_1' gap='10px'  cursor={'pointer'}  onClick={()=> {router.push('/tilda');setShowMenu(false)}}  _hover={{bg:'gray.100', color:'brand.clear_black'}} p='15px' borderRadius={'1rem'} color='gray.400' > 
-                      <Icon mt='3px' as={FaRobot} boxSize={'18px'} />
-                      <Box> 
-                        <Text color='brand.clear_black' >Tilda</Text>
-                        <Text fontSize={'.8em'} fontWeight={300}>{t('Tilda_Subtitle')}</Text>
-                      </Box>
-                  </Flex>
+                <Flex mt='10px' bg='brand.gray_1' gap='10px'  cursor={'pointer'}  onClick={()=> {router.push('/platform');setShowMenu(false)}}  _hover={{bg:'gray.100', color:'brand.clear_black'}} p='15px' borderRadius={'1rem'} color='gray.400' > 
+                    <Icon mt='3px' as={IoFileTrayFull} boxSize={'18px'} />
+                    <Box> 
+                      <Text color='brand.clear_black' >{t('Platform')}</Text>
+                      <Text fontSize={'.8em'} fontWeight={300}>{t('Platform_Subtitle')}</Text>
+                    </Box>
+                </Flex>
+                    
+                <Flex mt='10px' bg='brand.gray_1' gap='10px'  cursor={'pointer'}  onClick={()=> {router.push('/pricing');;setShowMenu(false)}}  _hover={{bg:'gray.100', color:'brand.clear_black'}} p='15px' borderRadius={'1rem'} color='gray.400' > 
+                    <Icon mt='3px' as={IoPricetags} boxSize={'18px'} />
+                    <Box> 
+                      <Text color='brand.clear_black' >{t('Pricing')}</Text>
+                      <Text fontSize={'.8em'} fontWeight={300}>{t('Pricing_Subtitle')}</Text>
+                    </Box>
+                </Flex>
+                    
+                <Flex mt='10px' bg='brand.gray_1' gap='10px'  cursor={'pointer'}  onClick={()=> {router.push('/solutions');setShowMenu(false)}}  _hover={{bg:'gray.100', color:'brand.clear_black'}} p='15px' borderRadius={'1rem'} color='gray.400' > 
+                    <Icon mt='3px' as={IoHeadset} boxSize={'18px'} />
+                    <Box> 
+                      <Text color='brand.clear_black' >{t('Solutions')}</Text>
+                      <Text fontSize={'.8em'} fontWeight={300}>{t('Solutions_Subtitle')}</Text>
+                    </Box>
+                </Flex>
 
-                  <Flex mt='10px' bg='brand.gray_1' gap='10px'  cursor={'pointer'}  onClick={()=> {router.push('/platform');setShowMenu(false)}}  _hover={{bg:'gray.100', color:'brand.clear_black'}} p='15px' borderRadius={'1rem'} color='gray.400' > 
-                      <Icon mt='3px' as={IoFileTrayFull} boxSize={'18px'} />
-                      <Box> 
-                        <Text color='brand.clear_black' >{t('Platform')}</Text>
-                        <Text fontSize={'.8em'} fontWeight={300}>{t('Platform_Subtitle')}</Text>
-                      </Box>
-                  </Flex>
-                     
-                  <Flex mt='10px' bg='brand.gray_1' gap='10px'  cursor={'pointer'}  onClick={()=> {router.push('/pricing');;setShowMenu(false)}}  _hover={{bg:'gray.100', color:'brand.clear_black'}} p='15px' borderRadius={'1rem'} color='gray.400' > 
-                      <Icon mt='3px' as={IoPricetags} boxSize={'18px'} />
-                      <Box> 
-                        <Text color='brand.clear_black' >{t('Pricing')}</Text>
-                        <Text fontSize={'.8em'} fontWeight={300}>{t('Pricing_Subtitle')}</Text>
-                      </Box>
-                  </Flex>
-                     
-                  <Flex mt='10px' bg='brand.gray_1' gap='10px'  cursor={'pointer'}  onClick={()=> {router.push('/solutions');setShowMenu(false)}}  _hover={{bg:'gray.100', color:'brand.clear_black'}} p='15px' borderRadius={'1rem'} color='gray.400' > 
-                      <Icon mt='3px' as={IoHeadset} boxSize={'18px'} />
-                      <Box> 
-                        <Text color='brand.clear_black' >{t('Solutions')}</Text>
-                        <Text fontSize={'.8em'} fontWeight={300}>{t('Solutions_Subtitle')}</Text>
-                      </Box>
-                  </Flex>
-  
-              </Box>
-                </MotionFlex>
-              }
-          </Flex>}
-        </Flex>
-       </Flex>
+            </Box>
+              </MotionFlex>
+            }
+        </Flex>}
+      </Flex>
+    </Flex>
+  }
        </>)
 }
 

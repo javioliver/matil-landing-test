@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --hostname 192.168.0.179",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "-": "^0.0.1",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@chakra-ui/react": "^2.8.0",
     "@emotion/react": "^11.11.1",
@@ -19,6 +20,7 @@
     "@svgr/webpack": "^8.1.0",
     "animate.css": "^4.1.1",
     "axios": "^1.4.0",
+    "emailjs-com": "^3.2.0",
     "framer-motion": "^10.16.1",
     "i18next": "^23.12.2",
     "mesh-gradient.js": "^0.0.5",
@@ -29,6 +31,7 @@
     "react-dom": "^18.2.0",
     "react-ga4": "^2.1.0",
     "react-icons": "^4.10.1",
+    "save": "^2.9.0",
     "styled-components": "^6.0.7",
     "three": "^0.163.0"
   },
