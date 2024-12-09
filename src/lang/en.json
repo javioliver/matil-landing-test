@@ -351,7 +351,9 @@
         "Send": "Send",
         "Waiting": "Please wait...",
         "GoWeb": "Return to Website",
-        "Error": "There was an error submitting the form"
+        "Error": "There was an error submitting the form",
+        "NameSurname":"Name Surname"
+
     },
     "Chats": {
         "Chat_11": "Hello, I’d like to know if you have any stores in Salamanca.",

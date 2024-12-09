@@ -365,7 +365,8 @@
         "Send":"Enviar",
         "Waiting":"Espera porfavor ...",
         "GoWeb":"Volver a la web",
-        "Error":"Hubo un error al enviar el formulario"
+        "Error":"Hubo un error al enviar el formulario",
+        "NameSurname":"Nombre Apellido"
     },
     "Chats":{
         "Chat_11": "Hola, me gustaría saber si tenéis alguna tienda en Salamanca",
