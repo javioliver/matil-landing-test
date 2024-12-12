@@ -65,7 +65,7 @@ const Contact = ()=>{
                 <HighlightText text={ t('Contact_SubHero')} color1='gray.600' color2='rgb(5, 102, 255)' bold />
               </Text>
               <Text as='h3' mt='20px' w='80%' fontSize={'md'}  color="gray.600" fontWeight={300}  overflowWrap="break-word" whiteSpace="pre-wrap">
-              {t('Contact_Offer')}
+                {t('Contact_Offer')}
               </Text>
               {bulletPointsIcons.map((icon, index) => (
                 <Flex key={`point-${index}`} gap='10px' mt='30px'>
